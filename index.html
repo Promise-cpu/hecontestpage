@@ -545,288 +545,522 @@
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
-        /* ========== MOBILE & TABLET HEADER REFINEMENTS ========== */
-        /* Tablets (481px to 768px) – hamburger on right, all tabs inside */
-        @media (min-width: 481px) and (max-width: 768px) {
-            .desktop-nav {
-                display: none;  /* hide desktop nav on tablets */
-            }
-            .hamburger {
-                display: block !important; /* ensure hamburger is visible */
-                font-size: 2rem;
-            }
-            .header-container {
-                padding: 0.75rem 1.5rem;
-            }
-            .logo-container {
-                gap: 0.75rem;
-            }
-            .company-name {
-                font-size: 1.3rem;  /* slightly smaller but still one line */
-                white-space: nowrap;
-            }
-        }
+        /* ========== CLEAN BREAKPOINTS - NO OVERLAP ========== */
 
-        /* Small mobile phones (max-width: 480px) – perfect fit, no stacking */
-        @media (max-width: 480px) {
-            .header-container {
-                padding: 0.6rem 1rem;
-            }
-            .logo-container {
-                gap: 0.5rem;
-            }
-            .logo-img {
-                height: 36px;        /* slightly smaller logo */
-            }
-            .company-name {
-                font-size: 1.1rem;    /* adjusted to fit on one line */
-                white-space: nowrap;
-                letter-spacing: -0.01em;
-            }
-            .hamburger {
-                font-size: 1.8rem;
-            }
-        }
+/* Small mobile phones (320px - 480px) */
+@media (min-width: 320px) and (max-width: 480px) {
+    .header-container {
+        padding: 0.6rem 1rem;
+    }
+    .logo-container {
+        gap: 0.5rem;
+    }
+    .logo-img {
+        height: 36px;
+    }
+    .company-name {
+        font-size: 1.1rem;
+        white-space: nowrap;
+        letter-spacing: -0.01em;
+    }
+    .hamburger {
+        font-size: 1.8rem;
+        display: block !important;
+    }
+    .desktop-nav {
+        display: none;
+    }
 
-        /* Very small screens (320px) – ensure no wrap */
-        @media (max-width: 360px) {
-            .logo-img {
-                height: 32px;
-            }
-            .company-name {
-                font-size: 1rem;
-            }
-            .hamburger {
-                font-size: 1.6rem;
-            }
-        }
+    /* Hero section */
+    .hero-section {
+        min-height: 100vh;
+        padding-top: 70px;
+        display: flex;
+        align-items: center;
+    }
+    .hero-content {
+        width: 100%;
+        padding: 0 1rem;
+        margin-top: -2rem;
+    }
+    .hero-content h1 {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    .hero-content p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 0.8rem;
+        width: 100%;
+    }
+    .hero-buttons .btn {
+        width: 90%;
+        max-width: 240px;
+        padding: 0.7rem 0.8rem;
+        font-size: 0.9rem;
+        border-radius: 40px;
+    }
 
-        /* ========== MOBILE‑ONLY REFINEMENTS – FINAL (unchanged from previous) ========== */
-        @media (max-width: 768px) {
-            /* header: smaller, cleaner (already handled above) */
-            /* --- HERO SECTION: balanced spacing & smaller buttons --- */
-            .hero-section {
-                min-height: 100vh;        /* less extra space */
-                padding-top: 70px;
-                display: flex;
-                align-items: center;
-            }
-            .hero-content {
-                width: 100%;
-                padding: 0 1rem;
-                margin-top: -2rem;        /* pull up a bit to center better */
-            }
-            .hero-content h1 {
-                font-size: clamp(2rem, 8vw, 3rem);
-                line-height: 1.2;
-                margin-bottom: 1rem;
-            }
-            .hero-content p {
-                font-size: 1.1rem;
-                margin-bottom: 2rem;
-                opacity: 0.9;
-            }
-            .hero-buttons {
-                display: flex;
-                flex-direction: column-reverse;
-                align-items: center;
-                gap: 0.8rem;
-                width: 100%;
-            }
-            .hero-buttons .btn {
-                width: 90%;
-                max-width: 260px;          /* 40% smaller than before */
-                padding: 0.8rem 1rem;
-                font-size: 0.95rem;
-                border-radius: 40px;
-            }
+    /* About section */
+    .service-showcase {
+        gap: 2.5rem;
+        margin: 2rem 0;
+    }
+    .service-row {
+        flex-direction: column !important;
+        gap: 1rem;
+        background: transparent;
+        padding: 0;
+        border: none;
+        opacity: 0;
+        transform: translateX(0);
+        transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+    }
+    .service-row.right {
+        transform: translateX(40px);
+    }
+    .service-row.left {
+        transform: translateX(-40px);
+    }
+    .service-row.revealed {
+        opacity: 1;
+        transform: translateX(0);
+    }
+    .service-visual-content {
+        height: 200px;
+        border-radius: 2rem;
+        box-shadow: 0 15px 25px -10px #00000080;
+    }
+    .service-visual-content a.btn {
+        display: inline-flex;
+        margin-top: 0.5rem;
+        font-size: 0.8rem;
+        padding: 0.3rem 1rem;
+        background: rgba(10, 8, 18, 0.8);
+        border: 1px solid rgba(255, 180, 150, 0.7);
+        white-space: nowrap;
+    }
+    .service-visual-content .overlay-text {
+        bottom: 3.5rem;
+        background: rgba(10, 6, 16, 0.8);
+        backdrop-filter: blur(12px);
+        padding: 0.4rem 1.2rem;
+        border-radius: 3rem;
+    }
+    .service-visual-content .overlay-text i {
+        font-size: 1.2rem;
+    }
+    .service-visual-content .overlay-text h3 {
+        font-size: 1.3rem;
+    }
+    .service-row-1 .service-visual-content a.btn span {
+        display: none;
+    }
+    .service-row-1 .service-visual-content a.btn::before {
+        content: "VIEW";
+        font-weight: 600;
+        margin-right: 0.2rem;
+    }
+    .service-row-1 .service-visual-content a.btn i {
+        margin-right: 0.2rem;
+    }
+    .service-description-content {
+        padding: 1rem 0.2rem;
+    }
+    .service-description-content h4 {
+        font-size: 1.8rem;
+        margin-bottom: 0.8rem;
+    }
+    .service-description-content p {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+    .service-features li {
+        font-size: 0.9rem;
+    }
 
-            /* --- ABOUT SECTION: restore action buttons (exactly like first code) + side fade animations --- */
-            .service-showcase {
-                gap: 2.5rem;
-                margin: 2rem 0;
-            }
-            .service-row {
-                flex-direction: column !important;
-                gap: 1rem;
-                background: transparent;
-                padding: 0;
-                border: none;
-                /* side fade animations (same as desktop) */
-                opacity: 0;
-                transform: translateX(0);
-                transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-            }
-            .service-row.right {
-                transform: translateX(40px); /* slightly reduced for mobile */
-            }
-            .service-row.left {
-                transform: translateX(-40px);
-            }
-            .service-row.revealed {
-                opacity: 1;
-                transform: translateX(0);
-            }
+    /* Benefits */
+    .benefits-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 0 0.2rem;
+    }
+    .benefit-card {
+        padding: 1.5rem 1.2rem;
+        border-radius: 2rem;
+        background: rgba(32, 24, 44, 0.5);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(220,160,250,0.15);
+        text-align: left;
+    }
+    .benefit-card i {
+        font-size: 2rem;
+        margin-bottom: 0.5rem;
+    }
+    .benefit-card h3 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+    .benefit-card p {
+        font-size: 0.9rem;
+        color: rgba(220, 210, 250, 0.9);
+    }
 
-            .service-visual-content {
-                height: 220px;              /* consistent height */
-                border-radius: 2rem;
-                box-shadow: 0 15px 25px -10px #00000080;
-            }
+    /* Contact */
+    .contact-info {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0 0.2rem;
+    }
+    .contact-item {
+        padding: 1.2rem;
+        border-radius: 2rem;
+        background: rgba(26, 20, 40, 0.75);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255,180,150,0.2);
+    }
+    .contact-item h3 {
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+    .contact-item p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+    }
+    .whatsapp-button {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 0.95rem;
+        margin-top: 0.8rem;
+    }
 
-            /* keep the lower button (action button) – exactly like first code */
-            .service-visual-content a.btn {
-                display: inline-flex;        /* show the buttons */
-                margin-top: 0.5rem;
-                font-size: 0.85rem;
-                padding: 0.4rem 1.2rem;
-                background: rgba(10, 8, 18, 0.8);
-                border: 1px solid rgba(255, 180, 150, 0.7);
-                white-space: nowrap;
-            }
-            /* overlay text stays above the button, but we keep it where it is */
-            .service-visual-content .overlay-text {
-                bottom: 3.8rem;              /* lift to make room for button below */
-                background: rgba(10, 6, 16, 0.8);
-                backdrop-filter: blur(12px);
-                padding: 0.5rem 1.5rem;
-                border-radius: 3rem;
-            }
-            .service-visual-content .overlay-text i { font-size: 1.3rem; }
-            .service-visual-content .overlay-text h3 { font-size: 1.5rem; }
+    /* Center section titles */
+    #benefits h2, #contact h2 {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
 
-            /* specific button text adjustment for real estate (VIEW only) */
-            .service-row-1 .service-visual-content a.btn span { display: none; }
-            .service-row-1 .service-visual-content a.btn::before { 
-                content: "VIEW"; 
-                font-weight: 600;
-                margin-right: 0.2rem;
-            }
-            .service-row-1 .service-visual-content a.btn i { margin-right: 0.2rem; }
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
 
-            /* service description */
-            .service-description-content {
-                padding: 1rem 0.2rem;
-            }
-            .service-description-content h4 {
-                font-size: 1.8rem;
-                margin-bottom: 0.8rem;
-            }
-            .service-description-content p {
-                font-size: 1rem;
-                margin-bottom: 0.8rem;
-            }
-            .service-features li {
-                font-size: 0.9rem;
-            }
+    /* Fix horizontal gap */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    .container {
+        padding: 0 1rem;
+        width: 100%;
+        max-width: 100%;
+    }
+    .service-visual, .service-description {
+        min-width: auto;
+        width: 100%;
+    }
+    .service-visual-content {
+        width: 100%;
+    }
+}
 
-            /* benefits – restore original (first code) exactly */
-            .benefits-container {
-                display: grid;
-                grid-template-columns: 1fr;  /* single column like first code */
-                gap: 1.2rem;
-                padding: 0 0.2rem;
-            }
-            .benefit-card {
-                padding: 2rem 1.8rem;
-                border-radius: 2rem;
-                background: rgba(32, 24, 44, 0.5);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(220,160,250,0.15);
-                text-align: left;
-            }
-            .benefit-card i {
-                font-size: 2.5rem;
-                margin-bottom: 0.5rem;
-            }
-            .benefit-card h3 {
-                font-size: 1.5rem;
-                margin-bottom: 0.3rem;
-            }
-            .benefit-card p {
-                font-size: 0.95rem;
-                color: rgba(220, 210, 250, 0.9);
-            }
+/* Large phones (481px - 640px) */
+@media (min-width: 481px) and (max-width: 640px) {
+    .header-container {
+        padding: 0.7rem 1.2rem;
+    }
+    .logo-container {
+        gap: 0.6rem;
+    }
+    .logo-img {
+        height: 38px;
+    }
+    .company-name {
+        font-size: 1.2rem;
+        white-space: nowrap;
+    }
+    .hamburger {
+        font-size: 1.9rem;
+        display: block !important;
+    }
+    .desktop-nav {
+        display: none;
+    }
 
-            /* contact – restore original (first code) exactly */
-            .contact-info {
-                display: grid;
-                grid-template-columns: 1fr;  /* single column like first code */
-                gap: 1rem;
-                padding: 0 0.2rem;
-            }
-            .contact-item {
-                padding: 1.8rem;
-                border-radius: 2rem;
-                background: rgba(26, 20, 40, 0.75);
-                backdrop-filter: blur(16px);
-                border: 1px solid rgba(255,180,150,0.2);
-            }
-            .contact-item h3 {
-                font-size: 1.4rem;
-                margin-bottom: 0.5rem;
-            }
-            .contact-item p {
-                font-size: 1rem;
-                line-height: 1.4;
-            }
-            .whatsapp-button {
-                width: 100%;
-                padding: 0.8rem;
-                font-size: 1rem;
-                margin-top: 0.8rem;
-            }
+    /* Hero section */
+    .hero-section {
+        min-height: 95vh;
+        padding-top: 70px;
+        display: flex;
+        align-items: center;
+    }
+    .hero-content {
+        width: 100%;
+        padding: 0 1.2rem;
+        margin-top: -1.5rem;
+    }
+    .hero-content h1 {
+        font-size: clamp(2rem, 7vw, 2.8rem);
+        line-height: 1.2;
+        margin-bottom: 1rem;
+    }
+    .hero-content p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .hero-buttons .btn {
+        width: 90%;
+        max-width: 260px;
+        padding: 0.8rem 1rem;
+        font-size: 0.95rem;
+    }
 
-            /* center section titles */
-            #benefits h2, #contact h2 {
-                display: block;
-                text-align: center;
-                width: 100%;
-                margin-bottom: 1.5rem;
-            }
+    /* About section */
+    .service-showcase {
+        gap: 2.5rem;
+        margin: 2rem 0;
+    }
+    .service-row {
+        flex-direction: column !important;
+        gap: 1rem;
+    }
+    .service-visual-content {
+        height: 210px;
+    }
+    .service-visual-content .overlay-text {
+        bottom: 3.8rem;
+    }
+    
+    /* Keep other about styles same as small phones but with slightly larger sizing */
+    .service-visual-content a.btn {
+        font-size: 0.85rem;
+        padding: 0.4rem 1.2rem;
+    }
+    
+    /* Benefits & Contact - single column */
+    .benefits-container {
+        grid-template-columns: 1fr;
+    }
+    .contact-info {
+        grid-template-columns: 1fr;
+    }
+    
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+}
 
-            /* footer adjustments */
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                text-align: center;
-            }
+/* Tablets (641px - 1024px) */
+@media (min-width: 641px) and (max-width: 1024px) {
+    .header-container {
+        padding: 0.8rem 2rem;
+    }
+    .logo-container {
+        gap: 0.75rem;
+    }
+    .logo-img {
+        height: 40px;
+    }
+    .company-name {
+        font-size: 1.3rem;
+        white-space: nowrap;
+    }
+    .hamburger {
+        font-size: 2rem;
+        display: block !important;
+    }
+    .desktop-nav {
+        display: none;
+    }
 
-            /* FIX HORIZONTAL GAP – ensure no overflow */
-            body, html {
-                overflow-x: hidden;
-                width: 100%;
-            }
-            .container {
-                padding: 0 1rem;  /* reduce side padding slightly on mobile */
-                width: 100%;
-                max-width: 100%;
-            }
-            .service-visual, .service-description {
-                min-width: auto;
-                width: 100%;
-            }
-            .service-visual-content {
-                width: 100%;
-            }
-        }
+    /* Hero section - adjusted for tablets */
+    .hero-section {
+        min-height: 90vh;
+        padding-top: 80px;
+        display: flex;
+        align-items: center;
+    }
+    .hero-content {
+        width: 100%;
+        padding: 0 2rem;
+    }
+    .hero-content h1 {
+        font-size: clamp(2.5rem, 6vw, 3.5rem);
+        line-height: 1.2;
+        margin-bottom: 1.5rem;
+    }
+    .hero-content p {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 1.5rem;
+    }
+    .hero-buttons .btn {
+        width: auto;
+        min-width: 200px;
+        padding: 0.9rem 1.5rem;
+        font-size: 1rem;
+    }
 
-        /* desktop unchanged */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (min-width: 768px) {
-            /* For screens above 768px, show desktop nav, hide hamburger */
-            .desktop-nav { display: block; }
-            .hamburger { display: none !important; }
-        }
-        /* Ensure that on tablets (max 768) we already forced hamburger block via earlier query */
-        @media (max-width: 768px) {
-            .desktop-nav { display: none; }
-        }
+    /* About section - side by side on tablets */
+    .service-showcase {
+        gap: 4rem;
+        margin: 3rem 0;
+    }
+    .service-row {
+        flex-direction: row !important;
+        gap: 2rem;
+    }
+    .service-row.right, .service-row.left {
+        transform: translateX(0);
+    }
+    .service-visual {
+        min-width: 300px;
+    }
+    .service-visual-content {
+        height: 250px;
+    }
+    .service-visual-content .overlay-text {
+        bottom: 3.8rem;
+    }
+    .service-description-content {
+        padding: 1rem;
+    }
+    .service-description-content h4 {
+        font-size: 1.8rem;
+    }
+
+    /* Benefits - 2 columns on tablets */
+    .benefits-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    .benefit-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Contact - 2 columns on tablets */
+    .contact-info {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.5rem;
+    }
+    .contact-item {
+        padding: 1.8rem;
+    }
+
+    /* Footer grid for tablets */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    /* Center section titles */
+    #benefits h2, #contact h2 {
+        display: block;
+        text-align: center;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+    
+    /* Fix horizontal gap */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+    .container {
+        padding: 0 2rem;
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+/* Small laptops / large tablets landscape (1025px - 1280px) */
+@media (min-width: 1025px) and (max-width: 1280px) {
+    .header-container {
+        padding: 0.8rem 2rem;
+    }
+    .desktop-nav {
+        display: block;
+    }
+    .hamburger {
+        display: none !important;
+    }
+
+    /* Hero section */
+    .hero-content h1 {
+        font-size: clamp(3rem, 5vw, 4rem);
+    }
+
+    /* Benefits - 3 columns */
+    .benefits-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Contact - 3 columns */
+    .contact-info {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Footer grid */
+    .footer-grid {
+        grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    }
+    
+    /* Fix horizontal gap */
+    body, html {
+        overflow-x: hidden;
+        width: 100%;
+    }
+}
+
+/* Desktop (1281px and above) */
+@media (min-width: 1281px) {
+    .desktop-nav {
+        display: block;
+    }
+    .hamburger {
+        display: none !important;
+    }
+    
+    /* Benefits - auto-fit */
+    .benefits-container {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    
+    /* Contact - auto-fit */
+    .contact-info {
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    }
+}
+
+/* Remove all the old conflicting queries below this line */
     </style>
 </head>
 <body>
