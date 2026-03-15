@@ -331,6 +331,7 @@
         }
         .service-visual-content[data-service="cac"] {
             background: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+            background-size: cover;
             background-position: center 20%;
         }
         .service-visual-content[data-service="gadgets"] {
@@ -535,9 +536,9 @@
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
-        /* ========== MOBILE‑ONLY REFINEMENTS ========== */
+        /* ========== MOBILE‑ONLY REFINEMENTS – PREMIUM SCROLL EXPERIENCE ========== */
         @media (max-width: 768px) {
-            /* header: smaller hamburger & modern drawer */
+            /* header: smaller, cleaner */
             .hamburger {
                 font-size: 1.8rem;
                 padding: 0.2rem 0.8rem;
@@ -555,72 +556,211 @@
                 border-bottom: 1px solid rgba(212,165,255,0.1);
             }
 
-            /* hero section: fix overlapping buttons + chat above */
+            /* hero: full-bleed, cinematic */
             .hero-section {
                 min-height: 90vh;
                 padding-top: 80px;
+                display: flex;
+                align-items: center;
+            }
+            .hero-content {
+                width: 100%;
+                padding: 0 1rem;
             }
             .hero-content h1 {
-                font-size: clamp(1.8rem, 9vw, 3.2rem);
+                font-size: clamp(2.2rem, 10vw, 3.5rem);
                 line-height: 1.2;
-                margin-bottom: 1rem;
+                margin-bottom: 1.5rem;
+                letter-spacing: -0.02em;
             }
             .hero-content p {
-                font-size: 1.1rem;
+                font-size: 1.2rem;
                 padding: 0 0.5rem;
+                margin-bottom: 2rem;
+                opacity: 0.9;
             }
             .hero-buttons {
                 display: flex;
                 flex-direction: column-reverse; /* chat on top */
                 align-items: center;
                 gap: 1rem;
-                margin-top: 2rem;
+                width: 100%;
+                margin-top: 1rem;
             }
             .hero-buttons .btn {
-                width: 90%;
-                max-width: 280px;
-                padding: 0.9rem 1.2rem;
-                font-size: 0.95rem;
+                width: 100%;
+                max-width: 320px;
+                padding: 1rem 1.5rem;
+                font-size: 1.1rem;
+                border-radius: 60px;
+                box-shadow: 0 12px 30px -8px rgba(0,0,0,0.5);
             }
 
-            /* about section tab uniformity */
-            .service-row { flex-direction: column !important; gap: 2rem; }
-            .service-row.right, .service-row.left { transform: translateY(40px); }
-            .service-row.revealed { transform: translateY(0); }
-            .service-showcase { gap: 5rem; }
-            .service-visual-content { height: 250px; }
+            /* about section – redesigned for smooth card stack */
+            .about-header p {
+                font-size: 1.2rem;
+                padding: 0 0.5rem;
+            }
+
+            .service-showcase {
+                gap: 2.5rem; /* tighter, elegant */
+                margin: 2rem 0;
+            }
+
+            .service-row {
+                flex-direction: column !important;
+                gap: 1.5rem;
+                background: rgba(20, 16, 32, 0.4);
+                backdrop-filter: blur(4px);
+                border-radius: 3rem;
+                padding: 1.5rem 1.2rem 2rem 1.2rem;
+                border: 1px solid rgba(212, 165, 255, 0.15);
+                transition: background 0.4s, border-color 0.3s;
+            }
+            .service-row:hover {
+                background: rgba(35, 28, 50, 0.7);
+                border-color: rgba(255, 180, 150, 0.4);
+            }
+            .service-row.right, .service-row.left { 
+                transform: translateY(20px); 
+            }
+            .service-row.revealed { 
+                transform: translateY(0); 
+            }
+
+            .service-visual {
+                min-width: auto;
+                width: 100%;
+            }
+            .service-visual-content {
+                height: 220px; /* taller for impact */
+                border-radius: 2rem;
+                box-shadow: 0 20px 30px -10px #00000080;
+            }
             .overlay-text {
-                padding: 0.4rem 1rem;
                 bottom: 1rem;
+                padding: 0.5rem 1.5rem;
+                background: rgba(10, 6, 16, 0.7);
+                backdrop-filter: blur(10px);
             }
+            .overlay-text i { font-size: 1.5rem; }
             .overlay-text h3 { font-size: 1.6rem; }
-            .service-visual-content a.btn {
-                font-size: 0.9rem;
-                padding: 0.5rem 1.2rem;
-                margin-top: 0.5rem;
-            }
-            /* smaller button text for real estate (VIEW→ short) */
-            .service-visual-content a.btn {
-                white-space: nowrap;
-            }
-            /* change "VIEW PROPERTIES" text to "VIEW" only on mobile */
-            .service-row-1 .service-visual-content a.btn span { display: none; }
-            .service-row-1 .service-visual-content a.btn::before { content: "VIEW"; }
-            .service-row-1 .service-visual-content a.btn i { margin-right: 0.3rem; }
 
-            /* center h2 for benefits & contact */
+            .service-visual-content a.btn {
+                margin-top: 0.6rem;
+                padding: 0.5rem 1.4rem;
+                font-size: 0.9rem;
+                background: rgba(20, 15, 30, 0.8);
+                border-width: 1.5px;
+            }
+
+            /* description becomes part of the card */
+            .service-description {
+                min-width: auto;
+                width: 100%;
+            }
+            .service-description-content {
+                padding: 0 0.5rem;
+            }
+            .service-description-content h4 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+            .service-description-content p {
+                font-size: 1rem;
+                line-height: 1.5;
+                margin-bottom: 1rem;
+            }
+            .service-features li {
+                font-size: 0.95rem;
+                gap: 0.6rem;
+            }
+            .service-features li i { font-size: 1rem; }
+
+            /* adjust specific button text */
+            .service-row-1 .service-visual-content a.btn span { display: none; }
+            .service-row-1 .service-visual-content a.btn::before { 
+                content: "VIEW"; 
+                font-weight: 600;
+            }
+
+            /* benefits – spacious cards */
             #benefits h2, #contact h2 {
                 display: block;
                 text-align: center;
                 width: 100%;
+                margin-bottom: 2rem;
             }
 
-            .benefits-container { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .benefits-container {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+                padding: 0 0.5rem;
+            }
+            .benefit-card {
+                padding: 2rem 1.8rem;
+                border-radius: 2rem;
+                background: rgba(38, 30, 48, 0.7);
+                backdrop-filter: blur(8px);
+                border: 1px solid rgba(255, 180, 150, 0.2);
+            }
+            .benefit-card i {
+                font-size: 2.5rem;
+                margin-bottom: 0.5rem;
+            }
+            .benefit-card h3 {
+                font-size: 1.5rem;
+                margin-bottom: 0.3rem;
+            }
+            .benefit-card p {
+                font-size: 0.95rem;
+                color: rgba(220, 210, 250, 0.9);
+            }
+
+            /* contact – stacked, reachable */
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                padding: 0 0.5rem;
+            }
+            .contact-item {
+                padding: 1.8rem;
+                border-radius: 2rem;
+            }
+            .contact-item h3 { font-size: 1.4rem; }
+            .contact-item p { font-size: 1rem; }
+            .whatsapp-button {
+                width: 100%;
+                justify-content: center;
+                padding: 0.9rem;
+                font-size: 1rem;
+            }
+
+            /* footer – refined */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+                text-align: left;
+            }
             .footer-brand p { max-width: 100%; }
-            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+                gap: 0.5rem;
+            }
             .footer-bottom-links { justify-content: center; }
+
+            /* touch targets */
+            .btn, .benefit-card, .contact-item, .service-row {
+                cursor: pointer;
+                -webkit-tap-highlight-color: transparent;
+            }
+            .service-row:active {
+                background: rgba(50, 40, 65, 0.8);
+                transition: 0.1s;
+            }
         }
+
         /* desktop unchanged */
         @media (min-width: 769px) and (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -685,7 +825,7 @@
             </div>
             
             <div class="service-showcase">
-                <!-- Service 1: Real Estate - appears from RIGHT, with image -->
+                <!-- Service 1: Real Estate -->
                 <div class="service-row right service-row-1">
                     <div class="service-visual">
                         <div class="service-visual-content" data-service="realestate">
@@ -711,7 +851,7 @@
                     </div>
                 </div>
 
-                <!-- Service 2: Business Registration - appears from LEFT, with image -->
+                <!-- Service 2: CAC Registration -->
                 <div class="service-row left service-row-2">
                     <div class="service-visual">
                         <div class="service-visual-content" data-service="cac">
@@ -737,7 +877,7 @@
                     </div>
                 </div>
 
-                <!-- Service 3: Gadgets - appears from RIGHT, with image -->
+                <!-- Service 3: Gadgets -->
                 <div class="service-row right service-row-3">
                     <div class="service-visual">
                         <div class="service-visual-content" data-service="gadgets">
@@ -763,7 +903,7 @@
                     </div>
                 </div>
 
-                <!-- Service 4: Crypto - appears from LEFT, with image -->
+                <!-- Service 4: Crypto Exchange -->
                 <div class="service-row left service-row-4">
                     <div class="service-visual">
                         <div class="service-visual-content" data-service="crypto">
