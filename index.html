@@ -207,6 +207,7 @@
             text-overflow: ellipsis;
         }
 
+        /* Desktop navigation - hidden by default, shown only on screens above 1024px */
         .desktop-nav {
             display: none;
         }
@@ -231,6 +232,7 @@
             text-shadow: 0 0 10px #FFB37C; 
         }
 
+        /* Hamburger - visible by default on all devices except large desktops */
         .hamburger {
             background: none;
             border: none;
@@ -354,11 +356,11 @@
             gap: 4rem; 
             width: 100%; 
             opacity: 0;
-            transform: translateX(0);
             transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
             will-change: opacity, transform;
         }
         
+        /* Initial transform states - will be removed when revealed */
         .service-row.right { 
             flex-direction: row; 
             transform: translateX(80px);
@@ -369,9 +371,10 @@
             transform: translateX(-80px);
         }
         
+        /* Revealed state */
         .service-row.revealed { 
             opacity: 1; 
-            transform: translateX(0); 
+            transform: translateX(0) !important; 
         }
         
         .service-visual { 
@@ -719,7 +722,7 @@
             transition-delay: 0.3s; 
         }
 
-        /* ===== RESPONSIVE BREAKPOINTS - COMPLETELY FIXED ===== */
+        /* ===== RESPONSIVE BREAKPOINTS ===== */
         
         /* Very small screens (below 320px) */
         @media (max-width: 319px) {
@@ -758,6 +761,7 @@
             
             .service-visual-content .overlay-text {
                 padding: 0.3rem 0.8rem;
+                bottom: 2.5rem;
             }
             
             .service-visual-content .overlay-text i {
@@ -929,8 +933,9 @@
             }
         }
 
-        /* All mobile devices (up to 768px) - common styles */
-        @media (max-width: 768px) {
+        /* Tablets (769px - 1024px) - SAME LAYOUT AS DESKTOP */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            /* Tablet uses hamburger menu */
             .desktop-nav {
                 display: none;
             }
@@ -939,152 +944,38 @@
                 display: block;
             }
             
-            .hero-section {
-                min-height: 100vh;
-                padding-top: 70px;
-            }
-            
-            .hero-content {
-                width: 100%;
-                padding: 0 1rem;
-                margin-top: -2rem;
-            }
-            
-            .hero-buttons {
-                flex-direction: column-reverse;
-                align-items: center;
-                gap: 0.8rem;
-                width: 100%;
-            }
-            
-            .hero-buttons .btn {
-                width: 90%;
-            }
-            
+            /* Keep same about section layout as desktop */
             .service-showcase {
-                gap: 3rem;
-                margin: 2rem 0;
+                gap: 6rem;
+                margin: 4rem 0;
             }
             
             .service-row {
-                flex-direction: column !important;
-                gap: 1rem;
+                gap: 3rem;
             }
             
             .service-row.right {
-                transform: translateX(30px);
+                transform: translateX(60px);
             }
             
             .service-row.left {
-                transform: translateX(-30px);
-            }
-            
-            .service-visual,
-            .service-description {
-                width: 100%;
-                min-width: 100%;
+                transform: translateX(-60px);
             }
             
             .service-visual-content {
-                border-radius: 1.5rem;
-            }
-            
-            .service-visual-content .overlay-text {
-                background: rgba(10, 6, 16, 0.8);
-            }
-            
-            .service-row-1 .service-visual-content a.btn span {
-                display: none;
-            }
-            
-            .service-row-1 .service-visual-content a.btn::before { 
-                content: "VIEW"; 
-                font-weight: 600;
-                margin-right: 0.2rem;
+                height: 280px;
             }
             
             .service-description-content {
-                padding: 1rem 0;
-            }
-            
-            .service-description-content p {
-                font-size: 1rem;
-            }
-            
-            .benefits-container {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .benefit-card {
                 padding: 1.5rem;
-            }
-            
-            .contact-info {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-            
-            .contact-item {
-                padding: 1.5rem;
-            }
-            
-            #benefits h2, 
-            #contact h2 {
-                display: block;
-                text-align: center;
-                width: 100%;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .footer-bottom {
-                flex-direction: column;
-            }
-            
-            body, 
-            html {
-                overflow-x: hidden;
-                width: 100%;
-            }
-            
-            .container {
-                width: 100%;
-                max-width: 100%;
-            }
-        }
-
-        /* Tablets (769px - 1024px) */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .desktop-nav {
-                display: block;
-            }
-            
-            .hamburger {
-                display: none !important;
-            }
-            
-            .service-showcase {
-                gap: 4rem;
-            }
-            
-            .service-row {
-                gap: 2rem;
-            }
-            
-            .service-visual-content {
-                height: 260px;
-            }
-            
-            .service-description-content {
-                padding: 1rem;
             }
             
             .service-description-content h4 {
-                font-size: 1.6rem;
+                font-size: 1.8rem;
+            }
+            
+            .service-description-content p {
+                font-size: 1.1rem;
             }
             
             .benefits-container {
@@ -1107,7 +998,18 @@
             }
         }
 
-        /* Small desktops (1025px - 1280px) */
+        /* All devices up to 1024px use hamburger menu */
+        @media (max-width: 1024px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .hamburger {
+                display: block;
+            }
+        }
+
+        /* Small desktops (1025px - 1280px) - SHOW DESKTOP NAV */
         @media (min-width: 1025px) and (max-width: 1280px) {
             .desktop-nav {
                 display: block;
@@ -1145,7 +1047,7 @@
             }
         }
 
-        /* Large desktops (1281px and above) */
+        /* Large desktops (1281px and above) - SHOW DESKTOP NAV */
         @media (min-width: 1281px) {
             .desktop-nav {
                 display: block;
@@ -1169,6 +1071,45 @@
             
             .footer-grid {
                 grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            }
+        }
+
+        /* Mobile-specific adjustments for about section */
+        @media (max-width: 768px) {
+            .service-showcase {
+                gap: 3rem;
+            }
+            
+            .service-row.right {
+                transform: translateX(30px);
+            }
+            
+            .service-row.left {
+                transform: translateX(-30px);
+            }
+            
+            .service-row-1 .service-visual-content a.btn span {
+                display: none;
+            }
+            
+            .service-row-1 .service-visual-content a.btn::before { 
+                content: "VIEW"; 
+                font-weight: 600;
+                margin-right: 0.2rem;
+            }
+            
+            .service-visual,
+            .service-description {
+                width: 100%;
+                min-width: 100%;
+            }
+            
+            .service-visual-content {
+                border-radius: 1.5rem;
+            }
+            
+            .service-description-content {
+                padding: 1rem 0;
             }
         }
     </style>
@@ -1473,6 +1414,7 @@
                 if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
 
+            // Scroll animation function with better detection
             function setupScrollAnimations() {
                 const revealElements = document.querySelectorAll('.reveal, .service-row');
                 
@@ -1480,16 +1422,18 @@
                     entries.forEach(function(entry) {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('revealed');
-                        } else {
-                            entry.target.classList.remove('revealed');
                         }
                     });
-                }, { threshold: 0.2, rootMargin: '0px' });
+                }, { 
+                    threshold: 0.15, 
+                    rootMargin: '0px 0px -50px 0px' 
+                });
                 
                 revealElements.forEach(function(el) {
                     observer.observe(el);
                 });
                 
+                // Initial check for elements already in view
                 setTimeout(function() {
                     revealElements.forEach(function(el) {
                         const rect = el.getBoundingClientRect();
@@ -1497,7 +1441,7 @@
                             el.classList.add('revealed');
                         }
                     });
-                }, 100);
+                }, 200);
             }
             
             setupScrollAnimations();
@@ -1508,8 +1452,6 @@
                     const rect = el.getBoundingClientRect();
                     if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
                         el.classList.add('revealed');
-                    } else {
-                        el.classList.remove('revealed');
                     }
                 });
             });
