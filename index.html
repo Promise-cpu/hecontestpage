@@ -536,6 +536,35 @@
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
+        /* ========== ADDED FIXES ========== */
+        
+        /* Fix 1: Show hamburger on tablets (768px - 1024px) and hide desktop nav */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .desktop-nav { 
+                display: none !important; 
+            }
+            .hamburger { 
+                display: block !important; 
+            }
+        }
+
+        /* Fix 2: Reduce "HECON SERVICES" size on mobile to fit in one line */
+        @media (max-width: 768px) {
+            .company-name {
+                font-size: 1rem !important;
+                white-space: nowrap;
+            }
+        }
+
+        /* Fix 3: Reduce hero buttons by 40% on mobile */
+        @media (max-width: 768px) {
+            .hero-buttons .btn {
+                padding: 0.6rem 1rem !important;
+                font-size: 0.8rem !important;
+                max-width: 200px !important;
+            }
+        }
+
         /* ========== MOBILE‑ONLY REFINEMENTS – FINAL ========== */
         @media (max-width: 768px) {
             /* header: smaller, cleaner */
@@ -585,9 +614,10 @@
                 gap: 0.8rem;
                 width: 100%;
             }
+            /* Original button styles - our fix above will override with !important */
             .hero-buttons .btn {
                 width: 90%;
-                max-width: 260px;          /* 40% smaller than before */
+                max-width: 260px;
                 padding: 0.8rem 1rem;
                 font-size: 0.95rem;
                 border-radius: 40px;
