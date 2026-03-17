@@ -538,15 +538,7 @@
 
         /* ========== ADDED FIXES ========== */
         
-        /* Fix 1: Show hamburger on tablets (768px - 1024px) and hide desktop nav */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .desktop-nav { 
-                display: none !important; 
-            }
-            .hamburger { 
-                display: block !important; 
-            }
-        }
+       
 
         /* Fix 2: Reduce "HECON SERVICES" size on mobile to fit in one line */
         @media (max-width: 768px) {
@@ -562,6 +554,16 @@
                 padding: 0.6rem 1rem !important;
                 font-size: 0.8rem !important;
                 max-width: 200px !important;
+            }
+        }
+
+         /* Fix 1: Show hamburger on tablets (768px - 1024px) and hide desktop nav */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .desktop-nav { 
+                display: none !important; 
+            }
+            .hamburger { 
+                display: block !important; 
             }
         }
 
