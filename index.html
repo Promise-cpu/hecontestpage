@@ -551,7 +551,7 @@
         /* Fix 2: Reduce "HECON SERVICES" size on mobile to fit in one line */
         @media (max-width: 768px) {
             .company-name {
-                font-size: 1rem !important;
+                font-size: 1.4rem !important;
                 white-space: nowrap;
             }
         }
@@ -570,7 +570,7 @@
             /* header: smaller, cleaner */
             .hamburger {
                 font-size: 1.8rem;
-                padding: 0.2rem 0.8rem;
+                padding: 0.2rem 0.5rem;
                 border-radius: 2rem;
                 background: rgba(255,210,160,0.08);
             }
@@ -584,6 +584,11 @@
                 padding: 0.9rem 0.5rem;
                 border-bottom: 1px solid rgba(212,165,255,0.1);
             }
+
+            .header-container {
+    padding-left: 0.5rem;  /* reduces left padding, shifting logo left */
+    padding-right: 0.5rem; /* reduces right padding, shifting hamburger right */
+}
 
             /* --- HERO SECTION: balanced spacing & smaller buttons --- */
             .hero-section {
