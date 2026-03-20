@@ -3,23 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>HECON · FUTURE SYSTEMS · Oracle‑inspired vision</title>
-    <!-- inter, same foundation -->
+    <title>HECON · REAL ESTATE · Luxury Properties</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ---------- RESET · NEW UX/UI COLOR STRATEGY – GLUE FACTOR ---------- 
-           Oracle‑grade : deep focus + calm authority + electric optimism.
-           Palette derived from content: 
-           – Real estate → trustworthy deep teal / jade 
-           – Crypto / future → iridescent violet → now a soft plasma magenta 
-           – Gadgets → warm tech amber → refined to peach bronze
-           – Background: #0E0C1A (dark with soft brown‑black warmth) – reduces eye strain, keeps user anchored.
-           Primary interaction: ‘Oracle red’ replaced by confident amethyst‑coral gradient.
-           All without changing a single div class or structure – only colours, shadows, minor microinteractions.
-        */
         * {
             margin: 0;
             padding: 0;
@@ -27,22 +16,21 @@
         }
 
         :root {
-            /* new immersive palette — keeps eyes on screen longer */
-            --bg-deep: #12101C;        /* rich dark plum‑charcoal, warmer than pure black */
-            --bg-elevated: #1D1A2B;     /* soft raisin with subtle warmth */
+            --bg-deep: #12101C;
+            --bg-elevated: #1D1A2B;
             --surface-glass: rgba(29, 24, 40, 0.7);
-            --glow-primary: #D4A5FF;    /* soft lavender (crypto/future) with higher luminance */
-            --glow-secondary: #2AD4C2;  /* living coral‑teal – real estate trust + tech */
-            --glow-tertiary: #FFA465;   /* warm peach (gadgets, energy) */
-            --accent-crypto: #CC88FF;    /* vibrant but soft */
-            --accent-real: #3DF2D6;      /* fresh jade‑cyan */
-            --accent-gadget: #FFB37C;    /* peachy orange */
-            --text-high: rgba(255, 249, 255, 0.98);   /* crisp almost white */
-            --text-mid: rgba(235, 230, 255, 0.8);    /* warm off‑white */
+            --glow-primary: #D4A5FF;
+            --glow-secondary: #2AD4C2;
+            --glow-tertiary: #FFA465;
+            --accent-crypto: #CC88FF;
+            --accent-real: #3DF2D6;
+            --accent-gadget: #FFB37C;
+            --text-high: rgba(255, 249, 255, 0.98);
+            --text-mid: rgba(235, 230, 255, 0.8);
             --text-low: rgba(210, 200, 240, 0.55);
             --border-glow: rgba(200, 160, 255, 0.25);
             --card-blur: 18px;
-            --grid-line: rgba(170, 130, 240, 0.1);    /* softer grid */
+            --grid-line: rgba(170, 130, 240, 0.1);
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-soft: cubic-bezier(0.25, 0.1, 0.25, 1);
         }
@@ -55,7 +43,6 @@
             overflow-x: hidden;
         }
 
-        /* subtle warm particle grid (keeps depth but less harsh) */
         body::before {
             content: '';
             position: fixed;
@@ -92,7 +79,7 @@
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1400px;
             margin: 0 auto;
             padding: 0 2rem;
             position: relative;
@@ -100,28 +87,10 @@
         }
 
         section {
-            padding: 7rem 0;
+            padding: 5rem 0;
             position: relative;
         }
 
-        /* glass cards updated with warmer translucent base */
-        .glass-card {
-            background: rgba(25, 20, 38, 0.55);
-            backdrop-filter: blur(var(--card-blur));
-            -webkit-backdrop-filter: blur(var(--card-blur));
-            border: 1px solid rgba(220, 170, 255, 0.2);
-            border-radius: 2.5rem;
-            box-shadow: 0 25px 45px -12px rgba(10, 5, 20, 0.9), 0 0 0 1px rgba(220, 180, 255, 0.15) inset;
-            transition: transform 0.4s var(--ease-out-expo), border-color 0.3s, box-shadow 0.4s;
-        }
-
-        .glass-card:hover {
-            border-color: rgba(212, 165, 255, 0.6);
-            box-shadow: 0 30px 60px -12px #9B7BDA66, 0 0 0 1.5px rgba(212, 165, 255, 0.5) inset;
-            transform: translateY(-6px);
-        }
-
-        /* buttons re‑lit with new accents */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -154,19 +123,17 @@
             border-color: rgba(255,255,255,0.5);
         }
 
-        .btn-glow {
-            border: none;
-            background: rgba(255,255,255,0.02);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 170, 150, 0.4); /* warm peach touch */
-        }
-        .btn-glow:hover {
-            background: rgba(255, 200, 150, 0.15);
-            border-color: var(--glow-tertiary);
-            box-shadow: 0 0 28px #FFA465B0;
+        .btn-outline {
+            border: 1px solid var(--glow-secondary);
+            background: transparent;
         }
 
-        /* header - same structure, refined background */
+        .btn-outline:hover {
+            background: rgba(58, 242, 214, 0.1);
+            border-color: var(--glow-secondary);
+            box-shadow: 0 0 25px rgba(58, 242, 214, 0.3);
+        }
+
         header {
             position: fixed;
             top: 0;
@@ -193,11 +160,13 @@
             gap: 1rem;
             cursor: pointer;
         }
+
         .logo-img {
             height: 42px;
             width: auto;
             filter: drop-shadow(0 0 8px #D4A5FF);
         }
+
         .company-name {
             font-weight: 700;
             font-size: 1.4rem;
@@ -207,13 +176,17 @@
             color: transparent;
         }
 
-        .desktop-nav { display: none; }
+        .desktop-nav {
+            display: none;
+        }
+
         .desktop-nav ul {
             display: flex;
             list-style: none;
             gap: 2.5rem;
             align-items: center;
         }
+
         .desktop-nav a {
             text-decoration: none;
             color: var(--text-mid);
@@ -221,7 +194,11 @@
             font-size: 1rem;
             transition: 0.2s;
         }
-        .desktop-nav a:hover { color: white; text-shadow: 0 0 10px #FFB37C; }
+
+        .desktop-nav a:hover {
+            color: white;
+            text-shadow: 0 0 10px #FFB37C;
+        }
 
         .hamburger {
             background: none;
@@ -242,8 +219,15 @@
             display: none;
             border-bottom: 1px solid rgba(220, 160, 255, 0.25);
         }
-        .mobile-menu.active { display: block; }
-        .mobile-menu ul { list-style: none; }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
         .mobile-menu li a {
             display: block;
             padding: 1rem;
@@ -253,39 +237,102 @@
             border-bottom: 1px solid rgba(212,165,255,0.2);
         }
 
-        /* HERO – new gradient: warm focus, less violet overload */
+        /* Hero Section with Image Slider */
         .hero-section {
-            min-height: 110vh;
-            display: flex;
-            align-items: center;
-            padding-top: 100px;
-            background: radial-gradient(ellipse at 40% 40%, #392E4B 0%, #0F0C19 75%);
+            height: 100vh;
             position: relative;
             overflow: hidden;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1;
         }
-        .hero-section::after {
-            content: '';
-            position: absolute;
+
+        .slider-container {
+            position: relative;
             width: 100%;
             height: 100%;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.1"><path d="M60 80 L140 80 L110 140 L50 140 Z" fill="none" stroke="%23FFB37C" stroke-width="0.6"/><circle cx="100" cy="60" r="8" fill="%23D4A5FF" opacity="0.25"/></svg>');
-            background-size: 130px;
-            pointer-events: none;
+        }
+
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 1.5s var(--ease-out-expo);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide:nth-child(1) {
+            background-image: linear-gradient(135deg, rgba(18,16,28,0.4), rgba(18,16,28,0.2)), url('https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        }
+
+        .slide:nth-child(2) {
+            background-image: linear-gradient(135deg, rgba(18,16,28,0.4), rgba(18,16,28,0.2)), url('https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        }
+
+        .slide:nth-child(3) {
+            background-image: linear-gradient(135deg, rgba(18,16,28,0.4), rgba(18,16,28,0.2)), url('https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        }
+
+        .slide:nth-child(4) {
+            background-image: linear-gradient(135deg, rgba(18,16,28,0.4), rgba(18,16,28,0.2)), url('https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at 40% 40%, rgba(57, 46, 75, 0.3) 0%, rgba(15, 12, 25, 0.6) 100%);
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(18,16,28,0.3) 0%, rgba(18,16,28,0.5) 100%);
+            z-index: 2;
         }
 
         .hero-content {
-            max-width: 1200px;
-            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
             text-align: center;
-            transform: translateY(0);
+            width: 100%;
+            padding: 0 2rem;
             animation: floatIn 1.2s var(--ease-out-expo);
         }
+
         @keyframes floatIn {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translate(-50%, -30%);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
         }
+
         .hero-content h1 {
-            font-size: clamp(1rem, 6vw, 6rem);
+            font-size: clamp(3rem, 8vw, 6rem);
             font-weight: 800;
             line-height: 1.1;
             background: linear-gradient(135deg, #FFF7ED 0%, #FAD5B3 50%, #D4A5FF 100%);
@@ -293,203 +340,373 @@
             background-clip: text;
             color: transparent;
             margin-bottom: 1.5rem;
+            text-shadow: 0 0 30px rgba(212, 165, 255, 0.3);
         }
+
         .hero-content p {
             font-size: 1.3rem;
-            color: rgba(250, 240, 255, 0.8);
+            color: rgba(250, 240, 255, 0.95);
             max-width: 700px;
             margin: 0 auto 2.5rem;
+            text-shadow: 0 0 20px rgba(0,0,0,0.5);
         }
 
-        .about-header { text-align: center; margin-bottom: 4rem; }
-        .about-header p { margin: 0 auto; font-size: 1.25rem; color: #E2D5F0; max-width: 700px; }
+        /* Sticky Section for Overlap Effect */
+        .sticky-section {
+            position: relative;
+            z-index: 10;
+            background: var(--bg-deep);
+            margin-top: -10vh;
+            border-radius: 3rem 3rem 0 0;
+            box-shadow: 0 -20px 40px rgba(0,0,0,0.5);
+            padding-top: 4rem;
+        }
 
-        /* service row / visual cards – IMAGES replace previous icon containers */
-        .service-showcase { display: flex; flex-direction: column; gap: 8rem; margin: 5rem 0; }
-        .service-row { display: flex; align-items: center; gap: 4rem; width: 100%; }
-        .service-row.right { flex-direction: row; }
-        .service-row.left { flex-direction: row-reverse; }
-        .service-visual { flex: 1; min-width: 280px; }
-        .service-visual-content {
-            padding: 0;  /* removed padding to let image fill */
-            border-radius: 2.5rem;
-            background: rgba(32, 24, 45, 0.7);
-            backdrop-filter: blur(14px);
-            border: 1px solid rgba(230, 180, 210, 0.3);
-            transition: all 0.3s var(--ease-out-expo);
+        /* Introduction Text */
+        .intro-section {
             text-align: center;
-            box-shadow: 0 20px 40px -15px #05030B;
-            height: 320px;             /* fixed height for consistent image coverage */
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            padding: 3rem 2rem;
+            background: rgba(25, 20, 38, 0.4);
+            backdrop-filter: blur(12px);
+            border-radius: 3rem;
+            border: 1px solid var(--border-glow);
+        }
+
+        .intro-section h2 {
+            margin-bottom: 2rem;
+        }
+
+        .intro-section p {
+            margin: 0 auto 1.5rem;
+            font-size: 1.2rem;
+            color: var(--text-mid);
+        }
+
+        .intro-section .highlight {
+            color: var(--glow-secondary);
+            font-weight: 600;
+        }
+
+        /* Property Grid */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .property-card {
+            background: rgba(25, 20, 38, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(220, 170, 255, 0.15);
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: 0.4s var(--ease-out-expo);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--glow-secondary);
+            box-shadow: 0 30px 50px -20px #000, 0 0 0 2px rgba(58, 242, 214, 0.15) inset;
+        }
+
+        .property-image {
+            height: 240px;
             overflow: hidden;
             position: relative;
         }
-        /* each visual gets a background image – full coverage, crop nicely */
-        .service-visual-content[data-service="realestate"] {
-            background: linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-            background-size: cover;
-            background-position: center 30%;
+
+        .property-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s var(--ease-out-expo);
         }
-        .service-visual-content[data-service="cac"] {
-            background: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-            background-size: cover;
-            background-position: center 20%;
+
+        .property-card:hover .property-image img {
+            transform: scale(1.08);
         }
-        .service-visual-content[data-service="gadgets"] {
-            background: linear-gradient(0deg, rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-            background-size: cover;
-            background-position: center 40%;
-        }
-        .service-visual-content[data-service="crypto"] {
-            background: linear-gradient(0deg, rgba(0,0,0,0.4), rgba(0,0,0,0.2)), url('https://images.pexels.com/photos/8370752/pexels-photo-8370752.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-            background-size: cover;
-            background-position: center 50%;
-        }
-        /* overlay text stays readable */
-        .service-visual-content .overlay-text {
+
+        .property-tag {
             position: absolute;
-            bottom: 1.5rem;
-            left: 0;
-            right: 0;
-            background: rgba(18,14,28,0.6);
-            backdrop-filter: blur(6px);
-            width: fit-content;
-            margin: 0 auto;
-            padding: 0.8rem 2rem;
-            border-radius: 4rem;
-            border: 1px solid rgba(255,215,150,0.5);
-        }
-        .service-visual-content .overlay-text i,
-        .service-visual-content .overlay-text h3 {
-            display: inline-block;
-            vertical-align: middle;
-            margin: 0 0.3rem;
-        }
-        .service-visual-content .overlay-text i {
-            font-size: 1.6rem;
-            background: linear-gradient(145deg, #FFE6D5, #F0C0FF);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .service-visual-content .overlay-text h3 {
-            font-size: 1.8rem;
-            background: linear-gradient(145deg, #FFFFFF, #FED9B0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        .service-visual-content:hover {
-            border-color: #FFC89C;
-            box-shadow: 0 0 45px #FFB37C80;
-            transform: translateY(-8px) scale(1.02);
-        }
-        .service-visual-content a.btn {
-            margin-top: 0.5rem;
-            background: rgba(10, 8, 18, 0.7);
-            border: 1px solid rgba(255, 180, 150, 0.7);
-        }
-        .service-description { flex: 1; min-width: 280px; }
-        .service-description-content { padding: 2rem; }
-        .service-description-content h4 {
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-high);
-            position: relative;
-            display: inline-block;
-        }
-        .service-description-content h4::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, #FFA87E, #BAA0FF);
-            border-radius: 2px;
-        }
-        .service-description-content p {
-            font-size: 1.2rem;
-            line-height: 1.7;
-            color: #DCD0F0;
-            margin-bottom: 1.5rem;
-        }
-        .service-features { list-style: none; margin: 1.5rem 0; }
-        .service-features li {
-            margin: 0.75rem 0;
+            top: 1rem;
+            left: 1rem;
+            background: linear-gradient(145deg, #2AD4C2, #1FA0B0);
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            color: white;
+            font-weight: 600;
+            font-size: 0.85rem;
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(42, 212, 194, 0.5);
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            color: #E0D0F0;
+            gap: 0.4rem;
         }
-        .service-features li i { color: #3DF2D6; font-size: 1.2rem; } /* fresh cyan for check */
 
-        .service-row {
-            opacity: 0;
-            transform: translateX(0);
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-            will-change: opacity, transform;
+        .property-tag i {
+            font-size: 0.9rem;
         }
-        .service-row.right { transform: translateX(80px); }
-        .service-row.left { transform: translateX(-80px); }
-        .service-row.revealed { opacity: 1; transform: translateX(0); }
 
-        /* benefits cards with gentle new gradients */
-        .benefits-container {
+        .property-content {
+            padding: 1.8rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .property-type {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: var(--text-high);
+        }
+
+        .property-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--text-low);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .property-location i {
+            color: var(--glow-tertiary);
+        }
+
+        .property-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #FFFFFF, #2AD4C2);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin: 1rem 0 1.5rem;
+        }
+
+        .property-actions .btn {
+            width: 100%;
+            padding: 0.9rem;
+            font-size: 1rem;
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 8, 18, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(25, 20, 38, 0.9);
+            backdrop-filter: blur(18px);
+            border: 1px solid rgba(212, 165, 255, 0.3);
+            border-radius: 2.5rem;
+            max-width: 1200px;
+            width: 100%;
+            padding: 2rem;
+            position: relative;
+            animation: modalFadeIn 0.4s var(--ease-out-expo);
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,165,255,0.3);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            font-size: 1.2rem;
+            z-index: 10;
+        }
+
+        .modal-close:hover {
+            background: rgba(255,100,100,0.2);
+            border-color: #ff6b6b;
+            transform: rotate(90deg);
+        }
+
+        .modal-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: 1fr 1fr;
             gap: 2rem;
-            margin-top: 3rem;
+            align-items: start;
         }
-        .benefit-card {
-            padding: 2.5rem 2rem;
-            border-radius: 2rem;
-            background: rgba(32, 24, 44, 0.5);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(220,160,250,0.15);
-            transition: 0.3s var(--ease-out-expo);
+
+        .modal-video {
+            width: 100%;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid rgba(212,165,255,0.3);
+            background: #000;
+            aspect-ratio: 9/16;
+            max-height: 70vh;
         }
-        .benefit-card:hover {
-            border-color: #2AD4C2;
-            box-shadow: 0 0 30px #2AD4C240, 0 15px 30px -10px black;
+
+        .modal-video video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
-        .benefit-card i {
-            font-size: 2.8rem;
-            background: linear-gradient(145deg, #FFB37C, #D4A5FF);
+
+        .modal-info {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .modal-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-price {
+            font-size: 2.2rem;
+            font-weight: 700;
+            background: linear-gradient(145deg, #FFFFFF, #2AD4C2);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        /* contact cards with cozy contrast */
-        .contact-section { background: transparent; }
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 2rem;
+        .modal-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
         }
-        .contact-item {
-            padding: 2.2rem;
-            border-radius: 2rem;
-            background: rgba(26, 20, 40, 0.75);
-            backdrop-filter: blur(16px);
-            border: 1px solid rgba(255,180,150,0.2);
-        }
-        .contact-item h3 { color: #FFB37C; margin-bottom: 0.75rem; }
-        .whatsapp-button { margin-top: 1rem; background: #262035; border-color: #FFA465; color: #FFE6D5; }
-        .whatsapp-button:hover { background: #FFA465; color: #0F0C17; border-color: white; }
 
-        /* footer: deeper but with warmer neutrals */
+        .modal-detail-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .modal-detail-label {
+            font-size: 0.9rem;
+            color: var(--text-low);
+        }
+
+        .modal-detail-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-high);
+        }
+
+        .modal-description {
+            color: var(--text-mid);
+            line-height: 1.7;
+        }
+
+        .modal-contact {
+            margin-top: 1rem;
+        }
+
+        .modal-contact .btn {
+            width: 100%;
+            padding: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Agent */
+        .agent-contact {
+            background: rgba(25, 20, 38, 0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 3rem;
+            border: 1px solid var(--border-glow);
+            margin: 4rem 0;
+        }
+
+        .agent-info {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .agent-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #A47AE5, #CC88FF);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .agent-details h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .agent-details p {
+            color: var(--text-low);
+            margin-bottom: 1rem;
+        }
+
+        .agent-contact .btn {
+            margin-left: auto;
+        }
+
+        /* Footer */
         footer {
             background: #0C0915;
             border-top: 1px solid rgba(255,180,150,0.2);
             padding: 4rem 0 2rem;
         }
+
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
+
         .footer-brand h3 {
             font-size: 2rem;
             margin-bottom: 1rem;
@@ -498,15 +715,56 @@
             background-clip: text;
             color: transparent;
         }
-        .footer-brand p { color: #BDAAD5; font-size: 0.95rem; max-width: 280px; }
-        .footer-links h4 { color: #FFDCC0; font-size: 1.1rem; margin-bottom: 1.5rem; }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.75rem; }
-        .footer-links a { color: #AA99C0; text-decoration: none; font-size: 0.95rem; transition: 0.3s; }
-        .footer-links a:hover { color: #FFB37C; }
-        .footer-contact h4 { color: #FFDCC0; font-size: 1.1rem; margin-bottom: 1.5rem; }
-        .footer-contact p { color: #AA99C0; font-size: 0.95rem; display: flex; align-items: center; gap: 0.5rem; }
-        .footer-contact i { color: #FFB37C; width: 20px; }
+
+        .footer-brand p {
+            color: #BDAAD5;
+            font-size: 0.95rem;
+            max-width: 280px;
+        }
+
+        .footer-links h4 {
+            color: #FFDCC0;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #AA99C0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #FFB37C;
+        }
+
+        .footer-contact h4 {
+            color: #FFDCC0;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-contact p {
+            color: #AA99C0;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-contact i {
+            color: #FFB37C;
+            width: 20px;
+        }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,180,150,0.15);
@@ -521,9 +779,20 @@
             font-size: 0.9rem;
             text-align: center;
         }
-        .footer-bottom-links { display: flex; gap: 2rem; }
-        .footer-bottom-links a { color: #AA99C0; text-decoration: none; }
-        .footer-bottom-links a:hover { color: #FFB37C; }
+
+        .footer-bottom-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .footer-bottom-links a {
+            color: #AA99C0;
+            text-decoration: none;
+        }
+
+        .footer-bottom-links a:hover {
+            color: #FFB37C;
+        }
 
         .reveal {
             opacity: 0;
@@ -531,285 +800,115 @@
             transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
             will-change: opacity, transform;
         }
-        .reveal.revealed { opacity: 1; transform: translateY(0); }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         .delay-1 { transition-delay: 0.1s; }
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
-        /* ========== ADDED FIXES ========== */
-        
-       
-
-        /* Fix 2: Reduce "HECON SERVICES" size on mobile to fit in one line */
-        @media (max-width: 768px) {
-            .company-name {
-                font-size: 1.6rem !important;
-                white-space: nowrap;
+        @media (min-width: 1025px) {
+            .desktop-nav {
+                display: block;
             }
-        }
-
-        /* Fix 3: Reduce hero buttons by 40% on mobile */
-        @media (max-width: 768px) {
-            .hero-buttons .btn {
-                padding: 0.6rem 1rem !important;
-                font-size: 0.8rem !important;
-                max-width: 200px !important;
-            }
-        }
-
-         /* Fix 1: Show hamburger on tablets (768px - 1024px) and hide desktop nav */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .desktop-nav { 
-                display: none !important; 
-            }
-            .hamburger { 
-                display: block !important; 
-            }
-        }
-
-        /* ========== MOBILE‑ONLY REFINEMENTS – FINAL ========== */
-        @media (max-width: 768px) {
-            /* header: smaller, cleaner */
             .hamburger {
-                font-size: 1.8rem;
-                padding: 0.2rem 0.5rem;
-                border-radius: 2rem;
-                background: rgba(255,210,160,0.08);
+                display: none !important;
             }
-            .mobile-menu {
-                top: 62px;
-                padding: 1rem 1.5rem;
-                background: rgba(18, 14, 28, 0.98);
-            }
-            .mobile-menu li a {
-                font-size: 1.1rem;
-                padding: 0.9rem 0.5rem;
-                border-bottom: 1px solid rgba(212,165,255,0.1);
-            }
+        }
 
+        @media (max-width: 1024px) {
+            .modal-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .modal-video {
+                max-height: 60vh;
+                aspect-ratio: 16/9;
+            }
+        }
+
+        @media (max-width: 768px) {
             .header-container {
-    padding-left: 0.5rem;  /* reduces left padding, shifting logo left */
-    padding-right: 0.5rem; /* reduces right padding, shifting hamburger right */
-}
+                padding: 0.75rem 1rem;
+            }
+            
+            .company-name {
+                font-size: 1.2rem !important;
+            }
+            
+            .desktop-nav {
+                display: none !important;
+            }
+            
+            .hamburger {
+                display: block !important;
+            }
 
-            /* --- HERO SECTION: balanced spacing & smaller buttons --- */
-            .hero-section {
-                min-height: 100vh;        /* less extra space */
-                padding-top: 70px;
-                display: flex;
-                align-items: center;
-            }
-            .hero-content {
-                width: 100%;
-                padding: 0 1rem;
-                margin-top: 5rem;        /* pull up a bit to center better */
-            }
             .hero-content h1 {
-                font-size: clamp(2rem, 8vw, 3rem);
-                line-height: 1.2;
-                margin-bottom: 1rem;
+                font-size: clamp(2rem, 6vw, 3rem);
             }
+
             .hero-content p {
                 font-size: 1.1rem;
-                margin-bottom: 2rem;
-                opacity: 0.9;
-            }
-            .hero-buttons {
-                display: flex;
-                flex-direction: column-reverse;
-                align-items: center;
-                gap: 0.8rem;
-                width: 100%;
-            }
-            /* Original button styles - our fix above will override with !important */
-            .hero-buttons .btn {
-                width: 90%;
-                max-width: 260px;
-                padding: 0.8rem 1rem;
-                font-size: 0.95rem;
-                border-radius: 40px;
             }
 
-            /* --- ABOUT SECTION: restore action buttons (exactly like first code) + side fade animations --- */
-            .service-showcase {
-                gap: 2.5rem;
+            .sticky-section {
+                margin-top: -5vh;
+                border-radius: 2rem 2rem 0 0;
+            }
+
+            .intro-section {
+                padding: 2rem 1.5rem;
                 margin: 2rem 0;
             }
-            .service-row {
-                flex-direction: column !important;
-                gap: 1rem;
-                background: transparent;
-                padding: 0;
-                border: none;
-                /* side fade animations (same as desktop) */
-                opacity: 0;
-                transform: translateX(0);
-                transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-            }
-            .service-row.right {
-                transform: translateX(40px); /* slightly reduced for mobile */
-            }
-            .service-row.left {
-                transform: translateX(-40px);
-            }
-            .service-row.revealed {
-                opacity: 1;
-                transform: translateX(0);
-            }
 
-            .service-visual-content {
-                height: 220px;              /* consistent height */
-                border-radius: 2rem;
-                box-shadow: 0 15px 25px -10px #00000080;
-            }
-
-            /* keep the lower button (action button) – exactly like first code */
-            .service-visual-content a.btn {
-                display: inline-flex;        /* show the buttons */
-                margin-top: 0.5rem;
-                font-size: 0.85rem;
-                padding: 0.4rem 1.2rem;
-                background: rgba(10, 8, 18, 0.8);
-                border: 1px solid rgba(255, 180, 150, 0.7);
-                white-space: nowrap;
-            }
-            /* overlay text stays above the button, but we keep it where it is */
-            .service-visual-content .overlay-text {
-                bottom: 3.8rem;              /* lift to make room for button below */
-                background: rgba(10, 6, 16, 0.8);
-                backdrop-filter: blur(12px);
-                padding: 0.5rem 1.5rem;
-                border-radius: 3rem;
-            }
-            .service-visual-content .overlay-text i { font-size: 1.3rem; }
-            .service-visual-content .overlay-text h3 { font-size: 1.5rem; }
-
-            /* specific button text adjustment for real estate (VIEW only) */
-            .service-row-1 .service-visual-content a.btn span { display: none; }
-            .service-row-1 .service-visual-content a.btn::before { 
-                content: "VIEW"; 
-                font-weight: 600;
-                margin-right: 0.2rem;
-            }
-            .service-row-1 .service-visual-content a.btn i { margin-right: 0.2rem; }
-
-            /* service description */
-            .service-description-content {
-                padding: 1rem 0.2rem;
-            }
-            .service-description-content h4 {
-                font-size: 1.8rem;
-                margin-bottom: 0.8rem;
-            }
-            .service-description-content p {
+            .intro-section p {
                 font-size: 1rem;
-                margin-bottom: 0.8rem;
-            }
-            .service-features li {
-                font-size: 0.9rem;
             }
 
-            /* benefits – restore original (first code) exactly */
-            .benefits-container {
-                display: grid;
-                grid-template-columns: 1fr;  /* single column like first code */
-                gap: 1.2rem;
-                padding: 0 0.2rem;
-            }
-            .benefit-card {
-                padding: 2rem 1.8rem;
-                border-radius: 2rem;
-                background: rgba(32, 24, 44, 0.5);
-                backdrop-filter: blur(10px);
-                border: 1px solid rgba(220,160,250,0.15);
-                text-align: left;
-            }
-            .benefit-card i {
-                font-size: 2.5rem;
-                margin-bottom: 0.5rem;
-            }
-            .benefit-card h3 {
-                font-size: 1.5rem;
-                margin-bottom: 0.3rem;
-            }
-            .benefit-card p {
-                font-size: 0.95rem;
-                color: rgba(220, 210, 250, 0.9);
+            .property-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
-            /* contact – restore original (first code) exactly */
-            .contact-info {
-                display: grid;
-                grid-template-columns: 1fr;  /* single column like first code */
-                gap: 1rem;
-                padding: 0 0.2rem;
-            }
-            .contact-item {
-                padding: 1.8rem;
-                border-radius: 2rem;
-                background: rgba(26, 20, 40, 0.75);
-                backdrop-filter: blur(16px);
-                border: 1px solid rgba(255,180,150,0.2);
-            }
-            .contact-item h3 {
-                font-size: 1.4rem;
-                margin-bottom: 0.5rem;
-            }
-            .contact-item p {
-                font-size: 1rem;
-                line-height: 1.4;
-            }
-            .whatsapp-button {
-                width: 100%;
-                padding: 0.8rem;
-                font-size: 1rem;
-                margin-top: 0.8rem;
+            .agent-contact {
+                padding: 2rem;
             }
 
-            /* center section titles */
-            #benefits h2, #contact h2 {
-                display: block;
+            .agent-info {
+                flex-direction: column;
                 text-align: center;
-                width: 100%;
-                margin-bottom: 1.5rem;
             }
 
-            /* footer adjustments */
+            .agent-info .btn {
+                width: 100%;
+                margin-left: 0;
+            }
+
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
+
             .footer-bottom {
                 flex-direction: column;
                 text-align: center;
             }
 
-            /* FIX HORIZONTAL GAP – ensure no overflow */
-            body, html {
-                overflow-x: hidden;
-                width: 100%;
+            .modal {
+                padding: 1rem;
             }
-            .container {
-                padding: 0 1rem;  /* reduce side padding slightly on mobile */
-                width: 100%;
-                max-width: 100%;
-            }
-            .service-visual, .service-description {
-                min-width: auto;
-                width: 100%;
-            }
-            .service-visual-content {
-                width: 100%;
-            }
-        }
 
-        /* desktop unchanged */
-        @media (min-width: 769px) and (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-        }
-        @media (min-width: 1025px) {
-            .desktop-nav { display: block; }
-            .hamburger { display: none !important; }
+            .modal-content {
+                padding: 1.5rem;
+            }
+
+            .modal-details {
+                gap: 1rem;
+            }
         }
     </style>
 </head>
@@ -824,7 +923,7 @@
                 <ul>
                     <li><a href="#home">Home</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#benefits">Benefits</a></li>
+                    <li><a href="#properties">Properties</a></li>
                     <li><a href="#contact">Contact</a></li>
                     <li><a href="re.html">Real Estate</a></li>
                     <li><a href="cac.html">CAC</a></li>
@@ -838,7 +937,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#benefits">Benefits</a></li>
+                <li><a href="#properties">Properties</a></li>
                 <li><a href="#contact">Contact</a></li>
                 <li><a href="re.html">Real Estate</a></li>
                 <li><a href="cac.html">CAC</a></li>
@@ -848,157 +947,203 @@
         </div>
     </header>
 
+    <!-- Hero Section with Image Slider -->
     <section class="hero-section" id="home">
-        <div class="container hero-content">
-            <h1 class="reveal revealed">OWN THE FUTURE<br>REAL ESTATE · CRYPTO · BUSINESS · TECH</h1>
-            <p class="reveal revealed delay-1">Your trusted partner for property, business registration, gadgets, and crypto exchange.</p>
-            <div class="hero-buttons reveal revealed delay-2">
-                <a href="#contact" class="btn btn-glow"><i class="fab fa-whatsapp"></i> CHAT WITH US</a>
-                <a href="#about" class="btn btn-primary"><i class="fas fa-arrow-right"></i> EXPLORE SERVICES</a>
+        <div class="slider-container">
+            <div class="slide active"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+            <div class="slide"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="reveal revealed">FIND YOUR DREAM HOME</h1>
+            <p class="reveal revealed delay-1">Luxury properties in Nigeria's most desirable locations</p>
+            <div class="reveal revealed delay-2">
+                <a href="#properties" class="btn btn-primary"><i class="fas fa-search"></i> EXPLORE PROPERTIES</a>
             </div>
         </div>
     </section>
 
-    <section class="about-section" id="about">
+    <!-- Sticky Section that Overlaps Hero -->
+    <div class="sticky-section" id="about">
         <div class="container">
-            <div class="about-header reveal">
-                <h2>Our Services</h2>
-                <p>Four core solutions designed to meet your needs — from property acquisition to digital assets. Each service is built on trust, transparency, and decades of combined experience.</p>
+            <!-- Introduction Text -->
+            <div class="intro-section reveal">
+                <h2>Your Trusted Real Estate Partner</h2>
+                <p>At <span class="highlight">HECON REAL ESTATE</span>, we understand that finding the perfect property is more than just a transaction—it's about finding a place to call home. With over a decade of experience in the Nigerian property market, we've helped thousands of families and investors secure their dream properties.</p>
+                <p>From luxury waterfront villas in Banana Island to modern apartments in Ikoyi, our portfolio features the finest properties across Lagos and Abuja. Each listing is carefully verified to ensure you get exactly what you're looking for.</p>
+                <p><span class="highlight">Let us guide you home.</span></p>
             </div>
+
+            <!-- Properties Section -->
+            <h2 class="reveal" id="properties">Featured Properties</h2>
             
-            <div class="service-showcase">
-                <!-- Service 1: Real Estate -->
-                <div class="service-row right service-row-1">
-                    <div class="service-visual">
-                        <div class="service-visual-content" data-service="realestate">
-                            <div class="overlay-text">
-                                <i class="fas fa-building"></i>
-                                <h3>Real Estate</h3>
-                            </div>
-                            <a href="re.html" class="btn" style="margin-top:1rem;"><i class="fas fa-eye"></i> <span>VIEW PROPERTIES</span></a>
-                        </div>
+            <div class="property-grid">
+                <!-- Property 1 -->
+                <div class="property-card reveal" data-property="1">
+                    <div class="property-image">
+                        <img src="https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Luxury Villa">
+                        <span class="property-tag"><i class="fas fa-video"></i> VIDEO</span>
                     </div>
-                    <div class="service-description">
-                        <div class="service-description-content">
-                            <h4>Land & Housing Sales</h4>
-                            <p>Prime properties across Nigeria. From residential plots to commercial buildings, we help you find and acquire the perfect space for your needs.</p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check-circle"></i> Verified land documents</li>
-                                <li><i class="fas fa-check-circle"></i> Houses and apartments for sale</li>
-                                <li><i class="fas fa-check-circle"></i> Property inspection services</li>
-                                <li><i class="fas fa-check-circle"></i> Flexible payment plans</li>
-                            </ul>
-                            <p style="font-style: italic; color: var(--glow-secondary);">"Your dream property awaits"</p>
+                    <div class="property-content">
+                        <h3 class="property-type">6 Bedroom Duplex</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Banana Island, Lagos
+                        </div>
+                        <div class="property-price">₦150M</div>
+                        <div class="property-actions">
+                            <button class="btn btn-primary more-details" data-property="1">MORE DETAILS</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Service 2: CAC Registration -->
-                <div class="service-row left service-row-2">
-                    <div class="service-visual">
-                        <div class="service-visual-content" data-service="cac">
-                            <div class="overlay-text">
-                                <i class="fas fa-file-alt"></i>
-                                <h3>CAC Registration</h3>
-                            </div>
-                            <a href="cac.html" class="btn" style="margin-top:1rem;"><i class="fas fa-check"></i> REGISTER NOW</a>
-                        </div>
+                <!-- Property 2 -->
+                <div class="property-card reveal delay-1" data-property="2">
+                    <div class="property-image">
+                        <img src="https://images.pexels.com/photos/2724749/pexels-photo-2724749.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Modern Villa">
+                        <span class="property-tag"><i class="fas fa-video"></i> VIDEO</span>
                     </div>
-                    <div class="service-description">
-                        <div class="service-description-content">
-                            <h4>Business Registration</h4>
-                            <p>Complete Corporate Affairs Commission (CAC) registration services. We handle the paperwork so you can focus on growing your business.</p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check-circle"></i> Business name registration</li>
-                                <li><i class="fas fa-check-circle"></i> Limited liability company</li>
-                                <li><i class="fas fa-check-circle"></i> NGO/Incorporated trustees</li>
-                                <li><i class="fas fa-check-circle"></i> Business compliance and renewal</li>
-                            </ul>
-                            <p style="font-style: italic; color: var(--glow-secondary);">"Register with confidence"</p>
+                    <div class="property-content">
+                        <h3 class="property-type">4 Bedroom Terrace</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Lekki Phase 1, Lagos
+                        </div>
+                        <div class="property-price">₦85M</div>
+                        <div class="property-actions">
+                            <button class="btn btn-primary more-details" data-property="2">MORE DETAILS</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Service 3: Gadgets -->
-                <div class="service-row right service-row-3">
-                    <div class="service-visual">
-                        <div class="service-visual-content" data-service="gadgets">
-                            <div class="overlay-text">
-                                <i class="fas fa-laptop"></i>
-                                <h3>Gadgets</h3>
-                            </div>
-                            <a href="laptop.html" class="btn" style="margin-top:1rem;"><i class="fas fa-shopping-cart"></i> SHOP NOW</a>
-                        </div>
+                <!-- Property 3 -->
+                <div class="property-card reveal delay-2" data-property="3">
+                    <div class="property-image">
+                        <img src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Luxury Mansion">
+                        <span class="property-tag"><i class="fas fa-video"></i> VIDEO</span>
                     </div>
-                    <div class="service-description">
-                        <div class="service-description-content">
-                            <h4>Laptop & Device Sales</h4>
-                            <p>Quality laptops and gadgets at competitive prices. From everyday use to high-performance machines, we have what you need.</p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check-circle"></i> New and refurbished laptops</li>
-                                <li><i class="fas fa-check-circle"></i> Smartphones and tablets</li>
-                                <li><i class="fas fa-check-circle"></i> Computer accessories</li>
-                                <li><i class="fas fa-check-circle"></i> Warranty on all products</li>
-                            </ul>
-                            <p style="font-style: italic; color: var(--glow-tertiary);">"Tech that works for you"</p>
+                    <div class="property-content">
+                        <h3 class="property-type">5 Bedroom Mansion</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Ikoyi, Lagos
+                        </div>
+                        <div class="property-price">₦220M</div>
+                        <div class="property-actions">
+                            <button class="btn btn-primary more-details" data-property="3">MORE DETAILS</button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Service 4: Crypto Exchange -->
-                <div class="service-row left service-row-4">
-                    <div class="service-visual">
-                        <div class="service-visual-content" data-service="crypto">
-                            <div class="overlay-text">
-                                <i class="fas fa-bitcoin"></i>
-                                <h3>Crypto Exchange</h3>
-                            </div>
-                            <a href="crypto.html" class="btn" style="margin-top:1rem;"><i class="fas fa-exchange-alt"></i> EXCHANGE</a>
+                <!-- Property 4 -->
+                <div class="property-card reveal" data-property="4">
+                    <div class="property-image">
+                        <img src="https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Waterfront Property">
+                        <span class="property-tag"><i class="fas fa-video"></i> VIDEO</span>
+                    </div>
+                    <div class="property-content">
+                        <h3 class="property-type">7 Bedroom Waterfront</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Eko Atlantic, Lagos
+                        </div>
+                        <div class="property-price">₦350M</div>
+                        <div class="property-actions">
+                            <button class="btn btn-primary more-details" data-property="4">MORE DETAILS</button>
                         </div>
                     </div>
-                    <div class="service-description">
-                        <div class="service-description-content">
-                            <h4>Cryptocurrency Exchange</h4>
-                            <p>Simple, secure crypto trading and exchange. Buy, sell, and trade major cryptocurrencies with competitive rates.</p>
-                            <ul class="service-features">
-                                <li><i class="fas fa-check-circle"></i> Bitcoin (BTC), Ethereum (ETH), USDT</li>
-                                <li><i class="fas fa-check-circle"></i> Instant cash out to naira</li>
-                                <li><i class="fas fa-check-circle"></i> Competitive exchange rates</li>
-                                <li><i class="fas fa-check-circle"></i> Secure and fast transactions</li>
-                            </ul>
-                            <p style="font-style: italic; color: var(--accent-crypto);">"Your trusted crypto partner"</p>
+                </div>
+
+                <!-- Property 5 -->
+                <div class="property-card reveal delay-1" data-property="5">
+                    <div class="property-image">
+                        <img src="https://images.pexels.com/photos/2102587/pexels-photo-2102587.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Modern Apartment">
+                        <span class="property-tag"><i class="fas fa-video"></i> VIDEO</span>
+                    </div>
+                    <div class="property-content">
+                        <h3 class="property-type">3 Bedroom Apartment</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Victoria Island, Lagos
+                        </div>
+                        <div class="property-price">₦6M/year</div>
+                        <div class="property-actions">
+                            <button class="btn btn-primary more-details" data-property="5">MORE DETAILS</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property 6 -->
+                <div class="property-card reveal delay-2" data-property="6">
+                    <div class="property-image">
+                        <img src="https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Luxury Duplex">
+                        <span class="property-tag"><i class="fas fa-video"></i> VIDEO</span>
+                    </div>
+                    <div class="property-content">
+                        <h3 class="property-type">5 Bedroom Duplex</h3>
+                        <div class="property-location">
+                            <i class="fas fa-map-marker-alt"></i> Abuja, Nigeria
+                        </div>
+                        <div class="property-price">₦120M</div>
+                        <div class="property-actions">
+                            <button class="btn btn-primary more-details" data-property="6">MORE DETAILS</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section class="benefits-section" id="benefits">
-        <div class="container">
-            <h2 class="reveal">Why Choose HECON</h2>
-            <div class="benefits-container">
-                <div class="benefit-card reveal"><i class="fas fa-shield-alt"></i><h3>Trusted & Verified</h3><p>10+ years of service with thousands of satisfied clients.</p></div>
-                <div class="benefit-card reveal delay-1"><i class="fas fa-bolt"></i><h3>Fast Service</h3><p>Quick turnaround on all transactions and registrations.</p></div>
-                <div class="benefit-card reveal delay-2"><i class="fas fa-handshake"></i><h3>Personal Support</h3><p>Dedicated team to guide you every step of the way.</p></div>
-                <div class="benefit-card reveal"><i class="fas fa-naira-sign"></i><h3>Best Rates</h3><p>Competitive pricing across all our services.</p></div>
-                <div class="benefit-card reveal delay-1"><i class="fas fa-clock"></i><h3>24/7 Availability</h3><p>Always here when you need us.</p></div>
+            <!-- Contact Agent -->
+            <div class="agent-contact reveal" id="contact">
+                <div class="agent-info">
+                    <div class="agent-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="agent-details">
+                        <h3>Speak with a Property Expert</h3>
+                        <p>Our real estate agents are ready to help you find your perfect property</p>
+                        <div style="display: flex; gap: 0.5rem; justify-content: center;">
+                            <i class="fas fa-phone" style="color: var(--glow-secondary);"></i>
+                            <span>+234 800 123 4567</span>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <h2 class="reveal">Get In Touch</h2>
-            <div class="contact-info">
-                <div class="contact-item reveal"><h3>Phone</h3><p>+234 800 123 4567<br>+234 800 890 1234</p></div>
-                <div class="contact-item reveal delay-1"><h3>Email</h3><p>info@hecon.ng<br>support@hecon.ng</p></div>
-                <div class="contact-item reveal delay-2"><h3>Office</h3><p>Lagos, Nigeria<br>Abuja, Nigeria</p></div>
-                <div class="contact-item reveal"><h3>WhatsApp</h3><p>Quick responses</p><a href="https://wa.me/2348001234567" class="btn whatsapp-button"><i class="fab fa-whatsapp"></i> CHAT</a></div>
+    <!-- Modal for Property Details -->
+    <div class="modal" id="propertyModal">
+        <div class="modal-content">
+            <div class="modal-close" id="closeModal"><i class="fas fa-times"></i></div>
+            <div class="modal-grid">
+                <div class="modal-video">
+                    <video id="modalVideo" controls autoplay playsinline>
+                        <source src="" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="modal-info">
+                    <div>
+                        <h2 id="modalTitle">6 Bedroom Duplex</h2>
+                        <p id="modalLocation" style="color: var(--text-low); margin: 0.5rem 0;"><i class="fas fa-map-marker-alt" style="color: var(--glow-tertiary);"></i> Banana Island, Lagos</p>
+                        <div class="modal-price" id="modalPrice">₦150M</div>
+                    </div>
+                    
+                    <div class="modal-details" id="modalDetails">
+                        <!-- Will be filled by JavaScript -->
+                    </div>
+                    
+                    <div class="modal-description" id="modalDescription">
+                        <!-- Will be filled by JavaScript -->
+                    </div>
+                    
+                    <div class="modal-contact">
+                        <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> Contact Agent for More Info</a>
+                    </div>
+                </div>
             </div>
         </div>
-    </section>
+    </div>
 
+    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1011,7 +1156,7 @@
                     <ul>
                         <li><a href="#home">Home</a></li>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#benefits">Benefits</a></li>
+                        <li><a href="#properties">Properties</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
@@ -1040,14 +1185,17 @@
 
     <script>
         (function(){
+            // Header and mobile menu
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
+            
             if(hamburger) {
                 hamburger.addEventListener('click', ()=>{
                     mobileMenu.classList.toggle('active');
                     hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
                 });
             }
+
             document.querySelectorAll('.mobile-menu a').forEach(link => {
                 link.addEventListener('click', ()=>{
                     mobileMenu.classList.remove('active');
@@ -1066,35 +1214,196 @@
             });
 
             document.getElementById('logoHomeLink')?.addEventListener('click', ()=>{
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                mobileMenu.classList.remove('active');
-                if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                window.location.href = 'index.html';
             });
 
+            // Image slider
+            const slides = document.querySelectorAll('.slide');
+            let currentSlide = 0;
+
+            function nextSlide() {
+                slides[currentSlide].classList.remove('active');
+                currentSlide = (currentSlide + 1) % slides.length;
+                slides[currentSlide].classList.add('active');
+            }
+
+            setInterval(nextSlide, 4000);
+
+            // Scroll animations
             function setupScrollAnimations() {
-                const revealElements = document.querySelectorAll('.reveal, .service-row');
+                const revealElements = document.querySelectorAll('.reveal');
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
-                        if (entry.isIntersecting) entry.target.classList.add('revealed');
-                        else entry.target.classList.remove('revealed');
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('revealed');
+                        }
                     });
-                }, { threshold: 0.2, rootMargin: '0px' });
+                }, { threshold: 0.1, rootMargin: '0px' });
+                
                 revealElements.forEach(el => observer.observe(el));
+                
                 setTimeout(() => {
                     revealElements.forEach(el => {
                         const rect = el.getBoundingClientRect();
-                        if (rect.top < window.innerHeight - 100 && rect.bottom > 0) el.classList.add('revealed');
+                        if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
+                            el.classList.add('revealed');
+                        }
                     });
                 }, 100);
             }
+
             setupScrollAnimations();
-            window.addEventListener('resize', () => {
-                const revealElements = document.querySelectorAll('.reveal, .service-row');
-                revealElements.forEach(el => {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top < window.innerHeight - 100 && rect.bottom > 0) el.classList.add('revealed');
-                    else el.classList.remove('revealed');
+
+            // Modal functionality
+            const modal = document.getElementById('propertyModal');
+            const modalVideo = document.getElementById('modalVideo');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalLocation = document.getElementById('modalLocation');
+            const modalPrice = document.getElementById('modalPrice');
+            const modalDetails = document.getElementById('modalDetails');
+            const modalDescription = document.getElementById('modalDescription');
+            const closeModal = document.getElementById('closeModal');
+
+            // Property data
+            const propertyData = {
+                1: {
+                    title: '6 Bedroom Duplex',
+                    location: 'Banana Island, Lagos',
+                    price: '₦150M',
+                    video: 'one.mp4',
+                    beds: 6,
+                    baths: 7,
+                    parking: 4,
+                    size: '850 sqm',
+                    description: 'Exquisite waterfront duplex with panoramic ocean views. Features include a private pool, smart home automation, staff quarters, and 24/7 security. The property boasts high-end finishes, marble flooring, and a rooftop terrace perfect for entertainment.'
+                },
+                2: {
+                    title: '4 Bedroom Terrace',
+                    location: 'Lekki Phase 1, Lagos',
+                    price: '₦85M',
+                    video: 'two.mp4',
+                    beds: 4,
+                    baths: 4,
+                    parking: 2,
+                    size: '450 sqm',
+                    description: 'Modern terrace duplex in a secure estate. Features include en-suite bedrooms, modern kitchen with built-in appliances, private garden, and backup power. Close to schools, malls, and major roads.'
+                },
+                3: {
+                    title: '5 Bedroom Mansion',
+                    location: 'Ikoyi, Lagos',
+                    price: '₦220M',
+                    video: 'three.mp4',
+                    beds: 5,
+                    baths: 6,
+                    parking: 3,
+                    size: '720 sqm',
+                    description: 'Luxurious mansion in the heart of Ikoyi. Features include a cinema room, gym, indoor pool, and lush landscaping. The property offers complete privacy with high walls and professional security systems.'
+                },
+                4: {
+                    title: '7 Bedroom Waterfront',
+                    location: 'Eko Atlantic, Lagos',
+                    price: '₦350M',
+                    video: 'four.mp4',
+                    beds: 7,
+                    baths: 8,
+                    parking: 5,
+                    size: '1200 sqm',
+                    description: 'Spectacular waterfront property with direct ocean access. Features include a private dock, infinity pool, home automation, and resort-style landscaping. The ultimate in luxury coastal living.'
+                },
+                5: {
+                    title: '3 Bedroom Apartment',
+                    location: 'Victoria Island, Lagos',
+                    price: '₦6M/year',
+                    video: 'five.mp4',
+                    beds: 3,
+                    baths: 3,
+                    parking: 1,
+                    size: '180 sqm',
+                    description: 'Modern apartment in a prime location. Features include spacious living areas, modern kitchen, balcony, and access to shared amenities including gym and swimming pool. Perfect for professionals.'
+                },
+                6: {
+                    title: '5 Bedroom Duplex',
+                    location: 'Abuja, Nigeria',
+                    price: '₦120M',
+                    video: 'six.mp4',
+                    beds: 5,
+                    baths: 5,
+                    parking: 3,
+                    size: '600 sqm',
+                    description: 'Elegant duplex in a secure neighborhood. Features include en-suite bedrooms, modern finishes, backup power, and staff quarters. Located close to embassies and international schools.'
+                }
+            };
+
+            // Open modal
+            document.querySelectorAll('.more-details, .property-card').forEach(element => {
+                element.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('more-details') || e.target.closest('.more-details')) {
+                        e.preventDefault();
+                        const propertyId = this.getAttribute('data-property') || this.closest('[data-property]').getAttribute('data-property');
+                        const data = propertyData[propertyId];
+                        
+                        if (data) {
+                            modalTitle.textContent = data.title;
+                            modalLocation.innerHTML = `<i class="fas fa-map-marker-alt" style="color: var(--glow-tertiary);"></i> ${data.location}`;
+                            modalPrice.textContent = data.price;
+                            modalVideo.querySelector('source').src = data.video;
+                            modalVideo.load();
+                            
+                            modalDetails.innerHTML = `
+                                <div class="modal-detail-item">
+                                    <span class="modal-detail-label"><i class="fas fa-bed" style="color: var(--glow-secondary);"></i> Bedrooms</span>
+                                    <span class="modal-detail-value">${data.beds}</span>
+                                </div>
+                                <div class="modal-detail-item">
+                                    <span class="modal-detail-label"><i class="fas fa-bath" style="color: var(--glow-secondary);"></i> Bathrooms</span>
+                                    <span class="modal-detail-value">${data.baths}</span>
+                                </div>
+                                <div class="modal-detail-item">
+                                    <span class="modal-detail-label"><i class="fas fa-car" style="color: var(--glow-secondary);"></i> Parking</span>
+                                    <span class="modal-detail-value">${data.parking}</span>
+                                </div>
+                                <div class="modal-detail-item">
+                                    <span class="modal-detail-label"><i class="fas fa-vector-square" style="color: var(--glow-secondary);"></i> Size</span>
+                                    <span class="modal-detail-value">${data.size}</span>
+                                </div>
+                            `;
+                            
+                            modalDescription.textContent = data.description;
+                            
+                            modal.classList.add('active');
+                            document.body.style.overflow = 'hidden';
+                        }
+                    }
                 });
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                modalVideo.pause();
+            });
+
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    modalVideo.pause();
+                }
+            });
+
+            // Scroll overlap effect
+            window.addEventListener('scroll', () => {
+                const heroSection = document.querySelector('.hero-section');
+                const stickySection = document.querySelector('.sticky-section');
+                const scrollY = window.scrollY;
+                const heroHeight = heroSection.offsetHeight;
+                
+                if (scrollY > heroHeight - 100) {
+                    stickySection.style.marginTop = '-20vh';
+                } else {
+                    stickySection.style.marginTop = '-10vh';
+                }
             });
         })();
     </script>
