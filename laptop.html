@@ -1,0 +1,935 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>HECON · LAPTOP SALES · Premium Devices</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white-pure: #FFFFFF;
+            --white-soft: #F8FAFE;
+            --black: #000000;
+            --black-soft: #111111;
+            --black-mid: #1A1A1A;
+            --blue-deep: #1E3A5F;
+            --blue-dark: #0A2A44;
+            --blue-accent: #2C5A8C;
+            --blue-soft-accent: #3B6E9E;
+            --text-dark: #1A2C3E;
+            --text-mid: #2C3E50;
+            --text-light: #5A6E7C;
+            --border-light: #DCE5F0;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 35px rgba(0, 0, 0, 0.08);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-mid);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: linear-gradient(145deg, 
+                #FFFFFF 0%, 
+                #F5F9FF 15%,
+                #EFF3FC 30%,
+                #E8EFF8 50%,
+                #E0E8F2 70%,
+                #D9E2ED 85%,
+                #D1DCE8 100%);
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 20%, rgba(0, 0, 0, 0.03), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            color: var(--white-pure);
+        }
+
+        h2 {
+            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            color: var(--text-mid);
+            font-size: 1.125rem;
+            max-width: 55ch;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
+            color: white;
+            box-shadow: 0 8px 20px rgba(10, 42, 68, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue-accent));
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(10, 42, 68, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--white-pure);
+            background: transparent;
+            color: var(--white-pure);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--white-pure);
+            color: var(--white-pure);
+        }
+
+       
+        
+       /* Header - Pure White */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--white-pure);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--blue-dark), var(--black));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--blue-dark);
+        }
+
+        /* Dropdown Menu - no icon on Real Estate */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown > a .fa-chevron-down {
+            display: none;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white-pure);
+            min-width: 200px;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s var(--ease-out-expo);
+            border: 1px solid var(--border-light);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
+        }
+
+        .dropdown-menu li a:hover {
+            background: linear-gradient(90deg, rgba(10, 42, 68, 0.05), transparent);
+            color: var(--blue-dark);
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--blue-dark);
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 68px;
+            left: 0;
+            width: 100%;
+            background: var(--white-pure);
+            padding: 2rem;
+            display: none;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            z-index: 99;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li a {
+            display: block;
+            padding: 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-menu li a:hover {
+            color: var(--blue-dark);
+        }
+
+        /* Hero Section - Fixed to cover full height */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(135deg, rgba(10, 42, 68, 0.85) 0%, rgba(0, 0, 0, 0.75) 100%), url('H15.jpeg');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 0;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--white-pure);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+            opacity: 0;
+            animation: fadeUpIn 0.8s var(--ease-out-expo) forwards;
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            opacity: 0;
+            animation: fadeUpIn 0.8s var(--ease-out-expo) 0.3s forwards;
+        }
+
+        .hero-content .btn {
+            opacity: 0;
+            animation: fadeUpIn 0.8s var(--ease-out-expo) 0.7s forwards;
+        }
+
+        @keyframes fadeUpIn {
+            from {
+                opacity: 0;
+                transform: translateY(28px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Horizontal Scrolling Gallery Section - White background */
+        .gallery-section {
+            padding: 5rem 0;
+            background: var(--white-pure);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-header h2 {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gallery-header p {
+            color: var(--text-mid);
+            margin: 0 auto;
+        }
+
+        /* Hide scrollbar completely */
+        .horizontal-scroll {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            scroll-behavior: smooth;
+            cursor: grab;
+            scrollbar-width: thin;
+            -ms-overflow-style: auto;
+            position: relative;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-track {
+            background: var(--border-light);
+            border-radius: 10px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background: var(--blue-accent);
+            border-radius: 10px;
+        }
+
+        .horizontal-scroll:active {
+            cursor: grabbing;
+        }
+
+        .scroll-container {
+            display: inline-flex;
+            gap: 2rem;
+            padding: 1rem 2rem;
+        }
+
+        /* Laptop Card - 20% bigger */
+        .laptop-card {
+            width: 408px;
+            background: var(--white-pure);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+            white-space: normal;
+            flex-shrink: 0;
+            cursor: pointer;
+        }
+
+        .laptop-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--blue-soft-accent);
+        }
+
+        .laptop-card img {
+            width: 100%;
+            height: 264px;
+            object-fit: cover;
+            background: #f5f5f5;
+        }
+
+        .laptop-card-content {
+            padding: 1.5rem;
+        }
+
+        .laptop-card-content h3 {
+            color: var(--blue-dark);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .laptop-card-content .price {
+            color: var(--blue-accent);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin: 0.5rem 0;
+        }
+
+        .laptop-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .laptop-specs span {
+            background: rgba(10, 42, 68, 0.08);
+            padding: 0.35rem 0.9rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            color: var(--blue-dark);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-weight: 500;
+        }
+
+        .laptop-specs span i {
+            font-size: 0.75rem;
+            color: var(--blue-accent);
+        }
+
+        /* Contact Section - Clean & direct */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, #000000 100%);
+            color: white;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .contact-section .container {
+            max-width: 800px;
+        }
+
+        .contact-section h2 {
+            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .contact-section p {
+            color: rgba(255,255,255,0.9);
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+            border-radius: 1.5rem;
+            padding: 1rem 2rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.2s;
+            border: 1px solid rgba(255,255,255,0.2);
+            text-decoration: none;
+            color: white;
+            font-weight: 600;
+        }
+
+        .contact-card i {
+            font-size: 1.5rem;
+        }
+
+        .contact-card:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4rem 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-brand p {
+            color: #9BB0C4;
+            font-size: 0.9rem;
+            max-width: 280px;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #8DA3B8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-contact p {
+            color: #8DA3B8;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-contact i {
+            color: #FFFFFF;
+            width: 20px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            text-align: center;
+            color: #8DA3B8;
+            font-size: 0.85rem;
+        }
+
+        /* Reveal Animation */
+        .gallery-section {
+            opacity: 0;
+            transform: translateY(35px);
+            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+        }
+        .gallery-section.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .contact-section {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+        }
+        .contact-section.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Modal for full image */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .image-modal img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        /* Responsive */
+        @media (min-width: 1025px) {
+            .desktop-nav { display: block; }
+            .hamburger { display: none !important; }
+        }
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .laptop-card { width: 336px; }
+            .laptop-card img { height: 220px; }
+        }
+        @media (max-width: 768px) {
+            .header-container { padding: 0.75rem 1rem; }
+            .company-name { font-size: 1.2rem; }
+            .desktop-nav { display: none !important; }
+            .hamburger { display: block !important; }
+            .hero-section { min-height: 80vh; }
+            .hero-content h1 { font-size: clamp(2rem, 6vw, 3rem); }
+            .hero-content p { font-size: 1rem; }
+            .gallery-section { padding: 3rem 0; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-buttons { flex-direction: column; align-items: center; }
+            .laptop-card { width: 300px; }
+            .laptop-card img { height: 200px; }
+            .laptop-card-content h3 { font-size: 1.2rem; }
+            .laptop-card-content .price { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container" id="logoHomeLink">
+                <img src="Hecongroup.png" alt="HECON" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=H'">
+                <div class="company-name">HECON ESTATE</div>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    
+                   
+                    <li class="dropdown">
+                        <a href="#">Real Estate</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="re.html">Housing</a></li>
+                            <li><a href="lands.html">Lands</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cac.html">Business registration</a></li>
+                    <li><a href="laptop.html">Laptops</a></li>
+                    <li><a href="crypto.html">Crypto Exchange</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#laptops">Laptops</a></li>
+                <li><a href="#contact-us">Contact</a></li>
+                <li><a href="re.html">Housing</a></li>
+                <li><a href="lands.html">Lands</a></li>
+                <li><a href="cac.html">CAC</a></li>
+                <li><a href="laptop.html">Gadgets</a></li>
+                <li><a href="crypto.html">Crypto</a></li>
+                <li><a href="index.html">Main Site</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero section with laptop background image H15.jpeg - full height fixed -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>PREMIUM LAPTOPS FOR WORK & PLAY</h1>
+            <p>Curated high-performance laptops from top brands. Unbeatable prices, verified quality, and nationwide delivery.</p>
+            <div>
+                <a href="#laptops-gallery" class="btn btn-primary"><i class="fas fa-laptop-code"></i> BROWSE MODELS</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Horizontal Scrolling Laptop Gallery - 6 Laptops, No Loop -->
+    <section class="gallery-section" id="laptops-gallery">
+        <div class="container">
+            <div class="gallery-header">
+                <h2>Premium Laptop Collection</h2>
+                <p>Explore our curated selection of high-performance laptops from top brands</p>
+            </div>
+            <div class="horizontal-scroll" id="horizontalScroll">
+                <div class="scroll-container" id="scrollContainer"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact-us">
+        <div class="container">
+            <h2>Ready to upgrade your device?</h2>
+            <p>Talk to our laptop experts for personalized recommendations, bulk orders, or any questions. Same-day delivery available in Lagos & Abuja.</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/2348001234567" class="contact-card" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                <a href="tel:+2348001234567" class="contact-card"><i class="fas fa-phone-alt"></i> Call Now</a>
+                <a href="mailto:laptops@hecon.ng" class="contact-card"><i class="fas fa-envelope"></i> Email Inquiry</a>
+            </div>
+            <p style="margin-top: 2rem; font-size: 0.9rem;">📦 Nationwide delivery | Flexible payment options</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><h3>HECON ESTATE</h3><p>Premium laptops, real estate, and business solutions. Trusted since 2016.</p></div>
+                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#laptops-gallery">Laptops</a></li><li><a href="#contact-us">Contact Sales</a></li><li><a href="index.html">Main Site</a></li></ul></div>
+                <div class="footer-links"><h4>Our Services</h4><ul><li><a href="re.html">Real Estate</a></li><li><a href="cac.html">CAC Registration</a></li><li><a href="laptop.html">Gadgets</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div>
+                <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 800 123 4567</p><p><i class="fas fa-envelope"></i> info@hecon.ng</p><p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div>
+            </div>
+            <div class="footer-bottom"><div>© 2026 HECON · Premium Laptop Store. All rights reserved.</div></div>
+        </div>
+    </footer>
+
+    <div id="imageModal" class="image-modal"><img id="modalImg" src="" alt="Full view"><span style="position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;">&times;</span></div>
+
+    <script>
+        (function(){
+            // Laptop data - exactly 6 laptops, no loop
+            const laptopData = [
+                { name: "Dell Precision 7760", price: "₦250,000", img: "H15.jpeg", specs: ["11th Gen i5", "16GB RAM", "512GB SSD", "17\" FHD"] },
+                { name: "HP Elitebook 840-G3", price: "₦310,000", img: "H16.jpeg", specs: ["Core i5", "8GB RAM", "256GB SSD", "Keyboard Light"] },
+                { name: "HP Elitebook 840-G6", price: "₦460,000", img: "H17.jpeg", specs: ["Core i7", "8GB RAM", "256GB SSD", "Keyboard Light"] },
+                { name: "ASUS ROG Zephyrus G14", price: "₦1,680,000", img: "H18.jpeg", specs: ["Ryzen 9", "16GB DDR5", "1TB NVMe", "RTX 4070"] },
+                { name: "Lenovo ThinkPad X1", price: "₦1,520,000", img: "H19.jpeg", specs: ["Core i7", "32GB RAM", "1TB SSD", "2.8K OLED"] },
+                { name: "Surface Laptop Studio", price: "₦2,190,000", img: "H20.jpeg", specs: ["Core i7", "32GB RAM", "2TB SSD", "120Hz Touch"] }
+            ];
+
+            const scrollContainer = document.getElementById('scrollContainer');
+            
+            function buildCards() {
+                let cardsHtml = '';
+                // Single set - exactly 6 laptops, no duplication
+                laptopData.forEach(laptop => {
+                    cardsHtml += `
+                        <div class="laptop-card" data-img="${laptop.img}">
+                            <img src="${laptop.img}" alt="${laptop.name}" onerror="this.src='https://via.placeholder.com/408x264?text=Laptop+Image'">
+                            <div class="laptop-card-content">
+                                <h3>${laptop.name}</h3>
+                                <div class="price">${laptop.price}</div>
+                                <div class="laptop-specs">
+                                    ${laptop.specs.map(spec => `<span><i class="fas fa-microchip"></i> ${spec}</span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                scrollContainer.innerHTML = cardsHtml;
+                
+                // Add click handlers for modal
+                document.querySelectorAll('.laptop-card').forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        e.stopPropagation();
+                        const imgSrc = card.getAttribute('data-img');
+                        const modal = document.getElementById('imageModal');
+                        const modalImg = document.getElementById('modalImg');
+                        modalImg.src = imgSrc;
+                        modal.classList.add('active');
+                    });
+                });
+            }
+            
+            buildCards();
+
+            // Modal close handler
+            const modal = document.getElementById('imageModal');
+            modal.addEventListener('click', (e) => {
+                if(e.target === modal || e.target.tagName === 'SPAN') modal.classList.remove('active');
+            });
+            
+            // Hamburger menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if(hamburger) {
+                hamburger.addEventListener('click', ()=>{
+                    mobileMenu.classList.toggle('active');
+                    hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                });
+            }
+            
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', ()=>{
+                    mobileMenu.classList.remove('active');
+                    if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if(href === '#') return;
+                    const target = document.querySelector(href);
+                    if(target) {
+                        e.preventDefault();
+                        window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+                    }
+                });
+            });
+            
+            // Logo home link
+            document.getElementById('logoHomeLink')?.addEventListener('click', ()=>{ window.location.href = 'index.html'; });
+            
+            // Reveal observer for gallery and contact sections
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        entry.target.classList.add('revealed');
+                    }
+                });
+            }, { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });
+            
+            const gallerySec = document.querySelector('.gallery-section');
+            const contactSec = document.querySelector('.contact-section');
+            if(gallerySec) observer.observe(gallerySec);
+            if(contactSec) observer.observe(contactSec);
+            
+            // Initial visible check
+            setTimeout(() => {
+                if(gallerySec && gallerySec.getBoundingClientRect().top < window.innerHeight - 80) {
+                    gallerySec.classList.add('revealed');
+                }
+                if(contactSec && contactSec.getBoundingClientRect().top < window.innerHeight - 80) {
+                    contactSec.classList.add('revealed');
+                }
+            }, 200);
+        })();
+    </script>
+</body>
+</html>

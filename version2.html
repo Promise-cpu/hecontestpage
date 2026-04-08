@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -339,29 +340,34 @@
             margin: 0 auto 2.5rem;
         }
 
-        /* Introduction Text */
-        .intro-section {
+        /* Introduction Section - Full width, no container, with persistent fade-in */
+        .intro-full {
+            width: 100%;
             text-align: center;
-            max-width: 900px;
-            margin: 4rem auto;
-            padding: 3rem 2rem;
+            padding: 5rem 2rem;
             background: rgba(25, 20, 38, 0.3);
             backdrop-filter: blur(10px);
-            border-radius: 3rem;
-            border: 1px solid var(--border-glow);
+            border-top: 1px solid var(--border-glow);
+            border-bottom: 1px solid var(--border-glow);
+            margin: 0;
         }
 
-        .intro-section h2 {
+        .intro-full .intro-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-full h2 {
             margin-bottom: 2rem;
         }
 
-        .intro-section p {
+        .intro-full p {
             margin: 0 auto 1.5rem;
             font-size: 1.2rem;
             color: var(--text-mid);
         }
 
-        .intro-section .highlight {
+        .intro-full .highlight {
             color: var(--glow-secondary);
             font-weight: 600;
         }
@@ -417,7 +423,7 @@
             box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);
             transition: transform 0.4s var(--ease-out-expo);
             max-height: 320px;
-             object-fit: contain;
+            object-fit: contain;
         }
 
         .property-video video:hover {
@@ -504,6 +510,7 @@
             font-size: 1.1rem;
         }
 
+        /* Property Contact Section - directly below video */
         .property-contact {
             background: linear-gradient(145deg, rgba(164,122,229,0.1), rgba(204,136,255,0.1));
             padding: 2rem;
@@ -621,20 +628,6 @@
             text-align: center;
         }
 
-        .footer-bottom-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-bottom-links a {
-            color: #AA99C0;
-            text-decoration: none;
-        }
-
-        .footer-bottom-links a:hover {
-            color: #FFB37C;
-        }
-
         .reveal {
             opacity: 0;
             transform: translateY(28px);
@@ -643,6 +636,18 @@
         }
 
         .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Persistent fade-in for intro section */
+        .intro-full {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+        }
+
+        .intro-full.revealed {
             opacity: 1;
             transform: translateY(0);
         }
@@ -710,12 +715,11 @@
                 font-size: 1.1rem;
             }
 
-            .intro-section {
-                padding: 2rem 1.5rem;
-                margin: 2rem 1rem;
+            .intro-full {
+                padding: 3rem 1.5rem;
             }
 
-            .intro-section p {
+            .intro-full p {
                 font-size: 1rem;
             }
 
@@ -811,10 +815,10 @@
         </div>
     </section>
 
-    <!-- Introduction Section -->
+    <!-- Introduction Section - Full width, no container, with persistent fade-in -->
     <section id="about">
-        <div class="container">
-            <div class="intro-section reveal">
+        <div class="intro-full reveal" id="introFullSection">
+            <div class="intro-inner">
                 <h2>Your Trusted Real Estate Partner</h2>
                 <p>At <span class="highlight">HECON REAL ESTATE</span>, we understand that finding the perfect property is more than just a transaction—it's about finding a place to call home. With over a decade of experience in the Nigerian property market, we've helped thousands of families and investors secure their dream properties.</p>
                 <p>From luxury waterfront villas in Banana Island to modern apartments in Ikoyi, our portfolio features the finest properties across Lagos and Abuja. Each listing comes with an authentic video tour shot on location.</p>
@@ -832,6 +836,15 @@
                         <source src="one.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <!-- Contact section directly below video -->
+                    <div class="property-contact">
+                        <h3>Interested in this property?</h3>
+                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
+                        <div class="contact-buttons">
+                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="property-details reveal delay-1">
                     <div class="property-header">
@@ -854,15 +867,6 @@
                         <div class="feature-item"><i class="fas fa-home"></i> Smart Home</div>
                         <div class="feature-item"><i class="fas fa-shield-alt"></i> 24/7 Security</div>
                     </div>
-                    
-                    <div class="property-contact">
-                        <h3>Interested in this property?</h3>
-                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
-                        <div class="contact-buttons">
-                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
-                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -877,6 +881,14 @@
                         <source src="two.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="property-contact">
+                        <h3>Interested in this property?</h3>
+                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
+                        <div class="contact-buttons">
+                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="property-details reveal delay-1">
                     <div class="property-header">
@@ -899,15 +911,6 @@
                         <div class="feature-item"><i class="fas fa-user-tie"></i> Staff Quarters</div>
                         <div class="feature-item"><i class="fas fa-bolt"></i> Backup Power</div>
                     </div>
-                    
-                    <div class="property-contact">
-                        <h3>Interested in this property?</h3>
-                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
-                        <div class="contact-buttons">
-                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
-                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -922,6 +925,14 @@
                         <source src="three.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="property-contact">
+                        <h3>Interested in this property?</h3>
+                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
+                        <div class="contact-buttons">
+                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="property-details reveal delay-1">
                     <div class="property-header">
@@ -944,15 +955,6 @@
                         <div class="feature-item"><i class="fas fa-wine-glass-alt"></i> Wine Cellar</div>
                         <div class="feature-item"><i class="fas fa-dumbbell"></i> Gym</div>
                     </div>
-                    
-                    <div class="property-contact">
-                        <h3>Interested in this property?</h3>
-                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
-                        <div class="contact-buttons">
-                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
-                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -967,6 +969,14 @@
                         <source src="four.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="property-contact">
+                        <h3>Interested in this property?</h3>
+                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
+                        <div class="contact-buttons">
+                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="property-details reveal delay-1">
                     <div class="property-header">
@@ -989,15 +999,6 @@
                         <div class="feature-item"><i class="fas fa-water"></i> Infinity Pool</div>
                         <div class="feature-item"><i class="fas fa-umbrella-beach"></i> Beach Access</div>
                     </div>
-                    
-                    <div class="property-contact">
-                        <h3>Interested in this property?</h3>
-                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
-                        <div class="contact-buttons">
-                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
-                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1012,6 +1013,14 @@
                         <source src="five.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="property-contact">
+                        <h3>Interested in this property?</h3>
+                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
+                        <div class="contact-buttons">
+                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="property-details reveal delay-1">
                     <div class="property-header">
@@ -1034,15 +1043,6 @@
                         <div class="feature-item"><i class="fas fa-swimmer"></i> Swimming Pool</div>
                         <div class="feature-item"><i class="fas fa-shield-alt"></i> 24/7 Security</div>
                     </div>
-                    
-                    <div class="property-contact">
-                        <h3>Interested in this property?</h3>
-                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
-                        <div class="contact-buttons">
-                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
-                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -1057,6 +1057,14 @@
                         <source src="six.mp4" type="video/mp4">
                         Your browser does not support the video tag.
                     </video>
+                    <div class="property-contact">
+                        <h3>Interested in this property?</h3>
+                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
+                        <div class="contact-buttons">
+                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
+                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+                        </div>
+                    </div>
                 </div>
                 <div class="property-details reveal delay-1">
                     <div class="property-header">
@@ -1078,15 +1086,6 @@
                         <div class="feature-item"><i class="fas fa-book"></i> Study Room</div>
                         <div class="feature-item"><i class="fas fa-seedling"></i> Garden</div>
                         <div class="feature-item"><i class="fas fa-bolt"></i> Backup Generator</div>
-                    </div>
-                    
-                    <div class="property-contact">
-                        <h3>Interested in this property?</h3>
-                        <p>Contact our real estate expert for more information or to schedule a viewing.</p>
-                        <div class="contact-buttons">
-                            <a href="tel:+2348001234567" class="btn btn-outline"><i class="fas fa-phone"></i> Call Now</a>
-                            <a href="https://wa.me/2348001234567" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -1167,18 +1166,24 @@
                 window.location.href = 'index.html';
             });
 
-            // Scroll animations
+            // Scroll animations - persistent fade for intro section
             function setupScrollAnimations() {
-                const revealElements = document.querySelectorAll('.reveal');
+                const revealElements = document.querySelectorAll('.reveal:not(.intro-full)');
+                const introElement = document.getElementById('introFullSection');
+                
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('revealed');
                         }
                     });
-                }, { threshold: 0.2, rootMargin: '0px' });
+                }, { threshold: 0.15, rootMargin: '0px' });
                 
                 revealElements.forEach(el => observer.observe(el));
+                
+                if (introElement) {
+                    observer.observe(introElement);
+                }
                 
                 setTimeout(() => {
                     revealElements.forEach(el => {
@@ -1187,6 +1192,12 @@
                             el.classList.add('revealed');
                         }
                     });
+                    if (introElement) {
+                        const rect = introElement.getBoundingClientRect();
+                        if (rect.top < window.innerHeight - 100 && rect.bottom > 0) {
+                            introElement.classList.add('revealed');
+                        }
+                    }
                 }, 100);
             }
 

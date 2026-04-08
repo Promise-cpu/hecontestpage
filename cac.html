@@ -1,0 +1,823 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>HECON · Business Registration · CAC · Trademark · SCUML Nigeria</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white-pure: #FFFFFF;
+            --white-soft: #F8FAFE;
+            --black: #000000;
+            --black-soft: #111111;
+            --black-mid: #1A1A1A;
+            --blue-deep: #1E3A5F;
+            --blue-dark: #0A2A44;
+            --blue-accent: #2C5A8C;
+            --blue-soft-accent: #3B6E9E;
+            --gold: #F7931A;
+            --text-dark: #1A2C3E;
+            --text-mid: #2C3E50;
+            --text-light: #5A6E7C;
+            --border-light: #DCE5F0;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 35px rgba(0, 0, 0, 0.08);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-mid);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: linear-gradient(145deg, 
+                #FFFFFF 0%, 
+                #F5F9FF 15%,
+                #EFF3FC 30%,
+                #E8EFF8 50%,
+                #E0E8F2 70%,
+                #D9E2ED 85%,
+                #D1DCE8 100%);
+            background-attachment: fixed;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 20%, rgba(0, 0, 0, 0.03), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: clamp(2.2rem, 7vw, 3.5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .section-subhead {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            font-size: 1.15rem;
+            color: var(--text-mid);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
+            color: white;
+            box-shadow: 0 8px 20px rgba(10, 42, 68, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue-accent));
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(10, 42, 68, 0.3);
+        }
+
+        /* Header - Pure White */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--white-pure);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--blue-dark), var(--black));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--blue-dark);
+        }
+
+        /* Dropdown Menu - no icon on Real Estate */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown > a .fa-chevron-down {
+            display: none;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white-pure);
+            min-width: 200px;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s var(--ease-out-expo);
+            border: 1px solid var(--border-light);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
+        }
+
+        .dropdown-menu li a:hover {
+            background: linear-gradient(90deg, rgba(10, 42, 68, 0.05), transparent);
+            color: var(--blue-dark);
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--blue-dark);
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 68px;
+            left: 0;
+            width: 100%;
+            background: var(--white-pure);
+            padding: 2rem;
+            display: none;
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: var(--shadow-sm);
+            z-index: 99;
+        }
+
+        .mobile-menu.active {
+            display: block;
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li a {
+            display: block;
+            padding: 1rem;
+            color: var(--text-dark);
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .mobile-menu li a:hover {
+            color: var(--blue-dark);
+        }
+
+        /* Hero Section - full viewport with proper image coverage */
+        .hero-section {
+            min-height: 100vh;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(135deg, rgba(10, 42, 68, 0.8) 0%, rgba(0, 0, 0, 0.75) 100%), url('cac.jpg');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            z-index: 0;
+        }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.25) 100%);
+            z-index: 1;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+        }
+        .hero-content h1 {
+            font-size: clamp(2.5rem, 8vw, 4.8rem);
+            font-weight: 800;
+            color: var(--white-pure);
+            margin-bottom: 1.2rem;
+            text-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
+        .hero-content p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.95);
+            max-width: 650px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Services Cards: CAC, Trademark, SCUML */
+        .services-cards-section {
+            padding: 5rem 0;
+        }
+        .three-services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .service-card {
+            background: var(--white-pure);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+            transition: all 0.3s var(--ease-out-expo);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--blue-accent);
+        }
+        .service-icon {
+            font-size: 3rem;
+            color: var(--blue-accent);
+            margin-bottom: 1rem;
+        }
+        .service-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--blue-dark);
+        }
+        .service-card p {
+            font-size: 0.95rem;
+            color: var(--text-mid);
+        }
+
+        /* Process Section - streamlined for 3 services */
+        .process-section {
+            padding: 4rem 0;
+            background: linear-gradient(145deg, #FFFFFF, #F5F7FC);
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2rem;
+        }
+        .step-card {
+            background: var(--white-pure);
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+        .step-number {
+            width: 55px;
+            height: 55px;
+            background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
+            color: white;
+            border-radius: 55px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+
+        /* Requirements double column (specific for each certificate) */
+        .requirements-section {
+            padding: 4rem 0;
+            background: var(--white-soft);
+        }
+        .req-duo {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+        .req-card {
+            flex: 1;
+            background: var(--white-pure);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid var(--border-light);
+        }
+        .req-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--blue-dark);
+            border-left: 4px solid var(--blue-accent);
+            padding-left: 1rem;
+        }
+        .req-card ul {
+            list-style: none;
+        }
+        .req-card li {
+            margin-bottom: 0.7rem;
+            padding-left: 1.6rem;
+            position: relative;
+        }
+        .req-card li:before {
+            content: "✓";
+            color: var(--blue-accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Testimonials Gallery (like previous code: full images + one sentence) */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #F5F7FC 0%, #E9EFF7 100%);
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+        .testimonial-card {
+            background: var(--white-pure);
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+            cursor: pointer;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-hover);
+        }
+        .testimonial-img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+        .testimonial-sentence {
+            padding: 1.2rem 1.5rem 1.5rem;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            background: white;
+            border-top: 1px solid var(--border-light);
+            font-weight: 500;
+        }
+        .testimonial-sentence i {
+            color: var(--gold);
+            margin-right: 0.3rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 5rem 0;
+            background: var(--white-pure);
+        }
+        .faq-grid {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .faq-item {
+            background: var(--white-pure);
+            border-radius: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.25rem 1.8rem;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--blue-dark);
+            cursor: pointer;
+            background: white;
+        }
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+        .faq-answer {
+            max-height: 0;
+            padding: 0 1.8rem;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.3s;
+            border-top: 1px solid transparent;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 300px;
+            padding: 0 1.8rem 1.5rem 1.8rem;
+            border-top-color: var(--border-light);
+        }
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        /* Contact CTA */
+        .contact-cta {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, #000000 100%);
+            text-align: center;
+            color: white;
+        }
+        .contact-cta h2 {
+            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .contact-cta p {
+            color: rgba(255,255,255,0.9);
+            max-width: 650px;
+            margin: 0 auto 2rem;
+        }
+        .btn-light {
+            background: white;
+            color: var(--blue-dark);
+        }
+        .btn-light:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4rem 0 2rem;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .footer-brand p {
+            color: #9BB0C4;
+            font-size: 0.9rem;
+        }
+        .footer-links h4, .footer-contact h4 { color: white; margin-bottom: 1.5rem; }
+        .footer-links ul { list-style: none; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: #8DA3B8; text-decoration: none; font-size: 0.9rem; }
+        .footer-links a:hover { color: white; }
+        .footer-contact p { color: #8DA3B8; display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; color: #8DA3B8; }
+
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 1.25rem; }
+            .header-container { padding: 0.75rem 1rem; }
+            .desktop-nav { display: none !important; }
+            .hamburger { display: block !important; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .steps-grid { grid-template-columns: 1fr; }
+            .req-duo { flex-direction: column; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero-section { min-height: 100vh; height: auto; }
+        }
+        @media (min-width: 1025px) {
+            .desktop-nav { display: block; }
+            .hamburger { display: none !important; }
+        }
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container" id="logoHomeLink">
+                <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
+                <div class="company-name">HECON GROUP</div>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Real Estate</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="land.html">Lands</a></li>
+                            <li><a href="housing.html">Housing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="business.html">Business Registration</a></li>
+                    <li><a href="laptop.html">Laptops</a></li>
+                    <li><a href="crypto.html">Crypto Exchange</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+        </div>
+        <div class="mobile-menu" id="mobileMenu">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="land.html">Lands</a></li>
+                <li><a href="housing.html">Housing</a></li>
+                <li><a href="cac.html">Business Registration</a></li>
+                <li><a href="laptop.html">Gadgets</a></li>
+                <li><a href="crypto.html">Crypto Exchange</a></li>
+            </ul>
+        </div>
+    </header>
+
+
+    <!-- Hero Section (full height, image fully covers) -->
+    <section class="hero-section" id="home">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Business Registration Services</h1>
+            <p>We specialize in corporate registration, trademark protection, and EFCC SCUML compliance. Fast, reliable, and fully digital.</p>
+            <a href="#services" class="btn btn-primary"><i class="fas fa-file-alt"></i> Get Registered Today</a>
+        </div>
+    </section>
+
+    <!-- Core Services: CAC, Trademark, SCUML -->
+    <section class="services-cards-section reveal" id="services">
+        <div class="container">
+            <h2 style="text-align:center;">Our Specialized Services</h2>
+            <p class="section-subhead">Complete business registration and compliance solutions in Nigeria</p>
+            <div class="three-services">
+                <div class="service-card"><i class="fas fa-building service-icon"></i><h3>CAC Registration</h3><p>Business Name or Private Limited Company registration with Corporate Affairs Commission. Get your certificate of incorporation within weeks.</p></div>
+                <div class="service-card"><i class="fas fa-trademark service-icon"></i><h3>Trademark Registration</h3><p>Protect your brand identity. Full trademark search, filing, and registration with the Trademarks Registry, Nigeria.</p></div>
+                <div class="service-card"><i class="fas fa-shield-alt service-icon"></i><h3>EFCC SCUML Certificate</h3><p>Mandatory for designated non-financial businesses. We handle SCUML registration, compliance documents, and certification.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Process -->
+    <section class="process-section reveal">
+        <div class="container">
+            <h2 style="text-align:center;">Simple 4-Step Process</h2>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-number">1</div><h3>Consultation</h3><p>We discuss your registration needs: CAC, Trademark or SCUML.</p></div>
+                <div class="step-card"><div class="step-number">2</div><h3>Document Prep</h3><p>We guide you on required documents and prepare applications.</p></div>
+                <div class="step-card"><div class="step-number">3</div><h3>Filing & Follow-up</h3><p>We submit to CAC, Trademark Registry, or EFCC and monitor progress.</p></div>
+                <div class="step-card"><div class="step-number">4</div><h3>Certificate Delivery</h3><p>Digital and physical copies delivered with post-registration support.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requirements (Tailored for CAC, Trademark, SCUML) -->
+    <section class="requirements-section reveal">
+        <div class="container">
+            <h2 style="text-align:center;">What You Need to Provide</h2>
+            <div class="req-duo">
+                <div class="req-card"><h3>📄 CAC Registration</h3><ul><li>Proposed business/company names (2-3 options)</li><li>Business activities description</li><li>Valid ID (NIN, Passport, Driver’s License)</li><li>Passport photograph</li><li>Business address (physical or virtual)</li><li>Shareholders/Directors details (for LTD)</li></ul></div>
+                <div class="req-card"><h3>⚖️ Trademark & SCUML</h3><ul><li>Trademark: Logo or wordmark, class of goods/services, applicant details</li><li>SCUML: Certificate of Incorporation, Tax ID, business address, director details</li><li>Nature of designated non-financial business (real estate, legal, accounting, etc.)</li><li>Valid means of identification for directors</li></ul></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Gallery (3 images, like previous crypto style) -->
+    <section class="testimonials-section reveal" id="testimonials">
+        <div class="container">
+            <div class="testimonials-header" style="text-align:center; margin-bottom: 2rem;">
+                <h2>What Our Clients Say</h2>
+                <p>Trusted by entrepreneurs and businesses across Nigeria</p>
+            </div>
+            <div class="testimonials-grid" id="testimonialsGrid"></div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (aligned with the 3 services) -->
+    <section class="faq-section reveal" id="faq">
+        <div class="container">
+            <h2 style="text-align:center;">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item"><div class="faq-question"><span>How long does CAC registration take?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Business Name: 7-14 working days. Limited Liability Company: 15-25 working days, subject to CAC approval.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>What is a trademark and why register it?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>A trademark protects your brand name, logo, or slogan. Registration grants exclusive rights and legal protection against infringement in Nigeria.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>Who needs an EFCC SCUML certificate?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Designated Non-Financial Businesses and Professions (DNFBPs) such as real estate agents, lawyers, accountants, dealers in luxury goods, etc.</p></div></div>
+                <div class="faq-item"><div class="faq-question"><span>Can I register a trademark and SCUML simultaneously?</span><i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Yes, we can handle both processes concurrently. Our team coordinates with the Trademark Registry and EFCC to ensure full compliance.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact CTA -->
+    <section class="contact-cta reveal" id="contact">
+        <div class="container">
+            <h2>Ready to Formalize Your Business?</h2>
+            <p>Let our experts handle CAC, Trademark, and SCUML registration so you can focus on growth. Free initial consultation.</p>
+            <a href="index.html#contact" class="btn btn-light"><i class="fas fa-headset"></i> Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand"><h3>HECON ESTATE</h3><p>Trusted partner for business registration (CAC/Trademark/SCUML), luxury real estate, and premium gadgets across Nigeria.</p></div>
+                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#services">Services</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#contact">Contact</a></li></ul></div>
+                <div class="footer-links"><h4>Our Services</h4><ul><li><a href="#">CAC Registration</a></li><li><a href="#">Trademark Filing</a></li><li><a href="#">SCUML Certificate</a></li><li><a href="re.html">Real Estate</a></li></ul></div>
+                <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 800 123 4567</p><p><i class="fas fa-envelope"></i> compliance@hecon.ng</p><p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div>
+            </div>
+            <div class="footer-bottom"><div>© 2026 HECON ESTATE. All rights reserved. CAC, Trademark & SCUML specialists.</div></div>
+        </div>
+    </footer>
+
+    <script>
+        (function(){
+            // Testimonials data (3 images + one sentence per card)
+            const testimonialsData = [
+                { img: "tes1.jpeg", text: "“HECON handled my CAC registration seamlessly. Got my certificate in 10 days. Highly professional.”" },
+                { img: "tes2.jpeg", text: "“Their trademark filing service saved my brand. Expert guidance and fast turnaround.”" },
+                { img: "tes3.jpeg", text: "“SCUML compliance was a headache until I found HECON. They did everything, stress-free.”" }
+            ];
+            const grid = document.getElementById('testimonialsGrid');
+            function buildTestimonials() {
+                let html = '';
+                testimonialsData.forEach(t => {
+                    html += `
+                        <div class="testimonial-card">
+                            <img src="${t.img}" alt="Client testimonial" class="testimonial-img" onerror="this.src='https://via.placeholder.com/400x280?text=Client'">
+                            <div class="testimonial-sentence"><i class="fas fa-quote-left"></i> ${t.text}</div>
+                        </div>
+                    `;
+                });
+                grid.innerHTML = html;
+            }
+            buildTestimonials();
+
+            // Mobile menu toggle
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            if(hamburger){
+                hamburger.addEventListener('click', ()=>{
+                    mobileMenu.classList.toggle('active');
+                    hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                });
+            }
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.addEventListener('click', ()=>{
+                    mobileMenu.classList.remove('active');
+                    if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            // Smooth scroll
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const id = this.getAttribute('href');
+                    if(id === '#') return;
+                    const target = document.querySelector(id);
+                    if(target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); }
+                });
+            });
+            document.getElementById('logoHomeLink')?.addEventListener('click', ()=>{ window.location.href = 'index.html'; });
+
+            // FAQ toggle
+            document.querySelectorAll('.faq-item').forEach(item => {
+                const q = item.querySelector('.faq-question');
+                q.addEventListener('click', () => { item.classList.toggle('active'); });
+            });
+
+            // Reveal animation
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); });
+            }, { threshold: 0.1 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+            setTimeout(() => {
+                document.querySelectorAll('.reveal').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight-100) el.classList.add('revealed'); });
+            }, 200);
+        })();
+    </script>
+</body>
+</html>
