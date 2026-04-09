@@ -1,9 +1,8 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>HECON · REAL ESTATE · Luxury Properties</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -73,7 +72,7 @@
         }
 
         h2 {
-            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            font-size: clamp(2rem, 6vw, 3.8rem);
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
             -webkit-background-clip: text;
@@ -90,9 +89,15 @@
         .container {
             max-width: 1400px;
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
             position: relative;
             z-index: 2;
+        }
+
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 2rem;
+            }
         }
 
         section {
@@ -113,6 +118,15 @@
             border: none;
             cursor: pointer;
             transition: all 0.3s var(--ease-out-expo);
+        }
+
+        /* Mobile hero button size - reduced by 20% */
+        @media (max-width: 767px) {
+            .hero-content .btn {
+                padding: 0.8rem 2rem;
+                font-size: 0.8rem;
+                gap: 0.6rem;
+            }
         }
 
         .btn-primary {
@@ -140,7 +154,7 @@
             color: var(--white-pure);
         }
 
-        /* Header - Pure White */
+        /* Header - Mobile Optimized (matching previous code) */
         header {
             position: fixed;
             top: 0;
@@ -148,34 +162,65 @@
             z-index: 100;
             background: var(--white-pure);
             border-bottom: 1px solid var(--border-light);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.98);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 2rem;
+            padding: 0.75rem 1rem;
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        @media (min-width: 768px) {
+            .header-container {
+                padding: 0.75rem 2rem;
+            }
         }
 
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             cursor: pointer;
         }
 
-        .logo-img {
-            height: 42px;
-            width: auto;
-            object-fit: contain;
+        /* Mobile header styling */
+        @media (max-width: 767px) {
+            .logo-container {
+                flex: 1;
+                justify-content: flex-start;
+            }
+            .logo-img {
+                height: 42px;
+                width: auto;
+            }
+            .company-name {
+                font-size: 1.6rem;
+                letter-spacing: -0.8px;
+                text-align: center;
+                flex: 1;
+                font-weight: 800;
+            }
+            .hamburger {
+                margin-left: auto;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .logo-img {
+                height: 42px;
+            }
+            .company-name {
+                font-size: 1.4rem;
+            }
         }
 
         .company-name {
             font-weight: 700;
-            font-size: 1.4rem;
             background: linear-gradient(135deg, var(--blue-dark), var(--black));
             -webkit-background-clip: text;
             background-clip: text;
@@ -184,6 +229,11 @@
 
         .desktop-nav {
             display: none;
+        }
+
+        @media (min-width: 1025px) {
+            .desktop-nav { display: block; }
+            .hamburger { display: none !important; }
         }
 
         .desktop-nav ul {
@@ -205,7 +255,6 @@
             color: var(--blue-dark);
         }
 
-        /* Dropdown Menu - no icon on Real Estate */
         .dropdown {
             position: relative;
         }
@@ -263,6 +312,12 @@
             font-size: 1.8rem;
             color: var(--blue-dark);
             cursor: pointer;
+            display: block;
+            padding: 0.5rem;
+        }
+
+        @media (min-width: 1025px) {
+            .hamburger { display: none !important; }
         }
 
         .mobile-menu {
@@ -270,16 +325,30 @@
             top: 68px;
             left: 0;
             width: 100%;
-            background: var(--white-pure);
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
             display: none;
             border-bottom: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
             z-index: 99;
+            max-height: calc(100vh - 68px);
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
             display: block;
+            animation: slideDown 0.3s var(--ease-out-expo);
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .mobile-menu ul {
@@ -292,32 +361,48 @@
             color: var(--text-dark);
             text-decoration: none;
             font-size: 1.1rem;
+            font-weight: 600;
             border-bottom: 1px solid var(--border-light);
         }
 
-        .mobile-menu li a:hover {
-            color: var(--blue-dark);
-        }
-
-        /* Hero Section Fade */
+        /* Hero Section - Full viewport height on mobile */
         .hero-section {
             min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
         }
 
+        @media (min-width: 768px) {
+            .hero-section {
+                min-height: 100vh;
+                height: auto;
+            }
+        }
+
         .hero-bg {
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: linear-gradient(135deg, rgba(30, 58, 95, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%), url('https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            inset: 0;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.85), rgba(0, 0, 0, 0.75)), url('https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1600');
             background-size: cover;
             background-position: center;
+            background-attachment: scroll;
             z-index: 0;
+        }
+
+        /* Mobile: Ensure background covers full screen */
+        @media (max-width: 767px) {
+            .hero-bg {
+                background-attachment: scroll;
+                background-size: cover;
+                background-position: center;
+            }
+            .hero-section {
+                height: 100vh;
+                min-height: -webkit-fill-available;
+            }
         }
 
         .hero-overlay {
@@ -336,26 +421,33 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding: 0 2rem;
-            margin-top: 100px;
+            padding: 0 1.5rem;
+            margin-top: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .hero-content {
+                margin-top: 100px;
+                padding: 0 2rem;
+            }
         }
 
         .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(2rem, 7vw, 5.5rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.2;
             color: var(--white-pure);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
             opacity: 0;
             animation: fadeUpIn 0.8s var(--ease-out-expo) forwards;
         }
 
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: clamp(0.9rem, 4vw, 1.3rem);
             color: rgba(255, 255, 255, 0.95);
             max-width: 700px;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 1.5rem;
             opacity: 0;
             animation: fadeUpIn 0.8s var(--ease-out-expo) 0.3s forwards;
         }
@@ -376,16 +468,22 @@
             }
         }
 
-        /* Introduction Section - with slower fade */
+        /* Introduction Section */
         .intro-full {
             width: 100%;
             text-align: center;
-            padding: 5rem 2rem;
+            padding: 3rem 1.5rem;
             background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
             margin: 0;
             position: relative;
+        }
+
+        @media (min-width: 768px) {
+            .intro-full {
+                padding: 5rem 2rem;
+            }
         }
 
         .intro-full .intro-inner {
@@ -394,13 +492,12 @@
         }
 
         .intro-full h2 {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
 
         .intro-full p {
-            margin: 0 auto 1.5rem;
-            font-size: 1.2rem;
-            color: var(--text-mid);
+            margin: 0 auto 1rem;
+            font-size: clamp(1rem, 4vw, 1.2rem);
         }
 
         .intro-full .highlight {
@@ -411,17 +508,23 @@
             font-weight: 600;
         }
 
-        /* Horizontal Scrolling Gallery Section - Automatic */
+        /* Gallery Section - Grid on mobile, horizontal scroll on desktop */
         .gallery-section {
-            padding: 5rem 0;
-             background: linear-gradient(180deg, #1E3A5F 0%, #1E3A5F 50%, #000000 100%);
+            padding: 3rem 0;
+            background: linear-gradient(180deg, #1E3A5F 0%, #1E3A5F 50%, #000000 100%);
             position: relative;
             overflow: hidden;
         }
 
+        @media (min-width: 768px) {
+            .gallery-section {
+                padding: 5rem 0;
+            }
+        }
+
         .gallery-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
         }
 
         .gallery-header h2 {
@@ -435,8 +538,10 @@
         .gallery-header p {
             color: rgba(255, 255, 255, 0.8);
             margin: 0 auto;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
         }
 
+        /* Desktop: Horizontal scroll */
         .horizontal-scroll {
             width: 100%;
             overflow-x: auto;
@@ -447,6 +552,23 @@
             scrollbar-width: thin;
             scrollbar-color: var(--blue-accent) rgba(255, 255, 255, 0.2);
             position: relative;
+        }
+
+        /* Mobile: Grid layout */
+        .mobile-grid {
+            display: none;
+        }
+
+        @media (max-width: 767px) {
+            .horizontal-scroll {
+                display: none;
+            }
+            .mobile-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
         }
 
         .horizontal-scroll:active {
@@ -464,7 +586,7 @@
 
         .horizontal-scroll::-webkit-scrollbar-thumb {
             background: var(--blue-accent);
-            border-radius: 10;
+            border-radius: 10px;
         }
 
         .scroll-container {
@@ -498,6 +620,10 @@
             white-space: normal;
             flex-shrink: 0;
             cursor: pointer;
+        }
+
+        .mobile-grid .land-card {
+            width: 100%;
         }
 
         .land-card:hover {
@@ -537,7 +663,7 @@
             margin: 0.5rem 0 0;
         }
 
-        /* Modal for full image */
+        /* Modal */
         .image-modal {
             position: fixed;
             top: 0;
@@ -565,19 +691,17 @@
             border-radius: 12px;
         }
 
-        /* Property Sections for Videos */
+        /* Property Sections - Unified color blend */
         .property-section {
-            padding: 5rem 0;
+            padding: 3rem 0;
             position: relative;
-            transition: background-color 0.3s ease;
+            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
         }
 
-        /* Fixed color fade in last property section - unified dark elegant */
-        .property-section:nth-of-type(3),
-        .property-section:nth-of-type(4),
-        .property-section:nth-of-type(5),
-        .property-section:nth-of-type(6) {
-            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
+        @media (min-width: 768px) {
+            .property-section {
+                padding: 5rem 0;
+            }
         }
 
         .property-section:not(:first-of-type)::before {
@@ -587,40 +711,62 @@
             left: 0;
             width: 100%;
             height: 1px;
-            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
         }
 
         .property-container {
             display: flex;
-            gap: 4rem;
+            gap: 2rem;
             align-items: flex-start;
         }
 
+        @media (min-width: 768px) {
+            .property-container {
+                gap: 4rem;
+            }
+        }
+
         .property-container.left {
-            flex-direction: row;
+            flex-direction: column;
         }
 
         .property-container.right {
-            flex-direction: row-reverse;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .property-container.left {
+                flex-direction: row;
+            }
+            .property-container.right {
+                flex-direction: row-reverse;
+            }
         }
 
         .property-video {
             flex: 1;
             min-width: 0;
-            position: sticky;
-            top: 100px;
+            width: 100%;
         }
 
+        @media (min-width: 768px) {
+            .property-video {
+                position: sticky;
+                top: 100px;
+            }
+        }
+
+        /* Fixed video container size for mobile */
         .property-video video {
             width: 100%;
             height: auto;
+            aspect-ratio: 16 / 9;
             border-radius: 1.25rem;
             border: 2px solid rgba(255, 255, 255, 0.3);
             background: var(--white-pure);
             box-shadow: var(--shadow-md);
             transition: transform 0.4s var(--ease-out-expo), box-shadow 0.3s;
-            max-height: 320px;
-            object-fit: contain;
+            object-fit: cover;
         }
 
         .property-video video:hover {
@@ -638,7 +784,7 @@
         }
 
         .property-header h2 {
-            font-size: 2.5rem;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
             margin-bottom: 0.5rem;
             background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 100%);
             -webkit-background-clip: text;
@@ -651,7 +797,7 @@
             align-items: center;
             gap: 0.5rem;
             color: rgba(255, 255, 255, 0.9);
-            font-size: 1rem;
+            font-size: clamp(0.85rem, 3vw, 1rem);
         }
 
         .property-location i {
@@ -659,15 +805,15 @@
         }
 
         .property-price {
-            font-size: 2rem;
+            font-size: clamp(1.3rem, 5vw, 2rem);
             font-weight: 700;
             color: #FFFFFF;
             margin: 0.5rem 0;
         }
 
         .property-description p {
-            font-size: 1rem;
-            line-height: 1.7;
+            font-size: clamp(0.85rem, 3.5vw, 1rem);
+            line-height: 1.6;
             color: rgba(255, 255, 255, 0.9);
         }
 
@@ -679,12 +825,18 @@
             background: transparent;
         }
 
+        @media (max-width: 480px) {
+            .property-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
         .feature-item {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             color: rgba(255, 255, 255, 0.85);
-            font-size: 0.95rem;
+            font-size: clamp(0.8rem, 3vw, 0.95rem);
         }
 
         .feature-item i {
@@ -693,7 +845,121 @@
             width: 24px;
         }
 
-        /* Creative staggered fade animations for property sections */
+        /* Contact Section - New */
+        .contact-section {
+            background: linear-gradient(135deg, #0A2A44 0%, #000000 100%);
+            padding: 3rem 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (min-width: 768px) {
+            .contact-section {
+                padding: 5rem 2rem;
+            }
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-container h2 {
+            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .contact-container > p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 600px;
+            margin: 0 auto 1.5rem;
+            font-size: clamp(0.9rem, 4vw, 1.1rem);
+            line-height: 1.6;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        @media (min-width: 480px) {
+            .contact-buttons {
+                flex-direction: row;
+            }
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-decoration: none;
+            transition: all 0.3s var(--ease-out-expo);
+            width: 100%;
+            max-width: 280px;
+            justify-content: center;
+        }
+
+        @media (min-width: 480px) {
+            .contact-btn {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+                width: auto;
+            }
+        }
+
+        .contact-btn-wa {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-btn-wa:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(37, 211, 102, 0.4);
+        }
+
+        .contact-btn-call {
+            background: white;
+            color: var(--blue-dark);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-btn-call:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-info p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.85rem;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            border-bottom: 1px solid var(--blue-accent);
+        }
+
+        /* Animations */
         .property-section .property-video,
         .property-section .property-details {
             opacity: 0;
@@ -710,19 +976,22 @@
             transform: translateX(0);
         }
 
-        /* Different transform offsets for each property - creative stagger */
-        .property-section:nth-of-type(3) .property-video { transform: translateX(-40px) scale(0.96); transition-delay: 0s; }
-        .property-section:nth-of-type(3) .property-details { transform: translateX(40px) scale(0.96); transition-delay: 0.1s; }
-        .property-section:nth-of-type(4) .property-video { transform: translateX(40px) rotate(0.5deg); transition-delay: 0.05s; }
-        .property-section:nth-of-type(4) .property-details { transform: translateX(-40px) rotate(-0.5deg); transition-delay: 0.15s; }
-        .property-section:nth-of-type(5) .property-video { transform: translateY(30px) scale(0.97); transition-delay: 0.02s; }
-        .property-section:nth-of-type(5) .property-details { transform: translateY(-30px) scale(0.97); transition-delay: 0.12s; }
-        .property-section:nth-of-type(6) .property-video { transform: translateX(-30px) skewX(-0.5deg); transition-delay: 0.07s; }
-        .property-section:nth-of-type(6) .property-details { transform: translateX(30px) skewX(0.5deg); transition-delay: 0.17s; }
+        .property-section:nth-of-type(1) .property-video { transform: translateX(-40px); transition-delay: 0s; }
+        .property-section:nth-of-type(1) .property-details { transform: translateX(40px); transition-delay: 0.1s; }
+        .property-section:nth-of-type(2) .property-video { transform: translateX(40px); transition-delay: 0.05s; }
+        .property-section:nth-of-type(2) .property-details { transform: translateX(-40px); transition-delay: 0.15s; }
+        .property-section:nth-of-type(3) .property-video { transform: translateY(30px); transition-delay: 0.02s; }
+        .property-section:nth-of-type(3) .property-details { transform: translateY(-30px); transition-delay: 0.12s; }
+        .property-section:nth-of-type(4) .property-video { transform: translateX(-30px); transition-delay: 0.07s; }
+        .property-section:nth-of-type(4) .property-details { transform: translateX(30px); transition-delay: 0.17s; }
+        .property-section:nth-of-type(5) .property-video { transform: translateX(30px); transition-delay: 0.03s; }
+        .property-section:nth-of-type(5) .property-details { transform: translateX(-30px); transition-delay: 0.13s; }
+        .property-section:nth-of-type(6) .property-video { transform: translateY(25px); transition-delay: 0.08s; }
+        .property-section:nth-of-type(6) .property-details { transform: translateY(-25px); transition-delay: 0.18s; }
 
         .property-section.revealed .property-video,
         .property-section.revealed .property-details {
-            transform: translateX(0) translateY(0) scale(1) rotate(0deg) skewX(0deg);
+            transform: translateX(0) translateY(0) scale(1) rotate(0deg);
             transition-delay: 0s;
         }
 
@@ -752,40 +1021,79 @@
         footer {
             background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 4rem 0 2rem;
-            margin-top: 2rem;
+            padding: 2rem 0 1.5rem;
             position: relative;
             z-index: 2;
         }
 
+        @media (min-width: 768px) {
+            footer {
+                padding: 4rem 0 2rem;
+            }
+        }
+
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1.5fr;
-            gap: 3rem;
-            margin-bottom: 3rem;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 640px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr 1.5fr;
+                gap: 3rem;
+                margin-bottom: 3rem;
+            }
         }
 
         .footer-brand h3 {
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
             background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
+        @media (min-width: 768px) {
+            .footer-brand h3 {
+                font-size: 1.8rem;
+                margin-bottom: 1rem;
+            }
+        }
+
         .footer-brand p {
             color: #9BB0C4;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             max-width: 280px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-brand p {
+                font-size: 0.9rem;
+            }
         }
 
         .footer-links h4, .footer-contact h4 {
             color: #FFFFFF;
-            font-size: 1rem;
-            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
             letter-spacing: 0.5px;
             font-weight: 600;
+        }
+
+        @media (min-width: 768px) {
+            .footer-links h4, .footer-contact h4 {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
         }
 
         .footer-links ul {
@@ -793,14 +1101,26 @@
         }
 
         .footer-links li {
-            margin-bottom: 0.75rem;
+            margin-bottom: 0.6rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-links li {
+                margin-bottom: 0.75rem;
+            }
         }
 
         .footer-links a {
             color: #8DA3B8;
             text-decoration: none;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             transition: 0.2s;
+        }
+
+        @media (min-width: 768px) {
+            .footer-links a {
+                font-size: 0.9rem;
+            }
         }
 
         .footer-links a:hover {
@@ -809,113 +1129,57 @@
 
         .footer-contact p {
             color: #8DA3B8;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             display: flex;
             align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
+            gap: 0.6rem;
+            margin-bottom: 0.6rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-contact p {
+                font-size: 0.9rem;
+                gap: 0.75rem;
+                margin-bottom: 0.75rem;
+            }
         }
 
         .footer-contact i {
             color: #FFFFFF;
-            width: 20px;
+            width: 18px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-contact i {
+                width: 20px;
+            }
         }
 
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 2rem;
-            margin-top: 2rem;
+            padding-top: 1.5rem;
+            margin-top: 1.5rem;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
             color: #8DA3B8;
-            font-size: 0.85rem;
+            font-size: 0.7rem;
             text-align: center;
         }
 
-        @media (min-width: 1025px) {
-            .desktop-nav {
-                display: block;
-            }
-            .hamburger {
-                display: none !important;
-            }
-        }
-
-        @media (max-width: 1024px) {
-            .property-container {
-                flex-direction: column !important;
-                gap: 2rem;
-            }
-            .property-video {
-                position: relative;
-                top: 0;
-                width: 100%;
-            }
-            .property-details {
-                width: 100%;
-            }
-            .land-card {
-                width: 280px;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .header-container {
-                padding: 0.75rem 1rem;
-            }
-            .company-name {
-                font-size: 1.2rem !important;
-            }
-            .desktop-nav {
-                display: none !important;
-            }
-            .hamburger {
-                display: block !important;
-            }
-            .hero-section {
-                min-height: 80vh;
-            }
-            .hero-content h1 {
-                font-size: clamp(2rem, 6vw, 3rem);
-            }
-            .hero-content p {
-                font-size: 1rem;
-            }
-            .intro-full {
-                padding: 3rem 1.5rem;
-            }
-            .property-section {
-                padding: 3rem 0;
-            }
-            .property-header h2 {
-                font-size: 1.8rem;
-            }
-            .property-price {
-                font-size: 1.6rem;
-            }
-            .property-features {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            .land-card {
-                width: 260px;
+        @media (min-width: 768px) {
+            .footer-bottom {
+                padding-top: 2rem;
+                margin-top: 2rem;
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 <body>
-   
-   
-<header>
+    <header>
         <div class="header-container">
             <div class="logo-container" id="logoHomeLink">
                 <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
@@ -950,7 +1214,6 @@
         </div>
     </header>
 
-
     <section class="hero-section" id="home">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
@@ -958,7 +1221,7 @@
             <h1>FIND YOUR DREAM HOME IN NIGERIA</h1>
             <p>Luxury properties in Nigeria's most desirable locations</p>
             <div>
-                <a href="#about" class="btn btn-primary"><i class="fas fa-search"></i> EXPLORE PROPERTIES</a>
+                <a href="#properties" class="btn btn-primary"><i class="fas fa-search"></i> EXPLORE PROPERTIES</a>
             </div>
         </div>
     </section>
@@ -983,6 +1246,7 @@
             <div class="horizontal-scroll" id="horizontalScroll">
                 <div class="scroll-container" id="scrollContainer"></div>
             </div>
+            <div class="mobile-grid" id="mobileGrid"></div>
         </div>
     </section>
 
@@ -993,11 +1257,30 @@
     <section class="property-section" id="property5"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="eleven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Heritage Meadows</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Abeokuta, Ogun State</div><div class="property-price">₦12,000,000 - ₦28,000,000</div></div><div class="property-description"><p>Affordable suburban land with vast expansion potential. Perfect for residential development and long-term investment.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-home"></i> Residential Zone</div><div class="feature-item"><i class="fas fa-tractor"></i> Spacious Plots</div><div class="feature-item"><i class="fas fa-leaf"></i> Green Environment</div><div class="feature-item"><i class="fas fa-money-bill"></i> Flexible Payment</div></div></div></div></div></section>
     <section class="property-section" id="property6"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="twelve.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lakeside Reserve</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ibadan, Oyo State</div><div class="property-price">₦22,000,000 - ₦45,000,000</div></div><div class="property-description"><p>Serene lakeside plots with natural beauty. Ideal for holiday homes, eco-resorts, or private retreats.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-fish"></i> Lake View</div><div class="feature-item"><i class="fas fa-tree"></i> Natural Scenery</div><div class="feature-item"><i class="fas fa-campground"></i> Eco-Friendly</div><div class="feature-item"><i class="fas fa-road"></i> Access Road</div></div></div></div></div></section>
 
+    <!-- New Contact Section -->
+    <section class="contact-section" id="contact-section">
+        <div class="contact-container">
+            <h2>Contact Us</h2>
+            <p>Have questions about our properties? Need assistance with finding your dream home? Our real estate experts are ready to help you.</p>
+            <div class="contact-buttons">
+                <a href="https://wa.me/2348008901234" class="contact-btn contact-btn-wa">
+                    <i class="fab fa-whatsapp fa-lg"></i> Chat on WhatsApp
+                </a>
+                <a href="tel:+2348001234567" class="contact-btn contact-btn-call">
+                    <i class="fas fa-phone-alt"></i> Call Us Now
+                </a>
+            </div>
+            <div class="contact-info">
+                
+            </div>
+        </div>
+    </section>
+
     <footer id="contact">
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-brand"><h3>HECON ESTATE</h3><p>Your trusted partner for luxury real estate, business registration, gadgets, and crypto exchange. Serving Nigeria with integrity since 2016.</p></div>
-                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#property1">Properties</a></li><li><a href="#contact">Contact</a></li></ul></div>
+                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#property1">Properties</a></li><li><a href="#contact-section">Contact</a></li></ul></div>
                 <div class="footer-links"><h4>Our Services</h4><ul><li><a href="re.html">Real Estate</a></li><li><a href="cac.html">CAC Registration</a></li><li><a href="laptop.html">Gadgets</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div>
                 <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 800 123 4567</p><p><i class="fas fa-envelope"></i> info@hecon.ng</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p><p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p></div>
             </div>
@@ -1009,7 +1292,6 @@
 
     <script>
         (function(){
-            // Land gallery data (7 estates with images one.jpeg to seven.jpeg)
             const landData = [
                 { name: "Sunset Valley Estate", location: "Lekki, Lagos", price: "₦28,000,000", img: "one.jpeg" },
                 { name: "Golden Acres", location: "Ikoyi, Lagos", price: "₦95,000,000", img: "two.jpeg" },
@@ -1019,10 +1301,14 @@
                 { name: "Hilltop View", location: "Ibadan", price: "₦23,000,000", img: "six.jpeg" },
                 { name: "Palm Court", location: "Banana Island", price: "₦210,000,000", img: "seven.jpeg" }
             ];
+            
             const scrollContainer = document.getElementById('scrollContainer');
+            const mobileGrid = document.getElementById('mobileGrid');
+            
             function buildCards() {
                 let cardsHtml = '';
-                for(let i=0; i<3; i++) { // duplicate for seamless loop
+                let mobileHtml = '';
+                for(let i=0; i<3; i++) {
                     landData.forEach(land => {
                         cardsHtml += `<div class="land-card" data-img="${land.img}">
                             <img src="${land.img}" alt="${land.name}" onerror="this.src='https://via.placeholder.com/320x220?text=Land+Image'">
@@ -1034,7 +1320,19 @@
                         </div>`;
                     });
                 }
+                landData.forEach(land => {
+                    mobileHtml += `<div class="land-card" data-img="${land.img}">
+                        <img src="${land.img}" alt="${land.name}" onerror="this.src='https://via.placeholder.com/320x220?text=Land+Image'">
+                        <div class="land-card-content">
+                            <h3>${land.name}</h3>
+                            <div class="location"><i class="fas fa-map-marker-alt"></i> ${land.location}</div>
+                            <div class="price">${land.price}</div>
+                        </div>
+                    </div>`;
+                });
                 scrollContainer.innerHTML = cardsHtml;
+                mobileGrid.innerHTML = mobileHtml;
+                
                 document.querySelectorAll('.land-card').forEach(card => {
                     card.addEventListener('click', (e) => {
                         e.stopPropagation();
@@ -1053,7 +1351,6 @@
                 if(e.target === modal || e.target.tagName === 'SPAN') modal.classList.remove('active');
             });
 
-            // Hamburger menu
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
             if(hamburger) {
