@@ -1,14 +1,14 @@
-Here is the HTML document for a cryptocurrency exchange landing page, updated to remove OTC references and present a clean, hero-focused design with three client testimonials.
+Here is the updated HTML document with the requested changes: the "Trade Now" button is hidden on mobile, the "Why Hecon Exchange" section is now a standalone section, and clicking testimonial images opens a full-screen viewer.
 ```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>HECON · Crypto Exchange · Trade Securely</title>
+    <title>HECON · USDT Exchange · Global Currencies</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -30,7 +30,6 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             --gold: #F7931A;
             --gold-dark: #E67E22;
             --green: #10B981;
-            --red: #EF4444;
             --text-dark: #1A2C3E;
             --text-mid: #2C3E50;
             --text-light: #5A6E7C;
@@ -78,7 +77,7 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
         }
 
         h2 {
-            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            font-size: clamp(2rem, 7vw, 3.5rem);
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
             -webkit-background-clip: text;
@@ -103,6 +102,7 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
         section {
             position: relative;
             z-index: 2;
+            padding: 5rem 0;
         }
 
         .btn {
@@ -143,22 +143,22 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             box-shadow: 0 15px 30px rgba(247, 147, 26, 0.3);
         }
 
-        /* Header */
+        /* Header - EXACT MATCH to homepage */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 100;
-            background: var(--white-pure);
+            background: rgba(255,255,255,0.98);
             border-bottom: 1px solid var(--border-light);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 2rem;
+            padding: 0.75rem 1rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -166,19 +166,20 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             cursor: pointer;
         }
 
         .logo-img {
             height: 42px;
             width: auto;
+            object-fit: contain;
         }
 
         .company-name {
-            font-weight: 700;
-            font-size: 1.4rem;
-            background: linear-gradient(135deg, var(--blue-dark), var(--black));
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #0A2A44, #000);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -191,7 +192,7 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
         .desktop-nav ul {
             display: flex;
             list-style: none;
-            gap: 2.5rem;
+            gap: 2rem;
             align-items: center;
         }
 
@@ -201,7 +202,6 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             font-weight: 500;
             font-size: 0.95rem;
             transition: 0.2s;
-            letter-spacing: 0.2px;
         }
 
         .desktop-nav a:hover {
@@ -216,19 +216,16 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             position: absolute;
             top: 100%;
             left: 0;
-            background: var(--white-pure);
+            background: white;
             min-width: 200px;
             border-radius: 0.75rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            transition: all 0.3s var(--ease-out-expo);
-            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+            border: 1px solid #DCE5F0;
             z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            padding: 0.5rem 0;
         }
 
         .dropdown:hover .dropdown-menu {
@@ -239,29 +236,27 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
 
         .dropdown-menu li {
             list-style: none;
-            width: 100%;
         }
 
         .dropdown-menu li a {
             display: block;
             padding: 0.75rem 1.5rem;
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            border-bottom: none;
-            width: 100%;
+            color: #2C3E50;
+            border-bottom: 1px solid #DCE5F0;
         }
 
-        .dropdown-menu li a:hover {
-            background: linear-gradient(90deg, rgba(10, 42, 68, 0.05), transparent);
-            color: var(--blue-dark);
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
         }
 
         .hamburger {
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: var(--blue-dark);
+            color: #0A2A44;
             cursor: pointer;
+            display: block;
+            padding: 0.5rem;
         }
 
         .mobile-menu {
@@ -269,15 +264,24 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             top: 68px;
             left: 0;
             width: 100%;
-            background: var(--white-pure);
-            padding: 2rem;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
             display: none;
-            border-bottom: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
+            border-bottom: 1px solid #DCE5F0;
+            z-index: 99;
+            max-height: calc(100vh - 68px);
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
             display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .mobile-menu ul {
@@ -287,19 +291,21 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
         .mobile-menu li a {
             display: block;
             padding: 1rem;
-            color: var(--text-dark);
+            color: #1A2C3E;
             text-decoration: none;
-            font-size: 1.2rem;
-            border-bottom: 1px solid var(--border-light);
+            font-weight: 600;
+            border-bottom: 1px solid #DCE5F0;
         }
 
-        /* Hero Section - Dimmed background via overlay, no opaque text container */
+        /* Hero Section - full screen on mobile */
         .hero-section {
             min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 0;
         }
 
         .hero-bg {
@@ -314,244 +320,221 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             z-index: 0;
         }
 
-        /* Dark gradient overlay to dim the background image */
         .hero-overlay {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.7) 100%);
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.75) 100%);
             z-index: 1;
         }
 
-        /* No opaque container — text sits directly on overlay */
         .hero-content {
             position: relative;
             z-index: 2;
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
+            margin-top: 60px;
         }
 
         .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(2rem, 7vw, 5rem);
             font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
-            opacity: 0;
-            animation: fadeUpIn 0.8s var(--ease-out-expo) forwards;
+            line-height: 1.2;
+            color: var(--white-pure);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
 
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: clamp(0.9rem, 4vw, 1.3rem);
             color: rgba(255, 255, 255, 0.95);
             max-width: 700px;
-            margin: 0 auto 2.5rem;
-            opacity: 0;
-            animation: fadeUpIn 0.8s var(--ease-out-expo) 0.3s forwards;
-            text-shadow: 0 1px 5px rgba(0,0,0,0.4);
+            margin: 0 auto 1.8rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.4);
         }
 
-        .hero-content .btn {
-            opacity: 0;
-            animation: fadeUpIn 0.8s var(--ease-out-expo) 0.7s forwards;
-        }
-
-        @keyframes fadeUpIn {
-            from {
-                opacity: 0;
-                transform: translateY(28px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Crypto Rates Section - dark premium */
-        .rates-section {
-            padding: 4rem 0;
-            background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
-            color: white;
-        }
-
-        .rates-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1.5rem;
-            text-align: center;
-        }
-
-        .rate-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(8px);
-            border-radius: 1.5rem;
-            padding: 1.8rem;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s var(--ease-out-expo), border-color 0.2s;
-        }
-
-        .rate-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--gold);
-        }
-
-        .rate-card i {
-            font-size: 2.8rem;
-            margin-bottom: 0.75rem;
-        }
-
-        .fa-bitcoin { color: #F7931A; }
-        .fa-ethereum { color: #627EEA; }
-        .fa-dollar-sign { color: #3B82F6; }
-        .fa-btc { color: #F0B90B; }
-
-        .rate-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: white;
-        }
-
-        /* Exchange Section (no calculator, no OTC) */
-        .exchange-section {
-            padding: 5rem 0;
-            background: var(--white-pure);
-        }
-
-        .exchange-container {
+        .hero-buttons {
             display: flex;
-            gap: 3rem;
-            align-items: stretch;
+            gap: 1.5rem;
+            justify-content: center;
             flex-wrap: wrap;
         }
 
-        .exchange-info {
-            flex: 1;
-            min-width: 280px;
-            background: linear-gradient(135deg, #F8FAFE, #FFFFFF);
-            padding: 2rem;
-            border-radius: 1.5rem;
-            border: 1px solid var(--border-light);
+        /* Currency strips */
+        .currency-strip {
+            background: linear-gradient(135deg, #0A1A2A 0%, #000000 100%);
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(247, 147, 26, 0.3);
         }
-
-        .exchange-info h2 {
-            margin-bottom: 1rem;
+        .currency-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            align-items: center;
         }
-
-        .exchange-features {
-            list-style: none;
-            margin-top: 1.5rem;
-        }
-
-        .exchange-features li {
+        .currency-pair {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            margin-bottom: 1rem;
-            font-size: 1rem;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.08);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+        .currency-pair i {
+            font-size: 1.2rem;
         }
 
-        .exchange-features li i {
+        /* Exchange focus cards */
+        .exchange-focus {
+            background: var(--white-pure);
+        }
+        .exchange-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .exchange-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1.8rem;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: var(--shadow-sm);
+        }
+        .exchange-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-hover);
+        }
+        .exchange-card i {
+            font-size: 2.6rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .exchange-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--blue-dark);
+        }
+        .exchange-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+        .badge-rate {
+            background: #FEF3E8;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold-dark);
+            display: inline-block;
+        }
+
+        /* Why Hecon Exchange - Standalone Section (before contact) */
+        .why-section {
+            background: linear-gradient(135deg, #0A1A2A 0%, #000000 100%);
+            color: white;
+        }
+        .why-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .why-left {
+            flex: 1.2;
+        }
+        .why-left h2 {
+            background: linear-gradient(135deg, #F7931A, #FFD700);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .why-left p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 1.8rem;
+            max-width: 100%;
+        }
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+            gap: 1rem;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+            color: #E2E8F0;
+        }
+        .feature-list li i {
             color: var(--gold);
             font-size: 1.2rem;
-            width: 28px;
         }
-
-        .contact-card {
-            flex: 1;
-            min-width: 320px;
-            background: linear-gradient(135deg, var(--blue-dark), #0A1A2A);
+        .why-right {
+            flex: 0.8;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
             border-radius: 1.5rem;
             padding: 2rem;
-            color: white;
-            box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .contact-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            color: var(--gold);
-        }
-
-        .contact-card .tagline {
-            font-size: 1rem;
-            margin-bottom: 1.8rem;
-            color: rgba(255,255,255,0.8);
-            border-left: 3px solid var(--gold);
-            padding-left: 1rem;
-        }
-
-        .contact-details {
-            margin: 2rem 0;
-        }
-
-        .contact-details p {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            color: rgba(255,255,255,0.9);
-            margin-bottom: 1rem;
-            font-size: 1rem;
-        }
-
-        .contact-details i {
-            width: 28px;
-            font-size: 1.3rem;
-            color: var(--gold);
-        }
-
-        .min-trade {
-            background: rgba(255,255,255,0.1);
-            padding: 1rem;
-            border-radius: 1rem;
+            border: 1px solid rgba(247,147,26,0.3);
             text-align: center;
-            margin-top: 1rem;
-            font-weight: 600;
-            font-size: 1.1rem;
+        }
+        .why-right .big-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        .why-right p {
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
 
-        /* Testimonials — only 3 cards */
+        /* Testimonials - exactly 3 */
         .testimonials-section {
-            padding: 5rem 0;
             background: linear-gradient(180deg, #F5F7FC 0%, #E9EFF7 100%);
         }
-
         .testimonials-header {
             text-align: center;
             margin-bottom: 3rem;
         }
-
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
         }
-
         .testimonial-card {
             background: var(--white-pure);
             border-radius: 1.5rem;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
-            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
+            transition: transform 0.3s var(--ease-out-expo);
             cursor: pointer;
         }
-
         .testimonial-card:hover {
             transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
         }
-
         .testimonial-img {
             width: 100%;
             height: 280px;
             object-fit: cover;
             display: block;
         }
-
         .testimonial-sentence {
             padding: 1.2rem 1.5rem 1.5rem;
             font-style: italic;
@@ -562,140 +545,117 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             font-weight: 500;
         }
 
-        .testimonial-sentence i {
-            color: var(--gold);
-            margin-right: 0.3rem;
+        /* Lightbox for full image */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+            cursor: pointer;
         }
-
-        /* Services Section — pure crypto exchange (sell/buy) */
-        .services-section {
-            padding: 5rem 0;
-            background: linear-gradient(135deg, #0A1A2A 0%, #000000 100%);
+        .lightbox.active {
+            visibility: visible;
+            opacity: 1;
         }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 2rem;
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
         }
-
-        .service-card {
-            text-align: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #F8FAFE, #FFFFFF);
-            border-radius: 1.25rem;
-            border: 1px solid var(--border-light);
-            transition: all 0.3s var(--ease-out-expo);
-        }
-
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--gold);
-        }
-
-        .service-card i {
-            font-size: 2.5rem;
-            color: var(--gold);
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 0.75rem;
-            color: var(--blue-dark);
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            margin: 0 auto;
-            color: var(--text-mid);
-        }
-
-        /* Dedicated Contact Section before footer */
-        .contact-us-section {
-            padding: 5rem 0;
-            background: var(--white-pure);
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
             color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
         }
 
-        .contact-wrapper {
+        /* Contact Section - WHITE BACKGROUND */
+        .contact-section-white {
+            background: var(--white-pure);
+            padding: 4rem 0;
+            border-top: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .contact-flex {
             display: flex;
             flex-wrap: wrap;
             gap: 3rem;
             align-items: center;
             justify-content: space-between;
         }
-
-        .contact-left {
+        .contact-details-panel {
             flex: 1;
-        }
-
-        .contact-left h2 {
-            background: linear-gradient(135deg, #FFFFFF, #F7931A);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .contact-left p {
-            color: rgba(255,255,255,0.85);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-badge {
-            display: inline-flex;
-            background: rgba(247, 147, 26, 0.2);
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            font-weight: 600;
-            color: var(--gold);
-            margin-bottom: 1.5rem;
-        }
-
-        .contact-right {
-            flex: 1;
-            background: rgba(255,255,255,0.05);
-            backdrop-filter: blur(12px);
-            border-radius: 1.5rem;
+            background: linear-gradient(135deg, #F8FAFE, #FFFFFF);
             padding: 2rem;
-            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 2rem;
+            border: 1px solid var(--border-light);
         }
-
-        .contact-right h4 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--gold);
+        .contact-details-panel h3 {
+            font-size: 2rem;
+            color: var(--blue-dark);
+            margin-bottom: 0.5rem;
         }
-
+        .contact-min {
+            background: #FEF3E8;
+            padding: 0.75rem 1rem;
+            border-radius: 2rem;
+            display: inline-block;
+            margin: 1rem 0;
+            font-weight: 700;
+            color: var(--gold-dark);
+        }
         .contact-info-list {
             list-style: none;
+            margin-top: 1rem;
         }
-
         .contact-info-list li {
             display: flex;
             align-items: center;
             gap: 1rem;
-            margin-bottom: 1.2rem;
+            margin-bottom: 1rem;
             font-size: 1rem;
         }
-
         .contact-info-list i {
-            width: 30px;
+            width: 28px;
+            color: var(--gold);
             font-size: 1.3rem;
-            color: var(--gold);
         }
-
-        .btn-outline-light {
-            background: transparent;
-            border: 1px solid var(--gold);
-            color: var(--gold);
+        .btn-wa {
+            background: #25D366;
+            border: none;
+            color: white;
             margin-top: 1rem;
         }
-
-        .btn-outline-light:hover {
-            background: var(--gold);
-            color: black;
+        .btn-wa:hover {
+            background: #128C7E;
+        }
+        .callout-card {
+            flex: 1;
+            background: linear-gradient(135deg, #0A1A2A, #000000);
+            border-radius: 2rem;
+            padding: 2rem;
+            color: white;
+            border: 1px solid rgba(247,147,26,0.4);
+        }
+        .callout-card h4 {
+            font-size: 1.7rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
         }
 
         /* Footer */
@@ -706,14 +666,12 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             position: relative;
             z-index: 2;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
-
         .footer-brand h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
@@ -722,39 +680,30 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             background-clip: text;
             color: transparent;
         }
-
         .footer-brand p {
             color: #9BB0C4;
             font-size: 0.9rem;
             max-width: 280px;
         }
-
         .footer-links h4, .footer-contact h4 {
             color: #FFFFFF;
             font-size: 1rem;
             margin-bottom: 1.5rem;
-            font-weight: 600;
         }
-
         .footer-links ul {
             list-style: none;
         }
-
         .footer-links li {
             margin-bottom: 0.75rem;
         }
-
         .footer-links a {
             color: #8DA3B8;
             text-decoration: none;
             font-size: 0.9rem;
-            transition: 0.2s;
         }
-
         .footer-links a:hover {
             color: #FFFFFF;
         }
-
         .footer-contact p {
             color: #8DA3B8;
             font-size: 0.9rem;
@@ -763,12 +712,10 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             gap: 0.75rem;
             margin-bottom: 0.75rem;
         }
-
         .footer-contact i {
             color: #FFFFFF;
             width: 20px;
         }
-
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 2rem;
@@ -777,177 +724,195 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
             color: #8DA3B8;
             font-size: 0.85rem;
         }
-
         .reveal {
             opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+            transform: translateY(28px);
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
         }
         .reveal.revealed {
             opacity: 1;
             transform: translateY(0);
         }
 
+        /* MOBILE OVERRIDES (exactly matching homepage) */
+        @media (max-width: 767px) {
+            body { overflow-x: hidden; }
+            .container { padding: 0 1.5rem; }
+            section { padding: 3rem 0; }
+            .header-container { padding: 0.75rem 1rem; }
+            .logo-container { flex: 1; gap: 0.75rem; }
+            .logo-img { height: 42px; }
+            .company-name { font-size: 1.6rem; text-align: center; flex: 1; font-weight: 800; white-space: normal; }
+            .hamburger { margin-left: auto; }
+            .hero-section { height: 100vh; min-height: -webkit-fill-available; }
+            .hero-bg { background-size: cover; background-position: center; }
+            .hero-content { padding: 0 1.5rem; margin-top: 60px; }
+            .hero-content h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); margin-bottom: 1rem; }
+            .hero-content p { font-size: clamp(0.85rem, 3.8vw, 1rem); margin-bottom: 1.5rem; }
+            .hero-buttons { gap: 1rem; flex-direction: column; align-items: center; }
+            /* HIDE "TRADE NOW" BUTTON ON MOBILE ONLY */
+            .hero-buttons .btn-gold { display: none; }
+            .hero-buttons .btn-primary { padding: 0.64rem 1.6rem; font-size: 0.76rem; gap: 0.6rem; width: 70%; justify-content: center; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .contact-flex { flex-direction: column; }
+            .why-container { flex-direction: column; }
+            .feature-list { grid-template-columns: 1fr; }
+            .currency-grid { gap: 1rem; }
+            .currency-pair { font-size: 0.7rem; padding: 0.2rem 0.8rem; }
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .desktop-nav { display: none !important; }
+            .hamburger { display: block !important; }
+            .hero-buttons .btn { padding: 0.7rem 1.8rem; font-size: 0.85rem; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+
         @media (min-width: 1025px) {
             .desktop-nav { display: block; }
             .hamburger { display: none !important; }
-        }
-        @media (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .exchange-container { flex-direction: column; }
-            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-        }
-        @media (max-width: 768px) {
-            .header-container { padding: 0.75rem 1rem; }
-            .company-name { font-size: 1.2rem; }
-            .desktop-nav { display: none !important; }
-            .hamburger { display: block !important; }
-            .hero-section { min-height: 80vh; }
-            .hero-content h1 { font-size: clamp(2rem, 6vw, 3rem); }
-            .hero-content p { font-size: 1rem; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .testimonials-grid { grid-template-columns: 1fr; }
-            .rates-grid { grid-template-columns: repeat(2, 1fr); }
         }
     </style>
 </head>
 <body>
     <header>
-    <div class="header-container">
-        <div class="logo-container" id="logoHomeLink">
-            <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
-            <div class="company-name">HECON GROUP</div>
+        <div class="header-container">
+            <div class="logo-container" id="logoHomeLink">
+                <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
+                <div class="company-name">HECON GROUP</div>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Real Estate</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="land.html">Lands</a></li>
+                            <li><a href="housing.html">Housing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cac.html">Business Registration</a></li>
+                    <li><a href="laptop.html">Gadgets</a></li>
+                    <li><a href="crypto.html">Crypto Exchange</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
         </div>
-        <nav class="desktop-nav">
+        <div class="mobile-menu" id="mobileMenu">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Real Estate</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="land.html">Lands</a></li>
-                        <li><a href="housing.html">Housing</a></li>
-                    </ul>
-                </li>
+                <li><a href="land.html">Lands</a></li>
+                <li><a href="housing.html">Housing</a></li>
                 <li><a href="cac.html">Business Registration</a></li>
                 <li><a href="laptop.html">Gadgets</a></li>
                 <li><a href="crypto.html">Crypto Exchange</a></li>
             </ul>
-        </nav>
-        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-        <ul>
-            <li><a href="index">Home</a></li>
-            <li><a href="land.html">Lands</a></li>
-            <li><a href="housing.html">Housing</a></li>
-            <li><a href="cac.html">Business Registration</a></li>
-            <li><a href="laptop.html">Gadgets</a></li>
-            <li><a href="crypto.html">Crypto Exchange</a></li>
-        </ul>
-    </div>
-</header>
-    <section class="hero-section" id="home">
+        </div>
+    </header>
+
+    <section class="hero-section">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>TRADE CRYPTO WITH CONFIDENCE</h1>
-            <p>Instant crypto exchange | Best rates in Nigeria | Secure & Reliable</p>
-            <div>
-                <a href="#exchangeSection" class="btn btn-gold"><i class="fab fa-bitcoin"></i> START TRADING</a>
+            <h1>USDT EXCHANGE<br>GLOBAL CURRENCIES</h1>
+            <p>Swap GBP · CAD · RMB · NGN to USDT at competitive rates. Fast, secure, and reliable.</p>
+            <div class="hero-buttons">
+                <!-- TRADE NOW button hidden on mobile via CSS, visible on desktop -->
+                <a href="#contactSectionNow" class="btn btn-gold"><i class="fab fa-usd"></i> TRADE NOW</a>
+                <a href="#exchangeCards" class="btn btn-primary"><i class="fas fa-arrow-right"></i> HOW IT WORKS</a>
             </div>
         </div>
     </section>
 
-    <!-- Crypto Rates (no prices/percentages) -->
-    <section class="rates-section reveal" id="rates">
+    <!-- Currency strip -->
+    <div class="currency-strip reveal">
         <div class="container">
-            <div class="rates-grid">
-                <div class="rate-card"><i class="fab fa-bitcoin"></i><h3>Bitcoin (BTC)</h3></div>
-                <div class="rate-card"><i class="fab fa-ethereum"></i><h3>Ethereum (ETH)</h3></div>
-                <div class="rate-card"><i class="fas fa-dollar-sign"></i><h3>Tether (USDT)</h3></div>
-                <div class="rate-card"><i class="fab fa-btc"></i><h3>BNB (BNB)</h3></div>
+            <div class="currency-grid">
+                <div class="currency-pair"><i class="fas fa-pound-sign"></i> GBP → USDT</div>
+                <div class="currency-pair"><i class="fas fa-dollar-sign"></i> CAD → USDT</div>
+                <div class="currency-pair"><i class="fas fa-renminbi"></i> RMB → USDT</div>
+                <div class="currency-pair"><i class="fas fa-naira-sign"></i> NGN → USDT</div>
+                <div class="currency-pair"><i class="fas fa-exchange-alt"></i> USDT → NGN</div>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- Exchange Section with contact card (no calculator) -->
-    <section class="exchange-section reveal" id="exchangeSection">
-        <div class="container">
-            <div class="exchange-container">
-                <div class="exchange-info">
-                    <h2>Instant Crypto Exchange</h2>
-                    <p>Buy and sell cryptocurrency instantly with the best rates in Nigeria. Zero hidden fees, secure transactions. Minimum trade: $10,000 USD equivalent.</p>
-                    <ul class="exchange-features">
-                        <li><i class="fas fa-check-circle"></i> Instant settlement (local bank)</li>
-                        <li><i class="fas fa-shield-alt"></i> Secure & insured custody</li>
-                        <li><i class="fas fa-chart-line"></i> Real-time market rates</li>
-                        <li><i class="fas fa-hand-holding-usd"></i> No hidden fees, transparent pricing</li>
-                        <li><i class="fas fa-clock"></i> 24/7 customer support</li>
-                    </ul>
-                </div>
-                <div class="contact-card">
-                    <h3>CRYPTO DESK</h3>
-                    <div class="tagline">Exchange crypto for Naira or Naira for crypto</div>
-                    <div class="contact-details">
-                        <p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p>
-                        <p><i class="fas fa-phone-alt"></i> +234 800 123 4567</p>
-                        <p><i class="fas fa-envelope"></i> crypto@hecon.ng</p>
-                    </div>
-                    <div class="min-trade">
-                        💰 Minimum trade: $10,000 USD
-                    </div>
-                    <button class="btn btn-primary" style="width:100%; margin-top:1.5rem;" id="contactCryptoBtn"><i class="fab fa-bitcoin"></i> CONTACT US</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials: only 3 images with short sentences -->
-    <section class="testimonials-section reveal" id="testimonials">
+    <!-- Exchange focus cards -->
+    <section class="exchange-focus reveal" id="exchangeCards">
         <div class="container">
             <div class="testimonials-header">
-                <h2>What Our Clients Say</h2>
-                <p>Trusted by crypto traders across Nigeria</p>
+                <h2>Exchange USDT with Ease</h2>
+                <p>Minimum trade: <strong>$10,000 USD equivalent</strong> | Competitive rates, instant settlement</p>
+            </div>
+            <div class="exchange-grid">
+                <div class="exchange-card"><i class="fas fa-pound-sign"></i><h3>GBP → USDT</h3><p>Convert British Pounds to Tether (USDT) with institutional rates. Fast execution.</p><span class="badge-rate">Best GBP/USDT rates</span></div>
+                <div class="exchange-card"><i class="fas fa-dollar-sign"></i><h3>CAD → USDT</h3><p>Canadian Dollar to USDT. Secure OTC desk for high-volume trades.</p><span class="badge-rate">CAD liquidity pool</span></div>
+                <div class="exchange-card"><i class="fas fa-renminbi"></i><h3>RMB → USDT</h3><p>Renminbi to USDT exchange. Fast settlement, compliant and transparent.</p><span class="badge-rate">CNY/USDT best bid</span></div>
+                <div class="exchange-card"><i class="fas fa-naira-sign"></i><h3>NGN → USDT</h3><p>Instant Naira to USDT. Fund your wallet or cash out seamlessly.</p><span class="badge-rate">₦ to USDT instant</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials section with 3 images -->
+    <section class="testimonials-section reveal">
+        <div class="container">
+            <div class="testimonials-header">
+                <h2>Trusted by Global Traders</h2>
+                <p>Real feedback from our exchange clients</p>
             </div>
             <div class="testimonials-grid" id="testimonialsGrid"></div>
         </div>
     </section>
 
-    <!-- Services Section: Pure Crypto Exchange (sell/buy only) -->
-    <section class="services-section reveal">
+    <!-- WHY HECON EXCHANGE - STANDALONE SECTION (before contact) -->
+    <section class="why-section reveal">
         <div class="container">
-            <div class="testimonials-header">
-                <h2>Our Crypto Exchange Services</h2>
-                <p>Seamless conversion between cryptocurrency and fiat money</p>
-            </div>
-            <div class="services-grid">
-                <div class="service-card"><i class="fas fa-money-bill-wave"></i><h3>Sell Crypto for NGN</h3><p>Sell Bitcoin, Ethereum, USDT and receive instant Naira to any Nigerian bank.</p></div>
-                <div class="service-card"><i class="fas fa-coins"></i><h3>Buy Crypto with Naira</h3><p>Fund your wallet instantly — buy BTC, ETH, USDT at competitive rates.</p></div>
-                <div class="service-card"><i class="fas fa-exchange-alt"></i><h3>Crypto-to-Crypto Swap</h3><p>Swap between major assets with zero slippage for high volumes.</p></div>
-                <div class="service-card"><i class="fas fa-laptop-code"></i><h3>Large Volume Desk</h3><p>Dedicated support for trades above $50k with personalized service.</p></div>
+            <div class="why-container">
+                <div class="why-left">
+                    <h2>Why HECON Exchange?</h2>
+                    <p>We specialize exclusively in USDT-to-fiat and fiat-to-USDT conversions for global currencies. No complexity, just premium service.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Competitive spreads on GBP/CAD/RMB/NGN → USDT</li>
+                        <li><i class="fas fa-check-circle"></i> No hidden fees, full transparency</li>
+                        <li><i class="fas fa-check-circle"></i> Dedicated account manager for $50k+ trades</li>
+                        <li><i class="fas fa-check-circle"></i> Instant local settlement (bank/wire)</li>
+                        <li><i class="fas fa-check-circle"></i> 24/6 live support & real-time quotes</li>
+                    </ul>
+                </div>
+                <div class="why-right">
+                    <div class="big-number">$10k</div>
+                    <p>minimum trade amount</p>
+                    <div style="margin: 1rem 0; border-top:1px solid rgba(255,255,255,0.2); width:50px; margin-left:auto; margin-right:auto;"></div>
+                    <div class="big-number" style="font-size:2rem;">⭐ 4.9/5</div>
+                    <p>client satisfaction</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Dedicated Contact Section before footer -->
-    <section class="contact-us-section reveal" id="contactFooter">
+    <!-- Contact Section - WHITE BACKGROUND -->
+    <section class="contact-section-white reveal" id="contactSectionNow">
         <div class="container">
-            <div class="contact-wrapper">
-                <div class="contact-left">
-                    <div class="contact-badge"><i class="fas fa-bolt"></i> 24/7 Support</div>
-                    <h2>Ready to Exchange?</h2>
-                    <p>Minimum trade $10,000. Speak directly with our crypto desk for instant execution and best rates.</p>
-                    <a href="https://wa.me/2348008901234" class="btn btn-gold"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-                </div>
-                <div class="contact-right">
-                    <h4><i class="fas fa-headset"></i> Direct Line</h4>
+            <div class="contact-flex">
+                <div class="contact-details-panel">
+                    <h3><i class="fas fa-coins"></i> USDT Desk</h3>
+                    <div class="contact-min">💰 Minimum trade: $10,000 USD</div>
+                    <p>Reach out for live quotes and instant settlement. Our crypto desk operates 24/6.</p>
                     <ul class="contact-info-list">
-                        <li><i class="fas fa-phone-alt"></i> +234 800 123 4567</li>
                         <li><i class="fab fa-whatsapp"></i> +234 800 890 1234</li>
+                        <li><i class="fas fa-phone-alt"></i> +234 800 123 4567</li>
                         <li><i class="fas fa-envelope"></i> crypto@hecon.ng</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria (By appointment)</li>
+                        <li><i class="fas fa-clock"></i> Response within 30 minutes</li>
                     </ul>
-                    <button class="btn btn-outline-light" id="copyEmailBtn"><i class="far fa-copy"></i> Copy Email</button>
+                    <a href="https://wa.me/2348008901234" class="btn btn-wa" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp Us</a>
+                </div>
+                <div class="callout-card">
+                    <h4>Instant Execution</h4>
+                    <p>Get real-time USDT quotes for GBP, CAD, RMB, NGN. Fast settlement to your local bank or crypto wallet.</p>
+                    <div style="margin-top: 1.5rem;">
+                        <a href="tel:+2348001234567" class="btn btn-primary" style="background: var(--gold); color:black;"><i class="fas fa-headset"></i> Call Desk</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -956,85 +921,110 @@ Here is the HTML document for a cryptocurrency exchange landing page, updated to
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand"><h3>HECON ESTATE</h3><p>Premium crypto exchange, real estate & business solutions. Trusted since 2016.</p></div>
-                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#exchangeSection">Exchange</a></li><li><a href="#testimonials">Testimonials</a></li><li><a href="#contactFooter">Contact</a></li></ul></div>
-                <div class="footer-links"><h4>Services</h4><ul><li><a href="#">Crypto Exchange</a></li><li><a href="re.html">Real Estate</a></li><li><a href="cac.html">CAC Registration</a></li><li><a href="laptop.html">Gadgets</a></li></ul></div>
+                <div class="footer-brand"><h3>HECON EXCHANGE</h3><p>Global USDT & fiat exchange. Minimum $10k. GBP | CAD | RMB | NGN.</p></div>
+                <div class="footer-links"><h4>Exchange</h4><ul><li><a href="#">GBP to USDT</a></li><li><a href="#">CAD to USDT</a></li><li><a href="#">RMB to USDT</a></li><li><a href="#">NGN to USDT</a></li></ul></div>
+                <div class="footer-links"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="#">Rates</a></li><li><a href="#contactSectionNow">Contact</a></li></ul></div>
                 <div class="footer-contact"><h4>Contact</h4><p><i class="fas fa-phone"></i> +234 800 123 4567</p><p><i class="fas fa-envelope"></i> crypto@hecon.ng</p><p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p></div>
             </div>
-            <div class="footer-bottom"><div>© 2026 HECON · Crypto Exchange. Minimum trade $10,000.</div></div>
+            <div class="footer-bottom"><div>© 2026 HECON · USDT Exchange | Minimum trade $10,000 USD equivalent.</div></div>
         </div>
     </footer>
 
+    <!-- Lightbox for full image -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightboxImg" src="" alt="Full size testimonial">
+    </div>
+
     <script>
-        (function(){
-            // Exactly 3 testimonials with images H15, H16, H17
-            const testimonialsData = [
-                { img: "H15.jpeg", text: "“Fastest settlement I've experienced for crypto trades.”" },
-                { img: "H16.jpeg", text: "“Their exchange desk handles large volumes seamlessly. Highly recommended.”" },
-                { img: "H17.jpeg", text: "“Best rates and professional service across Nigeria.”" }
+        (function() {
+            // 3 testimonials with images H15, H16, H17
+            const testimonials = [
+                { img: "H15.jpeg", text: "“Effortless GBP to USDT conversion with excellent rates. Highly professional.”" },
+                { img: "H16.jpeg", text: "“Best CAD to USDT rates I've found. Settlement within hours.”" },
+                { img: "H17.jpeg", text: "“Their NGN to USDT desk is a lifesaver for cross-border business.”" }
             ];
             const grid = document.getElementById('testimonialsGrid');
             function buildTestimonials() {
                 let html = '';
-                testimonialsData.forEach(t => {
+                testimonials.forEach((t, idx) => {
                     html += `
-                        <div class="testimonial-card">
-                            <img src="${t.img}" alt="Client testimonial" class="testimonial-img" onerror="this.src='https://via.placeholder.com/400x280?text=Testimonial'">
+                        <div class="testimonial-card" data-img="${t.img}">
+                            <img src="${t.img}" alt="client" class="testimonial-img" onerror="this.src='https://via.placeholder.com/400x280?text=Client'">
                             <div class="testimonial-sentence"><i class="fas fa-quote-left"></i> ${t.text}</div>
                         </div>
                     `;
                 });
                 grid.innerHTML = html;
+                // Attach click event to each testimonial card for full image view
+                document.querySelectorAll('.testimonial-card').forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        // Don't trigger if clicked on sentence specifically, but fine overall
+                        const imgElement = card.querySelector('.testimonial-img');
+                        if(imgElement && imgElement.src) {
+                            showFullImage(imgElement.src);
+                        }
+                    });
+                });
             }
             buildTestimonials();
 
-            document.getElementById('contactCryptoBtn')?.addEventListener('click', () => {
-                alert("📞 Contact our crypto desk directly: +234 800 890 1234 or email crypto@hecon.ng\nMinimum trade $10,000.");
-            });
-            document.getElementById('copyEmailBtn')?.addEventListener('click', () => {
-                navigator.clipboard.writeText("crypto@hecon.ng");
-                alert("Email address copied: crypto@hecon.ng");
+            // Lightbox logic
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            window.showFullImage = function(src) {
+                lightboxImg.src = src;
+                lightbox.classList.add('active');
+            };
+            window.closeLightbox = function() {
+                lightbox.classList.remove('active');
+                setTimeout(() => { lightboxImg.src = ''; }, 300);
+            };
+            // Close on escape key
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
             });
 
-            // Mobile menu
+            // Mobile menu logic
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
             if(hamburger) {
-                hamburger.addEventListener('click', () => {
+                hamburger.addEventListener('click', ()=>{
                     mobileMenu.classList.toggle('active');
                     hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
                 });
             }
             document.querySelectorAll('.mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
+                link.addEventListener('click', ()=>{
                     mobileMenu.classList.remove('active');
                     if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
                 });
             });
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if(href === '#') return;
-                    const target = document.querySelector(href);
+                    const id = this.getAttribute('href');
+                    if(id === '#' || id === '') return;
+                    const target = document.querySelector(id);
                     if(target) {
                         e.preventDefault();
                         window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
                     }
                 });
             });
-            document.getElementById('logoHomeLink')?.addEventListener('click', () => { window.location.href = 'index.html'; });
-            
-            const observer = new IntersectionObserver((entries) => {
+            document.getElementById('logoHomeLink')?.addEventListener('click', ()=>{
+                window.location.href = 'index.html';
+            });
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if(entry.isIntersecting) entry.target.classList.add('revealed');
                 });
-            }, { threshold: 0.2 });
-            document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
             setTimeout(() => {
                 document.querySelectorAll('.reveal').forEach(el => {
                     if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed');
                 });
-            }, 200);
+            }, 150);
         })();
     </script>
 </body>

@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>HECON · LAPTOP SALES · Premium Devices</title>
+    <title>HECON · USDT Exchange · Global Currencies</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -26,6 +26,9 @@
             --blue-dark: #0A2A44;
             --blue-accent: #2C5A8C;
             --blue-soft-accent: #3B6E9E;
+            --gold: #F7931A;
+            --gold-dark: #E67E22;
+            --green: #10B981;
             --text-dark: #1A2C3E;
             --text-mid: #2C3E50;
             --text-light: #5A6E7C;
@@ -73,7 +76,7 @@
         }
 
         h2 {
-            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            font-size: clamp(2rem, 7vw, 3.5rem);
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
             -webkit-background-clip: text;
@@ -98,6 +101,7 @@
         section {
             position: relative;
             z-index: 2;
+            padding: 5rem 0;
         }
 
         .btn {
@@ -127,22 +131,33 @@
             box-shadow: 0 15px 30px rgba(10, 42, 68, 0.3);
         }
 
-        /* Header - Pure White */
+        .btn-gold {
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: white;
+            box-shadow: 0 8px 20px rgba(247, 147, 26, 0.25);
+        }
+
+        .btn-gold:hover {
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(247, 147, 26, 0.3);
+        }
+
+        /* Header - EXACT MATCH to homepage */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 100;
-            background: var(--white-pure);
+            background: rgba(255,255,255,0.98);
             border-bottom: 1px solid var(--border-light);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 2rem;
+            padding: 0.75rem 1rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -150,7 +165,7 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             cursor: pointer;
         }
 
@@ -161,9 +176,9 @@
         }
 
         .company-name {
-            font-weight: 700;
-            font-size: 1.4rem;
-            background: linear-gradient(135deg, var(--blue-dark), var(--black));
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #0A2A44, #000);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -196,23 +211,19 @@
             position: relative;
         }
 
-        .dropdown > a .fa-chevron-down {
-            display: none;
-        }
-
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
-            background: var(--white-pure);
+            background: white;
             min-width: 200px;
             border-radius: 0.75rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            transition: all 0.3s var(--ease-out-expo);
-            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+            border: 1px solid #DCE5F0;
             z-index: 1000;
         }
 
@@ -229,26 +240,22 @@
         .dropdown-menu li a {
             display: block;
             padding: 0.75rem 1.5rem;
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border-light);
+            color: #2C3E50;
+            border-bottom: 1px solid #DCE5F0;
         }
 
         .dropdown-menu li:last-child a {
             border-bottom: none;
         }
 
-        .dropdown-menu li a:hover {
-            background: linear-gradient(90deg, rgba(10, 42, 68, 0.05), transparent);
-            color: var(--blue-dark);
-        }
-
         .hamburger {
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: var(--blue-dark);
+            color: #0A2A44;
             cursor: pointer;
+            display: block;
+            padding: 0.5rem;
         }
 
         .mobile-menu {
@@ -256,11 +263,11 @@
             top: 68px;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255,255,255,0.98);
             backdrop-filter: blur(10px);
             padding: 1.5rem;
             display: none;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid #DCE5F0;
             z-index: 99;
             max-height: calc(100vh - 68px);
             overflow-y: auto;
@@ -286,17 +293,18 @@
             color: #1A2C3E;
             text-decoration: none;
             font-weight: 600;
-            font-size: 1rem;
             border-bottom: 1px solid #DCE5F0;
         }
 
-        /* Hero Section */
+        /* Hero Section - full screen on mobile */
         .hero-section {
             min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 0;
         }
 
         .hero-bg {
@@ -305,7 +313,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(135deg, rgba(10, 42, 68, 0.85) 0%, rgba(0, 0, 0, 0.75) 100%), url('H15.jpeg');
+            background-image: url('https://images.pexels.com/photos/7567445/pexels-photo-7567445.jpeg?auto=compress&cs=tinysrgb&w=1600');
             background-size: cover;
             background-position: center;
             z-index: 0;
@@ -317,7 +325,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.75) 100%);
             z-index: 1;
         }
 
@@ -327,154 +335,255 @@
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
-            padding: 0 2rem;
+            padding: 0 1.5rem;
+            margin-top: 60px;
         }
 
         .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(2rem, 7vw, 5rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.2;
             color: var(--white-pure);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
         }
 
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: clamp(0.9rem, 4vw, 1.3rem);
             color: rgba(255, 255, 255, 0.95);
             max-width: 700px;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 1.8rem;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.4);
         }
 
-        /* Gallery Section */
-        .gallery-section {
-            padding: 5rem 0;
-            background: #DCE5F0;
-            position: relative;
-            overflow: hidden;
+        .hero-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
-        .gallery-header {
+        /* Currency strips */
+        .currency-strip {
+            background: linear-gradient(135deg, #0A1A2A 0%, #000000 100%);
+            padding: 1.2rem 0;
+            border-bottom: 1px solid rgba(247, 147, 26, 0.3);
+        }
+        .currency-grid {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .currency-pair {
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.08);
+            padding: 0.4rem 1rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            color: var(--gold);
+            font-size: 0.9rem;
+        }
+        .currency-pair i {
+            font-size: 1.2rem;
+        }
+
+        /* Exchange focus cards */
+        .exchange-focus {
+            background: var(--white-pure);
+        }
+        .exchange-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .exchange-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 1.8rem;
+            padding: 2rem;
             text-align: center;
-            margin-bottom: 3rem;
+            border: 1px solid var(--border-light);
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: var(--shadow-sm);
+        }
+        .exchange-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--gold);
+            box-shadow: var(--shadow-hover);
+        }
+        .exchange-card i {
+            font-size: 2.6rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        .exchange-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 0.75rem;
+            color: var(--blue-dark);
+        }
+        .exchange-card p {
+            font-size: 0.95rem;
+            margin-bottom: 1.2rem;
+        }
+        .badge-rate {
+            background: #FEF3E8;
+            padding: 0.4rem 0.8rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gold-dark);
+            display: inline-block;
         }
 
-        .gallery-header h2 {
-            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+        /* Why Hecon Exchange - Standalone Section */
+        .why-section {
+            background: linear-gradient(135deg, #0A1A2A 0%, #000000 100%);
+            color: white;
+        }
+        .why-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .why-left {
+            flex: 1.2;
+        }
+        .why-left h2 {
+            background: linear-gradient(135deg, #F7931A, #FFD700);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            margin-bottom: 1rem;
+        }
+        .why-left p {
+            color: rgba(255,255,255,0.85);
+            margin-bottom: 1.8rem;
+            max-width: 100%;
+        }
+        .feature-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
+            gap: 1rem;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1rem;
+            color: #E2E8F0;
+        }
+        .feature-list li i {
+            color: var(--gold);
+            font-size: 1.2rem;
+        }
+        .why-right {
+            flex: 0.8;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            border: 1px solid rgba(247,147,26,0.3);
+            text-align: center;
+        }
+        .why-right .big-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--gold);
+        }
+        .why-right p {
+            color: white;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
         }
 
-        .gallery-header p {
-            color: var(--text-mid);
-            margin: 0 auto;
+        /* Testimonials - exactly 3 */
+        .testimonials-section {
+            background: linear-gradient(180deg, #F5F7FC 0%, #E9EFF7 100%);
         }
-
-        /* Desktop horizontal scroll */
-        .horizontal-scroll {
-            width: 100%;
-            overflow-x: auto;
-            overflow-y: hidden;
-            white-space: nowrap;
-            scroll-behavior: smooth;
-            scrollbar-width: thin;
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: 3rem;
         }
-
-        .horizontal-scroll::-webkit-scrollbar {
-            height: 6px;
-        }
-
-        .horizontal-scroll::-webkit-scrollbar-track {
-            background: var(--border-light);
-            border-radius: 10px;
-        }
-
-        .horizontal-scroll::-webkit-scrollbar-thumb {
-            background: var(--blue-accent);
-            border-radius: 10px;
-        }
-
-        .scroll-container {
-            display: inline-flex;
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            padding: 1rem 2rem;
         }
-
-        /* Mobile vertical grid */
-        .mobile-vertical-grid {
-            display: none;
-        }
-
-        /* Laptop Card */
-        .laptop-card {
-            width: 408px;
+        .testimonial-card {
             background: var(--white-pure);
             border-radius: 1.5rem;
             overflow: hidden;
-            border: 1px solid var(--border-light);
             box-shadow: var(--shadow-sm);
-            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
-            white-space: normal;
-            flex-shrink: 0;
+            transition: transform 0.3s var(--ease-out-expo);
             cursor: pointer;
         }
-
-        .laptop-card:hover {
-            transform: translateY(-10px);
+        .testimonial-card:hover {
+            transform: translateY(-6px);
             box-shadow: var(--shadow-hover);
-            border-color: var(--blue-soft-accent);
         }
-
-        .laptop-card img {
+        .testimonial-img {
             width: 100%;
-            height: 264px;
+            height: 280px;
             object-fit: cover;
-            background: #f5f5f5;
+            display: block;
         }
-
-        .laptop-card-content {
-            padding: 1.5rem;
-        }
-
-        .laptop-card-content h3 {
-            color: var(--blue-dark);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .laptop-card-content .price {
-            color: var(--blue-accent);
-            font-size: 1.5rem;
-            font-weight: 800;
-            margin: 0.5rem 0;
-        }
-
-        .laptop-specs {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1rem;
-        }
-
-        .laptop-specs span {
-            background: rgba(10, 42, 68, 0.08);
-            padding: 0.35rem 0.9rem;
-            border-radius: 2rem;
-            font-size: 0.8rem;
-            color: var(--blue-dark);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.4rem;
+        .testimonial-sentence {
+            padding: 1.2rem 1.5rem 1.5rem;
+            font-style: italic;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            background: white;
+            border-top: 1px solid var(--border-light);
             font-weight: 500;
         }
 
-        .laptop-specs span i {
-            font-size: 0.75rem;
-            color: var(--blue-accent);
+        /* Lightbox for full image */
+        .lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 10000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0.2s, opacity 0.2s;
+            cursor: pointer;
+        }
+        .lightbox.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 1rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
         }
 
-        /* Contact Section - Matching Business Page Style (Call & WhatsApp buttons) */
+        /* Contact Section - EXACT MATCH to laptop page style (Call & WhatsApp buttons) */
         .contact-section {
             padding: 5rem 2rem;
             background: var(--white-pure);
@@ -563,14 +672,12 @@
             position: relative;
             z-index: 2;
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1.5fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
-
         .footer-brand h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
@@ -579,39 +686,30 @@
             background-clip: text;
             color: transparent;
         }
-
         .footer-brand p {
             color: #9BB0C4;
             font-size: 0.9rem;
             max-width: 280px;
         }
-
         .footer-links h4, .footer-contact h4 {
             color: #FFFFFF;
             font-size: 1rem;
             margin-bottom: 1.5rem;
-            font-weight: 600;
         }
-
         .footer-links ul {
             list-style: none;
         }
-
         .footer-links li {
             margin-bottom: 0.75rem;
         }
-
         .footer-links a {
             color: #8DA3B8;
             text-decoration: none;
             font-size: 0.9rem;
-            transition: 0.2s;
         }
-
         .footer-links a:hover {
             color: #FFFFFF;
         }
-
         .footer-contact p {
             color: #8DA3B8;
             font-size: 0.9rem;
@@ -620,12 +718,10 @@
             gap: 0.75rem;
             margin-bottom: 0.75rem;
         }
-
         .footer-contact i {
             color: #FFFFFF;
             width: 20px;
         }
-
         .footer-bottom {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 2rem;
@@ -634,348 +730,256 @@
             color: #8DA3B8;
             font-size: 0.85rem;
         }
-
-        /* Reveal Animation */
-        .gallery-section, .contact-section {
+        .reveal {
             opacity: 0;
-            transform: translateY(35px);
-            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
+            transform: translateY(28px);
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
         }
-        .gallery-section.revealed, .contact-section.revealed {
+        .reveal.revealed {
             opacity: 1;
             transform: translateY(0);
         }
 
-        /* Modal for full image */
-        .image-modal {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.9);
-            z-index: 2000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-        }
-        .image-modal.active {
-            opacity: 1;
-            visibility: visible;
-        }
-        .image-modal img {
-            max-width: 90vw;
-            max-height: 90vh;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-
-        /* ========== DESKTOP (1025px+) ========== */
-        @media (min-width: 1025px) {
-            .desktop-nav { display: block; }
-            .hamburger { display: none !important; }
-            .mobile-vertical-grid { display: none; }
-            .horizontal-scroll { display: block; }
+        /* MOBILE OVERRIDES (exactly matching homepage) */
+        @media (max-width: 767px) {
+            body { overflow-x: hidden; }
+            .container { padding: 0 1.5rem; }
+            section { padding: 3rem 0; }
+            .header-container { padding: 0.75rem 1rem; }
+            .logo-container { flex: 1; gap: 0.75rem; }
+            .logo-img { height: 42px; }
+            .company-name { font-size: 1.6rem; text-align: center; flex: 1; font-weight: 800; white-space: normal; }
+            .hamburger { margin-left: auto; }
+            .hero-section { height: 100vh; min-height: -webkit-fill-available; }
+            .hero-bg { background-size: cover; background-position: center; }
+            .hero-content { padding: 0 1.5rem; margin-top: 60px; }
+            .hero-content h1 { font-size: clamp(1.8rem, 6vw, 2.8rem); margin-bottom: 1rem; }
+            .hero-content p { font-size: clamp(0.85rem, 3.8vw, 1rem); margin-bottom: 1.5rem; }
+            .hero-buttons { gap: 1rem; flex-direction: column; align-items: center; }
+            /* HIDE "TRADE NOW" BUTTON ON MOBILE ONLY */
+            .hero-buttons .btn-gold { display: none; }
+            .hero-buttons .btn-primary { padding: 0.64rem 1.6rem; font-size: 0.76rem; gap: 0.6rem; width: 70%; justify-content: center; }
+            .testimonials-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .why-container { flex-direction: column; }
+            .feature-list { grid-template-columns: 1fr; }
+            .currency-grid { gap: 1rem; }
+            .currency-pair { font-size: 0.7rem; padding: 0.2rem 0.8rem; }
+            
+            /* Contact section mobile matching laptop page */
+            .contact-section { padding: 3rem 1.5rem; }
+            .contact-section p { font-size: 1rem; margin-bottom: 1.5rem; }
+            .contact-buttons { flex-direction: column; align-items: center; gap: 1rem; }
+            .btn-call, .btn-whatsapp { width: 100%; max-width: 280px; justify-content: center; padding: 0.85rem 1.5rem; font-size: 0.9rem; }
         }
 
-        /* ========== TABLET (768px - 1024px) ========== */
         @media (min-width: 768px) and (max-width: 1024px) {
             .desktop-nav { display: none !important; }
             .hamburger { display: block !important; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
-            .laptop-card { width: 336px; }
-            .laptop-card img { height: 220px; }
-            .horizontal-scroll { display: block; }
-            .mobile-vertical-grid { display: none; }
+            .hero-buttons .btn { padding: 0.7rem 1.8rem; font-size: 0.85rem; }
+            .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
         }
 
-        /* ========== MOBILE (max-width: 767px) ========== */
-        @media (max-width: 767px) {
-            .header-container { 
-                padding: 0.75rem 1rem;
-                position: relative;
-            }
-            .logo-container {
-                flex: 1;
-                gap: 0.75rem;
-            }
-            .logo-img { height: 42px; }
-            .company-name {
-                font-size: 1.6rem;
-                text-align: center;
-                flex: 1;
-                font-weight: 800;
-                position: static;
-                transform: none;
-                white-space: normal;
-            }
-            .hamburger { margin-left: auto; }
-            .desktop-nav { display: none !important; }
-            .hamburger { display: block !important; }
-            
-            /* Hero section - full screen coverage on mobile */
-            .hero-section { 
-                min-height: 100vh; 
-                height: 100vh;
-            }
-            .hero-bg {
-                background-image: linear-gradient(135deg, rgba(10, 42, 68, 0.85) 0%, rgba(0, 0, 0, 0.75) 100%), url('H15.jpeg');
-                background-size: cover;
-                background-position: center;
-            }
-            .hero-content { padding: 0 1.5rem; }
-            .hero-content h1 { font-size: clamp(2rem, 6vw, 3rem); margin-bottom: 1rem; }
-            .hero-content p { font-size: 1rem; margin-bottom: 1.5rem; }
-            .hero-content .btn { padding: 0.64rem 1.6rem; font-size: 0.76rem; gap: 0.6rem; }
-            .hero-content .btn i { font-size: 0.9rem; }
-            
-            .gallery-section { padding: 3rem 0; }
-            .container { padding: 0 1.5rem; }
-            
-            /* Hide horizontal scroll on mobile */
-            .horizontal-scroll { display: none !important; }
-            
-            /* Show vertical grid - cards as wide as service cards from business page */
-            .mobile-vertical-grid {
-                display: flex;
-                flex-direction: column;
-                gap: 1.5rem;
-                padding: 0;
-            }
-            
-            .mobile-vertical-grid .laptop-card {
-                width: 100%;
-                margin: 0 auto;
-            }
-            
-            /* Laptop specs - side by side on mobile (flex wrap with equal width) */
-            .mobile-vertical-grid .laptop-specs {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.5rem;
-            }
-            
-            .mobile-vertical-grid .laptop-specs span {
-                justify-content: center;
-                text-align: center;
-                font-size: 0.75rem;
-                padding: 0.35rem 0.5rem;
-            }
-            
-            /* Card content adjustments */
-            .mobile-vertical-grid .laptop-card-content {
-                padding: 1.2rem;
-            }
-            
-            .mobile-vertical-grid .laptop-card-content h3 {
-                font-size: 1.2rem;
-            }
-            
-            .mobile-vertical-grid .laptop-card-content .price {
-                font-size: 1.2rem;
-            }
-            
-            .mobile-vertical-grid .laptop-card img {
-                height: 200px;
-            }
-            
-            /* Contact section - matching business page style */
-            .contact-section {
-                padding: 3rem 1.5rem;
-            }
-            .contact-section p {
-                font-size: 1rem;
-                margin-bottom: 1.5rem;
-            }
-            .contact-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 1rem;
-            }
-            .btn-call, .btn-whatsapp {
-                width: 100%;
-                max-width: 280px;
-                justify-content: center;
-                padding: 0.85rem 1.5rem;
-                font-size: 0.9rem;
-            }
-            
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            
-            .dropdown-menu {
-                position: static;
-                opacity: 1;
-                visibility: visible;
-                transform: none;
-                box-shadow: none;
-                background: rgba(0,0,0,0.05);
-                margin-top: 0.5rem;
-                border: none;
-            }
+        @media (min-width: 1025px) {
+            .desktop-nav { display: block; }
+            .hamburger { display: none !important; }
         }
     </style>
 </head>
 <body>
-   <header>
-    <div class="header-container">
-        <div class="logo-container" id="logoHomeLink">
-            <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
-            <div class="company-name">HECON GROUP</div>
+    <header>
+        <div class="header-container">
+            <div class="logo-container" id="logoHomeLink">
+                <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
+                <div class="company-name">HECON GROUP</div>
+            </div>
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li class="dropdown">
+                        <a href="#">Real Estate</a>
+                        <ul class="dropdown-menu">
+                            <li><a href="land.html">Lands</a></li>
+                            <li><a href="housing.html">Housing</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="cac.html">Business Registration</a></li>
+                    <li><a href="laptop.html">Gadgets</a></li>
+                    <li><a href="crypto.html">Crypto Exchange</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
         </div>
-        <nav class="desktop-nav">
+        <div class="mobile-menu" id="mobileMenu">
             <ul>
                 <li><a href="index.html">Home</a></li>
-                <li class="dropdown">
-                    <a href="#">Real Estate</a>
-                    <ul class="dropdown-menu">
-                        <li><a href="land.html">Lands</a></li>
-                        <li><a href="housing.html">Housing</a></li>
-                    </ul>
-                </li>
+                <li><a href="land.html">Lands</a></li>
+                <li><a href="housing.html">Housing</a></li>
                 <li><a href="cac.html">Business Registration</a></li>
                 <li><a href="laptop.html">Gadgets</a></li>
                 <li><a href="crypto.html">Crypto Exchange</a></li>
             </ul>
-        </nav>
-        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
-    </div>
-    <div class="mobile-menu" id="mobileMenu">
-        <ul>
-            <li><a href="index">Home</a></li>
-            <li><a href="land.html">Lands</a></li>
-            <li><a href="housing.html">Housing</a></li>
-            <li><a href="cac.html">Business Registration</a></li>
-            <li><a href="laptop.html">Gadgets</a></li>
-            <li><a href="crypto.html">Crypto Exchange</a></li>
-        </ul>
-    </div>
-</header>
+        </div>
+    </header>
 
-    <!-- Hero section -->
-    <section class="hero-section" id="home">
+    <section class="hero-section">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>PREMIUM LAPTOPS FOR WORK & PLAY</h1>
-            <p>Curated high-performance laptops from top brands. Unbeatable prices, verified quality, and nationwide delivery.</p>
-            <div>
-                <a href="#laptops-gallery" class="btn btn-primary"><i class="fas fa-laptop-code"></i> BROWSE MODELS</a>
+            <h1>USDT EXCHANGE<br>GLOBAL CURRENCIES</h1>
+            <p>Swap GBP · CAD · RMB · NGN to USDT at competitive rates. Fast, secure, and reliable.</p>
+            <div class="hero-buttons">
+                <a href="#contactNow" class="btn btn-gold"><i class="fab fa-usd"></i> TRADE NOW</a>
+                <a href="#exchangeCards" class="btn btn-primary"><i class="fas fa-arrow-right"></i> HOW IT WORKS</a>
             </div>
         </div>
     </section>
 
-    <!-- Laptop Gallery Section -->
-    <section class="gallery-section" id="laptops-gallery">
+    <!-- Currency strip -->
+    <div class="currency-strip reveal">
         <div class="container">
-            <div class="gallery-header">
-                <h2>Premium Laptop Collection</h2>
-                <p>Explore our curated selection of high-performance laptops from top brands</p>
+            <div class="currency-grid">
+                <div class="currency-pair"><i class="fas fa-pound-sign"></i> GBP → USDT</div>
+                <div class="currency-pair"><i class="fas fa-dollar-sign"></i> CAD → USDT</div>
+                <div class="currency-pair"><i class="fas fa-renminbi"></i> RMB → USDT</div>
+                <div class="currency-pair"><i class="fas fa-naira-sign"></i> NGN → USDT</div>
+                <div class="currency-pair"><i class="fas fa-exchange-alt"></i> USDT → NGN</div>
             </div>
-            <!-- Desktop horizontal scroll -->
-            <div class="horizontal-scroll" id="horizontalScroll">
-                <div class="scroll-container" id="scrollContainer"></div>
+        </div>
+    </div>
+
+    <!-- Exchange focus cards -->
+    <section class="exchange-focus reveal" id="exchangeCards">
+        <div class="container">
+            <div class="testimonials-header">
+                <h2>Exchange USDT with Ease</h2>
+                <p>Minimum trade: <strong>$10,000 USD equivalent</strong> | Competitive rates, instant settlement</p>
             </div>
-            <!-- Mobile vertical grid -->
-            <div class="mobile-vertical-grid" id="mobileVerticalGrid"></div>
+            <div class="exchange-grid">
+                <div class="exchange-card"><i class="fas fa-pound-sign"></i><h3>GBP → USDT</h3><p>Convert British Pounds to Tether (USDT) with institutional rates. Fast execution.</p><span class="badge-rate">Best GBP/USDT rates</span></div>
+                <div class="exchange-card"><i class="fas fa-dollar-sign"></i><h3>CAD → USDT</h3><p>Canadian Dollar to USDT. Secure OTC desk for high-volume trades.</p><span class="badge-rate">CAD liquidity pool</span></div>
+                <div class="exchange-card"><i class="fas fa-renminbi"></i><h3>RMB → USDT</h3><p>Renminbi to USDT exchange. Fast settlement, compliant and transparent.</p><span class="badge-rate">CNY/USDT best bid</span></div>
+                <div class="exchange-card"><i class="fas fa-naira-sign"></i><h3>NGN → USDT</h3><p>Instant Naira to USDT. Fund your wallet or cash out seamlessly.</p><span class="badge-rate">₦ to USDT instant</span></div>
+            </div>
         </div>
     </section>
 
-    <!-- Contact Section - Matching Business Page Style (Call & WhatsApp buttons) -->
-    <section class="contact-section" id="contact-us">
+    <!-- Testimonials section with 3 images -->
+    <section class="testimonials-section reveal">
         <div class="container">
-            <h2>Ready to upgrade your device?</h2>
-            <p>Talk to our laptop experts for personalized recommendations, bulk orders, or any questions. Same-day delivery available in Lagos & Abuja.</p>
+            <div class="testimonials-header">
+                <h2>Trusted by Global Traders</h2>
+                <p>Real feedback from our exchange clients</p>
+            </div>
+            <div class="testimonials-grid" id="testimonialsGrid"></div>
+        </div>
+    </section>
+
+    <!-- WHY HECON EXCHANGE - STANDALONE SECTION -->
+    <section class="why-section reveal">
+        <div class="container">
+            <div class="why-container">
+                <div class="why-left">
+                    <h2>Why HECON Exchange?</h2>
+                    <p>We specialize exclusively in USDT-to-fiat and fiat-to-USDT conversions for global currencies. No complexity, just premium service.</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Competitive spreads on GBP/CAD/RMB/NGN → USDT</li>
+                        <li><i class="fas fa-check-circle"></i> No hidden fees, full transparency</li>
+                        <li><i class="fas fa-check-circle"></i> Dedicated account manager for $50k+ trades</li>
+                        <li><i class="fas fa-check-circle"></i> Instant local settlement (bank/wire)</li>
+                        <li><i class="fas fa-check-circle"></i> 24/6 live support & real-time quotes</li>
+                    </ul>
+                </div>
+                <div class="why-right">
+                    <div class="big-number">$10k</div>
+                    <p>minimum trade amount</p>
+                    <div style="margin: 1rem 0; border-top:1px solid rgba(255,255,255,0.2); width:50px; margin-left:auto; margin-right:auto;"></div>
+                    <div class="big-number" style="font-size:2rem;">⭐ 4.9/5</div>
+                    <p>client satisfaction</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section - EXACT MATCH to laptop page (Call & WhatsApp buttons) -->
+    <section class="contact-section reveal" id="contactNow">
+        <div class="container">
+            <h2>Ready to exchange USDT?</h2>
+            <p>Talk to our crypto desk for live quotes, instant settlement, and professional support. Minimum trade $10,000 USD equivalent.</p>
             <div class="contact-buttons">
                 <a href="tel:+2348001234567" class="btn-call">
                     <i class="fas fa-phone-alt"></i> Call Us Now
                 </a>
-                <a href="https://wa.me/2348001234567" target="_blank" class="btn-whatsapp">
+                <a href="https://wa.me/2348008901234" target="_blank" class="btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-brand"><h3>HECON ESTATE</h3><p>Premium laptops, real estate, and business solutions. Trusted since 2016.</p></div>
-                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#laptops-gallery">Laptops</a></li><li><a href="#contact-us">Contact Sales</a></li><li><a href="index.html">Main Site</a></li></ul></div>
-                <div class="footer-links"><h4>Our Services</h4><ul><li><a href="re.html">Real Estate</a></li><li><a href="cac.html">CAC Registration</a></li><li><a href="laptop.html">Gadgets</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div>
-                <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 800 123 4567</p><p><i class="fas fa-envelope"></i> info@hecon.ng</p><p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div>
+                <div class="footer-brand"><h3>HECON EXCHANGE</h3><p>Global USDT & fiat exchange. Minimum $10k. GBP | CAD | RMB | NGN.</p></div>
+                <div class="footer-links"><h4>Exchange</h4><ul><li><a href="#">GBP to USDT</a></li><li><a href="#">CAD to USDT</a></li><li><a href="#">RMB to USDT</a></li><li><a href="#">NGN to USDT</a></li></ul></div>
+                <div class="footer-links"><h4>Company</h4><ul><li><a href="index.html">Home</a></li><li><a href="#">Rates</a></li><li><a href="#contactNow">Contact</a></li></ul></div>
+                <div class="footer-contact"><h4>Contact</h4><p><i class="fas fa-phone"></i> +234 800 123 4567</p><p><i class="fas fa-envelope"></i> crypto@hecon.ng</p><p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p></div>
             </div>
-            <div class="footer-bottom"><div>© 2026 HECON · Premium Laptop Store. All rights reserved.</div></div>
+            <div class="footer-bottom"><div>© 2026 HECON · USDT Exchange | Minimum trade $10,000 USD equivalent.</div></div>
         </div>
     </footer>
 
-    <div id="imageModal" class="image-modal"><img id="modalImg" src="" alt="Full view"><span style="position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;">&times;</span></div>
+    <!-- Lightbox for full image -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+        <img id="lightboxImg" src="" alt="Full size testimonial">
+    </div>
 
     <script>
-        (function(){
-            // Laptop data - exactly 6 laptops
-            const laptopData = [
-                { name: "Dell Precision 7760", price: "₦250,000", img: "H15.jpeg", specs: ["11th Gen i5", "16GB RAM", "512GB SSD", "17\" FHD"] },
-                { name: "HP Elitebook 840-G3", price: "₦310,000", img: "H16.jpeg", specs: ["Core i5", "8GB RAM", "256GB SSD", "Keyboard Light"] },
-                { name: "HP Elitebook 840-G6", price: "₦460,000", img: "H17.jpeg", specs: ["Core i7", "8GB RAM", "256GB SSD", "Keyboard Light"] },
-                { name: "ASUS ROG Zephyrus G14", price: "₦1,680,000", img: "H18.jpeg", specs: ["Ryzen 9", "16GB DDR5", "1TB NVMe", "RTX 4070"] },
-                { name: "Lenovo ThinkPad X1", price: "₦1,520,000", img: "H19.jpeg", specs: ["Core i7", "32GB RAM", "1TB SSD", "2.8K OLED"] },
-                { name: "Surface Laptop Studio", price: "₦2,190,000", img: "H20.jpeg", specs: ["Core i7", "32GB RAM", "2TB SSD", "120Hz Touch"] }
+        (function() {
+            // 3 testimonials with images H15, H16, H17
+            const testimonials = [
+                { img: "TES4.jpeg", text: "“Effortless GBP to USDT conversion with excellent rates. Highly professional.”" },
+                { img: "TES5.jpeg", text: "“Best CAD to USDT rates I've found. Settlement within hours.”" },
+                { img: "TES6.jpeg", text: "“Their NGN to USDT desk is a lifesaver for cross-border business.”" }
             ];
-
-            const scrollContainer = document.getElementById('scrollContainer');
-            const mobileGrid = document.getElementById('mobileVerticalGrid');
-            
-            function buildCards() {
-                let cardsHtml = '';
-                let mobileHtml = '';
-                
-                laptopData.forEach(laptop => {
-                    const cardHtml = `
-                        <div class="laptop-card" data-img="${laptop.img}">
-                            <img src="${laptop.img}" alt="${laptop.name}" onerror="this.src='https://via.placeholder.com/408x264?text=Laptop+Image'">
-                            <div class="laptop-card-content">
-                                <h3>${laptop.name}</h3>
-                                <div class="price">${laptop.price}</div>
-                                <div class="laptop-specs">
-                                    ${laptop.specs.map(spec => `<span><i class="fas fa-microchip"></i> ${spec}</span>`).join('')}
-                                </div>
-                            </div>
+            const grid = document.getElementById('testimonialsGrid');
+            function buildTestimonials() {
+                let html = '';
+                testimonials.forEach((t, idx) => {
+                    html += `
+                        <div class="testimonial-card" data-img="${t.img}">
+                            <img src="${t.img}" alt="client" class="testimonial-img" onerror="this.src='https://via.placeholder.com/400x280?text=Client'">
+                            <div class="testimonial-sentence"><i class="fas fa-quote-left"></i> ${t.text}</div>
                         </div>
                     `;
-                    cardsHtml += cardHtml;
-                    mobileHtml += cardHtml;
                 });
-                
-                scrollContainer.innerHTML = cardsHtml;
-                mobileGrid.innerHTML = mobileHtml;
-                
-                // Add click handlers for modal on all laptop cards
-                document.querySelectorAll('.laptop-card').forEach(card => {
+                grid.innerHTML = html;
+                document.querySelectorAll('.testimonial-card').forEach(card => {
                     card.addEventListener('click', (e) => {
-                        e.stopPropagation();
-                        const imgSrc = card.getAttribute('data-img');
-                        const modal = document.getElementById('imageModal');
-                        const modalImg = document.getElementById('modalImg');
-                        modalImg.src = imgSrc;
-                        modal.classList.add('active');
+                        const imgElement = card.querySelector('.testimonial-img');
+                        if(imgElement && imgElement.src) {
+                            showFullImage(imgElement.src);
+                        }
                     });
                 });
             }
-            
-            buildCards();
+            buildTestimonials();
 
-            // Modal close handler
-            const modal = document.getElementById('imageModal');
-            modal.addEventListener('click', (e) => {
-                if(e.target === modal || e.target.tagName === 'SPAN') modal.classList.remove('active');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            window.showFullImage = function(src) {
+                lightboxImg.src = src;
+                lightbox.classList.add('active');
+            };
+            window.closeLightbox = function() {
+                lightbox.classList.remove('active');
+                setTimeout(() => { lightboxImg.src = ''; }, 300);
+            };
+            document.addEventListener('keydown', (e) => {
+                if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
             });
-            
-            // Hamburger menu toggle
+
             const hamburger = document.getElementById('hamburger');
             const mobileMenu = document.getElementById('mobileMenu');
             if(hamburger) {
@@ -984,52 +988,37 @@
                     hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
                 });
             }
-            
             document.querySelectorAll('.mobile-menu a').forEach(link => {
                 link.addEventListener('click', ()=>{
                     mobileMenu.classList.remove('active');
                     if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
                 });
             });
-            
-            // Smooth scroll for anchor links
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if(href === '#') return;
-                    const target = document.querySelector(href);
+                    const id = this.getAttribute('href');
+                    if(id === '#' || id === '') return;
+                    const target = document.querySelector(id);
                     if(target) {
                         e.preventDefault();
                         window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
                     }
                 });
             });
-            
-            // Logo home link
-            document.getElementById('logoHomeLink')?.addEventListener('click', ()=>{ window.location.href = 'index.html'; });
-            
-            // Reveal observer for gallery and contact sections
-            const observer = new IntersectionObserver((entries) => {
+            document.getElementById('logoHomeLink')?.addEventListener('click', ()=>{
+                window.location.href = 'index.html';
+            });
+            const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.classList.add('revealed');
-                    }
+                    if(entry.isIntersecting) entry.target.classList.add('revealed');
                 });
-            }, { threshold: 0.2, rootMargin: '0px 0px -30px 0px' });
-            
-            const gallerySec = document.querySelector('.gallery-section');
-            const contactSec = document.querySelector('.contact-section');
-            if(gallerySec) observer.observe(gallerySec);
-            if(contactSec) observer.observe(contactSec);
-            
+            }, { threshold: 0.15 });
+            document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
             setTimeout(() => {
-                if(gallerySec && gallerySec.getBoundingClientRect().top < window.innerHeight - 80) {
-                    gallerySec.classList.add('revealed');
-                }
-                if(contactSec && contactSec.getBoundingClientRect().top < window.innerHeight - 80) {
-                    contactSec.classList.add('revealed');
-                }
-            }, 200);
+                document.querySelectorAll('.reveal').forEach(el => {
+                    if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed');
+                });
+            }, 150);
         })();
     </script>
 </body>
