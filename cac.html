@@ -645,6 +645,58 @@
             transform: translateY(-2px);
         }
 
+        /* Contact Buttons - Call & WhatsApp */
+.contact-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+}
+
+.btn-call {
+    background: linear-gradient(135deg, #2C5A8C, #0A2A44);
+    color: white;
+    box-shadow: 0 4px 15px rgba(44, 90, 140, 0.3);
+}
+
+.btn-call:hover {
+    background: linear-gradient(135deg, #0A2A44, #2C5A8C);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(44, 90, 140, 0.4);
+}
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #128C7E, #075E54);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.btn-call i, .btn-whatsapp i {
+    font-size: 1.1rem;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    
+    .btn-call, .btn-whatsapp {
+        width: 100%;
+        max-width: 280px;
+        padding: 0.9rem 1.5rem;
+    }
+}
+
         /* Footer */
         footer {
             background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
@@ -927,14 +979,21 @@
         </div>
     </section>
 
-    <!-- Contact CTA - WHITE BACKGROUND -->
-    <section class="contact-cta reveal" id="contact">
-        <div class="container">
-            <h2>Ready to Formalize Your Business?</h2>
-            <p>Let our experts handle CAC, Trademark, and SCUML registration so you can focus on growth. Free initial consultation.</p>
-            <a href="index.html#contact" class="btn btn-light"><i class="fas fa-headset"></i> Contact Us</a>
+ <!-- Contact CTA - Direct Call & WhatsApp Buttons -->
+<section class="contact-cta reveal" id="contact">
+    <div class="container">
+        <h2>Ready to Formalize Your Business?</h2>
+        <p>Let our experts handle CAC, Trademark, and SCUML registration so you can focus on growth. Free initial consultation.</p>
+        <div class="contact-buttons">
+            <a href="tel:+2348001234567" class="btn btn-call">
+                <i class="fas fa-phone-alt"></i> Call Us Now
+            </a>
+            <a href="https://wa.me/2348001234567?text=Hello%20HECON%2C%20I%20need%20assistance%20with%20business%20registration" target="_blank" class="btn btn-whatsapp">
+                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer -->
     <footer>

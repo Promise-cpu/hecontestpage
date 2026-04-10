@@ -612,121 +612,20 @@
         .delay-2 { transition-delay: 0.2s; }
         .delay-3 { transition-delay: 0.3s; }
 
-        /* New Contact Inquiry Section - between last property and footer */
-        .contact-inquiry {
-            background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
-            padding: 5rem 2rem;
-            position: relative;
-            z-index: 2;
-            border-top: 1px solid rgba(0,0,0,0.05);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-
-        .inquiry-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .inquiry-container h2 {
-            background: linear-gradient(135deg, black, #1E3A5F);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            margin-bottom: 1rem;
-        }
-
-        .inquiry-container > p {
-            color: rgba(0, 0, 0, 0.85);
-            max-width: 650px;
-            margin: 0 auto 2rem auto;
-            font-size: 1.1rem;
-        }
-
-        .inquiry-grid {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 2rem 0;
-        }
-
-        .inquiry-card {
-            background: #122946fe;
-            backdrop-filter: blur(8px);
-            border: 1px solid rgb(0, 0, 0);
-            border-radius: 1.5rem;
-            padding: 2rem 1.5rem;
-            width: 280px;
-            transition: all 0.3s var(--ease-out-expo);
-            text-align: center;
-        }
-
-        .inquiry-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--blue-accent);
-            background: #0e223b;
-        }
-
-        .inquiry-card i {
-            font-size: 2.5rem;
-            color: #FFFFFF;
-            margin-bottom: 1rem;
-        }
-
-        .inquiry-card h3 {
-            color: #FFFFFF;
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .inquiry-card p {
-            color: rgba(255, 255, 255, 0.75);
-            font-size: 0.9rem;
-            margin-bottom: 1.2rem;
-            max-width: 100%;
-        }
-
-        .inquiry-btn {
-            background: var(--white-pure);
-            color: var(--blue-dark);
-            padding: 0.8rem 1.5rem;
-            border-radius: 2rem;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            display: inline-flex;
-            align-items: center;
-            transition: 0.2s;
-        }
-
-        .inquiry-btn:hover {
-            background: var(--blue-accent);
-            color: white;
-            transform: scale(1.02);
-        }
-
-        .direct-contact {
-            margin-top: 2.5rem;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .direct-contact p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1rem;
-        }
-
-        .direct-contact a {
-            color: white;
-            font-weight: 600;
-            text-decoration: none;
-            border-bottom: 1px solid var(--blue-accent);
-        }
-
-        .direct-contact a:hover {
-            color: var(--blue-accent);
-        }
+        /* CONTACT */
+        .contact-section { background: #ffffff; padding: 3rem 1.5rem; }
+        @media (min-width: 768px) { .contact-section { padding: 5rem 2rem; } }
+        .contact-container { max-width: 800px; margin: 0 auto; text-align: center; }
+        .contact-container h2 { background: linear-gradient(135deg, #1E3A5F, #0A2A44); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
+        .contact-container > p { color: #2C3E50; max-width: 600px; margin: 0 auto 1.5rem; }
+        .contact-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center; }
+        @media (min-width: 480px) { .contact-buttons { flex-direction: row; } }
+        .contact-btn { display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem; border-radius: 3rem; font-weight: 700; text-decoration: none; transition: all 0.3s; width: 100%; max-width: 280px; justify-content: center; }
+        @media (min-width: 480px) { .contact-btn { padding: 1rem 2rem; font-size: 1rem; width: auto; } }
+        .contact-btn-wa { background: #25D366; color: white; box-shadow: 0 8px 20px rgba(37,211,102,0.3); }
+        .contact-btn-wa:hover { transform: translateY(-3px); }
+        .contact-btn-call { background: white; color: #0A2A44; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        .contact-btn-call:hover { transform: translateY(-3px); }
 
         /* Footer - Dark Theme */
         footer {
@@ -1135,33 +1034,17 @@
         </div>
     </section>
 
-    <!-- Contact for more information or purchase section -->
-    <section class="contact-inquiry" id="purchase-inquiry">
-        <div class="inquiry-container">
-            <h2>Interested in a Property?</h2>
-            <p>Get in touch with our real estate experts for exclusive viewing, price negotiation, or purchase assistance. Your dream home is just a step away.</p>
-            <div class="inquiry-grid">
-                <div class="inquiry-card">
-                    <i class="fas fa-phone-alt"></i>
-                    <h3>Call Us Directly</h3>
-                    <p>Speak with a property specialist for immediate inquiries.</p>
-                    <a href="tel:+2348001234567" class="inquiry-btn"> +234 800 123 4567</a>
-                </div>
-                <div class="inquiry-card">
-                    <i class="fab fa-whatsapp"></i>
-                    <h3>WhatsApp Support</h3>
-                    <p>Send us a message on WhatsApp for quick responses.</p>
-                    <a href="https://wa.me/2348008901234" class="inquiry-btn"> Chat Now</a>
-                </div>
-                <div class="inquiry-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email Inquiry</h3>
-                    <p>Share your property requirements and get detailed information.</p>
-                    <a href="mailto:info@hecon.ng" class="inquiry-btn"> info@hecon.ng</a>
-                </div>
-            </div>
+   <!-- CONTACT SECTION -->
+<section class="contact-section" id="contact-section">
+    <div class="contact-container">
+        <h2>Secure Your House Today</h2>
+        <p>Talk to our Housing specialists. Get verified title documents, survey plans, and exclusive off-market deals.</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/2348008901234" class="contact-btn contact-btn-wa"><i class="fab fa-whatsapp fa-lg"></i> Chat on WhatsApp</a>
+            <a href="tel:+2348001234567" class="contact-btn contact-btn-call"><i class="fas fa-phone-alt"></i> Call Land Desk</a>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Footer - Dark Theme -->
     <footer id="contact">
