@@ -1,5 +1,4 @@
-Here is a simplified HTML document that maintains the exact design and functionality of the luxury land sales page while making the code easier to read and manage.
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -82,33 +81,62 @@ Here is a simplified HTML document that maintains the exact design and functiona
         .intro-full p { margin: 0 auto 1rem; font-size: clamp(1rem, 4vw, 1.2rem); }
         .intro-full .highlight { background: linear-gradient(135deg, #2C5A8C, #000); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 600; }
 
-        /* GALLERY */
+        /* GALLERY SECTION - PURE IMAGES, NO TEXT OVERLAY */
         .gallery-section { padding: 3rem 0; background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%); }
         @media (min-width: 768px) { .gallery-section { padding: 5rem 0; } }
         .gallery-header { text-align: center; margin-bottom: 2rem; }
         .gallery-header h2 { color: white; background: linear-gradient(135deg, #fff, #fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .gallery-header p { color: rgba(255,255,255,0.8); margin: 0 auto; }
+        
+        /* Horizontal scroll for desktop - clean images only */
         .horizontal-scroll { width: 100%; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; scrollbar-color: #2C5A8C rgba(255,255,255,0.2); }
         .mobile-grid { display: none; }
-        @media (max-width: 767px) { .horizontal-scroll { display: none; } .mobile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 0 1rem; } }
+        @media (max-width: 767px) { 
+            .horizontal-scroll { display: none; } 
+            .mobile-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; padding: 0 1rem; }
+        }
         .scroll-container { display: inline-flex; gap: 1.5rem; padding: 1rem 2rem; animation: autoScroll 40s linear infinite; }
         .horizontal-scroll:hover .scroll-container { animation-play-state: paused; }
         @keyframes autoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .land-card { width: 320px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 1.25rem; overflow: hidden; border: 1px solid rgba(255,255,255,0.2); transition: transform 0.3s; cursor: pointer; white-space: normal; flex-shrink: 0; }
-        .mobile-grid .land-card { width: 100%; }
-        .land-card:hover { transform: translateY(-10px); border-color: rgba(255,255,255,0.5); }
-        .land-card img { width: 100%; height: 180px; object-fit: cover; }
-        .land-card-content { padding: 1rem; }
-        .land-card-content h3 { color: white; font-size: 1.1rem; margin-bottom: 0.2rem; }
-        .land-card-content .location { color: rgba(255,255,255,0.8); font-size: 0.75rem; display: flex; align-items: center; gap: 0.3rem; }
-        .land-card-content .price { color: white; font-size: 1rem; font-weight: 700; margin-top: 0.4rem; }
+        
+        /* Image-only card — no text, no overlays, just image */
+        .land-card {
+            width: 320px;
+            background: transparent;
+            border-radius: 1rem;
+            overflow: hidden;
+            cursor: pointer;
+            white-space: normal;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .mobile-grid .land-card {
+            width: 100%;
+            margin-bottom: 0;
+        }
+        .land-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 30px rgba(0,0,0,0.5);
+        }
+        .land-card img {
+            width: 100%;
+            aspect-ratio: 3 / 4; /* Tall rectangular ratio exactly as requested (portrait orientation) */
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .land-card:hover img {
+            transform: scale(1.03);
+        }
+        /* No content divs — removed completely */
 
         /* MODAL */
-        .image-modal { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.9); z-index:2000; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; visibility:hidden; transition:all 0.3s ease; }
+        .image-modal { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:2000; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; visibility:hidden; transition:all 0.3s ease; }
         .image-modal.active { opacity:1; visibility:visible; }
-        .image-modal img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:12px; }
+        .image-modal img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:12px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
 
-        /* PROPERTY SECTIONS - SOLID COLORS (no blends) */
+        /* PROPERTY SECTIONS */
         .property-section { padding: 3rem 0; position: relative; }
         @media (min-width: 768px) { .property-section { padding: 5rem 0; } }
         #property1 { background: #ffffff; }
@@ -135,13 +163,11 @@ Here is a simplified HTML document that maintains the exact design and functiona
         #property6 .property-header h2 { background: linear-gradient(135deg, #F0F0F0, #FFFFFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
         #property6 .property-location, #property6 .property-description p, #property6 .feature-item, #property6 .property-price { color: #E0E7F0; }
         #property6 .feature-item i { color: #FFD966; }
-
-         #property3 .property-header h2 { background: linear-gradient(135deg, #F0F0F0, #FFFFFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        #property3 .property-header h2 { background: linear-gradient(135deg, #F0F0F0, #FFFFFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
         #property3 .property-location, #property3 .property-description p, #property3 .feature-item, #property3 .property-price { color: #E0E7F0; }
         #property3 .feature-item i { color: #FFD966; }
 
-
-        /* CONTACT - BRIGHT BACKGROUND */
+        /* CONTACT */
         .contact-section { background: #ffffff; padding: 3rem 1.5rem; }
         @media (min-width: 768px) { .contact-section { padding: 5rem 2rem; } }
         .contact-container { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -248,12 +274,12 @@ Here is a simplified HTML document that maintains the exact design and functiona
     </div>
 </section>
 
-<!-- GALLERY SECTION: PREMIUM LAND LISTINGS -->
+<!-- PURE IMAGE GALLERY SECTION - NO TEXT OVERLAYS, ONLY IMAGES WITH TALL RECTANGULAR RATIO -->
 <section class="gallery-section" id="gallery">
     <div class="container">
         <div class="gallery-header">
-            <h2>Premium Land Listings</h2>
-            <p>Explore our collection of prime land investments across Nigeria</p>
+            <h2>Premium Land Gallery</h2>
+            <p>Explore our exclusive land visuals</p>
         </div>
         <div class="horizontal-scroll" id="horizontalScroll"><div class="scroll-container" id="scrollContainer"></div></div>
         <div class="mobile-grid" id="mobileGrid"></div>
@@ -268,7 +294,7 @@ Here is a simplified HTML document that maintains the exact design and functiona
 <section class="property-section" id="property5"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="eleven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Heritage Meadows Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Abeokuta, Ogun State</div><div class="property-price">₦12,000,000 - ₦28,000,000</div></div><div class="property-description"><p>Affordable suburban land with vast expansion potential. Perfect for residential development and long-term investment.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-home"></i> Residential Zone</div><div class="feature-item"><i class="fas fa-tractor"></i> Spacious Plots</div><div class="feature-item"><i class="fas fa-leaf"></i> Green Environment</div><div class="feature-item"><i class="fas fa-money-bill"></i> Flexible Payment</div></div></div></div></div></section>
 <section class="property-section" id="property6"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="twelve.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lakeside Reserve Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ibadan, Oyo State</div><div class="property-price">₦22,000,000 - ₦45,000,000</div></div><div class="property-description"><p>Serene lakeside plots with natural beauty. Ideal for holiday homes, eco-resorts, or private retreats.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-fish"></i> Lake View</div><div class="feature-item"><i class="fas fa-tree"></i> Natural Scenery</div><div class="feature-item"><i class="fas fa-campground"></i> Eco-Friendly</div><div class="feature-item"><i class="fas fa-road"></i> Access Road</div></div></div></div></div></section>
 
-<!-- CONTACT SECTION (BRIGHT) -->
+<!-- CONTACT SECTION -->
 <section class="contact-section" id="contact-section">
     <div class="contact-container">
         <h2>Secure Your Land Today</h2>
@@ -295,42 +321,83 @@ Here is a simplified HTML document that maintains the exact design and functiona
 <div id="imageModal" class="image-modal"><img id="modalImg" alt="Full view"><span style="position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;">&times;</span></div>
 
 <script>
-// SIMPLIFIED SCRIPT - all core functionality preserved
 (function(){
-    // LAND DATA FOR GALLERY
+    // LAND DATA FOR GALLERY - images only, no text anywhere
     const lands = [
-        { name: "Sunset Valley Estate", location: "Lekki, Lagos", price: "₦28,000,000", img: "one.jpeg" },
-        { name: "Golden Acres", location: "Ikoyi, Lagos", price: "₦95,000,000", img: "two.jpeg" },
-        { name: "Cedarwood Heights", location: "Abuja, FCT", price: "₦42,000,000", img: "three.jpeg" },
-        { name: "Riverside Gardens", location: "Eko Atlantic", price: "₦175,000,000", img: "four.jpeg" },
-        { name: "Greenfield Estate", location: "Abeokuta", price: "₦15,500,000", img: "five.jpeg" },
-        { name: "Hilltop View", location: "Ibadan", price: "₦23,000,000", img: "six.jpeg" },
-        { name: "Palm Court", location: "Banana Island", price: "₦210,000,000", img: "seven.jpeg" }
+        { img: "one.jpeg" },
+        { img: "two.jpeg" },
+        { img: "three.jpeg" },
+        { img: "four.jpeg" },
+        { img: "five.jpeg" },
+        { img: "six.jpeg" },
+        { img: "seven.jpeg" },
+        { img: "eight.jpeg" },
+        { img: "nine.jpeg" },
+        { img: "ten.jpeg" },
+        { img: "eleven.jpeg" },
+        { img: "twelve.jpeg" }
     ];
 
-    // Build gallery (horizontal scroll with 3 repeats, mobile grid with 1x)
     const scrollContainer = document.getElementById('scrollContainer');
     const mobileGrid = document.getElementById('mobileGrid');
-    let scrollHtml = '', mobileHtml = '';
-    for(let i=0;i<3;i++) lands.forEach(l => { scrollHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/320x180?text=Land'"><div class="land-card-content"><h3>${l.name}</h3><div class="location"><i class="fas fa-map-marker-alt"></i> ${l.location}</div><div class="price">${l.price}</div></div></div>`; });
-    lands.forEach(l => { mobileHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/280x160?text=Land'"><div class="land-card-content"><h3>${l.name}</h3><div class="location"><i class="fas fa-map-marker-alt"></i> ${l.location}</div><div class="price">${l.price}</div></div></div>`; });
+    let scrollHtml = '';
+    let mobileHtml = '';
+    
+    // Create triple set for horizontal scroll (smooth loop)
+    for(let i=0;i<3;i++) {
+        lands.forEach(l => {
+            scrollHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/320x427?text=Land+View'"></div>`;
+        });
+    }
+    // Mobile grid single set (2 columns)
+    lands.forEach(l => {
+        mobileHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/280x374?text=Land'"></div>`;
+    });
+    
     scrollContainer.innerHTML = scrollHtml;
     mobileGrid.innerHTML = mobileHtml;
 
-    // Modal click handler
+    // MODAL for fullscreen image preview
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImg');
+    const closeModalSpan = modal.querySelector('span');
+    
+    function openModal(imgSrc) {
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+    }
+    
     document.querySelectorAll('.land-card').forEach(card => {
-        card.addEventListener('click', (e) => { e.stopPropagation(); modalImg.src = card.getAttribute('data-img'); modal.classList.add('active'); });
+        card.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const imgElement = card.querySelector('img');
+            if(imgElement && imgElement.src) {
+                openModal(imgElement.src);
+            } else {
+                const dataImg = card.getAttribute('data-img');
+                if(dataImg) openModal(dataImg);
+            }
+        });
     });
-    modal.addEventListener('click', (e) => { if(e.target === modal || e.target.tagName === 'SPAN') modal.classList.remove('active'); });
-
+    
+    modal.addEventListener('click', (e) => {
+        if(e.target === modal || e.target === closeModalSpan) modal.classList.remove('active');
+    });
+    
     // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     if(hamburger) {
-        hamburger.onclick = () => { mobileMenu.classList.toggle('active'); hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; };
-        document.querySelectorAll('.mobile-menu a').forEach(link => { link.onclick = () => { mobileMenu.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }; });
+        hamburger.onclick = () => { 
+            mobileMenu.classList.toggle('active'); 
+            hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        };
+        document.querySelectorAll('.mobile-menu a').forEach(link => { 
+            link.onclick = () => { 
+                mobileMenu.classList.remove('active'); 
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }; 
+        });
     }
 
     // Smooth scroll for anchor links
@@ -355,11 +422,17 @@ Here is a simplified HTML document that maintains the exact design and functiona
 
     // Auto-pause other videos when one plays
     const videos = document.querySelectorAll('video');
-    videos.forEach(v => { v.addEventListener('play', () => { videos.forEach(other => { if(other !== v && !other.paused) other.pause(); }); }); });
+    videos.forEach(v => { 
+        v.addEventListener('play', () => { 
+            videos.forEach(other => { if(other !== v && !other.paused) other.pause(); }); 
+        }); 
+    });
 
-    // Trigger initial reveal for elements already visible
     setTimeout(() => {
-        document.querySelectorAll('.property-section, .intro-full').forEach(el => { const rect = el.getBoundingClientRect(); if(rect.top < window.innerHeight - 80) el.classList.add('revealed'); });
+        document.querySelectorAll('.property-section, .intro-full').forEach(el => { 
+            const rect = el.getBoundingClientRect(); 
+            if(rect.top < window.innerHeight - 80) el.classList.add('revealed'); 
+        });
     }, 200);
 })();
 </script>
