@@ -1,5 +1,3 @@
-Here is the HTML document with the mobile display adjustments applied exactly as requested, while preserving all desktop and tablet designs.
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -322,7 +320,7 @@ Here is the HTML document with the mobile display adjustments applied exactly as
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 1200px;
             margin: 0 auto;
             text-align: center;
             padding: 0 2rem;
@@ -453,7 +451,7 @@ Here is the HTML document with the mobile display adjustments applied exactly as
             left: 0;
         }
 
-        /* Testimonials Gallery - DARK BACKGROUND */
+        /* Testimonials Gallery - DARK BACKGROUND with Images */
         .testimonials-section {
             padding: 5rem 0;
             background: linear-gradient(180deg, #0A1A2A 0%, #000000 50%, #0A1A2A 100%);
@@ -475,10 +473,12 @@ Here is the HTML document with the mobile display adjustments applied exactly as
         .testimonial-card {
             background: var(--white-pure);
             border-radius: 1.5rem;
+          
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
             cursor: pointer;
+            border: 2px solid rgb(226, 221, 243);
         }
         .testimonial-card:hover {
             transform: translateY(-6px);
@@ -503,6 +503,73 @@ Here is the HTML document with the mobile display adjustments applied exactly as
             color: var(--gold);
             margin-right: 0.3rem;
         }
+
+        /* Image Modal for expanding testimonials */
+.image-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    z-index: 9999;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.image-modal.active {
+    display: flex;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-image {
+    max-width: 90%;
+    max-height: 90%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    animation: zoomIn 0.3s ease;
+}
+
+.close-modal {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    z-index: 10000;
+}
+
+.close-modal:hover {
+    color: var(--gold);
+    transform: scale(1.1);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Add pointer cursor to testimonial images */
+.testimonial-img {
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.testimonial-img:hover {
+    transform: scale(1.02);
+}
 
         /* FAQ Section */
         .faq-section {
@@ -609,9 +676,8 @@ Here is the HTML document with the mobile display adjustments applied exactly as
         .footer-contact p { color: #8DA3B8; display: flex; gap: 0.75rem; margin-bottom: 0.75rem; }
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; color: #8DA3B8; }
 
-        /* ========== MOBILE DISPLAY ONLY - EXACT MATCH TO PREVIOUS PAGE ========== */
+        /* ========== MOBILE DISPLAY ONLY ========== */
         @media (max-width: 767px) {
-            /* HEADER - exactly like the fixed code from previous page */
             .header-container {
                 padding: 0.75rem 1rem;
                 position: relative;
@@ -636,7 +702,6 @@ Here is the HTML document with the mobile display adjustments applied exactly as
                 margin-left: auto;
             }
             
-            /* Mobile menu */
             .mobile-menu {
                 top: 68px;
                 padding: 1.5rem;
@@ -647,7 +712,6 @@ Here is the HTML document with the mobile display adjustments applied exactly as
                 font-size: 1rem;
             }
             
-            /* Hero section - full screen background */
             .hero-section {
                 min-height: 100vh;
                 height: 100vh;
@@ -664,7 +728,6 @@ Here is the HTML document with the mobile display adjustments applied exactly as
                 font-size: clamp(0.9rem, 4vw, 1.3rem);
                 margin-bottom: 1.5rem;
             }
-            /* Hero button - exactly like previous page */
             .hero-content .btn {
                 padding: 0.64rem 1.6rem;
                 font-size: 0.76rem;
@@ -674,12 +737,10 @@ Here is the HTML document with the mobile display adjustments applied exactly as
                 font-size: 0.9rem;
             }
             
-            /* Container padding */
             .container {
                 padding: 0 1.5rem;
             }
             
-            /* Section padding adjustments */
             .services-cards-section,
             .process-section,
             .requirements-section,
@@ -689,29 +750,24 @@ Here is the HTML document with the mobile display adjustments applied exactly as
                 padding: 3rem 0;
             }
             
-            /* Testimonials grid - single column on mobile */
             .testimonials-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
             
-            /* Steps grid */
             .steps-grid {
                 grid-template-columns: 1fr;
             }
             
-            /* Requirements duo */
             .req-duo {
                 flex-direction: column;
             }
             
-            /* Footer */
             .footer-grid {
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
             
-            /* Dropdown on mobile */
             .dropdown-menu {
                 position: static;
                 opacity: 1;
@@ -723,20 +779,17 @@ Here is the HTML document with the mobile display adjustments applied exactly as
                 border: none;
             }
             
-            /* Section subhead */
             .section-subhead {
                 font-size: 1rem;
                 margin-bottom: 2rem;
             }
             
-            /* Service cards */
             .three-services {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
             }
         }
 
-        /* Tablet landscape (768px - 1024px) - preserve original design */
         @media (min-width: 768px) and (max-width: 1024px) {
             .desktop-nav {
                 display: none !important;
@@ -746,7 +799,6 @@ Here is the HTML document with the mobile display adjustments applied exactly as
             }
         }
         
-        /* Desktop nav visible on 1025px+ */
         @media (min-width: 1025px) {
             .desktop-nav {
                 display: block;
@@ -808,7 +860,7 @@ Here is the HTML document with the mobile display adjustments applied exactly as
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
-            <h1>Business Registration Services</h1>
+            <h1>BUSINESS REGISTRATION SERVICES</h1>
             <p>We specialize in corporate registration, trademark protection, and EFCC SCUML compliance. Fast, reliable, and fully digital.</p>
             <a href="#services" class="btn btn-primary"><i class="fas fa-file-alt"></i> Get Registered Today</a>
         </div>
@@ -851,7 +903,7 @@ Here is the HTML document with the mobile display adjustments applied exactly as
         </div>
     </section>
 
-    <!-- Testimonials Gallery - DARK BACKGROUND -->
+    <!-- Testimonials Gallery - DARK BACKGROUND with tes1.jpeg, tes2.jpeg, tes3.jpeg -->
     <section class="testimonials-section reveal" id="testimonials">
         <div class="container">
             <div class="testimonials-header" style="text-align:center; margin-bottom: 2rem;">
@@ -899,26 +951,50 @@ Here is the HTML document with the mobile display adjustments applied exactly as
 
     <script>
         (function(){
-            // Testimonials data (3 images + one sentence per card)
-            const testimonialsData = [
-                { img: "tes1.jpeg", text: "“HECON handled my CAC registration seamlessly. Got my certificate in 10 days. Highly professional.”" },
-                { img: "tes2.jpeg", text: "“Their trademark filing service saved my brand. Expert guidance and fast turnaround.”" },
-                { img: "tes3.jpeg", text: "“SCUML compliance was a headache until I found HECON. They did everything, stress-free.”" }
-            ];
-            const grid = document.getElementById('testimonialsGrid');
-            function buildTestimonials() {
-                let html = '';
-                testimonialsData.forEach(t => {
-                    html += `
-                        <div class="testimonial-card">
-                            <img src="${t.img}" alt="Client testimonial" class="testimonial-img" onerror="this.src='https://via.placeholder.com/400x280?text=Client'">
-                            <div class="testimonial-sentence"><i class="fas fa-quote-left"></i> ${t.text}</div>
-                        </div>
-                    `;
-                });
-                grid.innerHTML = html;
-            }
-            buildTestimonials();
+            // Testimonials data with images: tes1.jpeg, tes2.jpeg, tes3.jpeg
+const testimonialsData = [
+    { img: "TES1.jpeg", text: "“HECON handled my CAC registration seamlessly. Got my certificate in 10 days. Highly professional.”" },
+    { img: "TES2.jpeg", text: "“Their trademark filing service saved my brand. Expert guidance and fast turnaround.”" },
+    { img: "TES2.jpeg", text: "“SCUML compliance was a headache until I found HECON. They did everything, stress-free.”" }
+];
+const grid = document.getElementById('testimonialsGrid');
+
+function buildTestimonials() {
+    let html = '';
+    testimonialsData.forEach(t => {
+        html += `
+            <div class="testimonial-card">
+                <img src="${t.img}" alt="Client testimonial" class="testimonial-img" onclick="event.stopPropagation(); openImageModal('${t.img}')">
+                <div class="testimonial-sentence"><i class="fas fa-quote-left"></i> ${t.text}</div>
+            </div>
+        `;
+    });
+    grid.innerHTML = html;
+}
+
+// Image modal functions
+function openImageModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+    modal.classList.add('active');
+    modalImage.src = imageSrc;
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = ''; // Restore scrolling
+}
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeModal();
+    }
+});
+
+buildTestimonials();
 
             // Mobile menu toggle
             const hamburger = document.getElementById('hamburger');
@@ -962,5 +1038,12 @@ Here is the HTML document with the mobile display adjustments applied exactly as
             }, 200);
         })();
     </script>
+
+    <!-- Image Modal for expanding testimonials -->
+<div id="imageModal" class="image-modal" onclick="closeModal()">
+    <span class="close-modal">&times;</span>
+    <img class="modal-image" id="modalImage" alt="Expanded view">
+</div>
+
 </body>
 </html>

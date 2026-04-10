@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -126,22 +127,7 @@
             box-shadow: 0 15px 30px rgba(10, 42, 68, 0.3);
         }
 
-        .btn-outline {
-            border: 1px solid var(--white-pure);
-            background: transparent;
-            color: var(--white-pure);
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateY(-2px);
-            border-color: var(--white-pure);
-            color: var(--white-pure);
-        }
-
-       
-        
-       /* Header - Pure White */
+        /* Header - Pure White (exactly same as previous code for desktop) */
         header {
             position: fixed;
             top: 0;
@@ -206,7 +192,6 @@
             color: var(--blue-dark);
         }
 
-        /* Dropdown Menu - no icon on Real Estate */
         .dropdown {
             position: relative;
         }
@@ -271,16 +256,24 @@
             top: 68px;
             left: 0;
             width: 100%;
-            background: var(--white-pure);
-            padding: 2rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
             display: none;
             border-bottom: 1px solid var(--border-light);
-            box-shadow: var(--shadow-sm);
             z-index: 99;
+            max-height: calc(100vh - 68px);
+            overflow-y: auto;
         }
 
         .mobile-menu.active {
             display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .mobile-menu ul {
@@ -290,17 +283,14 @@
         .mobile-menu li a {
             display: block;
             padding: 1rem;
-            color: var(--text-dark);
+            color: #1A2C3E;
             text-decoration: none;
-            font-size: 1.1rem;
-            border-bottom: 1px solid var(--border-light);
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 1px solid #DCE5F0;
         }
 
-        .mobile-menu li a:hover {
-            color: var(--blue-dark);
-        }
-
-        /* Hero Section - Fixed to cover full height */
+        /* Hero Section - Full height with fixed background */
         .hero-section {
             min-height: 100vh;
             display: flex;
@@ -338,7 +328,6 @@
             margin: 0 auto;
             text-align: center;
             padding: 0 2rem;
-            margin-top: 0;
         }
 
         .hero-content h1 {
@@ -348,8 +337,6 @@
             color: var(--white-pure);
             margin-bottom: 1.5rem;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            animation: fadeUpIn 0.8s var(--ease-out-expo) forwards;
         }
 
         .hero-content p {
@@ -357,30 +344,12 @@
             color: rgba(255, 255, 255, 0.95);
             max-width: 700px;
             margin: 0 auto 2.5rem;
-            opacity: 0;
-            animation: fadeUpIn 0.8s var(--ease-out-expo) 0.3s forwards;
         }
 
-        .hero-content .btn {
-            opacity: 0;
-            animation: fadeUpIn 0.8s var(--ease-out-expo) 0.7s forwards;
-        }
-
-        @keyframes fadeUpIn {
-            from {
-                opacity: 0;
-                transform: translateY(28px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Horizontal Scrolling Gallery Section - White background */
+        /* Gallery Section */
         .gallery-section {
             padding: 5rem 0;
-            background: var(--white-pure);
+            background:#DCE5F0;
             position: relative;
             overflow: hidden;
         }
@@ -402,17 +371,15 @@
             margin: 0 auto;
         }
 
-        /* Hide scrollbar completely */
+        /* Desktop horizontal scroll */
         .horizontal-scroll {
             width: 100%;
             overflow-x: auto;
             overflow-y: hidden;
             white-space: nowrap;
             scroll-behavior: smooth;
-            cursor: grab;
             scrollbar-width: thin;
             -ms-overflow-style: auto;
-            position: relative;
         }
 
         .horizontal-scroll::-webkit-scrollbar {
@@ -429,17 +396,18 @@
             border-radius: 10px;
         }
 
-        .horizontal-scroll:active {
-            cursor: grabbing;
-        }
-
         .scroll-container {
             display: inline-flex;
             gap: 2rem;
             padding: 1rem 2rem;
         }
 
-        /* Laptop Card - 20% bigger */
+        /* Mobile vertical grid (hidden on desktop) */
+        .mobile-vertical-grid {
+            display: none;
+        }
+
+        /* Laptop Card */
         .laptop-card {
             width: 408px;
             background: var(--white-pure);
@@ -507,14 +475,13 @@
             color: var(--blue-accent);
         }
 
-        /* Contact Section - Clean & direct */
+        /* Contact Section - White background exactly like previous code */
         .contact-section {
             padding: 5rem 2rem;
-            background: linear-gradient(135deg, var(--blue-dark) 0%, #000000 100%);
-            color: white;
+            background: var(--white-pure);
             text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.2);
-            border-bottom: 1px solid rgba(255,255,255,0.2);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
 
         .contact-section .container {
@@ -522,7 +489,7 @@
         }
 
         .contact-section h2 {
-            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -530,7 +497,7 @@
         }
 
         .contact-section p {
-            color: rgba(255,255,255,0.9);
+            color: var(--text-mid);
             margin: 0 auto 2rem;
             font-size: 1.1rem;
         }
@@ -543,27 +510,34 @@
         }
 
         .contact-card {
-            background: rgba(255,255,255,0.08);
-            backdrop-filter: blur(8px);
-            border-radius: 1.5rem;
+            background: var(--white-pure);
+            border-radius: 3rem;
             padding: 1rem 2rem;
             display: inline-flex;
             align-items: center;
             gap: 1rem;
             transition: all 0.2s;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid var(--blue-accent);
             text-decoration: none;
-            color: white;
+            color: var(--blue-dark);
             font-weight: 600;
+            box-shadow: var(--shadow-sm);
         }
 
         .contact-card i {
             font-size: 1.5rem;
+            color: var(--blue-accent);
         }
 
         .contact-card:hover {
-            background: rgba(255,255,255,0.2);
+            background: var(--blue-dark);
+            border-color: var(--blue-dark);
+            color: white;
             transform: translateY(-3px);
+        }
+
+        .contact-card:hover i {
+            color: white;
         }
 
         /* Footer */
@@ -647,22 +621,12 @@
         }
 
         /* Reveal Animation */
-        .gallery-section {
+        .gallery-section, .contact-section {
             opacity: 0;
             transform: translateY(35px);
             transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
         }
-        .gallery-section.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .contact-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.9s var(--ease-out-expo), transform 0.9s var(--ease-out-expo);
-        }
-        .contact-section.revealed {
+        .gallery-section.revealed, .contact-section.revealed {
             opacity: 1;
             transform: translateY(0);
         }
@@ -695,31 +659,92 @@
             border-radius: 12px;
         }
 
-        /* Responsive */
+        /* ========== DESKTOP (1025px+) ========== */
         @media (min-width: 1025px) {
             .desktop-nav { display: block; }
             .hamburger { display: none !important; }
+            .mobile-vertical-grid { display: none; }
+            .horizontal-scroll { display: block; }
         }
-        @media (max-width: 1024px) {
+
+        /* ========== TABLET (768px - 1024px) ========== */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .desktop-nav { display: none !important; }
+            .hamburger { display: block !important; }
             .footer-grid { grid-template-columns: 1fr 1fr; }
             .laptop-card { width: 336px; }
             .laptop-card img { height: 220px; }
+            .horizontal-scroll { display: block; }
+            .mobile-vertical-grid { display: none; }
         }
-        @media (max-width: 768px) {
-            .header-container { padding: 0.75rem 1rem; }
-            .company-name { font-size: 1.2rem; }
+
+        /* ========== MOBILE (max-width: 767px) - Vertical list of images ========== */
+        @media (max-width: 767px) {
+            .header-container { 
+                padding: 0.75rem 1rem;
+                position: relative;
+            }
+            .logo-container {
+                flex: 1;
+                gap: 0.75rem;
+            }
+            .logo-img { height: 42px; }
+            .company-name {
+                font-size: 1.6rem;
+                text-align: center;
+                flex: 1;
+                font-weight: 800;
+                position: static;
+                transform: none;
+                white-space: normal;
+            }
+            .hamburger { margin-left: auto; }
             .desktop-nav { display: none !important; }
             .hamburger { display: block !important; }
+            
             .hero-section { min-height: 80vh; }
             .hero-content h1 { font-size: clamp(2rem, 6vw, 3rem); }
             .hero-content p { font-size: 1rem; }
+            .hero-content .btn { padding: 0.8rem 1.8rem; font-size: 0.9rem; }
+            
             .gallery-section { padding: 3rem 0; }
+            
+            /* Hide horizontal scroll on mobile */
+            .horizontal-scroll { display: none !important; }
+            
+            /* Show vertical grid */
+            .mobile-vertical-grid {
+                display: flex;
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+            
+            .mobile-vertical-grid .laptop-card {
+                width: 100%;
+                margin: 0 auto;
+            }
+            
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            
             .contact-buttons { flex-direction: column; align-items: center; }
-            .laptop-card { width: 300px; }
-            .laptop-card img { height: 200px; }
-            .laptop-card-content h3 { font-size: 1.2rem; }
-            .laptop-card-content .price { font-size: 1.2rem; }
+            .contact-card { width: 80%; justify-content: center; }
+            
+            .laptop-card { width: 100%; }
+            .laptop-card img { height: 220px; }
+            .laptop-card-content h3 { font-size: 1.3rem; }
+            .laptop-card-content .price { font-size: 1.3rem; }
+            
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0,0,0,0.05);
+                margin-top: 0.5rem;
+                border: none;
+            }
         }
     </style>
 </head>
@@ -759,7 +784,7 @@
     </div>
 </header>
 
-    <!-- Hero section with laptop background image H15.jpeg - full height fixed -->
+    <!-- Hero section -->
     <section class="hero-section" id="home">
         <div class="hero-bg"></div>
         <div class="hero-overlay"></div>
@@ -772,20 +797,23 @@
         </div>
     </section>
 
-    <!-- Horizontal Scrolling Laptop Gallery - 6 Laptops, No Loop -->
+    <!-- Laptop Gallery Section -->
     <section class="gallery-section" id="laptops-gallery">
         <div class="container">
             <div class="gallery-header">
                 <h2>Premium Laptop Collection</h2>
                 <p>Explore our curated selection of high-performance laptops from top brands</p>
             </div>
+            <!-- Desktop horizontal scroll -->
             <div class="horizontal-scroll" id="horizontalScroll">
                 <div class="scroll-container" id="scrollContainer"></div>
             </div>
+            <!-- Mobile vertical grid -->
+            <div class="mobile-vertical-grid" id="mobileVerticalGrid"></div>
         </div>
     </section>
 
-    <!-- Contact Section -->
+    <!-- Contact Section - White background exactly like previous code -->
     <section class="contact-section" id="contact-us">
         <div class="container">
             <h2>Ready to upgrade your device?</h2>
@@ -816,7 +844,7 @@
 
     <script>
         (function(){
-            // Laptop data - exactly 6 laptops, no loop
+            // Laptop data - exactly 6 laptops
             const laptopData = [
                 { name: "Dell Precision 7760", price: "₦250,000", img: "H15.jpeg", specs: ["11th Gen i5", "16GB RAM", "512GB SSD", "17\" FHD"] },
                 { name: "HP Elitebook 840-G3", price: "₦310,000", img: "H16.jpeg", specs: ["Core i5", "8GB RAM", "256GB SSD", "Keyboard Light"] },
@@ -827,12 +855,14 @@
             ];
 
             const scrollContainer = document.getElementById('scrollContainer');
+            const mobileGrid = document.getElementById('mobileVerticalGrid');
             
             function buildCards() {
                 let cardsHtml = '';
-                // Single set - exactly 6 laptops, no duplication
+                let mobileHtml = '';
+                
                 laptopData.forEach(laptop => {
-                    cardsHtml += `
+                    const cardHtml = `
                         <div class="laptop-card" data-img="${laptop.img}">
                             <img src="${laptop.img}" alt="${laptop.name}" onerror="this.src='https://via.placeholder.com/408x264?text=Laptop+Image'">
                             <div class="laptop-card-content">
@@ -844,10 +874,14 @@
                             </div>
                         </div>
                     `;
+                    cardsHtml += cardHtml;
+                    mobileHtml += cardHtml;
                 });
-                scrollContainer.innerHTML = cardsHtml;
                 
-                // Add click handlers for modal
+                scrollContainer.innerHTML = cardsHtml;
+                mobileGrid.innerHTML = mobileHtml;
+                
+                // Add click handlers for modal on all laptop cards
                 document.querySelectorAll('.laptop-card').forEach(card => {
                     card.addEventListener('click', (e) => {
                         e.stopPropagation();
@@ -915,7 +949,6 @@
             if(gallerySec) observer.observe(gallerySec);
             if(contactSec) observer.observe(contactSec);
             
-            // Initial visible check
             setTimeout(() => {
                 if(gallerySec && gallerySec.getBoundingClientRect().top < window.innerHeight - 80) {
                     gallerySec.classList.add('revealed');
