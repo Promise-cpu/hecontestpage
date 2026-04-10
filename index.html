@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -143,16 +142,16 @@
             top: 0;
             width: 100%;
             z-index: 100;
-            background: var(--white-pure);
+            background: rgba(255,255,255,0.98);
             border-bottom: 1px solid var(--border-light);
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+            backdrop-filter: blur(10px);
         }
 
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 2rem;
+            padding: 0.75rem 1rem;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -160,7 +159,7 @@
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             cursor: pointer;
         }
 
@@ -171,9 +170,9 @@
         }
 
         .company-name {
-            font-weight: 700;
-            font-size: 1.4rem;
-            background: linear-gradient(135deg, var(--blue-dark), var(--black));
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #0A2A44, #000);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -206,23 +205,19 @@
             position: relative;
         }
 
-        .dropdown > a .fa-chevron-down {
-            display: none;
-        }
-
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
-            background: var(--white-pure);
+            background: white;
             min-width: 200px;
             border-radius: 0.75rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
             opacity: 0;
             visibility: hidden;
             transform: translateY(-10px);
-            transition: all 0.3s var(--ease-out-expo);
-            border: 1px solid var(--border-light);
+            transition: all 0.3s;
+            border: 1px solid #DCE5F0;
             z-index: 1000;
         }
 
@@ -239,26 +234,22 @@
         .dropdown-menu li a {
             display: block;
             padding: 0.75rem 1.5rem;
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            border-bottom: 1px solid var(--border-light);
+            color: #2C3E50;
+            border-bottom: 1px solid #DCE5F0;
         }
 
         .dropdown-menu li:last-child a {
             border-bottom: none;
         }
 
-        .dropdown-menu li a:hover {
-            background: linear-gradient(90deg, rgba(10, 42, 68, 0.05), transparent);
-            color: var(--blue-dark);
-        }
-
         .hamburger {
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: var(--blue-dark);
+            color: #0A2A44;
             cursor: pointer;
+            display: block;
+            padding: 0.5rem;
         }
 
         .mobile-menu {
@@ -270,7 +261,7 @@
             backdrop-filter: blur(10px);
             padding: 1.5rem;
             display: none;
-            border-bottom: 1px solid var(--border-light);
+            border-bottom: 1px solid #DCE5F0;
             z-index: 99;
             max-height: calc(100vh - 68px);
             overflow-y: auto;
@@ -296,11 +287,7 @@
             color: #1A2C3E;
             text-decoration: none;
             font-weight: 600;
-            border-bottom: 1px solid var(--border-light);
-        }
-
-        .mobile-menu li a:hover {
-            color: var(--blue-dark);
+            border-bottom: 1px solid #DCE5F0;
         }
 
         /* Hero Section */
@@ -349,12 +336,10 @@
         .hero-content h1 {
             font-size: clamp(2rem, 7vw, 5.5rem);
             font-weight: 800;
-            line-height: 1.2;
+            line-height: 1.1;
             color: var(--white-pure);
             margin-bottom: 1rem;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
-            opacity: 0;
-            animation: fadeUpIn 0.8s forwards;
         }
 
         .hero-content p {
@@ -362,8 +347,6 @@
             color: rgba(255, 255, 255, 0.95);
             max-width: 700px;
             margin: 0 auto 1.5rem;
-            opacity: 0;
-            animation: fadeUpIn 0.8s 0.3s forwards;
         }
 
         .hero-buttons {
@@ -371,13 +354,6 @@
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeUpIn 0.8s 0.7s forwards;
-        }
-
-        @keyframes fadeUpIn {
-            from { opacity: 0; transform: translateY(28px); }
-            to { opacity: 1; transform: translateY(0); }
         }
 
         .btn-glow {
@@ -400,7 +376,7 @@
 
         .services-header p {
             margin: 0 auto;
-            font-size: 1.25rem;
+            font-size: 1.125rem;
             color: var(--text-mid);
             max-width: 680px;
         }
@@ -524,7 +500,7 @@
             color: white;
         }
 
-        /* NEW CONTACT US SECTION - Clean, minimal, two CTA buttons */
+        /* Contact Section */
         .contact-section {
             background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
             padding: 5rem 2rem;
@@ -705,53 +681,57 @@
             transform: translateY(0);
         }
 
-        /* ========== RESPONSIVE OVERRIDES (Mobile Only - exactly matching observed code) ========== */
-        @media (max-width: 768px) {
+        /* ========== MOBILE OVERRIDES (EXACTLY MATCHING THE OBSERVED CODE) ========== */
+        @media (max-width: 767px) {
+            body {
+                overflow-x: hidden;
+            }
             .container {
-                padding: 0 1rem;
+                padding: 0 1.5rem;
+            }
+            section {
+                padding: 3rem 0;
             }
             
-            /* HEADER: Exactly as observed code - logo 5% increase, centered company name */
+            /* HEADER - exact match to observed code */
             .header-container {
                 padding: 0.75rem 1rem;
-                justify-content: space-between;
                 position: relative;
             }
             .logo-container {
-                gap: 0.6rem;
                 flex: 1;
+                gap: 0.75rem;
             }
             .logo-img {
-                height: calc(42px * 1.05); /* 5% increase ≈ 44px */
-                width: auto;
+                height: 42px;
             }
             .company-name {
-                font-size: 1.2rem;
+                font-size: 1.6rem;
                 text-align: center;
                 flex: 1;
-                display: block;
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                white-space: nowrap;
+                font-weight: 800;
+                position: static;
+                transform: none;
+                white-space: normal;
             }
             .hamburger {
                 margin-left: auto;
-                position: relative;
-                z-index: 2;
             }
-
-            /* Hero Section: Full screen background cover */
+            
+            /* Hero section - full screen background */
             .hero-section {
                 height: 100vh;
                 min-height: -webkit-fill-available;
             }
             .hero-bg {
+                background-image: linear-gradient(135deg, rgba(30, 58, 95, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%), url('https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=2');
                 background-size: cover;
                 background-position: center;
             }
-            
-            /* Hero wording sizes exactly matching observed code's hero */
+            .hero-content {
+                padding: 0 1.5rem;
+                margin-top: 60px;
+            }
             .hero-content h1 {
                 font-size: clamp(2rem, 7vw, 5.5rem);
                 margin-bottom: 1rem;
@@ -760,56 +740,41 @@
                 font-size: clamp(0.9rem, 4vw, 1.3rem);
                 margin-bottom: 1.5rem;
             }
-            
-            /* Hero buttons: EXACT sizes as observed code (reduced by 20% from desktop) */
-            .hero-buttons .btn {
-                padding: 0.64rem 1.6rem;
-                font-size: 0.76rem;
-                gap: 0.6rem;
-            }
-            .hero-buttons .btn i {
-                font-size: 0.9rem;
-            }
+            /* Hero buttons - exactly like observed code: buttons reduced, NO "CHAT WITH US" button */
             .hero-buttons {
                 gap: 1rem;
                 flex-direction: column;
                 align-items: center;
             }
             .hero-buttons .btn {
+                padding: 0.64rem 1.6rem;
+                font-size: 0.76rem;
+                gap: 0.6rem;
                 width: 70%;
                 justify-content: center;
             }
-            
-            /* HIDE "CHAT WITH US" button on mobile only */
+            .hero-buttons .btn i {
+                font-size: 0.9rem;
+            }
+            /* Remove the Chat with Us button completely on mobile */
             .hero-buttons .btn-glow {
                 display: none;
             }
             
-            /* Services header paragraph - match size of "Your trusted land investment partner" section from observed code */
+            /* Services header text size - match "Your Trusted Land Investment Partner" section style */
             .services-header p {
-                font-size: 1rem;
+                font-size: 1.125rem;
                 line-height: 1.5;
-                max-width: 100%;
+                max-width: 55ch;
             }
             
-            /* Make services header text style match observed intro text */
-            .services-header {
-                margin-bottom: 2rem;
+            /* Contact section - wording and button size respect hero mobile display */
+            .contact-section {
+                padding: 3rem 1.5rem;
             }
-            
-            /* General section padding */
-            section {
-                padding: 3rem 0;
-            }
-            .services-grid {
-                gap: 1.5rem;
-            }
-            .service-card {
-                padding: 1.5rem;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
+            .contact-container > p {
+                font-size: clamp(0.9rem, 4vw, 1rem);
+                margin-bottom: 1.5rem;
             }
             .contact-buttons {
                 flex-direction: column;
@@ -817,31 +782,71 @@
                 gap: 1rem;
             }
             .contact-big-btn {
-                width: 80%;
+                padding: 0.64rem 1.6rem;
+                font-size: 0.76rem;
+                gap: 0.6rem;
+                width: 70%;
                 justify-content: center;
-                padding: 0.9rem 1.8rem;
+            }
+            .contact-big-btn i {
+                font-size: 0.9rem;
+            }
+            .contact-note {
+                font-size: 0.7rem;
+                margin-top: 1.5rem;
             }
             
-            /* Desktop nav hidden, hamburger visible */
-            .desktop-nav { display: none !important; }
-            .hamburger { display: block !important; }
+            /* Mobile menu dropdown styling - matches observed code exactly */
+            .mobile-menu {
+                top: 68px;
+                padding: 1.5rem;
+            }
+            .mobile-menu li a {
+                padding: 1rem;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+            
+            /* Footer responsive */
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            .services-grid {
+                gap: 1.5rem;
+            }
+            .service-card {
+                padding: 1.5rem;
+            }
         }
 
-        /* For tablet landscape - hide desktop nav, show hamburger, keep chat button hidden on mobile sizes */
+        /* Tablet specific (768px - 1024px) - keep hamburger visible, consistent hero button reduction, NO chat button */
         @media (min-width: 768px) and (max-width: 1024px) {
-            .desktop-nav { display: none !important; }
-            .hamburger { display: block !important; }
+            .desktop-nav {
+                display: none !important;
+            }
+            .hamburger {
+                display: block !important;
+            }
             .hero-buttons .btn {
                 padding: 0.7rem 1.8rem;
                 font-size: 0.85rem;
             }
+            /* Hide chat button on tablet as well to be consistent with mobile request */
+            .hero-buttons .btn-glow {
+                display: none;
+            }
         }
         
-        /* Ensure desktop nav is shown on large screens */
+        /* Desktop nav visible on 1025px+ */
         @media (min-width: 1025px) {
-            .desktop-nav { display: block; }
-            .hamburger { display: none !important; }
-            /* On desktop, keep chat button visible (not hidden) */
+            .desktop-nav {
+                display: block;
+            }
+            .hamburger {
+                display: none !important;
+            }
+            /* On desktop, keep the Chat button visible (original design) */
             .hero-buttons .btn-glow {
                 display: inline-flex;
             }
@@ -852,7 +857,7 @@
     <header>
         <div class="header-container">
             <div class="logo-container" id="logoHomeLink">
-                <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/44?text=HG'">
+                <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
                 <div class="company-name">HECON GROUP</div>
             </div>
             <nav class="desktop-nav">
@@ -891,13 +896,14 @@
             <h1>OWN THE FUTURE<br>REAL ESTATE · CRYPTO · BUSINESS · TECH</h1>
             <p>Your trusted partner for property, business registration, gadgets, and crypto exchange.</p>
             <div class="hero-buttons">
+                <!-- CHAT WITH US button removed entirely on mobile (display:none via CSS), but hidden for tablet as well, visible on desktop only -->
                 <a href="#contact-now" class="btn btn-glow"><i class="fab fa-whatsapp"></i> CHAT WITH US</a>
                 <a href="#services-core" class="btn btn-primary"><i class="fas fa-arrow-right"></i> EXPLORE SERVICES</a>
             </div>
         </div>
     </section>
 
-    <!-- OUR SERVICES - Restructured clean card grid -->
+    <!-- OUR SERVICES section -->
     <section class="about-section" id="services-core">
         <div class="container">
             <div class="services-header reveal">
@@ -973,10 +979,10 @@
         </div>
     </section>
 
-    <!-- NEW CONTACT US SECTION -->
+    <!-- CONTACT SECTION with buttons sized exactly like hero mobile buttons -->
     <section class="contact-section" id="contact-now">
         <div class="contact-container">
-            <h2>Let’s Connect</h2>
+            <h2>Let's Connect</h2>
             <p>Reach out to our team for inquiries about real estate, business registration, gadgets, or crypto exchange. We're here to help you move forward.</p>
             <div class="contact-buttons">
                 <a href="https://wa.me/2348008901234" class="contact-big-btn whatsapp" target="_blank">
