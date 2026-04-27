@@ -10,86 +10,400 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white-pure: #FFFFFF;
+            --white-soft: #F8FAFE;
+            --black: #000000;
+            --black-soft: #111111;
+            --black-mid: #1A1A1A;
+            --blue-deep: #1E3A5F;
+            --blue-dark: #0A2A44;
+            --blue-accent: #2C5A8C;
+            --blue-soft-accent: #3B6E9E;
+            --text-dark: #1A2C3E;
+            --text-mid: #2C3E50;
+            --text-light: #5A6E7C;
+            --border-light: #DCE5F0;
+            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 20px 35px rgba(0, 0, 0, 0.08);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            color: #2C3E50;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-mid);
             line-height: 1.5;
-            background: linear-gradient(145deg, #FFFFFF 0%, #F5F9FF 15%, #EFF3FC 30%, #E8EFF8 50%, #E0E8F2 70%, #D9E2ED 85%, #D1DCE8 100%);
+            overflow-x: hidden;
+            background: linear-gradient(145deg, 
+                #FFFFFF 0%, 
+                #F5F9FF 15%,
+                #EFF3FC 30%,
+                #E8EFF8 50%,
+                #E0E8F2 70%,
+                #D9E2ED 85%,
+                #D1DCE8 100%);
             background-attachment: fixed;
+            position: relative;
         }
-        h1, h2, h3, h4 { font-weight: 600; letter-spacing: -0.02em; line-height: 1.2; }
-        h1 { color: white; }
-        h2 { font-size: clamp(2rem, 6vw, 3.8rem); margin-bottom: 1.5rem; background: linear-gradient(135deg, #1E3A5F 0%, #000 60%, #111 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        p { font-size: 1.125rem; max-width: 55ch; }
-        .container { max-width: 1400px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 2; }
-        @media (min-width: 768px) { .container { padding: 0 2rem; } }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 20%, rgba(0, 0, 0, 0.03), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            color: var(--white-pure);
+        }
+
+        h2 {
+            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            color: var(--text-mid);
+            font-size: 1.125rem;
+            max-width: 55ch;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            position: relative;
+            z-index: 2;
+        }
+
         .btn {
-            display: inline-flex; align-items: center; justify-content: center; gap: 0.75rem;
-            padding: 1rem 2.5rem; border-radius: 3rem; font-weight: 600; text-decoration: none;
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
         }
-        @media (max-width: 767px) { .hero-content .btn { padding: 0.8rem 2rem; font-size: 0.8rem; gap: 0.6rem; } }
-        .btn-primary { background: linear-gradient(135deg, #2C5A8C, #0A2A44); color: white; box-shadow: 0 8px 20px rgba(10,42,68,0.25); }
-        .btn-primary:hover { transform: scale(1.02) translateY(-3px); box-shadow: 0 15px 30px rgba(10,42,68,0.3); }
 
-        /* HEADER */
-        header { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(255,255,255,0.98); border-bottom: 1px solid #DCE5F0; backdrop-filter: blur(10px); }
-        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 1rem; max-width: 1400px; margin: 0 auto; }
-        @media (min-width: 768px) { .header-container { padding: 0.75rem 2rem; } }
-        .logo-container { display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
-        @media (max-width: 767px) { .logo-container { flex: 1; } .logo-img { height: 42px; } .company-name { font-size: 1.6rem;  text-align: left;
-                padding-left: 18px; flex: 1; font-weight: 800; } .hamburger { margin-left: auto; } }
-        .logo-img { height: 42px; }
-        .company-name { font-weight: 700; background: linear-gradient(135deg, #0A2A44, #000); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .desktop-nav { display: none; }
-        @media (min-width: 1025px) { .desktop-nav { display: block; } .hamburger { display: none !important; } }
-        .desktop-nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
-        .desktop-nav a { text-decoration: none; color: #5A6E7C; font-weight: 500; }
-        .desktop-nav a:hover { color: #0A2A44; }
-        .dropdown { position: relative; }
-        .dropdown-menu { position: absolute; top: 100%; left: 0; background: white; min-width: 200px; border-radius: 0.75rem; box-shadow: 0 12px 30px rgba(0,0,0,0.05); opacity: 0; visibility: hidden; transform: translateY(-10px); transition: all 0.3s; border: 1px solid #DCE5F0; z-index: 1000; }
-        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
-        .dropdown-menu li { list-style: none; }
-        .dropdown-menu li a { display: block; padding: 0.75rem 1.5rem; color: #2C3E50; border-bottom: 1px solid #DCE5F0; }
-        .dropdown-menu li:last-child a { border-bottom: none; }
-        .hamburger { background: none; border: none; font-size: 1.8rem; color: #0A2A44; cursor: pointer; display: block; padding: 0.5rem; }
-        .mobile-menu { position: fixed; top: 68px; left: 0; width: 100%; background: rgba(255,255,255,0.98); backdrop-filter: blur(10px); padding: 1.5rem; display: none; border-bottom: 1px solid #DCE5F0; z-index: 99; max-height: calc(100vh - 68px); overflow-y: auto; }
-        .mobile-menu.active { display: block; animation: slideDown 0.3s ease; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-        .mobile-menu li a { display: block; padding: 1rem; color: #1A2C3E; text-decoration: none; font-weight: 600; border-bottom: 1px solid #DCE5F0; }
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
+            color: white;
+            box-shadow: 0 8px 20px rgba(10, 42, 68, 0.25);
+        }
 
-        /* HERO */
-        .hero-section { min-height: 100vh; height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; }
-        @media (max-width: 767px) { .hero-section { height: 100vh; min-height: -webkit-fill-available; } }
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue-accent));
+            transform: scale(1.02) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(10, 42, 68, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--white-pure);
+            background: transparent;
+            color: var(--white-pure);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+            border-color: var(--white-pure);
+            color: var(--white-pure);
+        }
+
+        /* Header - Pure White */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--white-pure);
+            border-bottom: 1px solid var(--border-light);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 42px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--blue-dark), var(--black));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .desktop-nav {
+            display: none;
+        }
+
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--blue-dark);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown > a .fa-chevron-down {
+            display: none;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white-pure);
+            min-width: 200px;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px);
+            transition: all 0.3s var(--ease-out-expo);
+            border: 1px solid var(--border-light);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
+        }
+
+        .dropdown-menu li a:hover {
+            background: linear-gradient(90deg, rgba(10, 42, 68, 0.05), transparent);
+            color: var(--blue-dark);
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--blue-dark);
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 68px;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            display: none;
+            border-bottom: 1px solid var(--border-light);
+            z-index: 99;
+            max-height: calc(100vh - 68px);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li a {
+            display: block;
+            padding: 1rem;
+            color: #1A2C3E;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 1px solid #DCE5F0;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
         .hero-bg {
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, rgba(30,58,95,0.85), rgba(0,0,0,0.75)), url('https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1600');
-            background-size: cover; background-position: center; z-index: 0;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(135deg, rgba(30, 58, 95, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%), url('https://images.pexels.com/photos/169647/pexels-photo-169647.jpeg?auto=compress&cs=tinysrgb&w=1600');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
         }
-        .hero-overlay { position: absolute; inset: 0; background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%); z-index: 1; }
-        .hero-content { position: relative; z-index: 2; max-width: 1200px; margin: 0 auto; text-align: center; padding: 0 1.5rem; margin-top: 60px; }
-        .hero-content h1 { font-size: clamp(2rem, 7vw, 5.5rem); font-weight: 800; margin-bottom: 1rem; text-shadow: 0 2px 15px rgba(0,0,0,0.15); opacity: 0; animation: fadeUpIn 0.8s forwards; }
-        .hero-content p { font-size: clamp(0.9rem, 4vw, 1.3rem); color: rgba(255,255,255,0.95); max-width: 700px; margin: 0 auto 1.5rem; opacity: 0; animation: fadeUpIn 0.8s 0.3s forwards; }
-        .hero-content .btn { opacity: 0; animation: fadeUpIn 0.8s 0.7s forwards; }
-        @keyframes fadeUpIn { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* INTRO */
-        .intro-full { width: 100%; text-align: center; padding: 3rem 1.5rem; background: linear-gradient(135deg, #F8FAFE 0%, #F0F0F0 50%, #F8FAFE 100%); border-top: 1px solid #DCE5F0; border-bottom: 1px solid #DCE5F0; opacity: 0; transform: translateY(28px); transition: opacity 1.4s ease, transform 1.4s ease; }
-        .intro-full.revealed { opacity: 1; transform: translateY(0); }
-        @media (min-width: 768px) { .intro-full { padding: 5rem 2rem; } }
-        .intro-full .intro-inner { max-width: 900px; margin: 0 auto; }
-        .intro-full p { margin: 0 auto 1rem; font-size: clamp(1rem, 4vw, 1.2rem); }
-        .intro-full .highlight { background: linear-gradient(135deg, #2C5A8C, #000); -webkit-background-clip: text; background-clip: text; color: transparent; font-weight: 600; }
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
+        }
 
-        /* GALLERY SECTION - PURE IMAGES, NO TEXT OVERLAY */
-        .gallery-section { padding: 3rem 0; background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%); }
-        @media (min-width: 768px) { .gallery-section { padding: 5rem 0; } }
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 2rem;
+            margin-top: 100px;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--white-pure);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+        }
+
+        /* Introduction Section - with slower fade */
+        .intro-full {
+            width: 100%;
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+            margin: 0;
+            position: relative;
+        }
+
+        .intro-full .intro-inner {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .intro-full h2 {
+            margin-bottom: 2rem;
+        }
+
+        .intro-full p {
+            margin: 0 auto 1.5rem;
+            font-size: 1.2rem;
+            color: var(--text-mid);
+        }
+
+        .intro-full .highlight {
+            background: linear-gradient(135deg, var(--blue-accent), var(--black));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+        }
+
+        /* PURE IMAGE GALLERY SECTION - NO TEXT OVERLAYS, TALL RECTANGULAR RATIO */
+        .gallery-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
+        }
         .gallery-header { text-align: center; margin-bottom: 2rem; }
         .gallery-header h2 { color: white; background: linear-gradient(135deg, #fff, #fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
         .gallery-header p { color: rgba(255,255,255,0.8); margin: 0 auto; }
         
-        /* Horizontal scroll for desktop - clean images only */
         .horizontal-scroll { width: 100%; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; scrollbar-color: #2C5A8C rgba(255,255,255,0.2); }
         .mobile-grid { display: none; }
         @media (max-width: 767px) { 
@@ -100,7 +414,6 @@
         .horizontal-scroll:hover .scroll-container { animation-play-state: paused; }
         @keyframes autoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
         
-        /* Image-only card — no text, no overlays, just image */
         .land-card {
             width: 320px;
             background: transparent;
@@ -112,61 +425,160 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
         }
-        .mobile-grid .land-card {
-            width: 100%;
-            margin-bottom: 0;
-        }
-        .land-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 18px 30px rgba(0,0,0,0.5);
-        }
-        .land-card img {
-            width: 100%;
-            aspect-ratio: 3 / 4; /* Tall rectangular ratio exactly as requested (portrait orientation) */
-            object-fit: cover;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-        .land-card:hover img {
-            transform: scale(1.03);
-        }
-        /* No content divs — removed completely */
-
-        /* MODAL */
+        .mobile-grid .land-card { width: 100%; margin-bottom: 0; }
+        .land-card:hover { transform: translateY(-8px); box-shadow: 0 18px 30px rgba(0,0,0,0.5); }
+        .land-card img { width: 100%; aspect-ratio: 3 / 4; object-fit: cover; display: block; transition: transform 0.4s ease; }
+        .land-card:hover img { transform: scale(1.03); }
         .image-modal { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:2000; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; visibility:hidden; transition:all 0.3s ease; }
         .image-modal.active { opacity:1; visibility:visible; }
         .image-modal img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:12px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
 
-        /* PROPERTY SECTIONS */
-        .property-section { padding: 3rem 0; position: relative; }
-        @media (min-width: 768px) { .property-section { padding: 5rem 0; } }
-        #property1 { background: #ffffff; }
-        #property2 { background: #DCE5F0}
-        #property3 { background: #0A1A2A; }
-        #property4 { background: #fefefe;  }
-        #property5 { background: #DCE5F0 }
-        #property6 { background: #0A1A2A; }
-        .property-container { display: flex; gap: 2rem; align-items: flex-start; flex-direction: column; }
-        @media (min-width: 768px) { .property-container { gap: 4rem; flex-direction: row; } .property-container.right { flex-direction: row-reverse; } .property-container.left { flex-direction: row; } }
-        .property-video { flex: 1; width: 100%; }
-        @media (min-width: 768px) { .property-video { position: sticky; top: 100px; } }
-        .property-video video { width: 100%; aspect-ratio: 16/9; border-radius: 1.25rem; border: 2px solid rgba(0,0,0,0.2); box-shadow: 0 12px 30px rgba(0,0,0,0.05); object-fit: cover; transition: transform 0.3s; }
-        .property-video video:hover { transform: scale(1.01); }
-        .property-details { flex: 1; display: flex; flex-direction: column; gap: 1rem; }
-        .property-header h2 { font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 0.5rem; background: linear-gradient(135deg, #0A2A44, #2C3E50); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .property-location { display: flex; align-items: center; gap: 0.5rem; color: #2C3E50; font-size: clamp(0.85rem, 3vw, 1rem); }
-        .property-price { font-size: clamp(1.3rem, 5vw, 2rem); font-weight: 700; color: #1E3A5F; margin: 0.5rem 0; }
-        .property-description p { font-size: clamp(0.85rem, 3.5vw, 1rem); color: #2C3E50; }
-        .property-features { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
-        @media (max-width: 480px) { .property-features { grid-template-columns: 1fr; } }
-        .feature-item { display: flex; align-items: center; gap: 0.75rem; color: #2C3E50; font-size: clamp(0.8rem, 3vw, 0.95rem); }
-        .feature-item i { color: #1E3A5F; width: 24px; }
-        #property6 .property-header h2 { background: linear-gradient(135deg, #F0F0F0, #FFFFFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        #property6 .property-location, #property6 .property-description p, #property6 .feature-item, #property6 .property-price { color: #E0E7F0; }
-        #property6 .feature-item i { color: #FFD966; }
-        #property3 .property-header h2 { background: linear-gradient(135deg, #F0F0F0, #FFFFFF); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        #property3 .property-location, #property3 .property-description p, #property3 .feature-item, #property3 .property-price { color: #E0E7F0; }
-        #property3 .feature-item i { color: #FFD966; }
+        /* Property Sections - Color Blends with White, Black, Dark Blue */
+        .property-section {
+            padding: 5rem 0;
+            position: relative;
+            transition: background-color 0.3s ease;
+        }
+        .property-section:nth-of-type(3) { background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%); }
+        .property-section:nth-of-type(4) { background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%); }
+        .property-section:nth-of-type(5) { background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%); }
+        .property-section:nth-of-type(6) { background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%); }
+        .property-section:nth-of-type(7) { background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%); }
+        .property-section:nth-of-type(8) { background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%); }
+        .property-section:not(:first-of-type)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .property-container {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+        }
+
+        .property-container.left { flex-direction: row; }
+        .property-container.right { flex-direction: row-reverse; }
+
+        .property-video {
+            flex: 1;
+            min-width: 0;
+            position: sticky;
+            top: 100px;
+        }
+
+        .property-video video {
+            width: 100%;
+            height: auto;
+            border-radius: 1.25rem;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            background: var(--white-pure);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.4s var(--ease-out-expo), box-shadow 0.3s;
+            max-height: 320px;
+            object-fit: contain;
+        }
+
+        .property-video video:hover {
+            transform: scale(1.01);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--white-pure);
+        }
+
+        .property-details {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .property-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .property-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1rem;
+        }
+        .property-location i { color: #FFFFFF; }
+
+        .property-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0.5rem 0;
+        }
+
+        .property-description p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .property-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            background: transparent;
+        }
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.95rem;
+        }
+        .feature-item i { color: #FFFFFF; font-size: 1rem; width: 24px; }
+
+        /* Side Fade-in Animations */
+        .property-section .property-video {
+            opacity: 0;
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+        .property-section .property-details {
+            opacity: 0;
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+        .property-section:nth-of-type(3) .property-video,
+        .property-section:nth-of-type(5) .property-video,
+        .property-section:nth-of-type(7) .property-video { transform: translateX(50px); }
+        .property-section:nth-of-type(3) .property-details,
+        .property-section:nth-of-type(5) .property-details,
+        .property-section:nth-of-type(7) .property-details { transform: translateX(-50px); }
+        .property-section:nth-of-type(4) .property-video,
+        .property-section:nth-of-type(6) .property-video,
+        .property-section:nth-of-type(8) .property-video { transform: translateX(-50px); }
+        .property-section:nth-of-type(4) .property-details,
+        .property-section:nth-of-type(6) .property-details,
+        .property-section:nth-of-type(8) .property-details { transform: translateX(50px); }
+        .property-section.revealed .property-video,
+        .property-section.revealed .property-details { opacity: 1; transform: translateX(0); }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+        .reveal.revealed { opacity: 1; transform: translateY(0); }
+        .intro-full {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 1.4s var(--ease-out-expo), transform 1.4s var(--ease-out-expo);
+        }
+        .intro-full.revealed { opacity: 1; transform: translateY(0); }
 
         /* CONTACT */
         .contact-section { background: #ffffff; padding: 3rem 1.5rem; }
@@ -183,38 +595,74 @@
         .contact-btn-call { background: white; color: #0A2A44; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
         .contact-btn-call:hover { transform: translateY(-3px); }
 
-        /* REVEAL ANIMATIONS */
-        .property-section .property-video, .property-section .property-details { opacity: 0; transform: translateX(0); transition: opacity 0.9s ease, transform 0.9s ease; }
-        .property-section:nth-of-type(1) .property-video { transform: translateX(-40px); }
-        .property-section:nth-of-type(1) .property-details { transform: translateX(40px); }
-        .property-section:nth-of-type(2) .property-video { transform: translateX(40px); }
-        .property-section:nth-of-type(2) .property-details { transform: translateX(-40px); }
-        .property-section:nth-of-type(3) .property-video { transform: translateY(30px); }
-        .property-section:nth-of-type(3) .property-details { transform: translateY(-30px); }
-        .property-section:nth-of-type(4) .property-video { transform: translateX(-30px); }
-        .property-section:nth-of-type(4) .property-details { transform: translateX(30px); }
-        .property-section:nth-of-type(5) .property-video { transform: translateX(30px); }
-        .property-section:nth-of-type(5) .property-details { transform: translateX(-30px); }
-        .property-section:nth-of-type(6) .property-video { transform: translateY(25px); }
-        .property-section:nth-of-type(6) .property-details { transform: translateY(-25px); }
-        .property-section.revealed .property-video, .property-section.revealed .property-details { opacity: 1; transform: translateX(0) translateY(0); }
-
-        /* FOOTER */
-        footer { background: linear-gradient(135deg, #000 0%, #0A1A2A 50%, #000 100%); border-top: 1px solid rgba(255,255,255,0.2); padding: 2rem 0 1.5rem; }
-        @media (min-width: 768px) { footer { padding: 4rem 0 2rem; } }
-        .footer-grid { display: grid; grid-template-columns: 1fr; gap: 2rem; margin-bottom: 2rem; }
-        @media (min-width: 640px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
-        @media (min-width: 1024px) { .footer-grid { grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 3rem; } }
-        .footer-brand h3 { font-size: 1.5rem; margin-bottom: 0.8rem; background: linear-gradient(135deg,#fff,#ccc); -webkit-background-clip:text; background-clip:text; color:transparent; }
-        .footer-brand p { color: #9BB0C4; font-size: 0.8rem; max-width: 280px; }
-        .footer-links h4, .footer-contact h4 { color: white; font-size: 0.9rem; margin-bottom: 1rem; }
+        /* Footer - Dark Theme */
+        footer {
+            background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4rem 0 2rem;
+            margin-top: 0;
+            position: relative;
+            z-index: 2;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+        .footer-brand h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .footer-brand p { color: #9BB0C4; font-size: 0.9rem; max-width: 280px; }
+        .footer-links h4, .footer-contact h4 { color: #FFFFFF; font-size: 1rem; margin-bottom: 1.5rem; letter-spacing: 0.5px; font-weight: 600; }
         .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.6rem; }
-        .footer-links a { color: #8DA3B8; text-decoration: none; font-size: 0.8rem; }
-        .footer-links a:hover { color: white; }
-        .footer-contact p { color: #8DA3B8; font-size: 0.8rem; display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
-        .footer-contact i { color: white; width: 18px; }
-        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 1.5rem; text-align: center; color: #8DA3B8; font-size: 0.7rem; }
+        .footer-links li { margin-bottom: 0.75rem; }
+        .footer-links a { color: #8DA3B8; text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
+        .footer-links a:hover { color: #FFFFFF; }
+        .footer-contact p { color: #8DA3B8; font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+        .footer-contact i { color: #FFFFFF; width: 20px; }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; margin-top: 2rem; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem; color: #8DA3B8; font-size: 0.85rem; text-align: center; }
+
+        /* MOBILE RESPONSIVE - EXACT MATCH TO OBSERVED CODE */
+        @media (max-width: 767px) {
+            .header-container { padding: 0.75rem 1rem; }
+            .logo-container { flex: 1; gap: 0.75rem; }
+            .logo-img { height: 42px; }
+            .company-name { font-size: 1.6rem; text-align: left; padding-left: 18px; flex: 1; font-weight: 800; }
+            .hamburger { margin-left: auto; }
+            .mobile-menu { top: 68px; padding: 1.5rem; }
+            .hero-section { min-height: 100vh; height: 100vh; }
+            .hero-content { padding: 0 1.5rem; margin-top: 60px; }
+            .hero-content h1 { font-size: clamp(2rem, 7vw, 5.5rem); margin-bottom: 1rem; }
+            .hero-content p { font-size: clamp(0.9rem, 4vw, 1.3rem); margin-bottom: 1.5rem; }
+            .hero-content .btn { padding: 0.64rem 1.6rem; font-size: 0.76rem; gap: 0.6rem; }
+            .intro-full { padding: 3rem 1.5rem; }
+            .intro-full p { font-size: 1.125rem; }
+            .intro-full h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+            .property-container { flex-direction: column !important; gap: 2rem; }
+            .property-video { position: relative; top: 0; width: 100%; }
+            .property-section .property-video,
+            .property-section .property-details { transform: translateX(0) !important; }
+            .property-section { padding: 3rem 0; }
+            .property-header h2 { font-size: 1.8rem; }
+            .property-price { font-size: 1.6rem; }
+            .property-features { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: rgba(0,0,0,0.05); margin-top: 0.5rem; border: none; }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .desktop-nav { display: none !important; }
+            .hamburger { display: block !important; }
+        }
+        @media (min-width: 1025px) {
+            .desktop-nav { display: block; }
+            .hamburger { display: none !important; }
+        }
     </style>
 </head>
 <body>
@@ -222,7 +670,7 @@
 <header>
     <div class="header-container">
         <div class="logo-container" id="logoHomeLink">
-            <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
+            <img src="assets/Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
             <div class="company-name">HECON GROUP</div>
         </div>
         <nav class="desktop-nav">
@@ -259,13 +707,13 @@
     <div class="hero-overlay"></div>
     <div class="hero-content">
         <h1>OWN PRIME LANDS IN NIGERIA</h1>
-        <p>Secure high-value land investments in Lagos, Abuja & beyond | Verified titles & exclusive plots</p>
+        <p>Secure high-value land investments in Awka, Enugu, Lagos & beyond | Verified titles & exclusive plots</p>
         <div><a href="#property1" class="btn btn-primary"><i class="fas fa-search"></i> EXPLORE LAND LISTINGS</a></div>
     </div>
 </section>
 
 <section id="about">
-    <div class="intro-full" id="introFullSection">
+    <div class="intro-full reveal" id="introFullSection">
         <div class="intro-inner">
             <h2>Your Trusted Land Investment Partner</h2>
             <p>At <span class="highlight">HECON REAL ESTATE</span>, we specialize in premium land sales across Nigeria’s fastest-growing corridors. Whether you seek residential plots, commercial acreage, or future development hubs, we provide verified land with authentic video surveys.</p>
@@ -275,7 +723,7 @@
     </div>
 </section>
 
-<!-- PURE IMAGE GALLERY SECTION - NO TEXT OVERLAYS, ONLY IMAGES WITH TALL RECTANGULAR RATIO -->
+<!-- PURE IMAGE GALLERY - EXACT STRUCTURE -->
 <section class="gallery-section" id="gallery">
     <div class="container">
         <div class="gallery-header">
@@ -288,12 +736,14 @@
 </section>
 
 <!-- PROPERTY SECTIONS (6 LANDS) -->
-<section class="property-section" id="property1"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="seven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Green Valley Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki, Lagos</div><div class="property-price">₦45,000,000 - ₦120,000,000</div></div><div class="property-description"><p>Secure gated community land with modern infrastructure, paved roads, and 24/7 security. Perfect for residential development & land banking.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-tree"></i> Landscaped Plots</div><div class="feature-item"><i class="fas fa-shield-alt"></i> Gated Security</div><div class="feature-item"><i class="fas fa-road"></i> Asphalt Roads</div><div class="feature-item"><i class="fas fa-water"></i> Drainage System</div></div></div></div></div></section>
-<section class="property-section" id="property2"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="eight.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Royal Palm Gardens Plots</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ikoyi, Lagos</div><div class="property-price">₦85,000,000 - ₦210,000,000</div></div><div class="property-description"><p>Prestigious land plots in the heart of Ikoyi. Close to business hubs, international schools, and luxury amenities. Excellent capital appreciation.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-city"></i> Prime Location</div><div class="feature-item"><i class="fas fa-school"></i> Near Schools</div><div class="feature-item"><i class="fas fa-chart-line"></i> High ROI</div><div class="feature-item"><i class="fas fa-key"></i> Title Documents</div></div></div></div></div></section>
-<section class="property-section" id="property3"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="nine.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Serene Hills Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Abuja, FCT</div><div class="property-price">₦32,000,000 - ₦78,000,000</div></div><div class="property-description"><p>Scenic hilltop plots offering breathtaking views. Fresh air, tranquility, and easy access to the city center. Perfect for luxury homes.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-mountain"></i> Panoramic Views</div><div class="feature-item"><i class="fas fa-wind"></i> Cool Breeze</div><div class="feature-item"><i class="fas fa-hard-hat"></i> Ready for Build</div><div class="feature-item"><i class="fas fa-camera"></i> Scenic Location</div></div></div></div></div></section>
-<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="ten.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Atlantic Shores Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Eko Atlantic, Lagos</div><div class="property-price">₦150,000,000 - ₦380,000,000</div></div><div class="property-description"><p>Exclusive waterfront land in the new city of Eko Atlantic. Direct ocean views, reclaimed land with world-class infrastructure.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-water"></i> Oceanfront</div><div class="feature-item"><i class="fas fa-city"></i> Smart City</div><div class="feature-item"><i class="fas fa-shield-virus"></i> Flood Protection</div><div class="feature-item"><i class="fas fa-chart-simple"></i> Ultra-Luxury</div></div></div></div></div></section>
-<section class="property-section" id="property5"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="eleven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Heritage Meadows Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Abeokuta, Ogun State</div><div class="property-price">₦12,000,000 - ₦28,000,000</div></div><div class="property-description"><p>Affordable suburban land with vast expansion potential. Perfect for residential development and long-term investment.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-home"></i> Residential Zone</div><div class="feature-item"><i class="fas fa-tractor"></i> Spacious Plots</div><div class="feature-item"><i class="fas fa-leaf"></i> Green Environment</div><div class="feature-item"><i class="fas fa-money-bill"></i> Flexible Payment</div></div></div></div></div></section>
-<section class="property-section" id="property6"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="twelve.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lakeside Reserve Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ibadan, Oyo State</div><div class="property-price">₦22,000,000 - ₦45,000,000</div></div><div class="property-description"><p>Serene lakeside plots with natural beauty. Ideal for holiday homes, eco-resorts, or private retreats.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-fish"></i> Lake View</div><div class="feature-item"><i class="fas fa-tree"></i> Natural Scenery</div><div class="feature-item"><i class="fas fa-campground"></i> Eco-Friendly</div><div class="feature-item"><i class="fas fa-road"></i> Access Road</div></div></div></div></div></section>
+<section class="property-section" id="property1"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/seven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lotanna Layout Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ndiukwuenu Awka, Anambra</div><div class="property-price">₦5,000,000 (Pre-Launch) - ₦6,000,000 (Actual Price)</div></div><div class="property-description"><p>A plot size of 465SQM. Close proximity to Awka city center, UNIZIK and Aroma junction. Accessible via Enugu-Onitsha Express way. YOU ONLY NEED A ₦1,000,000 INITIAL DEPOSIT TO SECURE A PLOT.</p></div></section>
+<section class="property-section" id="property2"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/eight.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Akuchukwu City Layout</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Mgbakwu, Anambra </div><div class="property-price">₦3,500,000 (Pre-Launch) - ₦5,000,000 (Actual Price)</div></div><div class="property-description"><p>With a deposit of ₦500,000, you can begin your journey to owning land in a fast developing area in anambra state. Instant allocation, FREE Documentation, Registered survey plan and Deed of assignment.</p></div></section>
+<section class="property-section" id="property3"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/nine.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Millenium Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Adjacent to Golf Annex Estate</div><div class="property-price">₦32,000,000 - ₦78,000,000</div></div><div class="property-description"><p>Scenic hilltop plots offering breathtaking views. Fresh air, tranquility, and easy access to the city center. Perfect for luxury homes.</p>
+</div></section>
+<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/ten.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Atlantic Shores Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Eko Atlantic, Lagos</div><div class="property-price">₦150,000,000 - ₦380,000,000</div></div><div class="property-description"><p>Exclusive waterfront land in the new city of Eko Atlantic. Direct ocean views, reclaimed land with world-class infrastructure.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-water"></i> Oceanfront</div><div class="feature-item"><i class="fas fa-city"></i> Smart City</div><div class="feature-item"><i class="fas fa-shield-virus"></i> Flood Protection</div><div class="feature-item"><i class="fas fa-chart-simple"></i> Ultra-Luxury</div></div></div></div></div></section>
+<section class="property-section" id="property5"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/eleven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Mega One Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki Epe Expressway, Lagos State</div>
+    <div class="property-price">₦22 Million (300SQM)</div> <div class="property-price">₦35 Million (500SQM)</div><div class="property-price">₦75 Million (1000SQM)</div>
+</div><div class="property-description"><p>Enjoy premium infrastructure, prime location, and guaranteed appreciation. Secure your plot now. Watch your money grow.</p></div></section>
 
 <!-- CONTACT SECTION -->
 <section class="contact-section" id="contact-section">
@@ -301,8 +751,8 @@
         <h2>Secure Your Land Today</h2>
         <p>Talk to our land specialists. Get verified title documents, survey plans, and exclusive off-market deals.</p>
         <div class="contact-buttons">
-            <a href="https://wa.me/2348008901234" class="contact-btn contact-btn-wa"><i class="fab fa-whatsapp fa-lg"></i> Chat on WhatsApp</a>
-            <a href="tel:+2348001234567" class="contact-btn contact-btn-call"><i class="fas fa-phone-alt"></i> Call Land Desk</a>
+            <a href="https://wa.me/2348167819313" class="contact-btn contact-btn-wa"><i class="fab fa-whatsapp fa-lg"></i> Chat on WhatsApp</a>
+            <a href="tel:+2348167819313" class="contact-btn contact-btn-call"><i class="fas fa-phone-alt"></i> Call Land Desk</a>
         </div>
     </div>
 </section>
@@ -310,131 +760,78 @@
 <footer>
     <div class="container">
         <div class="footer-grid">
-            <div class="footer-brand"><h3>HECON ESTATE</h3><p>Your trusted partner for land investment, business registration, gadgets, and crypto exchange. Serving Nigeria since 2016.</p></div>
-            <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#property1">Land Listings</a></li><li><a href="#contact-section">Contact</a></li></ul></div>
-            <div class="footer-links"><h4>Our Services</h4><ul><li><a href="re.html">Real Estate</a></li><li><a href="cac.html">CAC Registration</a></li><li><a href="laptop.html">Gadgets</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div>
-            <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 800 123 4567</p><p><i class="fas fa-envelope"></i> info@hecon.ng</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p><p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p></div>
+            <div class="footer-brand">
+                <h3>HECON GROUP</h3>
+                <p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#property1">Land Listings</a></li>
+                    <li><a href="#contact-section">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="housing.html">Housing</a></li>
+                    <li><a href="land.html">Lands</a></li>
+                    <li><a href="cac.html">Business Registration</a></li>
+                    <li><a href="laptop.html">Laptops</a></li>
+                    <li><a href="crypto.html">Crypto Exchange</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-phone"></i> +234 8167819313</p>
+                <p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+            </div>
         </div>
-        <div class="footer-bottom"><div>© 2026 HECON ESTATE. All rights reserved.</div></div>
+        <div class="footer-bottom">
+            <div>© 2026 HECON GROUP. All rights reserved.</div>
+        </div>
     </div>
 </footer>
-
 <div id="imageModal" class="image-modal"><img id="modalImg" alt="Full view"><span style="position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;">&times;</span></div>
 
 <script>
 (function(){
-    // LAND DATA FOR GALLERY - images only, no text anywhere
     const lands = [
-        { img: "one.jpeg" },
-        { img: "two.jpeg" },
-        { img: "three.jpeg" },
-        { img: "four.jpeg" },
-        { img: "five.jpeg" },
-        { img: "six.jpeg" },
-        { img: "seven.jpeg" },
-        { img: "eight.jpeg" },
-        { img: "nine.jpeg" },
-        { img: "ten.jpeg" },
-        { img: "eleven.jpeg" },
-        { img: "twelve.jpeg" }
+        { img: "assets/one.jpeg" }, { img: "assets/two.jpeg" }, { img: "assets/three.jpeg" },
+        { img: "assets/four.jpeg" }, { img: "assets/five.jpeg" }, { img: "assets/six.jpeg" },
+        { img: "assets/seven.jpeg" }, { img: "assets/eight.jpeg" }, { img: "assets/nine.jpeg" },
+        { img: "assets/ten.jpeg" }, { img: "assets/eleven.jpeg" }, { img: "assets/twelve.jpeg" }
     ];
-
     const scrollContainer = document.getElementById('scrollContainer');
     const mobileGrid = document.getElementById('mobileGrid');
-    let scrollHtml = '';
-    let mobileHtml = '';
-    
-    // Create triple set for horizontal scroll (smooth loop)
-    for(let i=0;i<3;i++) {
-        lands.forEach(l => {
-            scrollHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/320x427?text=Land+View'"></div>`;
-        });
-    }
-    // Mobile grid single set (2 columns)
-    lands.forEach(l => {
-        mobileHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/280x374?text=Land'"></div>`;
-    });
-    
-    scrollContainer.innerHTML = scrollHtml;
-    mobileGrid.innerHTML = mobileHtml;
+    let scrollHtml = '', mobileHtml = '';
+    for(let i=0;i<3;i++) { lands.forEach(l => { scrollHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/320x427?text=Land+View'"></div>`; }); }
+    lands.forEach(l => { mobileHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/280x374?text=Land'"></div>`; });
+    scrollContainer.innerHTML = scrollHtml; mobileGrid.innerHTML = mobileHtml;
 
-    // MODAL for fullscreen image preview
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImg');
     const closeModalSpan = modal.querySelector('span');
-    
-    function openModal(imgSrc) {
-        modalImg.src = imgSrc;
-        modal.classList.add('active');
-    }
-    
-    document.querySelectorAll('.land-card').forEach(card => {
-        card.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const imgElement = card.querySelector('img');
-            if(imgElement && imgElement.src) {
-                openModal(imgElement.src);
-            } else {
-                const dataImg = card.getAttribute('data-img');
-                if(dataImg) openModal(dataImg);
-            }
-        });
-    });
-    
-    modal.addEventListener('click', (e) => {
-        if(e.target === modal || e.target === closeModalSpan) modal.classList.remove('active');
-    });
-    
-    // Mobile menu toggle
+    function openModal(imgSrc) { modalImg.src = imgSrc; modal.classList.add('active'); }
+    document.querySelectorAll('.land-card').forEach(card => { card.addEventListener('click', (e) => { e.stopPropagation(); const img = card.querySelector('img'); if(img && img.src) openModal(img.src); else if(card.getAttribute('data-img')) openModal(card.getAttribute('data-img')); }); });
+    modal.addEventListener('click', (e) => { if(e.target === modal || e.target === closeModalSpan) modal.classList.remove('active'); });
+
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     if(hamburger) {
-        hamburger.onclick = () => { 
-            mobileMenu.classList.toggle('active'); 
-            hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-        };
-        document.querySelectorAll('.mobile-menu a').forEach(link => { 
-            link.onclick = () => { 
-                mobileMenu.classList.remove('active'); 
-                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            }; 
-        });
+        hamburger.onclick = () => { mobileMenu.classList.toggle('active'); hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; };
+        document.querySelectorAll('.mobile-menu a').forEach(link => { link.onclick = () => { mobileMenu.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }; });
     }
-
-    // Smooth scroll for anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            const id = this.getAttribute('href');
-            if(id === '#') return;
-            const target = document.querySelector(id);
-            if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
-        });
-    });
-
-    // Logo home link
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const id = this.getAttribute('href'); if(id === '#') return; const target = document.querySelector(id); if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); }); });
     document.getElementById('logoHomeLink')?.addEventListener('click', () => { window.location.href = 'index.html'; });
-
-    // Intersection Observer for reveal animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); });
-    }, { threshold: 0.2 });
+    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); }, { threshold: 0.2 });
     document.querySelectorAll('.property-section, .intro-full').forEach(el => observer.observe(el));
-
-    // Auto-pause other videos when one plays
     const videos = document.querySelectorAll('video');
-    videos.forEach(v => { 
-        v.addEventListener('play', () => { 
-            videos.forEach(other => { if(other !== v && !other.paused) other.pause(); }); 
-        }); 
-    });
-
-    setTimeout(() => {
-        document.querySelectorAll('.property-section, .intro-full').forEach(el => { 
-            const rect = el.getBoundingClientRect(); 
-            if(rect.top < window.innerHeight - 80) el.classList.add('revealed'); 
-        });
-    }, 200);
+    videos.forEach(v => { v.addEventListener('play', () => { videos.forEach(other => { if(other !== v && !other.paused) other.pause(); }); }); });
+    setTimeout(() => { document.querySelectorAll('.property-section, .intro-full').forEach(el => { const rect = el.getBoundingClientRect(); if(rect.top < window.innerHeight - 80) el.classList.add('revealed'); }); }, 200);
 })();
 </script>
 </body>

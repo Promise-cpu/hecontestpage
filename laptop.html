@@ -305,7 +305,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: linear-gradient(135deg, rgba(10, 42, 68, 0.85) 0%, rgba(0, 0, 0, 0.75) 100%), url('H15.jpeg');
+            background-image: linear-gradient(135deg, rgba(10, 42, 68, 0.85) 0%, rgba(0, 0, 0, 0.75) 100%), url('assets/H15.jpeg');
             background-size: cover;
             background-position: center;
             z-index: 0;
@@ -824,7 +824,7 @@
    <header>
     <div class="header-container">
         <div class="logo-container" id="logoHomeLink">
-            <img src="Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
+            <img src="assets/Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
             <div class="company-name">HECON GROUP</div>
         </div>
         <nav class="desktop-nav">
@@ -889,12 +889,12 @@
     <section class="contact-section" id="contact-us">
         <div class="container">
             <h2>Ready to upgrade your device?</h2>
-            <p>Talk to our laptop experts for personalized recommendations, bulk orders, or any questions. Same-day delivery available in Lagos & Abuja.</p>
+            <p>Talk to our laptop experts for personalized recommendations, bulk orders, or any questions. Delivery across Nigeria.</p>
             <div class="contact-buttons">
-                <a href="tel:+2348001234567" class="btn-call">
+                <a href="tel:+2348167819313" class="btn-call">
                     <i class="fas fa-phone-alt"></i> Call Us Now
                 </a>
-                <a href="https://wa.me/2348001234567" target="_blank" class="btn-whatsapp">
+                <a href="https://wa.me/2348167819313" target="_blank" class="btn-whatsapp">
                     <i class="fab fa-whatsapp"></i> Chat on WhatsApp
                 </a>
             </div>
@@ -902,17 +902,44 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand"><h3>HECON ESTATE</h3><p>Premium laptops, real estate, and business solutions. Trusted since 2016.</p></div>
-                <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#laptops-gallery">Laptops</a></li><li><a href="#contact-us">Contact Sales</a></li><li><a href="index.html">Main Site</a></li></ul></div>
-                <div class="footer-links"><h4>Our Services</h4><ul><li><a href="re.html">Real Estate</a></li><li><a href="cac.html">CAC Registration</a></li><li><a href="laptop.html">Gadgets</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div>
-                <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 800 123 4567</p><p><i class="fas fa-envelope"></i> info@hecon.ng</p><p><i class="fab fa-whatsapp"></i> +234 800 890 1234</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div>
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>HECON GROUP</h3>
+                <p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p>
             </div>
-            <div class="footer-bottom"><div>© 2026 HECON · Premium Laptop Store. All rights reserved.</div></div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#laptops-gallery">Laptops</a></li>
+                    <li><a href="#contact-us">Contact Sales</a></li>
+                    <li><a href="index.html">Main Site</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Our Services</h4>
+                <ul>
+                    <li><a href="housing.html">Housing</a></li>
+                    <li><a href="land.html">Lands</a></li>
+                    <li><a href="cac.html">Business Registration</a></li>
+                    <li><a href="laptop.html">Laptops</a></li>
+                    <li><a href="crypto.html">Crypto Exchange</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Info</h4>
+                <p><i class="fas fa-phone"></i> +234 8167819313</p>
+                <p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p>
+                <p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+            </div>
         </div>
-    </footer>
+        <div class="footer-bottom">
+            <div>© 2026 HECON GROUP. All rights reserved.</div>
+        </div>
+    </div>
+</footer>
 
     <div id="imageModal" class="image-modal"><img id="modalImg" src="" alt="Full view"><span style="position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;">&times;</span></div>
 
@@ -920,12 +947,12 @@
         (function(){
             // Laptop data - exactly 6 laptops
             const laptopData = [
-                { name: "Dell Precision 7760", price: "₦250,000", img: "H15.jpeg", specs: ["11th Gen i5", "16GB RAM", "512GB SSD", "17\" FHD"] },
-                { name: "HP Elitebook 840-G3", price: "₦310,000", img: "H16.jpeg", specs: ["Core i5", "8GB RAM", "256GB SSD", "Keyboard Light"] },
-                { name: "HP Elitebook 840-G6", price: "₦460,000", img: "H17.jpeg", specs: ["Core i7", "8GB RAM", "256GB SSD", "Keyboard Light"] },
-                { name: "ASUS ROG Zephyrus G14", price: "₦1,680,000", img: "H18.jpeg", specs: ["Ryzen 9", "16GB DDR5", "1TB NVMe", "RTX 4070"] },
-                { name: "Lenovo ThinkPad X1", price: "₦1,520,000", img: "H19.jpeg", specs: ["Core i7", "32GB RAM", "1TB SSD", "2.8K OLED"] },
-                { name: "Surface Laptop Studio", price: "₦2,190,000", img: "H20.jpeg", specs: ["Core i7", "32GB RAM", "2TB SSD", "120Hz Touch"] }
+                { name: "Dell Precision 7760", price: "₦???", img: "assets/H15.jpeg", specs: ["11th Gen intel Core i5", "16GB RAM", "512GB SSD", "17\" FHD"] },
+                { name: "HP Elitebook 840-G3", price: "₦310,000 (Negotiable)", img: "assets/H16.jpeg", specs: ["Core i5", "8GB RAM", "256GB SSD", "Keyboard Light", "6th GEN"] },
+                { name: "HP Elitebook 840-G6", price: "₦460,000 (Negotiable)", img: "assets/H17.jpeg", specs: ["Core i7", "8GB RAM", "256GB SSD", "Keyboard Light"] },
+                { name: "HP Elitebook 1040-G5", price: "₦510,000 (Negotiable)", img: "assets/H18.jpeg", specs: ["Core i5", "8GB RAM", "256GB SSD", "Touchscreen", "X360 Convertible", "Keyboard Light"] },
+                { name: "Dell Latitude 7400", price: "₦560,000 (Negotiable)", img: "assets/H19.jpeg", specs: ["Core i5", "16GB RAM", "512 SSD", "8th GEN", "Touchscreen", "Keyboard Light"] },
+                { name: "Dell Precision 7540", price: "₦2,190,000", img: "assets/H20.jpeg", specs: ["Intel Core i5-9400H", "9th GEN", "16GB RAM", "512GB SSD", "120Hz Touch", "15.6'' full HD"] }
             ];
 
             const scrollContainer = document.getElementById('scrollContainer');
