@@ -395,101 +395,153 @@
             font-weight: 600;
         }
 
-        /* PURE IMAGE GALLERY SECTION - ADAPTED: MOBILE GRID MATCHES "FEATURED COLLECTIONS" (tall rectangular, exact proportions from first code) */
+        /* ============================================ */
+        /* OPTIMIZED GALLERY - SINGLE RESPONSIVE GRID   */
+        /* No duplication, clean, matches first code    */
+        /* ============================================ */
         .gallery-section {
             padding: 5rem 0;
             background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
         }
-        .gallery-header { text-align: center; margin-bottom: 2rem; }
-        .gallery-header h2 { color: white; background: linear-gradient(135deg, #fff, #fff); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .gallery-header p { color: rgba(255,255,255,0.8); margin: 0 auto; }
-        
-        .horizontal-scroll { width: 100%; overflow-x: auto; white-space: nowrap; scrollbar-width: thin; scrollbar-color: #2C5A8C rgba(255,255,255,0.2); }
-        /* Mobile grid ONLY: exact match to first code product display: 2 columns, tall rectangular, same sizing */
-        .mobile-grid { display: none; }
-        @media (max-width: 767px) { 
-            .horizontal-scroll { display: none; } 
-            .mobile-grid { 
-                display: grid; 
-                grid-template-columns: repeat(2, 1fr); 
-                gap: 1rem; 
-                padding: 0 1rem;
-            }
+        .gallery-header { 
+            text-align: center; 
+            margin-bottom: 3rem;
         }
-        .scroll-container { display: inline-flex; gap: 1.5rem; padding: 1rem 2rem; animation: autoScroll 40s linear infinite; }
-        .horizontal-scroll:hover .scroll-container { animation-play-state: paused; }
-        @keyframes autoScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .gallery-header h2 { 
+            color: white; 
+            background: linear-gradient(135deg, #fff, #fff); 
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            color: transparent; 
+        }
+        .gallery-header p { 
+            color: rgba(255,255,255,0.85); 
+            margin: 0 auto; 
+            font-size: 1.1rem;
+        }
         
-        /* Desktop land-card remains same (horizontal scroll) */
-        .land-card {
-            width: 320px;
+        /* SINGLE GRID SYSTEM - No horizontal scroll, no duplication */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+        }
+        
+        /* Desktop land-card styling */
+        .gallery-grid .land-card {
             background: transparent;
-            border-radius: 1rem;
+            border-radius: 12px;
             overflow: hidden;
             cursor: pointer;
-            white-space: normal;
-            flex-shrink: 0;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
         }
-        /* Mobile grid land-card: EXACT same dimensions, shape, orientation as "Featured Collections" images from first code */
-        /* Referencing first code: .product-img height: 300px on mobile, width: 100%, object-fit cover, tall rectangular.
-           First code (mobile): .product-img { height: 300px; } for screens <= 768? Actually first code: 
-           @media (max-width: 768px) { .product-img { height: 300px; } }
-           and for small screens: .product-img height adapts. To perfectly match the visual tall rectangular shape, we set aspect-ratio: 3/4 or similar?
-           Let's extract: In GRACE STORES, product images are rectangular, height > width. For mobile grid: two columns, image height: 300px typical.
-           We'll replicate the exact look: image container tall, rounded corners, object-fit cover, with consistent card spacing.
-        */
-        .mobile-grid .land-card { 
-            width: 100%; 
-            margin-bottom: 0; 
-            background: #111;
-            border-radius: 12px;  /* matches first code product-card border-radius */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            transition: transform 0.2s ease;
+        
+        .gallery-grid .land-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 18px 30px rgba(0, 0, 0, 0.5);
         }
-        .mobile-grid .land-card:hover {
-            transform: translateY(-5px);
-        }
-        /* CORE: force exact tall rectangular image dimensions as Featured Collections on mobile */
-        .mobile-grid .land-card img {
+        
+        /* IMAGE STYLES: Tall rectangular as per first code "Featured Collections" */
+        .gallery-grid .land-card img {
             width: 100%;
-            height: 300px;          /* exact height from GRACE STORES mobile break (first code product-img height:300px on max-width:768px) */
-            object-fit: cover;
-            display: block;
-            transition: transform 0.3s ease;
-        }
-        /* For very small screens preserve ratio consistency */
-        @media (max-width: 576px) {
-            .mobile-grid .land-card img {
-                height: 260px;   /* proportional to first code which reduces slightly on smaller phones, keep tall aspect */
-            }
-        }
-        @media (max-width: 480px) {
-            .mobile-grid .land-card img {
-                height: 240px;
-            }
-        }
-        @media (max-width: 400px) {
-            .mobile-grid .land-card img {
-                height: 200px;
-            }
-        }
-        /* Desktop card image remains as original */
-        .land-card img {
-            width: 100%;
-            aspect-ratio: 3 / 4;
+            height: 320px;          /* Tall rectangular base height */
             object-fit: cover;
             display: block;
             transition: transform 0.4s ease;
         }
-        .land-card:hover img { transform: scale(1.03); }
-        .image-modal { position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.92); z-index:2000; display:flex; align-items:center; justify-content:center; cursor:pointer; opacity:0; visibility:hidden; transition:all 0.3s ease; }
-        .image-modal.active { opacity:1; visibility:visible; }
-        .image-modal img { max-width:90vw; max-height:90vh; object-fit:contain; border-radius:12px; box-shadow: 0 0 30px rgba(0,0,0,0.5); }
+        
+        .gallery-grid .land-card:hover img {
+            transform: scale(1.03);
+        }
+        
+        /* Responsive breakpoints - single source of truth */
+        @media (max-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1.5rem;
+            }
+            .gallery-grid .land-card img {
+                height: 300px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+            .gallery-grid .land-card img {
+                height: 300px;      /* Matches first code product-img height on mobile */
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .gallery-grid {
+                gap: 0.875rem;
+            }
+            .gallery-grid .land-card img {
+                height: 260px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid .land-card img {
+                height: 240px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .gallery-grid {
+                gap: 0.75rem;
+            }
+            .gallery-grid .land-card img {
+                height: 200px;
+            }
+        }
+        
+        /* Image Modal */
+        .image-modal { 
+            position: fixed; 
+            top:0; 
+            left:0; 
+            width:100%; 
+            height:100%; 
+            background:rgba(0,0,0,0.95); 
+            z-index:2000; 
+            display:flex; 
+            align-items:center; 
+            justify-content:center; 
+            cursor:pointer; 
+            opacity:0; 
+            visibility:hidden; 
+            transition:all 0.3s ease; 
+        }
+        .image-modal.active { 
+            opacity:1; 
+            visibility:visible; 
+        }
+        .image-modal img { 
+            max-width:90vw; 
+            max-height:90vh; 
+            object-fit:contain; 
+            border-radius:12px; 
+            box-shadow: 0 0 30px rgba(0,0,0,0.5); 
+        }
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
 
-        /* Property Sections - Color Blends with White, Black, Dark Blue */
+        /* Property Sections - Color Blends */
         .property-section {
             padding: 5rem 0;
             position: relative;
@@ -684,7 +736,7 @@
         .footer-contact i { color: #FFFFFF; width: 20px; }
         .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; margin-top: 2rem; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem; color: #8DA3B8; font-size: 0.85rem; text-align: center; }
 
-        /* MOBILE RESPONSIVE - EXACT MATCH TO OBSERVED CODE */
+        /* MOBILE RESPONSIVE */
         @media (max-width: 767px) {
             .header-container { padding: 0.75rem 1rem; }
             .logo-container { flex: 1; gap: 0.75rem; }
@@ -779,19 +831,18 @@
     </div>
 </section>
 
-<!-- PURE IMAGE GALLERY - MOBILE grid now matches FEATURED COLLECTIONS (tall rectangular product images exact dimensions) -->
+<!-- OPTIMIZED GALLERY SECTION - SINGLE GRID, NO DUPLICATION -->
 <section class="gallery-section" id="gallery">
     <div class="container">
         <div class="gallery-header">
             <h2>Premium Land Gallery</h2>
             <p>Explore our exclusive land visuals</p>
         </div>
-        <div class="horizontal-scroll" id="horizontalScroll"><div class="scroll-container" id="scrollContainer"></div></div>
-        <div class="mobile-grid" id="mobileGrid"></div>
+        <div class="gallery-grid" id="galleryGrid"></div>
     </div>
 </section>
 
-<!-- PROPERTY SECTIONS (6 LANDS) unchanged -->
+<!-- PROPERTY SECTIONS (unchanged) -->
 <section class="property-section" id="property1"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/seven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lotanna Layout Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ndiukwuenu Awka, Anambra</div><div class="property-price">₦5,000,000 (Pre-Launch) - ₦6,000,000 (Actual Price)</div></div><div class="property-description"><p>A plot size of 465SQM. Close proximity to Awka city center, UNIZIK and Aroma junction. Accessible via Enugu-Onitsha Express way. YOU ONLY NEED A ₦1,000,000 INITIAL DEPOSIT TO SECURE A PLOT.</p></div></div></div></div></section>
 <section class="property-section" id="property2"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/eight.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Akuchukwu City Layout</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Mgbakwu, Anambra </div><div class="property-price">₦3,500,000 (Pre-Launch) - ₦5,000,000 (Actual Price)</div></div><div class="property-description"><p>With a deposit of ₦500,000, you can begin your journey to owning land in a fast developing area in anambra state. Instant allocation, FREE Documentation, Registered survey plan and Deed of assignment.</p></div></div></div></div></section>
 <section class="property-section" id="property3"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/nine.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Millenium Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Adjacent to Golf Annex Estate</div><div class="property-price">₦32,000,000 - ₦78,000,000</div></div><div class="property-description"><p>Scenic hilltop plots offering breathtaking views. Fresh air, tranquility, and easy access to the city center. Perfect for luxury homes.</p></div></div></div></div></section>
@@ -848,43 +899,121 @@
         </div>
     </div>
 </footer>
-<div id="imageModal" class="image-modal"><img id="modalImg" alt="Full view"><span style="position:absolute;top:20px;right:30px;color:white;font-size:40px;cursor:pointer;">&times;</span></div>
+
+<div id="imageModal" class="image-modal">
+    <img id="modalImg" alt="Full view">
+    <span class="modal-close">&times;</span>
+</div>
 
 <script>
 (function(){
+    // Single source of truth - land images array
     const lands = [
         { img: "assets/one.jpeg" }, { img: "assets/two.jpeg" }, { img: "assets/three.jpeg" },
         { img: "assets/four.jpeg" }, { img: "assets/five.jpeg" }, { img: "assets/six.jpeg" },
         { img: "assets/seven.jpeg" }, { img: "assets/eight.jpeg" }, { img: "assets/nine.jpeg" },
         { img: "assets/ten.jpeg" }, { img: "assets/eleven.jpeg" }, { img: "assets/twelve.jpeg" }
     ];
-    const scrollContainer = document.getElementById('scrollContainer');
-    const mobileGrid = document.getElementById('mobileGrid');
-    let scrollHtml = '', mobileHtml = '';
-    for(let i=0;i<3;i++) { lands.forEach(l => { scrollHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/320x427?text=Land+View'"></div>`; }); }
-    lands.forEach(l => { mobileHtml += `<div class="land-card" data-img="${l.img}"><img src="${l.img}" onerror="this.src='https://via.placeholder.com/280x374?text=Land'"></div>`; });
-    scrollContainer.innerHTML = scrollHtml; mobileGrid.innerHTML = mobileHtml;
-
+    
+    const galleryGrid = document.getElementById('galleryGrid');
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImg');
-    const closeModalSpan = modal.querySelector('span');
-    function openModal(imgSrc) { modalImg.src = imgSrc; modal.classList.add('active'); }
-    document.querySelectorAll('.land-card').forEach(card => { card.addEventListener('click', (e) => { e.stopPropagation(); const img = card.querySelector('img'); if(img && img.src) openModal(img.src); else if(card.getAttribute('data-img')) openModal(card.getAttribute('data-img')); }); });
-    modal.addEventListener('click', (e) => { if(e.target === modal || e.target === closeModalSpan) modal.classList.remove('active'); });
-
+    const modalClose = document.querySelector('.modal-close');
+    
+    // Build gallery once - no duplication, clean approach
+    function buildGallery() {
+        if (!galleryGrid) return;
+        galleryGrid.innerHTML = '';
+        lands.forEach(land => {
+            const card = document.createElement('div');
+            card.className = 'land-card';
+            const img = document.createElement('img');
+            img.src = land.img;
+            img.alt = 'Premium Land';
+            img.loading = 'lazy';
+            img.onerror = function() { this.src = 'https://via.placeholder.com/400x500?text=Land+View'; };
+            card.appendChild(img);
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openModal(land.img);
+            });
+            galleryGrid.appendChild(card);
+        });
+    }
+    
+    function openModal(imgSrc) {
+        modalImg.src = imgSrc;
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+    
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+    
+    // Event listeners
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal || e.target === modalClose) closeModal();
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('active')) closeModal();
+        });
+    }
+    
+    buildGallery();
+    
+    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     if(hamburger) {
-        hamburger.onclick = () => { mobileMenu.classList.toggle('active'); hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; };
-        document.querySelectorAll('.mobile-menu a').forEach(link => { link.onclick = () => { mobileMenu.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }; });
+        hamburger.onclick = () => { 
+            mobileMenu.classList.toggle('active'); 
+            hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        };
+        document.querySelectorAll('.mobile-menu a').forEach(link => { 
+            link.onclick = () => { 
+                mobileMenu.classList.remove('active'); 
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }; 
+        });
     }
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const id = this.getAttribute('href'); if(id === '#') return; const target = document.querySelector(id); if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); }); });
+    
+    // Smooth scroll with offset
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { 
+        anchor.addEventListener('click', function(e) { 
+            e.preventDefault(); 
+            const id = this.getAttribute('href'); 
+            if(id === '#') return; 
+            const target = document.querySelector(id); 
+            if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); 
+        }); 
+    });
+    
+    // Logo home link
     document.getElementById('logoHomeLink')?.addEventListener('click', () => { window.location.href = 'index.html'; });
-    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); }, { threshold: 0.2 });
+    
+    // Intersection Observer for fade-in animations
+    const observer = new IntersectionObserver((entries) => { 
+        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); 
+    }, { threshold: 0.2 });
     document.querySelectorAll('.property-section, .intro-full').forEach(el => observer.observe(el));
+    
+    // Video pause on play others
     const videos = document.querySelectorAll('video');
-    videos.forEach(v => { v.addEventListener('play', () => { videos.forEach(other => { if(other !== v && !other.paused) other.pause(); }); }); });
-    setTimeout(() => { document.querySelectorAll('.property-section, .intro-full').forEach(el => { const rect = el.getBoundingClientRect(); if(rect.top < window.innerHeight - 80) el.classList.add('revealed'); }); }, 200);
+    videos.forEach(v => { 
+        v.addEventListener('play', () => { 
+            videos.forEach(other => { if(other !== v && !other.paused) other.pause(); }); 
+        }); 
+    });
+    
+    setTimeout(() => { 
+        document.querySelectorAll('.property-section, .intro-full').forEach(el => { 
+            const rect = el.getBoundingClientRect(); 
+            if(rect.top < window.innerHeight - 80) el.classList.add('revealed'); 
+        }); 
+    }, 200);
 })();
 </script>
 </body>
