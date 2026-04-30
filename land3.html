@@ -1,0 +1,1141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
+    <title>HECON · PRIME LANDS · Nigeria's Trusted Land Marketplace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* BASE: 1rem = 16px default, but scales gracefully */
+        :root {
+            --white-pure: #FFFFFF;
+            --white-soft: #F8FAFE;
+            --black: #000000;
+            --black-soft: #111111;
+            --black-mid: #1A1A1A;
+            --blue-deep: #1E3A5F;
+            --blue-dark: #0A2A44;
+            --blue-accent: #2C5A8C;
+            --blue-soft-accent: #3B6E9E;
+            --text-dark: #1A2C3E;
+            --text-mid: #2C3E50;
+            --text-light: #5A6E7C;
+            --border-light: #DCE5F0;
+            --shadow-sm: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 1.25rem 2.1875rem rgba(0, 0, 0, 0.08);
+            --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            
+            /* Fluid typography base: min 1rem, max 1.125rem scale */
+            font-size: 16px;
+        }
+
+        /* Fluid font scaling using vw + rem fallback */
+        @media (max-width: 640px) { :root { font-size: 15px; } }
+        @media (max-width: 480px) { :root { font-size: 14px; } }
+        @media (min-width: 1600px) { :root { font-size: 18px; } }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            color: var(--text-mid);
+            line-height: 1.5;
+            overflow-x: hidden;
+            background: linear-gradient(145deg, 
+                #FFFFFF 0%, 
+                #F5F9FF 15%,
+                #EFF3FC 30%,
+                #E8EFF8 50%,
+                #E0E8F2 70%,
+                #D9E2ED 85%,
+                #D1DCE8 100%);
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 20%, rgba(0, 0, 0, 0.03), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        h1, h2, h3, h4 {
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        h1 {
+            color: var(--white-pure);
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 6vw, 3.2rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            color: var(--text-mid);
+            font-size: 1rem;
+            max-width: 55ch;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 87.5rem; /* 1400px /16 */
+            margin: 0 auto;
+            padding: 0 0.1rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        section {
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            padding: 0.875rem 2rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 0.9375rem;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s var(--ease-out-expo);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
+            color: white;
+            box-shadow: 0 0.5rem 1.25rem rgba(10, 42, 68, 0.25);
+        }
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, var(--blue-dark), var(--blue-accent));
+            transform: scale(1.02) translateY(-0.1875rem);
+            box-shadow: 0 0.9375rem 1.875rem rgba(10, 42, 68, 0.3);
+        }
+
+        .btn-outline {
+            border: 0.0625rem solid var(--white-pure);
+            background: transparent;
+            color: var(--white-pure);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-0.125rem);
+            border-color: var(--white-pure);
+            color: var(--white-pure);
+        }
+
+        /* HEADER */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 100;
+            background: var(--white-pure);
+            border-bottom: 0.0625rem solid var(--border-light);
+            box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.03);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.75rem 5%;
+            width: 100%;
+            max-width: 87.5rem;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+        }
+
+        .logo-img {
+            height: 2.625rem;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .company-name {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: linear-gradient(135deg, var(--blue-dark), var(--black));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .desktop-nav {
+            display: block;
+        }
+
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .desktop-nav a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        .desktop-nav a:hover {
+            color: var(--blue-dark);
+        }
+
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white-pure);
+            min-width: 12.5rem;
+            border-radius: 0.75rem;
+            box-shadow: var(--shadow-md);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-0.625rem);
+            transition: all 0.3s var(--ease-out-expo);
+            border: 0.0625rem solid var(--border-light);
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .dropdown-menu li {
+            list-style: none;
+        }
+
+        .dropdown-menu li a {
+            display: block;
+            padding: 0.75rem 1.5rem;
+            color: var(--text-mid);
+            font-size: 0.875rem;
+            border-bottom: 0.0625rem solid var(--border-light);
+        }
+
+        .dropdown-menu li:last-child a {
+            border-bottom: none;
+        }
+
+        .dropdown-menu li a:hover {
+            background: linear-gradient(90deg, rgba(10, 42, 68, 0.05), transparent);
+            color: var(--blue-dark);
+        }
+
+        .hamburger {
+            background: none;
+            border: none;
+            font-size: 1.8rem;
+            color: var(--blue-dark);
+            cursor: pointer;
+            display: none;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 4.25rem;
+            left: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            display: none;
+            border-bottom: 0.0625rem solid var(--border-light);
+            z-index: 99;
+            max-height: calc(100vh - 4.25rem);
+            overflow-y: auto;
+        }
+
+        .mobile-menu.active {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-1.25rem); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .mobile-menu ul {
+            list-style: none;
+        }
+
+        .mobile-menu li a {
+            display: block;
+            padding: 1rem;
+            color: #1A2C3E;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 0.0625rem solid #DCE5F0;
+        }
+
+        /* HERO */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(135deg, rgba(30, 58, 95, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%), url('assets/land.png');
+            background-size: cover;
+            background-position: center;
+            z-index: 0;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 75rem;
+            margin: 0 auto;
+            text-align: center;
+            padding: 0 1.25rem;
+            margin-top: 6.25rem;
+        }
+
+        .hero-content h1 {
+            font-size: clamp(2.2rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            color: var(--white-pure);
+            margin-bottom: 1rem;
+            text-shadow: 0 0.125rem 0.9375rem rgba(0, 0, 0, 0.15);
+        }
+
+        .hero-content p {
+            font-size: clamp(1rem, 3.5vw, 1.25rem);
+            color: rgba(255, 255, 255, 0.95);
+            max-width: 43.75rem;
+            margin: 0 auto 2rem;
+        }
+
+        /* INTRO */
+        .intro-full {
+            width: 100%;
+            text-align: center;
+            padding: 5rem 1.25rem;
+            background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
+            border-top: 0.0625rem solid var(--border-light);
+            border-bottom: 0.0625rem solid var(--border-light);
+        }
+
+        .intro-full .intro-inner {
+            max-width: 56.25rem;
+            margin: 0 auto;
+        }
+
+        .intro-full h2 {
+            margin-bottom: 1.5rem;
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+        }
+
+        .intro-full p {
+            margin: 0 auto 1.25rem;
+            font-size: 1.0625rem;
+        }
+
+        .intro-full .highlight {
+            background: linear-gradient(135deg, var(--blue-accent), var(--black));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 600;
+        }
+
+        /* GALLERY (fluid grid) */
+        .gallery-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .gallery-header h2 {
+            color: white;
+            background: linear-gradient(135deg, #fff, #fff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .gallery-header p {
+            color: rgba(255, 255, 255, 0.85);
+            margin: 0 auto;
+            font-size: 1rem;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(100%, 16rem), 1fr));
+            gap: 1.5rem;
+        }
+
+        .gallery-grid .land-card {
+            background: transparent;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.3);
+        }
+
+        .gallery-grid .land-card:hover {
+            transform: translateY(-0.5rem);
+            box-shadow: 0 1.125rem 1.875rem rgba(0, 0, 0, 0.5);
+        }
+
+        .gallery-grid .land-card img {
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-grid .land-card:hover img {
+            transform: scale(1.03);
+        }
+
+        /* IMAGE MODAL */
+        .image-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .image-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .image-modal img {
+            max-width: 90vw;
+            max-height: 90vh;
+            object-fit: contain;
+            border-radius: 0.75rem;
+            box-shadow: 0 0 1.875rem rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1.25rem;
+            right: 1.875rem;
+            color: white;
+            font-size: 2.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .modal-close:hover {
+            transform: scale(1.1);
+        }
+
+        /* PROPERTY SECTIONS - FULLY FLUID */
+        .property-section {
+            padding: 5rem 0;
+        }
+
+        .property-section:nth-of-type(3),
+        .property-section:nth-of-type(4),
+        .property-section:nth-of-type(5),
+        .property-section:nth-of-type(6),
+        .property-section:nth-of-type(7) {
+            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
+        }
+
+        .property-section:not(:first-of-type)::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 0.0625rem;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+        }
+
+        .property-container {
+            display: flex;
+            gap: 4rem;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .property-container.left {
+            flex-direction: row;
+        }
+
+        .property-container.right {
+            flex-direction: row-reverse;
+        }
+
+        .property-video {
+            flex: 1;
+            min-width: 0;
+            position: sticky;
+            top: 6.25rem;
+        }
+
+        .property-video video {
+            width: 100%;
+            height: auto;
+            border-radius: 1.25rem;
+            border: 0.125rem solid rgba(255, 255, 255, 0.3);
+            background: var(--white-pure);
+            box-shadow: var(--shadow-md);
+            transition: transform 0.4s var(--ease-out-expo), box-shadow 0.3s;
+            max-height: 22rem;
+            object-fit: contain;
+        }
+
+        .property-video video:hover {
+            transform: scale(1.01);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--white-pure);
+        }
+
+        .property-details {
+            flex: 1;
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .property-header h2 {
+            font-size: clamp(1.6rem, 5vw, 2.2rem);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .property-location {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 0.9rem;
+        }
+
+        .property-location i {
+            color: #FFFFFF;
+        }
+
+        .property-price {
+            font-size: clamp(1.2rem, 4vw, 1.8rem);
+            font-weight: 700;
+            color: #FFFFFF;
+            margin: 0.5rem 0;
+        }
+
+        .property-description p {
+            font-size: 0.9375rem;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .property-features {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.85);
+            font-size: 0.875rem;
+        }
+
+        .feature-item i {
+            color: #FFFFFF;
+            font-size: 1rem;
+            width: 1.5rem;
+        }
+
+        /* ANIMATIONS */
+        .property-section .property-video,
+        .property-section .property-details {
+            opacity: 0;
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+
+        .property-section:nth-of-type(3) .property-video,
+        .property-section:nth-of-type(5) .property-video,
+        .property-section:nth-of-type(7) .property-video {
+            transform: translateX(3rem);
+        }
+
+        .property-section:nth-of-type(3) .property-details,
+        .property-section:nth-of-type(5) .property-details,
+        .property-section:nth-of-type(7) .property-details {
+            transform: translateX(-3rem);
+        }
+
+        .property-section:nth-of-type(4) .property-video,
+        .property-section:nth-of-type(6) .property-video {
+            transform: translateX(-3rem);
+        }
+
+        .property-section:nth-of-type(4) .property-details,
+        .property-section:nth-of-type(6) .property-details {
+            transform: translateX(3rem);
+        }
+
+        .property-section.revealed .property-video,
+        .property-section.revealed .property-details {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(1.75rem);
+            transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo);
+        }
+
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .intro-full {
+            opacity: 0;
+            transform: translateY(1.75rem);
+            transition: opacity 1.4s var(--ease-out-expo), transform 1.4s var(--ease-out-expo);
+        }
+
+        .intro-full.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CONTACT */
+        .contact-section {
+            background: #ffffff;
+            padding: 3rem 1.25rem;
+        }
+
+        .contact-container {
+            max-width: 50rem;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-container h2 {
+            background: linear-gradient(135deg, #1E3A5F, #0A2A44);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+
+        .contact-container>p {
+            color: #2C3E50;
+            max-width: 37.5rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .contact-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 3rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            justify-content: center;
+        }
+
+        .contact-btn-wa {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 0.5rem 1.25rem rgba(37, 211, 102, 0.3);
+        }
+
+        .contact-btn-wa:hover {
+            transform: translateY(-0.1875rem);
+        }
+
+        .contact-btn-call {
+            background: white;
+            color: #0A2A44;
+            box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.15);
+        }
+
+        .contact-btn-call:hover {
+            transform: translateY(-0.1875rem);
+        }
+
+        /* FOOTER */
+        footer {
+            background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
+            border-top: 0.0625rem solid rgba(255, 255, 255, 0.2);
+            padding: 4rem 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1.5fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .footer-brand p {
+            color: #9BB0C4;
+            font-size: 0.875rem;
+            max-width: 17.5rem;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: #8DA3B8;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-contact p {
+            color: #8DA3B8;
+            font-size: 0.875rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-contact i {
+            color: #FFFFFF;
+            width: 1.25rem;
+        }
+
+        .footer-bottom {
+            border-top: 0.0625rem solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: #8DA3B8;
+            font-size: 0.8125rem;
+            text-align: center;
+        }
+
+        /* FULLY RESPONSIVE BREAKPOINTS - NO PX, PERCENTAGES + REM */
+        @media (max-width: 64rem) {
+            /* 1024px */
+            .header-container {
+                padding: 0.75rem 1.25rem;
+            }
+
+            .desktop-nav {
+                display: none !important;
+            }
+
+            .hamburger {
+                display: block !important;
+            }
+
+            .property-container,
+            .property-container.left,
+            .property-container.right {
+                flex-direction: column !important;
+                gap: 2rem;
+            }
+
+            .property-video {
+                position: relative !important;
+                top: 0 !important;
+                width: 100%;
+            }
+
+            .property-section .property-video,
+            .property-section .property-details {
+                transform: translateX(0) !important;
+            }
+
+            .property-section {
+                padding: 3rem 0;
+            }
+
+            .property-features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .dropdown-menu {
+                position: static;
+                opacity: 1;
+                visibility: visible;
+                transform: none;
+                box-shadow: none;
+                background: rgba(0, 0, 0, 0.05);
+                margin-top: 0.5rem;
+                border: none;
+            }
+        }
+
+        @media (max-width: 48rem) {
+            /* 768px */
+            .hero-content {
+                margin-top: 5rem;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(1.8rem, 7vw, 3rem);
+            }
+
+            .intro-full {
+                padding: 3rem 1.25rem;
+            }
+
+            .gallery-grid {
+                gap: 1rem;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .contact-btn {
+                width: 100%;
+                max-width: 18rem;
+            }
+        }
+
+        @media (max-width: 30rem) {
+            /* 480px */
+            .container {
+                width: 92%;
+                padding: 0 0.75rem;
+            }
+
+            .company-name {
+                font-size: 1.2rem;
+            }
+
+            .logo-img {
+                height: 2.2rem;
+            }
+
+            .property-price {
+                font-size: 1.2rem;
+            }
+
+            .btn {
+                padding: 0.7rem 1.2rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Desktop nav visible above 1024px */
+        @media (min-width: 64.0625rem) {
+            .desktop-nav {
+                display: block;
+            }
+
+            .hamburger {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="header-container">
+        <div class="logo-container" id="logoHomeLink">
+            <img src="assets/Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
+            <div class="company-name">HECON GROUP</div>
+        </div>
+        <nav class="desktop-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li class="dropdown">
+                    <a href="#">Real Estate</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="land.html">Lands</a></li>
+                        <li><a href="housing.html">Housing</a></li>
+                    </ul>
+                </li>
+                <li><a href="cac.html">Business Registration</a></li>
+                <li><a href="laptop.html">Gadgets</a></li>
+                <li><a href="crypto.html">Crypto Exchange</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="land.html">Lands</a></li>
+            <li><a href="housing.html">Housing</a></li>
+            <li><a href="cac.html">Business Registration</a></li>
+            <li><a href="laptop.html">Gadgets</a></li>
+            <li><a href="crypto.html">Crypto Exchange</a></li>
+        </ul>
+    </div>
+</header>
+
+<section class="hero-section" id="home">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>OWN PRIME LANDS IN NIGERIA</h1>
+        <p>Secure high-value land investments in Awka, Enugu, Lagos & beyond | Verified titles & exclusive plots</p>
+        <div><a href="#property1" class="btn btn-primary"><i class="fas fa-search"></i> EXPLORE LAND LISTINGS</a></div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="intro-full reveal">
+        <div class="intro-inner">
+            <h2>Your Trusted Land Investment Partner</h2>
+            <p>At <span class="highlight">HECON REAL ESTATE</span>, we specialize in premium land sales across Nigeria’s fastest-growing corridors. Whether you seek residential plots, commercial acreage, or future development hubs, we provide verified land with authentic video surveys.</p>
+            <p>From beachfront lots in Eko Atlantic to expansive hectares in Lekki Free Zone, every land asset is handpicked for ROI potential. Our team handles title verification, survey, and legal due diligence.</p>
+            <p><span class="highlight">Secure your land legacy with HECON today.</span></p>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-section" id="gallery">
+    <div class="container">
+        <div class="gallery-header">
+            <h2>Premium Land Gallery</h2>
+            <p>Explore our exclusive land visuals</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+</section>
+
+<section class="property-section" id="property1"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/seven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lotanna Layout Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ndiukwuenu Awka, Anambra</div><div class="property-price">₦5,000,000 (Pre-Launch) - ₦6,000,000 (Actual)</div><div class="property-description"><p>A plot size of 465SQM. Close proximity to Awka city center, UNIZIK and Aroma junction. Accessible via Enugu-Onitsha Express way. ONLY ₦1,000,000 INITIAL DEPOSIT.</p></div></div></div></div></section>
+<section class="property-section" id="property2"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/eight.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Akuchukwu City Layout</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Mgbakwu, Anambra</div><div class="property-price">₦3,500,000 (Pre-Launch) - ₦5,000,000 (Actual)</div><div class="property-description"><p>₦500,000 deposit starts your journey. Fast developing area, instant allocation, FREE Documentation, Registered survey plan.</p></div></div></div></div></section>
+<section class="property-section" id="property3"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/nine.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Millenium Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Adjacent to Golf Annex Estate</div><div class="property-price">₦32,000,000 - ₦78,000,000</div><div class="property-description"><p>Scenic hilltop plots offering breathtaking views. Fresh air, tranquility, and easy access to the city center. Perfect for luxury homes.</p></div></div></div></div></section>
+<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/ten.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Atlantic Shores Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Eko Atlantic, Lagos</div><div class="property-price">₦150,000,000 - ₦380,000,000</div><div class="property-description"><p>Exclusive waterfront land in the new city of Eko Atlantic. Direct ocean views, world-class infrastructure.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-water"></i> Oceanfront</div><div class="feature-item"><i class="fas fa-city"></i> Smart City</div><div class="feature-item"><i class="fas fa-shield-virus"></i> Flood Protection</div><div class="feature-item"><i class="fas fa-chart-simple"></i> Ultra-Luxury</div></div></div></div></div></section>
+<section class="property-section" id="property5"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/eleven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Mega One Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki Epe Expressway, Lagos</div><div class="property-price">₦22M (300SQM) | ₦35M (500SQM) | ₦75M (1000SQM)</div><div class="property-description"><p>Premium infrastructure, prime location, guaranteed appreciation. Secure your plot now.</p></div></div></div></div></section>
+
+<section class="contact-section" id="contact-section">
+    <div class="contact-container">
+        <h2>Secure Your Land Today</h2>
+        <p>Talk to our land specialists. Get verified title documents, survey plans, and exclusive off-market deals.</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/2348167819313" class="contact-btn contact-btn-wa"><i class="fab fa-whatsapp fa-lg"></i> Chat on WhatsApp</a>
+            <a href="tel:+2348167819313" class="contact-btn contact-btn-call"><i class="fas fa-phone-alt"></i> Call Land Desk</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand"><h3>HECON GROUP</h3><p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p></div>
+            <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#property1">Land Listings</a></li><li><a href="#contact-section">Contact</a></li></ul></div>
+            <div class="footer-links"><h4>Our Services</h4><ul><li><a href="housing.html">Housing</a></li><li><a href="land.html">Lands</a></li><li><a href="cac.html">Business Registration</a></li><li><a href="laptop.html">Laptops</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div>
+            <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 8167819313</p><p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div>
+        </div>
+        <div class="footer-bottom"><div>© 2026 HECON GROUP. All rights reserved.</div></div>
+    </div>
+</footer>
+
+<div id="imageModal" class="image-modal"><img id="modalImg" alt="Full view"><span class="modal-close">&times;</span></div>
+
+<script>
+    (function() {
+        const lands = [
+            { img: "assets/one.jpeg" }, { img: "assets/two.jpeg" }, { img: "assets/three.jpeg" },
+            { img: "assets/four.jpeg" }, { img: "assets/five.jpeg" }, { img: "assets/six.jpeg" },
+            { img: "assets/seven.jpeg" }, { img: "assets/eight.jpeg" }, { img: "assets/nine.jpeg" },
+            { img: "assets/ten.jpeg" }, { img: "assets/eleven.jpeg" }, { img: "assets/twelve.jpeg" }
+        ];
+        const galleryGrid = document.getElementById('galleryGrid');
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImg');
+        const modalClose = document.querySelector('.modal-close');
+
+        function buildGallery() {
+            if (!galleryGrid) return;
+            galleryGrid.innerHTML = '';
+            lands.forEach(land => {
+                const card = document.createElement('div');
+                card.className = 'land-card';
+                const img = document.createElement('img');
+                img.src = land.img;
+                img.alt = 'Premium Land';
+                img.loading = 'lazy';
+                img.onerror = function() { this.src = 'https://via.placeholder.com/400x500?text=Land+View'; };
+                card.appendChild(img);
+                card.addEventListener('click', (e) => { e.stopPropagation(); openModal(land.img); });
+                galleryGrid.appendChild(card);
+            });
+        }
+
+        function openModal(imgSrc) { modalImg.src = imgSrc; modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
+        function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
+
+        if (modal) {
+            modal.addEventListener('click', (e) => { if (e.target === modal || e.target === modalClose) closeModal(); });
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && modal.classList.contains('active')) closeModal(); });
+        }
+        buildGallery();
+
+        const hamburger = document.getElementById('hamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (hamburger) {
+            hamburger.onclick = () => {
+                mobileMenu.classList.toggle('active');
+                hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+            };
+            document.querySelectorAll('.mobile-menu a').forEach(link => {
+                link.onclick = () => { mobileMenu.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; };
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const id = this.getAttribute('href');
+                if (id === '#') return;
+                const target = document.querySelector(id);
+                if (target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+            });
+        });
+
+        document.getElementById('logoHomeLink')?.addEventListener('click', () => { window.location.href = 'index.html'; });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('revealed'); });
+        }, { threshold: 0.2 });
+        document.querySelectorAll('.property-section, .intro-full').forEach(el => observer.observe(el));
+
+        const videos = document.querySelectorAll('video');
+        videos.forEach(v => {
+            v.addEventListener('play', () => { videos.forEach(other => { if (other !== v && !other.paused) other.pause(); }); });
+        });
+
+        setTimeout(() => {
+            document.querySelectorAll('.property-section, .intro-full').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed');
+            });
+        }, 200);
+    })();
+</script>
+</body>
+</html>
