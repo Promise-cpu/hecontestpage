@@ -535,6 +535,8 @@
         .footer-contact p { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
         .footer-bottom { text-align: center; padding-top: 1.8rem; border-top: 1px solid rgba(255,255,255,0.1); color: #8DA3B8; font-size: 0.8rem; }
         
+       
+       
         /* resp nav visibility */
         @media (min-width: 64rem) {
             .desktop-nav { display: block; }
@@ -544,11 +546,32 @@
             .desktop-nav { display: none; }
             .hamburger { display: block; }
         }
-        @media (max-width: 30rem) {
-            .container { padding: 0 1rem; }
-            .logo-img { height: 2.2rem; }
-            .company-name { font-size: 1.1rem; }
-        }
+       /* Add to your existing CSS - targets iPhone SE / small screens */
+@media (max-width: 30rem) {  /* 480px */
+    .company-name {
+        font-size: 1.1rem !important;  /* Reduced from ~1.35rem (approx 20% smaller) */
+    }
+    
+    .logo-img {
+        height: 1.8rem;  /* Slightly smaller logo to match */
+    }
+    
+    .header-container {
+        padding: 0.5rem 0.75rem;  /* Tighter padding */
+        gap: 0.5rem;
+    }
+}
+
+/* Even smaller (iPhone SE 375px) */
+@media (max-width: 24rem) {  /* 384px */
+    .company-name {
+        font-size: 0.95rem !important;  /* Further reduction */
+    }
+    
+    .logo-img {
+        height: 1.6rem;
+    }
+}
     </style>
 </head>
 <body>
