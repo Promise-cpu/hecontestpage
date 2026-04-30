@@ -189,7 +189,7 @@
             .logo-container { gap: 0.5rem; }
         }
         @media (max-width: 380px) {
-            .company-name { font-size: 1.7rem; position: center;}
+            .company-name { font-size: 1.7rem; text-align: center;}
             .logo-img { height: 3.0rem; }
         }
 
@@ -480,35 +480,114 @@
         .why-right .big-number { font-size: 3rem; font-weight: 800; color: var(--gold); }
         @media (max-width: 767px) { .why-container { flex-direction: column; } .feature-list { grid-template-columns: 1fr; } }
 
-        /* Contact Section */
-        .contact-section {
-            padding: 5rem 1.25rem;
-            background: var(--white-pure);
-            text-align: center;
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-        }
-        .contact-section .container { max-width: 50rem; }
-        .contact-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-top: 0; }
-        .btn-call, .btn-whatsapp {
-            padding: 1rem 2rem;
-            border-radius: 3rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s var(--ease-out-expo);
-        }
-        .btn-call { background: linear-gradient(135deg, #2C5A8C, #0A2A44); color: white; box-shadow: 0 0.25rem 0.9375rem rgba(44, 90, 140, 0.3); }
-        .btn-call:hover { background: linear-gradient(135deg, #0A2A44, #2C5A8C); transform: translateY(-0.1875rem); }
-        .btn-whatsapp { background: linear-gradient(135deg, #25D366, #128C7E); color: white; box-shadow: 0 0.25rem 0.9375rem rgba(37, 211, 102, 0.3); }
-        .btn-whatsapp:hover { background: linear-gradient(135deg, #128C7E, #075E54); transform: translateY(-0.1875rem); }
-        @media (max-width: 767px) {
-            .contact-buttons { flex-direction: column; align-items: center; gap: 1rem; }
-            .btn-call, .btn-whatsapp { width: 100%; max-width: 280px; justify-content: center; padding: 0.85rem 1.5rem; }
-        }
+        
+         /* Contact Section - Matching Laptop Page Style */
+.contact-section {
+    padding: 5rem 2rem;
+    background: var(--white-pure);
+    text-align: center;
+    border-top: 1px solid var(--border-light);
+    border-bottom: 1px solid var(--border-light);
+}
+
+.contact-section .container {
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-section h2 {
+    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 1rem;
+}
+
+.contact-section p {
+    color: var(--text-mid);
+    margin: 0 auto 2rem;
+    font-size: 1.1rem;
+    max-width: 55ch;
+    text-align: center;
+}
+
+.contact-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 0;
+}
+
+.btn-call {
+    background: linear-gradient(135deg, #2C5A8C, #0A2A44);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s var(--ease-out-expo);
+    box-shadow: 0 4px 15px rgba(44, 90, 140, 0.3);
+}
+
+.btn-call:hover {
+    background: linear-gradient(135deg, #0A2A44, #2C5A8C);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(44, 90, 140, 0.4);
+}
+
+.btn-whatsapp {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 3rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s var(--ease-out-expo);
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp:hover {
+    background: linear-gradient(135deg, #128C7E, #075E54);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+}
+
+.btn-call i, .btn-whatsapp i {
+    font-size: 1.1rem;
+}
+
+/* Mobile responsive for contact section */
+@media (max-width: 767px) {
+    .contact-section {
+        padding: 3rem 1.5rem;
+    }
+    .contact-section p {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+    .contact-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .btn-call, .btn-whatsapp {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 0.85rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
 
         /* Footer */
         footer {
