@@ -404,22 +404,17 @@
         }
 
         /* Top-to-bottom gradient backgrounds with white, black, dark blue */
-        .property-section:nth-of-type(3) { 
-            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
-        }
-        .property-section:nth-of-type(4) { 
-            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
-        }
-        .property-section:nth-of-type(5) { 
-            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
-        }
-        .property-section:nth-of-type(6) { 
-            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
-        }
-        .property-section:nth-of-type(7) { 
-            background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
-        }
-        .property-section:nth-of-type(8) { 
+        /* Fixed: applied consistently to sections 3 through 10 (all property sections after intro) */
+        .property-section:nth-of-type(3),
+        .property-section:nth-of-type(4),
+        .property-section:nth-of-type(5),
+        .property-section:nth-of-type(6),
+        .property-section:nth-of-type(7),
+        .property-section:nth-of-type(8),
+        .property-section:nth-of-type(9),
+        .property-section:nth-of-type(10),
+        .property-section:nth-of-type(11),
+        .property-section:nth-of-type(12) { 
             background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
         }
 
@@ -558,24 +553,32 @@
         /* Property 1,3,5 (odd sections) - video from right, details from left */
         .property-section:nth-of-type(3) .property-video,
         .property-section:nth-of-type(5) .property-video,
-        .property-section:nth-of-type(7) .property-video {
+        .property-section:nth-of-type(7) .property-video,
+        .property-section:nth-of-type(9) .property-video,
+        .property-section:nth-of-type(11) .property-video {
             transform: translateX(50px);
         }
         .property-section:nth-of-type(3) .property-details,
         .property-section:nth-of-type(5) .property-details,
-        .property-section:nth-of-type(7) .property-details {
+        .property-section:nth-of-type(7) .property-details,
+        .property-section:nth-of-type(9) .property-details,
+        .property-section:nth-of-type(11) .property-details {
             transform: translateX(-50px);
         }
 
         /* Property 2,4,6 (even sections) - video from left, details from right */
         .property-section:nth-of-type(4) .property-video,
         .property-section:nth-of-type(6) .property-video,
-        .property-section:nth-of-type(8) .property-video {
+        .property-section:nth-of-type(8) .property-video,
+        .property-section:nth-of-type(10) .property-video,
+        .property-section:nth-of-type(12) .property-video {
             transform: translateX(-50px);
         }
         .property-section:nth-of-type(4) .property-details,
         .property-section:nth-of-type(6) .property-details,
-        .property-section:nth-of-type(8) .property-details {
+        .property-section:nth-of-type(8) .property-details,
+        .property-section:nth-of-type(10) .property-details,
+        .property-section:nth-of-type(12) .property-details {
             transform: translateX(50px);
         }
 
@@ -1002,7 +1005,7 @@
                     <p>A perfect blend of comfort, security, and premium location within centenary city. Spacious 3 Bedrooms, 2-3 Car Parking Spaces, Fully Fitted Wardrobes, Built-in Cooker, Microwave and Modern Kitchen Cabinet.</p>
                
         </div>
-    </section>
+    </div></div></section>
 
     <!-- Property 4 - Right Layout -->
     <section class="property-section" id="property4">
@@ -1013,7 +1016,7 @@
                     <p>Luxury opportunity in independent layout. You can secure now at a discounted price and complete to your taste, or pay full price and get it finished and ready to move in</p>
                 
         </div>
-    </section>
+    </div></div></section>
 
     <!-- Property 5 - Left Layout -->
     <section class="property-section" id="property5">
@@ -1023,7 +1026,7 @@
                 <div class="property-details"><div class="property-header"><h2>3 Bedroom Bungalow</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Centenary City</div><div class="property-price">₦80,000,000/year</div></div><div class="property-description"><p>Elegant 3-bedroom apartment in centenery city. Modern living with premium finishes and solar system (8KV). Spacious parking space and central location.</p>
             </div>
         </div>
-    </section>
+    </div></section>
 
     <!-- Property 6 - Right Layout -->
     <section class="property-section" id="property6">
@@ -1035,7 +1038,57 @@
                     <p>4 spacious bedrooms, parking space for 6-7 cars, modern finishing, chandeliers and premium comfort. High rental and resale value.</p>
                
         </div>
-    </section>
+    </div></div></section>
+
+    <!-- Property 7 - left Layout (background fixed) -->
+    <section class="property-section" id="property7">
+        <div class="container">
+            <div class="property-container left">
+                <div class="property-video"><video controls playsinline><source src="assets/house1.mp4" type="video/mp4"></video></div>
+                <div class="property-details"><div class="property-header"><h2>5 Bedroom Duplex</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Trans Ekulu</div><div class="property-price">₦165,000,000</div></div><div class="property-description">
+                    <p>5-Bedroom Duplex + Gate House with a Rooftop Balcony.</p>
+                       <p>
+Highlights: Excellent location, spacious layout, and secure compound. Perfect for family living or investment. High rental and resale value.</p>
+                    
+               
+        </div>
+    </div></div></section>
+
+    <!-- Property 8 - Right Layout (background fixed) -->
+    <section class="property-section" id="property8">
+        <div class="container">
+            <div class="property-container right">
+                <div class="property-video"><video controls playsinline><source src="assets/house2.mp4" type="video/mp4"></video></div>
+                <div class="property-details"><div class="property-header"><h2>4 Bedroom Penthouse</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i>  Almond Estate, Centenary City Estate .</div><div class="property-price"> N160,000,000 ( Slightly Negotiable)</div></div><div class="property-description">
+                    <p>4-Bedroom Penthouse.</p>
+                       <p> Highlights: Excellent location, spacious layout, and secure compound. Perfect for family living or investment. High rental and resale value.</p>
+                    
+               
+        </div>
+    </div></div></section>
+
+    <!-- Property 9 - left Layout (background fixed) -->
+    <section class="property-section" id="property9">
+        <div class="container">
+            <div class="property-container left">
+                <div class="property-video"><video controls playsinline><source src="assets/house3.mp4" type="video/mp4"></video></div>
+                <div class="property-details"><div class="property-header"><h2>4 Bedroom Detached Duplex</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Thinkers Conner, Enugu.</div><div class="property-price">₦220,000,000</div></div><div class="property-description">
+                    <p>All rooms are ensuite with POP ceilings and a beautiful ambience. The property features a fully fitted kitchen equipped with a microwave, oven, washing machine, and gas cooker, along with a dedicated dining area. It is finished with concrete flooring and includes balconies for relaxation. There is adequate parking space for up to 6 cars, spacious rooms throughout, water heaters, water closets, and built-in wardrobes, offering comfort and convenience in every detail.</p>
+               
+        </div>
+    </div></div></section>
+
+    <!-- Property 10 - Right Layout (background fixed) -->
+    <section class="property-section" id="property10">
+        <div class="container">
+            <div class="property-container right">
+                <div class="property-video"><video controls playsinline><source src="assets/house4.mp4" type="video/mp4"></video></div>
+                <div class="property-details"><div class="property-header"><h2>Spacious 2-Units of Luxurious 4-Bedroom Duplexes</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Citi-Ville Estate, Centenary Enugu.</div><div class="property-price">₦160,000,000 (Before Completion) - ₦180,000,000 (After Completion)</div></div><div class="property-description">
+                    <p>Features include a serene gated estate with 24/7 electricity, four car parking spaces, a refrigerator, cooker and microwave, as well as a heat extractor and hood lighting.
+ </p>
+               
+        </div>
+    </div></div></section>
 
    <!-- CONTACT SECTION -->
 <section class="contact-section" id="contact-section">

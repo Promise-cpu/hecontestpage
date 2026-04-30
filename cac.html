@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -451,7 +452,7 @@
             left: 0;
         }
 
-        /* Testimonials Gallery - DARK BACKGROUND with Images */
+        /* Testimonials Gallery - DARK BACKGROUND with Images - Vertical cards, no text */
         .testimonials-section {
             padding: 5rem 0;
             background: linear-gradient(180deg, #0A1A2A 0%, #000000 50%, #0A1A2A 100%);
@@ -467,18 +468,21 @@
         }
         .testimonials-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
         }
         .testimonial-card {
             background: var(--white-pure);
             border-radius: 1.5rem;
-          
             overflow: hidden;
             box-shadow: var(--shadow-sm);
             transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
             cursor: pointer;
             border: 2px solid rgb(226, 221, 243);
+            display: flex;
+            flex-direction: column;
+            /* Make vertical length longer than horizontal */
+            aspect-ratio: 3 / 4;
         }
         .testimonial-card:hover {
             transform: translateY(-6px);
@@ -486,90 +490,81 @@
         }
         .testimonial-img {
             width: 100%;
-            height: 280px;
+            height: 100%;
             object-fit: cover;
             display: block;
+            flex: 1;
         }
+        /* Remove any text/caption area completely */
         .testimonial-sentence {
-            padding: 1.2rem 1.5rem 1.5rem;
-            font-style: italic;
-            font-size: 0.95rem;
-            color: var(--text-dark);
-            background: white;
-            border-top: 1px solid var(--border-light);
-            font-weight: 500;
-        }
-        .testimonial-sentence i {
-            color: var(--gold);
-            margin-right: 0.3rem;
+            display: none;
         }
 
         /* Image Modal for expanding testimonials */
-.image-modal {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.95);
-    z-index: 9999;
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    backdrop-filter: blur(5px);
-}
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
 
-.image-modal.active {
-    display: flex;
-    animation: fadeIn 0.3s ease;
-}
+        .image-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
 
-.modal-image {
-    max-width: 90%;
-    max-height: 90%;
-    object-fit: contain;
-    border-radius: 10px;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    animation: zoomIn 0.3s ease;
-}
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 10px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
 
-.close-modal {
-    position: absolute;
-    top: 20px;
-    right: 40px;
-    color: white;
-    font-size: 50px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: 0.3s;
-    z-index: 10000;
-}
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 40px;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
 
-.close-modal:hover {
-    color: var(--gold);
-    transform: scale(1.1);
-}
+        .close-modal:hover {
+            color: var(--gold);
+            transform: scale(1.1);
+        }
 
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
 
-@keyframes zoomIn {
-    from { transform: scale(0.8); opacity: 0; }
-    to { transform: scale(1); opacity: 1; }
-}
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
 
-/* Add pointer cursor to testimonial images */
-.testimonial-img {
-    cursor: pointer;
-    transition: transform 0.2s ease;
-}
+        .testimonial-img {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
 
-.testimonial-img:hover {
-    transform: scale(1.02);
-}
+        .testimonial-img:hover {
+            transform: scale(1.02);
+        }
 
         /* FAQ Section */
         .faq-section {
@@ -646,56 +641,56 @@
         }
 
         /* Contact Buttons - Call & WhatsApp */
-.contact-buttons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 2rem;
-}
+        .contact-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
 
-.btn-call {
-    background: linear-gradient(135deg, #2C5A8C, #0A2A44);
-    color: white;
-    box-shadow: 0 4px 15px rgba(44, 90, 140, 0.3);
-}
+        .btn-call {
+            background: linear-gradient(135deg, #2C5A8C, #0A2A44);
+            color: white;
+            box-shadow: 0 4px 15px rgba(44, 90, 140, 0.3);
+        }
 
-.btn-call:hover {
-    background: linear-gradient(135deg, #0A2A44, #2C5A8C);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(44, 90, 140, 0.4);
-}
+        .btn-call:hover {
+            background: linear-gradient(135deg, #0A2A44, #2C5A8C);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 90, 140, 0.4);
+        }
 
-.btn-whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
 
-.btn-whatsapp:hover {
-    background: linear-gradient(135deg, #128C7E, #075E54);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-}
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #075E54);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
 
-.btn-call i, .btn-whatsapp i {
-    font-size: 1.1rem;
-}
+        .btn-call i, .btn-whatsapp i {
+            font-size: 1.1rem;
+        }
 
-/* Mobile responsiveness */
-@media (max-width: 768px) {
-    .contact-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    
-    .btn-call, .btn-whatsapp {
-        width: 100%;
-        max-width: 280px;
-        padding: 0.9rem 1.5rem;
-    }
-}
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            
+            .btn-call, .btn-whatsapp {
+                width: 100%;
+                max-width: 280px;
+                padding: 0.9rem 1.5rem;
+            }
+        }
 
         /* Footer */
         footer {
@@ -803,9 +798,13 @@
                 padding: 3rem 0;
             }
             
+            /* Adjust testimonials grid for mobile: 2 columns, taller cards */
             .testimonials-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
                 gap: 1.5rem;
+            }
+            .testimonial-card {
+                aspect-ratio: 3 / 4;
             }
             
             .steps-grid {
@@ -843,12 +842,16 @@
             }
         }
 
+        /* Tablet landscape: testimonials grid 3 columns */
         @media (min-width: 768px) and (max-width: 1024px) {
             .desktop-nav {
                 display: none !important;
             }
             .hamburger {
                 display: block !important;
+            }
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
         }
         
@@ -898,7 +901,7 @@
     </div>
     <div class="mobile-menu" id="mobileMenu">
         <ul>
-            <li><a href="index">Home</a></li>
+            <li><a href="index.html">Home</a></li>
             <li><a href="land.html">Lands</a></li>
             <li><a href="housing.html">Housing</a></li>
             <li><a href="cac.html">Business Registration</a></li>
@@ -956,7 +959,7 @@
         </div>
     </section>
 
-    <!-- Testimonials Gallery - DARK BACKGROUND with tes1.jpeg, tes2.jpeg, tes3.jpeg -->
+    <!-- Testimonials Gallery - DARK BACKGROUND with tes1.jpeg, tes2.jpeg, tes3.jpeg - No text, vertical taller cards -->
     <section class="testimonials-section reveal" id="testimonials">
         <div class="container">
             <div class="testimonials-header" style="text-align:center; margin-bottom: 2rem;">
@@ -980,108 +983,111 @@
         </div>
     </section>
 
- <!-- Contact CTA - Direct Call & WhatsApp Buttons -->
-<section class="contact-cta reveal" id="contact">
-    <div class="container">
-        <h2>Ready to Formalize Your Business?</h2>
-        <p>Let our experts handle CAC, Trademark, and SCUML registration so you can focus on growth. Free initial consultation.</p>
-        <div class="contact-buttons">
-            <a href="tel:+2348167819313" class="btn btn-call">
-                <i class="fas fa-phone-alt"></i> Call Us Now
-            </a>
-            <a href="https://wa.me/2348167819313?text=Hello%20HECON%2C%20I%20need%20assistance%20with%20business%20registration" target="_blank" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i> Chat on WhatsApp
-            </a>
+    <!-- Contact CTA - Direct Call & WhatsApp Buttons -->
+    <section class="contact-cta reveal" id="contact">
+        <div class="container">
+            <h2>Ready to Formalize Your Business?</h2>
+            <p>Let our experts handle CAC, Trademark, and SCUML registration so you can focus on growth. Free initial consultation.</p>
+            <div class="contact-buttons">
+                <a href="tel:+2348167819313" class="btn btn-call">
+                    <i class="fas fa-phone-alt"></i> Call Us Now
+                </a>
+                <a href="https://wa.me/2348167819313?text=Hello%20HECON%2C%20I%20need%20assistance%20with%20business%20registration" target="_blank" class="btn btn-whatsapp">
+                    <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+                </a>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
-   <footer>
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <h3>HECON GROUP</h3>
-                <p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <h3>HECON GROUP</h3>
+                    <p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        <li><a href="housing.html">Housing</a></li>
+                        <li><a href="land.html">Lands</a></li>
+                        <li><a href="cac.html">Business Registration</a></li>
+                        <li><a href="laptop.html">Laptops</a></li>
+                        <li><a href="crypto.html">Crypto Exchange</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p><i class="fas fa-phone"></i> +234 8167819313</p>
+                    <p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+                </div>
             </div>
-            <div class="footer-links">
-                <h4>Quick Links</h4>
-                <ul>
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#services-core">Services</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-            <div class="footer-links">
-                <h4>Our Services</h4>
-                <ul>
-                    <li><a href="housing.html">Housing</a></li>
-                    <li><a href="land.html">Lands</a></li>
-                    <li><a href="cac.html">Business Registration</a></li>
-                    <li><a href="laptop.html">Laptops</a></li>
-                    <li><a href="crypto.html">Crypto Exchange</a></li>
-                </ul>
-            </div>
-            <div class="footer-contact">
-                <h4>Contact Info</h4>
-                <p><i class="fas fa-phone"></i> +234 8167819313</p>
-                <p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
+            <div class="footer-bottom">
+                <div>© 2026 HECON GROUP. All rights reserved.</div>
             </div>
         </div>
-        <div class="footer-bottom">
-            <div>© 2026 HECON GROUP. All rights reserved.</div>
-        </div>
+    </footer>
+
+    <div id="imageModal" class="image-modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-image" id="modalImage" alt="Expanded view">
     </div>
-</footer>
 
     <script>
         (function(){
-            // Testimonials data with images: tes1.jpeg, tes2.jpeg, tes3.jpeg
-const testimonialsData = [
-    { img: "assets/TESCAC1.jpeg", text: "“HECON handled my CAC registration seamlessly. Quick and professional.”" },
-    { img: "assets/TESCAC2.jpeg", text: "“Their trademark filing service saved my brand. Expert guidance and fast turnaround.”" },
-    { img: "assets/TESCAC3.jpeg", text: "“Their trademark filing service saved my brand. Expert guidance and fast turnaround.”" },
-    { img: "assets/TESCAC4.jpeg", text: "“SCUML compliance was a headache until I found HECON. They did everything, stress-free.”" }
-];
-const grid = document.getElementById('testimonialsGrid');
+            // Testimonials data with images only (no text/captions)
+            const testimonialsData = [
+                { img: "assets/TESCAC1.jpeg" },
+                { img: "assets/TESCAC2.jpeg" },
+                { img: "assets/TESCAC3.jpeg" },
+                { img: "assets/TESCAC4.jpeg" }
+            ];
+            const grid = document.getElementById('testimonialsGrid');
 
-function buildTestimonials() {
-    let html = '';
-    testimonialsData.forEach(t => {
-        html += `
-            <div class="testimonial-card">
-                <img src="${t.img}" alt="Client testimonial" class="testimonial-img" onclick="event.stopPropagation(); openImageModal('${t.img}')">
-                <div class="testimonial-sentence"><i class="fas fa-quote-left"></i> ${t.text}</div>
-            </div>
-        `;
-    });
-    grid.innerHTML = html;
-}
+            function buildTestimonials() {
+                let html = '';
+                testimonialsData.forEach(t => {
+                    html += `
+                        <div class="testimonial-card">
+                            <img src="${t.img}" alt="Client testimonial" class="testimonial-img" onclick="event.stopPropagation(); openImageModal('${t.img}')">
+                        </div>
+                    `;
+                });
+                grid.innerHTML = html;
+            }
 
-// Image modal functions
-function openImageModal(imageSrc) {
-    const modal = document.getElementById('imageModal');
-    const modalImage = document.getElementById('modalImage');
-    modal.classList.add('active');
-    modalImage.src = imageSrc;
-    document.body.style.overflow = 'hidden'; // Prevent scrolling when modal is open
-}
+            // Image modal functions
+            window.openImageModal = function(imageSrc) {
+                const modal = document.getElementById('imageModal');
+                const modalImage = document.getElementById('modalImage');
+                modal.classList.add('active');
+                modalImage.src = imageSrc;
+                document.body.style.overflow = 'hidden';
+            }
 
-function closeModal() {
-    const modal = document.getElementById('imageModal');
-    modal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-}
+            window.closeModal = function() {
+                const modal = document.getElementById('imageModal');
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
 
-// Close modal with Escape key
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') {
-        closeModal();
-    }
-});
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeModal();
+                }
+            });
 
-buildTestimonials();
+            buildTestimonials();
 
             // Mobile menu toggle
             const hamburger = document.getElementById('hamburger');
@@ -1125,12 +1131,5 @@ buildTestimonials();
             }, 200);
         })();
     </script>
-
-    <!-- Image Modal for expanding testimonials -->
-<div id="imageModal" class="image-modal" onclick="closeModal()">
-    <span class="close-modal">&times;</span>
-    <img class="modal-image" id="modalImage" alt="Expanded view">
-</div>
-
 </body>
 </html>
