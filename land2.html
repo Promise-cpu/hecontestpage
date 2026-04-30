@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -140,7 +139,6 @@
             color: var(--white-pure);
         }
 
-        /* Header - Pure White */
         header {
             position: fixed;
             top: 0;
@@ -303,7 +301,6 @@
             border-bottom: 1px solid #DCE5F0;
         }
 
-        /* Hero Section */
         .hero-section {
             min-height: 100vh;
             display: flex;
@@ -360,7 +357,6 @@
             margin: 0 auto 2.5rem;
         }
 
-        /* Introduction Section - with slower fade */
         .intro-full {
             width: 100%;
             text-align: center;
@@ -395,10 +391,6 @@
             font-weight: 600;
         }
 
-        /* ============================================ */
-        /* OPTIMIZED GALLERY - SINGLE RESPONSIVE GRID   */
-        /* No duplication, clean, matches first code    */
-        /* ============================================ */
         .gallery-section {
             padding: 5rem 0;
             background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
@@ -420,14 +412,12 @@
             font-size: 1.1rem;
         }
         
-        /* SINGLE GRID SYSTEM - No horizontal scroll, no duplication */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 1.5rem;
         }
         
-        /* Desktop land-card styling */
         .gallery-grid .land-card {
             background: transparent;
             border-radius: 12px;
@@ -442,10 +432,9 @@
             box-shadow: 0 18px 30px rgba(0, 0, 0, 0.5);
         }
         
-        /* IMAGE STYLES: Tall rectangular as per first code "Featured Collections" */
         .gallery-grid .land-card img {
             width: 100%;
-            height: 320px;          /* Tall rectangular base height */
+            height: 320px;
             object-fit: cover;
             display: block;
             transition: transform 0.4s ease;
@@ -455,7 +444,6 @@
             transform: scale(1.03);
         }
         
-        /* Responsive breakpoints - single source of truth */
         @media (max-width: 1200px) {
             .gallery-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -472,7 +460,7 @@
                 gap: 1rem;
             }
             .gallery-grid .land-card img {
-                height: 300px;      /* Matches first code product-img height on mobile */
+                height: 300px;
             }
         }
         
@@ -500,7 +488,6 @@
             }
         }
         
-        /* Image Modal */
         .image-modal { 
             position: fixed; 
             top:0; 
@@ -541,7 +528,6 @@
             transform: scale(1.1);
         }
 
-        /* Property Sections - Color Blends */
         .property-section {
             padding: 5rem 0;
             position: relative;
@@ -651,7 +637,6 @@
         }
         .feature-item i { color: #FFFFFF; font-size: 1rem; width: 24px; }
 
-        /* Side Fade-in Animations */
         .property-section .property-video {
             opacity: 0;
             transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
@@ -688,7 +673,6 @@
         }
         .intro-full.revealed { opacity: 1; transform: translateY(0); }
 
-        /* CONTACT */
         .contact-section { background: #ffffff; padding: 3rem 1.5rem; }
         @media (min-width: 768px) { .contact-section { padding: 5rem 2rem; } }
         .contact-container { max-width: 800px; margin: 0 auto; text-align: center; }
@@ -703,7 +687,6 @@
         .contact-btn-call { background: white; color: #0A2A44; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
         .contact-btn-call:hover { transform: translateY(-3px); }
 
-        /* Footer - Dark Theme */
         footer {
             background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -736,13 +719,14 @@
         .footer-contact i { color: #FFFFFF; width: 20px; }
         .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); padding-top: 2rem; margin-top: 2rem; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem; color: #8DA3B8; font-size: 0.85rem; text-align: center; }
 
-        /* MOBILE RESPONSIVE */
-        @media (max-width: 767px) {
+        /* MODIFIED RESPONSIVE SECTION[cite: 1] */
+        @media (max-width: 1024px) { /* Breakpoint updated to include Tablet range */
             .header-container { padding: 0.75rem 1rem; }
             .logo-container { flex: 1; gap: 0.75rem; }
             .logo-img { height: 42px; }
             .company-name { font-size: 1.6rem; text-align: left; padding-left: 18px; flex: 1; font-weight: 800; }
-            .hamburger { margin-left: auto; }
+            .hamburger { display: block !important; margin-left: auto; }
+            .desktop-nav { display: none !important; }
             .mobile-menu { top: 68px; padding: 1.5rem; }
             .hero-section { min-height: 100vh; height: 100vh; }
             .hero-content { padding: 0 1.5rem; margin-top: 60px; }
@@ -752,6 +736,8 @@
             .intro-full { padding: 3rem 1.5rem; }
             .intro-full p { font-size: 1.125rem; }
             .intro-full h2 { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+            
+            /* TARGET: Tablet & Mobile Video Alignment[cite: 1] */
             .property-container { flex-direction: column !important; gap: 2rem; }
             .property-video { position: relative; top: 0; width: 100%; }
             .property-section .property-video,
@@ -763,10 +749,7 @@
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: rgba(0,0,0,0.05); margin-top: 0.5rem; border: none; }
         }
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .desktop-nav { display: none !important; }
-            .hamburger { display: block !important; }
-        }
+
         @media (min-width: 1025px) {
             .desktop-nav { display: block; }
             .hamburger { display: none !important; }
@@ -831,7 +814,6 @@
     </div>
 </section>
 
-<!-- OPTIMIZED GALLERY SECTION - SINGLE GRID, NO DUPLICATION -->
 <section class="gallery-section" id="gallery">
     <div class="container">
         <div class="gallery-header">
@@ -842,14 +824,12 @@
     </div>
 </section>
 
-<!-- PROPERTY SECTIONS (unchanged) -->
 <section class="property-section" id="property1"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/seven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lotanna Layout Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ndiukwuenu Awka, Anambra</div><div class="property-price">₦5,000,000 (Pre-Launch) - ₦6,000,000 (Actual Price)</div></div><div class="property-description"><p>A plot size of 465SQM. Close proximity to Awka city center, UNIZIK and Aroma junction. Accessible via Enugu-Onitsha Express way. YOU ONLY NEED A ₦1,000,000 INITIAL DEPOSIT TO SECURE A PLOT.</p></div></div></div></div></section>
 <section class="property-section" id="property2"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/eight.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Akuchukwu City Layout</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Mgbakwu, Anambra </div><div class="property-price">₦3,500,000 (Pre-Launch) - ₦5,000,000 (Actual Price)</div></div><div class="property-description"><p>With a deposit of ₦500,000, you can begin your journey to owning land in a fast developing area in anambra state. Instant allocation, FREE Documentation, Registered survey plan and Deed of assignment.</p></div></div></div></div></section>
 <section class="property-section" id="property3"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/nine.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Millenium Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Adjacent to Golf Annex Estate</div><div class="property-price">₦32,000,000 - ₦78,000,000</div></div><div class="property-description"><p>Scenic hilltop plots offering breathtaking views. Fresh air, tranquility, and easy access to the city center. Perfect for luxury homes.</p></div></div></div></div></section>
-<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/ten.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Atlantic Shores Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Eko Atlantic, Lagos</div><div class="property-price">₦150,000,000 - ₦380,000,000</div></div><div class="property-description"><p>Exclusive waterfront land in the new city of Eko Atlantic. Direct ocean views, reclaimed land with world-class infrastructure.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-water"></i> Oceanfront</div><div class="feature-item"><i class="fas fa-city"></i> Smart City</div><div class="feature-item"><i class="fas fa-shield-virus"></i> Flood Protection</div><div class="feature-item"><i class="fas fa-chart-simple"></i> Ultra-Luxury</div></div></div></div></div></section>
-<section class="property-section" id="property5"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/eleven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Mega One Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki Epe Expressway, Lagos State</div><div class="property-price">₦22 Million (300SQM)</div><div class="property-price">₦35 Million (500SQM)</div><div class="property-price">₦75 Million (1000SQM)</div></div><div class="property-description"><p>Enjoy premium infrastructure, prime location, and guaranteed appreciation. Secure your plot now. Watch your money grow.</p></div></div></div></div></section>
 
-<!-- CONTACT SECTION -->
+<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/fifeteen.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Mega One Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki Epe Expressway, Lagos State</div><div class="property-price">₦22 Million (300SQM)</div><div class="property-price">₦35 Million (500SQM)</div><div class="property-price">₦75 Million (1000SQM)</div></div><div class="property-description"><p>Enjoy premium infrastructure, prime location, and guaranteed appreciation. Secure your plot now. Watch your money grow.</p></div></div></div></div></section>
+
 <section class="contact-section" id="contact-section">
     <div class="contact-container">
         <h2>Secure Your Land Today</h2>
@@ -907,7 +887,6 @@
 
 <script>
 (function(){
-    // Single source of truth - land images array
     const lands = [
         { img: "assets/one.jpeg" }, { img: "assets/two.jpeg" }, { img: "assets/three.jpeg" },
         { img: "assets/four.jpeg" }, { img: "assets/five.jpeg" }, { img: "assets/six.jpeg" },
@@ -920,7 +899,6 @@
     const modalImg = document.getElementById('modalImg');
     const modalClose = document.querySelector('.modal-close');
     
-    // Build gallery once - no duplication, clean approach
     function buildGallery() {
         if (!galleryGrid) return;
         galleryGrid.innerHTML = '';
@@ -952,7 +930,6 @@
         document.body.style.overflow = '';
     }
     
-    // Event listeners
     if (modal) {
         modal.addEventListener('click', (e) => {
             if (e.target === modal || e.target === modalClose) closeModal();
@@ -964,7 +941,6 @@
     
     buildGallery();
     
-    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger');
     const mobileMenu = document.getElementById('mobileMenu');
     if(hamburger) {
@@ -980,7 +956,6 @@
         });
     }
     
-    // Smooth scroll with offset
     document.querySelectorAll('a[href^="#"]').forEach(anchor => { 
         anchor.addEventListener('click', function(e) { 
             e.preventDefault(); 
@@ -991,16 +966,13 @@
         }); 
     });
     
-    // Logo home link
     document.getElementById('logoHomeLink')?.addEventListener('click', () => { window.location.href = 'index.html'; });
     
-    // Intersection Observer for fade-in animations
     const observer = new IntersectionObserver((entries) => { 
         entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); 
     }, { threshold: 0.2 });
     document.querySelectorAll('.property-section, .intro-full').forEach(el => observer.observe(el));
     
-    // Video pause on play others
     const videos = document.querySelectorAll('video');
     videos.forEach(v => { 
         v.addEventListener('play', () => { 
