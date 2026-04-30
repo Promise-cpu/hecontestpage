@@ -572,33 +572,23 @@
         .property-container.left { flex-direction: row; }
         .property-container.right { flex-direction: row-reverse; }
 
-        /* =============================================== */
-        /* CRITICAL FIX: VIDEO CONTAINER EXACT MATCH TO HOUSING PAGE */
-        /* No stretching, maintains original aspect ratio, preserves white space */
-        /* =============================================== */
         .property-video {
             flex: 1;
             min-width: 0;
             position: sticky;
             top: 100px;
-            background-color: #000; /* fallback for any letterboxing */
-            border-radius: 1.25rem;
-            overflow: hidden;
         }
 
         .property-video video {
             width: 100%;
             height: auto;
-            display: block;
             border-radius: 1.25rem;
             border: 2px solid rgba(255, 255, 255, 0.3);
             background: var(--white-pure);
             box-shadow: var(--shadow-md);
             transition: transform 0.4s var(--ease-out-expo), box-shadow 0.3s;
-            /* CRITICAL: Maintain original aspect ratio, no stretching */
+            max-height: 320px;
             object-fit: contain;
-            aspect-ratio: 16 / 9; /* typical video ratio, ensures consistency */
-            background-color: #000; /* letterbox background if needed */
         }
 
         .property-video video:hover {
@@ -772,34 +762,14 @@
             .property-features { grid-template-columns: 1fr; }
             .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
             .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: rgba(0,0,0,0.05); margin-top: 0.5rem; border: none; }
-            
-            /* Mobile: ensure video container respects aspect ratio exactly like housing page */
-            .property-video video {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 16 / 9;
-                object-fit: contain;
-            }
         }
-        
-        /* Tablet-specific video consistency */
         @media (min-width: 768px) and (max-width: 1024px) {
             .desktop-nav { display: none !important; }
             .hamburger { display: block !important; }
-            .property-video video {
-                aspect-ratio: 16 / 9;
-                object-fit: contain;
-            }
         }
-        
-        /* Desktop fallback */
         @media (min-width: 1025px) {
             .desktop-nav { display: block; }
             .hamburger { display: none !important; }
-            .property-video video {
-                aspect-ratio: 16 / 9;
-                object-fit: contain;
-            }
         }
     </style>
 </head>
@@ -876,8 +846,8 @@
 <section class="property-section" id="property1"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/seven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lotanna Layout Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ndiukwuenu Awka, Anambra</div><div class="property-price">₦5,000,000 (Pre-Launch) - ₦6,000,000 (Actual Price)</div></div><div class="property-description"><p>A plot size of 465SQM. Close proximity to Awka city center, UNIZIK and Aroma junction. Accessible via Enugu-Onitsha Express way. YOU ONLY NEED A ₦1,000,000 INITIAL DEPOSIT TO SECURE A PLOT.</p></div></div></div></div></section>
 <section class="property-section" id="property2"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/eight.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Akuchukwu City Layout</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Mgbakwu, Anambra </div><div class="property-price">₦3,500,000 (Pre-Launch) - ₦5,000,000 (Actual Price)</div></div><div class="property-description"><p>With a deposit of ₦500,000, you can begin your journey to owning land in a fast developing area in anambra state. Instant allocation, FREE Documentation, Registered survey plan and Deed of assignment.</p></div></div></div></div></section>
 <section class="property-section" id="property3"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/nine.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Millenium Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Adjacent to Golf Annex Estate</div><div class="property-price">₦32,000,000 - ₦78,000,000</div></div><div class="property-description"><p>Scenic hilltop plots offering breathtaking views. Fresh air, tranquility, and easy access to the city center. Perfect for luxury homes.</p></div></div></div></div></section>
-
-<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/fifeteen.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Mega One Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki Epe Expressway, Lagos State</div><div class="property-price">₦22 Million (300SQM)</div><div class="property-price">₦35 Million (500SQM)</div><div class="property-price">₦75 Million (1000SQM)</div></div><div class="property-description"></div></div></div></div></section>
+<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/ten.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Atlantic Shores Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Eko Atlantic, Lagos</div><div class="property-price">₦150,000,000 - ₦380,000,000</div></div><div class="property-description"><p>Exclusive waterfront land in the new city of Eko Atlantic. Direct ocean views, reclaimed land with world-class infrastructure.</p></div><div class="property-features"><div class="feature-item"><i class="fas fa-water"></i> Oceanfront</div><div class="feature-item"><i class="fas fa-city"></i> Smart City</div><div class="feature-item"><i class="fas fa-shield-virus"></i> Flood Protection</div><div class="feature-item"><i class="fas fa-chart-simple"></i> Ultra-Luxury</div></div></div></div></div></section>
+<section class="property-section" id="property5"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/eleven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Mega One Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki Epe Expressway, Lagos State</div><div class="property-price">₦22 Million (300SQM)</div><div class="property-price">₦35 Million (500SQM)</div><div class="property-price">₦75 Million (1000SQM)</div></div><div class="property-description"><p>Enjoy premium infrastructure, prime location, and guaranteed appreciation. Secure your plot now. Watch your money grow.</p></div></div></div></div></section>
 
 <!-- CONTACT SECTION -->
 <section class="contact-section" id="contact-section">
