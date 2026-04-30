@@ -92,7 +92,7 @@
         }
 
         .container {
-            max-width: 87.5rem; /* 1400px /16 */
+            max-width: 87.5rem; /* 1400px */
             margin: 0 auto;
             padding: 0 1.25rem;
             position: relative;
@@ -354,28 +354,110 @@
         .testimonials-header { text-align: center; margin-bottom: 2rem; }
         .testimonials-header p { text-align: center; margin: 0 auto; max-width: 31.25rem; }
 
-        /* Testimonials tall cards */
+        /* TESTIMONIALS SECTION - EXACT STYLE MATCHING REFERENCE CODE */
+        /* Using same background, grid, and aspect ratio as the reference (CAC page) */
+        .testimonials-section {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, #0A1A2A 0%, #000000 50%, #0A1A2A 100%);
+        }
+        .testimonials-section h2 {
+            background: linear-gradient(135deg, #FFFFFF, #CCCCCC);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .testimonials-section .testimonials-header p {
+            color: rgba(255,255,255,0.8);
+        }
         .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
         }
+        /* Testimonial card styling exactly like reference */
         .testimonial-card {
             background: var(--white-pure);
             border-radius: 1.5rem;
             overflow: hidden;
             box-shadow: var(--shadow-sm);
-            transition: transform 0.3s var(--ease-out-expo);
+            transition: transform 0.3s var(--ease-out-expo), box-shadow 0.3s;
             cursor: pointer;
             border: 2px solid rgb(226, 221, 243);
-            aspect-ratio: 3 / 4;
             display: flex;
             flex-direction: column;
+            /* Vertical length longer than horizontal - aspect ratio 3:4 as in reference */
+            aspect-ratio: 3 / 4;
         }
-        .testimonial-card:hover { transform: translateY(-0.375rem); box-shadow: var(--shadow-hover); }
-        .testimonial-img { width: 100%; height: 100%; object-fit: cover; display: block; flex: 1; }
-        @media (max-width: 767px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
-        @media (min-width: 768px) and (max-width: 1024px) { .testimonials-grid { grid-template-columns: repeat(2, 1fr); } }
+        .testimonial-card:hover {
+            transform: translateY(-0.375rem);
+            box-shadow: var(--shadow-hover);
+        }
+        .testimonial-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            flex: 1;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        .testimonial-img:hover {
+            transform: scale(1.02);
+        }
+        /* Remove any text/caption area completely to match reference */
+        .testimonial-sentence {
+            display: none;
+        }
+        /* Image modal styling - matching reference */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .image-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 0.625rem;
+            box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+        .close-modal {
+            position: absolute;
+            top: 1.25rem;
+            right: 2.5rem;
+            color: white;
+            font-size: 3.125rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        .close-modal:hover {
+            color: var(--gold);
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
 
         /* WHY Section */
         .why-section { background: linear-gradient(135deg, #0A1A2A 0%, #000000 100%); color: white; }
@@ -456,24 +538,22 @@
 
         .reveal { opacity: 0; transform: translateY(1.75rem); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
-        .lightbox {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 10000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            visibility: hidden;
-            opacity: 0;
-            transition: visibility 0.2s, opacity 0.2s;
-            cursor: pointer;
-        }
-        .lightbox.active { visibility: visible; opacity: 1; }
-        .lightbox img { max-width: 90%; max-height: 90%; object-fit: contain; border-radius: 1rem; box-shadow: 0 1.25rem 2.5rem rgba(0,0,0,0.5); }
-        .lightbox-close { position: absolute; top: 1.25rem; right: 1.875rem; color: white; font-size: 2rem; cursor: pointer; background: none; border: none; }
         
+        /* Tablet landscape: testimonials grid 3 columns as reference */
+        @media (min-width: 768px) and (max-width: 1024px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        @media (max-width: 767px) {
+            .testimonials-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .testimonial-card {
+                aspect-ratio: 3 / 4;
+            }
+        }
         @media (min-width: 1025px) { .desktop-nav { display: block; } .hamburger { display: none !important; } }
         @media (min-width: 768px) and (max-width: 1024px) { .desktop-nav { display: none !important; } .hamburger { display: block !important; } }
     </style>
@@ -533,7 +613,16 @@
     </div>
 </div></section>
 
-<section class="testimonials-section reveal"><div class="container"><div class="testimonials-header"><h2>Trusted by Global Traders</h2><p>Real feedback from our exchange clients</p></div><div class="testimonials-grid" id="testimonialsGrid"></div></div></section>
+<!-- Testimonials Section - EXACT styling as reference code with proper image dimensions and aspect ratio -->
+<section class="testimonials-section reveal" id="testimonials">
+    <div class="container">
+        <div class="testimonials-header">
+            <h2>Trusted by Global Traders</h2>
+            <p>Real feedback from our exchange clients</p>
+        </div>
+        <div class="testimonials-grid" id="testimonialsGrid"></div>
+    </div>
+</section>
 
 <section class="why-section reveal"><div class="container"><div class="why-container"><div class="why-left"><h2>Why HECON Exchange?</h2><p>We specialize exclusively in USDT-to-fiat and fiat-to-USDT conversions for global currencies. No complexity, just premium service.</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Competitive spreads on GBP/CAD/RMB/NGN → USDT</li><li><i class="fas fa-check-circle"></i> No hidden fees, full transparency</li><li><i class="fas fa-check-circle"></i> Dedicated account manager for $50k+ trades</li><li><i class="fas fa-check-circle"></i> Instant local settlement (bank/wire)</li><li><i class="fas fa-check-circle"></i> 24/6 live support & real-time quotes</li></ul></div><div class="why-right"><div class="big-number">$10k</div><p>minimum trade amount</p><div style="margin:1rem 0; border-top:1px solid rgba(255,255,255,0.2); width:3.125rem; margin-left:auto; margin-right:auto;"></div><div class="big-number" style="font-size:2rem;">⭐ 5.0/5.0</div><p>client satisfaction</p></div></div></div></section>
 
@@ -541,23 +630,53 @@
 
 <footer><div class="container"><div class="footer-grid"><div class="footer-brand"><h3>HECON GROUP</h3><p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p></div><div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#exchangeCards">Exchange</a></li><li><a href="#contactNow">Contact</a></li></ul></div><div class="footer-links"><h4>Our Services</h4><ul><li><a href="housing.html">Housing</a></li><li><a href="land.html">Lands</a></li><li><a href="cac.html">Business Registration</a></li><li><a href="laptop.html">Laptops</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div><div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 8167819313</p><p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div></div><div class="footer-bottom"><div>© 2026 HECON GROUP. All rights reserved.</div></div></div></footer>
 
-<div id="lightbox" class="lightbox" onclick="closeLightbox()"><button class="lightbox-close" onclick="closeLightbox()">&times;</button><img id="lightboxImg" src="" alt="Full size testimonial"></div>
+<!-- Image Modal for full-size view (matching reference) -->
+<div id="imageModal" class="image-modal" onclick="closeModal()">
+    <span class="close-modal">&times;</span>
+    <img class="modal-image" id="modalImage" alt="Full size testimonial">
+</div>
 
 <script>
 (function() {
-    const testimonials = [{ img: "assets/TESCRYPTO1.jpeg" },{ img: "assets/TESCRYPTO2.jpeg" },{ img: "assets/TESCRYPTO3.jpeg" },{ img: "assets/TESCRYPTO4.jpeg" }];
+    // Testimonials data with images (same as original crypto testimonials, using proper aspect ratio)
+    const testimonials = [
+        { img: "assets/TESCRYPTO1.jpeg" },
+        { img: "assets/TESCRYPTO2.jpeg" },
+        { img: "assets/TESCRYPTO3.jpeg" },
+        { img: "assets/TESCRYPTO4.jpeg" }
+    ];
     const grid = document.getElementById('testimonialsGrid');
-    function build() {
+    function buildTestimonials() {
         let html = '';
-        testimonials.forEach(t => { html += `<div class="testimonial-card" data-img="${t.img}"><img src="${t.img}" alt="client testimonial" class="testimonial-img" onerror="this.src='https://via.placeholder.com/400x500?text=Client'"></div>`; });
+        testimonials.forEach(t => {
+            html += `<div class="testimonial-card">
+                        <img src="${t.img}" alt="client testimonial" class="testimonial-img" onclick="event.stopPropagation(); openImageModal('${t.img}')" onerror="this.src='https://via.placeholder.com/400x500?text=Client'">
+                     </div>`;
+        });
         grid.innerHTML = html;
-        document.querySelectorAll('.testimonial-card').forEach(card => { card.addEventListener('click', (e) => { const imgEl = card.querySelector('.testimonial-img'); if(imgEl?.src) showFullImage(imgEl.src); }); });
     }
-    build();
-    const lightbox = document.getElementById('lightbox'), lightboxImg = document.getElementById('lightboxImg');
-    window.showFullImage = (src) => { lightboxImg.src = src; lightbox.classList.add('active'); };
-    window.closeLightbox = () => { lightbox.classList.remove('active'); setTimeout(() => { lightboxImg.src = ''; }, 300); };
-    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+    buildTestimonials();
+    
+    // Modal functions (exactly like reference code)
+    window.openImageModal = function(imageSrc) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modal.classList.add('active');
+        modalImage.src = imageSrc;
+        document.body.style.overflow = 'hidden';
+    };
+    window.closeModal = function() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+    
+    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu');
     if(hamburger) hamburger.addEventListener('click', ()=>{ mobileMenu.classList.toggle('active'); hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; });
     document.querySelectorAll('.mobile-menu a').forEach(link => { link.addEventListener('click', ()=>{ mobileMenu.classList.remove('active'); if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }); });
