@@ -39,11 +39,9 @@
             --shadow-hover: 0 1.25rem 2.1875rem rgba(0, 0, 0, 0.08);
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
             
-            /* fluid font scaling */
             font-size: 16px;
         }
         
-        /* fluid typography for all screen sizes (matched crypto page) */
         @media (max-width: 640px) {
             :root { font-size: 15px; }
         }
@@ -92,7 +90,7 @@
         }
 
         .container {
-            max-width: 87.5rem; /* 1400px */
+            max-width: 87.5rem;
             margin: 0 auto;
             padding: 0 1.25rem;
             position: relative;
@@ -171,7 +169,7 @@
             flex-shrink: 0;
         }
         .logo-img {
-            height: 2.625rem; /* 42px */
+            height: 2.625rem;
             width: auto;
             object-fit: contain;
         }
@@ -185,7 +183,6 @@
             white-space: nowrap;
         }
         
-        /* ===== MOBILE HEADER LAYOUT FIX: Logo Left, Company Name Center, Hamburger Right ===== */
         @media (max-width: 1024px) {
             .header-container {
                 display: flex;
@@ -193,13 +190,11 @@
                 align-items: center;
                 position: relative;
             }
-            
             .logo-container {
                 flex: 0 0 auto;
                 order: 1;
                 gap: 0.5rem;
             }
-            
             .mobile-center-brand {
                 position: absolute;
                 left: 50%;
@@ -210,7 +205,6 @@
                 pointer-events: none;
                 white-space: nowrap;
             }
-            
             .mobile-center-brand .company-name {
                 font-size: 2.1rem;
                 background: linear-gradient(135deg, #0A2A44, #000);
@@ -222,18 +216,15 @@
                 pointer-events: auto;
                 cursor: pointer;
             }
-            
             .logo-container .company-name {
                 display: none;
             }
-            
             .hamburger {
                 order: 3;
                 flex: 0 0 auto;
                 display: block;
                 margin-left: 0;
             }
-            
             .logo-img {
                 height: 3.3rem;
             }
@@ -386,19 +377,19 @@
             .hero-content { margin-top: 4rem; }
         }
 
-        /* Intro Section */
+        /* Intro Section - NO EXTRA SPACING */
         .intro-full {
             width: 100%;
             text-align: center;
-            padding: 5rem 1.25rem;
+            padding: 0 1.25rem 3rem 1.25rem;
             background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
         }
         .intro-full .intro-inner { max-width: 56.25rem; margin: 0 auto; }
-        .intro-full h2 { margin-bottom: 2rem; }
+        .intro-full h2 { margin-bottom: 1.5rem; }
         .intro-full p {
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1.2rem;
             font-size: 1.125rem;
             color: var(--text-mid);
         }
@@ -410,12 +401,12 @@
             font-weight: 600;
         }
 
-        /* Gallery Section (Dark theme) */
+        /* Gallery Section - NO EXTRA SPACING */
         .gallery-section {
-            padding: 5rem 0;
+            padding: 0 0 5rem 0;
             background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
         }
-        .gallery-header { text-align: center; margin-bottom: 3rem; }
+        .gallery-header { text-align: center; margin-bottom: 2.5rem; padding-top: 4rem; }
         .gallery-header h2 {
             color: white;
             background: linear-gradient(135deg, #fff, #fff);
@@ -456,6 +447,7 @@
         @media (max-width: 768px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
             .gallery-grid .land-card img { height: 18.75rem; }
+            .gallery-header { padding-top: 2.5rem; }
         }
         @media (max-width: 576px) {
             .gallery-grid .land-card img { height: 16.25rem; }
@@ -466,8 +458,11 @@
 
         /* Property Sections (with videos) */
         .property-section {
-            padding: 5rem 0;
+            padding: 4rem 0;
             background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
+        }
+        .property-section:first-of-type {
+            padding-top: 4rem;
         }
         .property-section:not(:first-of-type)::before {
             content: '';
@@ -541,19 +536,34 @@
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.9);
         }
-        .property-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
+
+        /* TABLET & MOBILE: videos on top of writeups, remove sticky */
+        @media (max-width: 1024px) {
+            .property-container {
+                flex-direction: column !important;
+                gap: 2rem;
+            }
+            .property-video {
+                position: relative;
+                top: 0;
+                width: 100%;
+            }
+            .property-video video {
+                max-height: 18rem;
+            }
+            .property-header h2 {
+                font-size: 1.8rem;
+            }
+            .property-price {
+                font-size: 1.6rem;
+            }
+            .property-section {
+                padding: 2.5rem 0;
+            }
+            .property-section:first-of-type {
+                padding-top: 2.5rem;
+            }
         }
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.95rem;
-        }
-        .feature-item i { color: #FFFFFF; font-size: 1rem; width: 1.5rem; }
 
         /* Contact Section - Matching crypto page style */
         .contact-section {
@@ -650,10 +660,6 @@
                 padding: 0.85rem 1.5rem;
                 font-size: 0.9rem;
             }
-            .property-container { flex-direction: column !important; gap: 2rem; }
-            .property-video { position: relative; top: 0; width: 100%; }
-            .property-header h2 { font-size: 1.8rem; }
-            .property-price { font-size: 1.6rem; }
         }
 
         /* Footer - identical to crypto page */
@@ -801,6 +807,12 @@
         .property-section:nth-of-type(even) .property-details { transform: translateX(3.125rem); }
         .property-section.revealed .property-video,
         .property-section.revealed .property-details { opacity: 1; transform: translateX(0); }
+        @media (max-width: 1024px) {
+            .property-section .property-video,
+            .property-section .property-details {
+                transform: translateX(0) !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1001,7 +1013,6 @@
     if(logoLeft) logoLeft.addEventListener('click', goToIndex);
     if(mobileCenterBrandDiv) mobileCenterBrandDiv.addEventListener('click', goToIndex);
     
-    // Video pause on other videos playing
     const videos = document.querySelectorAll('video');
     videos.forEach(v => {
         v.addEventListener('play', () => {
