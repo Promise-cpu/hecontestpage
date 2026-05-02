@@ -324,7 +324,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 0;
+            padding-top: 5rem;
         }
         .hero-bg {
             position: absolute;
@@ -378,14 +378,12 @@
         }
 
         /* Intro Section - NO EXTRA SPACING */
-        .intro-full {
-            width: 100%;
-            text-align: center;
-            padding: 0 1.25rem 3rem 1.25rem;
-            background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
-            border-top: 1px solid var(--border-light);
-            border-bottom: 1px solid var(--border-light);
-        }
+        /* Introduction Section - No padding, no background */
+.intro-full {
+    width: 100%;
+    text-align: center;
+    background: transparent;
+}
         .intro-full .intro-inner { max-width: 56.25rem; margin: 0 auto; }
         .intro-full h2 { margin-bottom: 1.5rem; }
         .intro-full p {

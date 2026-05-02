@@ -1,12 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
     <title>HECON GROUP · Real Estate · Business · Tech</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -15,6 +16,7 @@
             box-sizing: border-box;
         }
 
+        /* ROOT: 1rem = 16px base, fluid scaling (identical to crypto page) */
         :root {
             --white-pure: #FFFFFF;
             --white-soft: #F8FAFE;
@@ -25,14 +27,28 @@
             --blue-dark: #0A2A44;
             --blue-accent: #2C5A8C;
             --blue-soft-accent: #3B6E9E;
+            --gold: #F7931A;
+            --gold-dark: #E67E22;
+            --green: #10B981;
             --text-dark: #1A2C3E;
             --text-mid: #2C3E50;
             --text-light: #5A6E7C;
             --border-light: #DCE5F0;
-            --shadow-sm: 0 8px 20px rgba(0, 0, 0, 0.03);
-            --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 20px 35px rgba(0, 0, 0, 0.08);
+            --shadow-sm: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.03);
+            --shadow-md: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 1.25rem 2.1875rem rgba(0, 0, 0, 0.08);
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+            
+            /* fluid font scaling */
+            font-size: 16px;
+        }
+        
+        /* fluid typography for all screen sizes (matched crypto page) */
+        @media (max-width: 640px) {
+            :root { font-size: 15px; }
+        }
+        @media (min-width: 1400px) {
+            :root { font-size: 18px; }
         }
 
         body {
@@ -40,14 +56,7 @@
             color: var(--text-mid);
             line-height: 1.5;
             overflow-x: hidden;
-            background: linear-gradient(145deg, 
-                #FFFFFF 0%, 
-                #F5F9FF 15%,
-                #EFF3FC 30%,
-                #E8EFF8 50%,
-                #E0E8F2 70%,
-                #D9E2ED 85%,
-                #D1DCE8 100%);
+            background: linear-gradient(145deg, #FFFFFF 0%, #F5F9FF 15%, #EFF3FC 30%, #E8EFF8 50%, #E0E8F2 70%, #D9E2ED 85%, #D1DCE8 100%);
             background-attachment: fixed;
             position: relative;
         }
@@ -68,7 +77,7 @@
         }
 
         h2 {
-            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            font-size: clamp(2rem, 7vw, 3.5rem);
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
             -webkit-background-clip: text;
@@ -83,9 +92,9 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 87.5rem; /* 1400px */
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.25rem;
             position: relative;
             z-index: 2;
             width: 100%;
@@ -96,32 +105,34 @@
             z-index: 2;
             padding: 5rem 0;
         }
+        @media (max-width: 767px) {
+            section { padding: 3rem 0; }
+        }
 
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 0.75rem;
-            padding: 0.8rem 2rem;
+            padding: 0.875rem 2rem;
             border-radius: 3rem;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 1rem;
             text-decoration: none;
             border: none;
             cursor: pointer;
             transition: all 0.3s var(--ease-out-expo);
         }
-
+        
         .btn-primary {
             background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
             color: white;
-            box-shadow: 0 8px 20px rgba(10, 42, 68, 0.25);
+            box-shadow: 0 0.5rem 1.25rem rgba(10, 42, 68, 0.25);
         }
-
         .btn-primary:hover {
             background: linear-gradient(135deg, var(--blue-dark), var(--blue-accent));
-            transform: scale(1.02) translateY(-3px);
-            box-shadow: 0 15px 30px rgba(10, 42, 68, 0.3);
+            transform: scale(1.02) translateY(-0.1875rem);
+            box-shadow: 0 0.9375rem 1.875rem rgba(10, 42, 68, 0.3);
         }
 
         .btn-outline-light {
@@ -129,14 +140,13 @@
             color: var(--blue-dark);
             border: 1px solid var(--blue-accent);
         }
-
         .btn-outline-light:hover {
             background: var(--blue-dark);
             color: white;
             transform: translateY(-2px);
         }
 
-        /* Header */
+        /* HEADER - EXACT MATCH WITH CRYPTO PAGE */
         header {
             position: fixed;
             top: 0;
@@ -146,29 +156,27 @@
             border-bottom: 1px solid var(--border-light);
             backdrop-filter: blur(10px);
         }
-
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0.75rem 1rem;
-            max-width: 1400px;
+            max-width: 87.5rem;
             margin: 0 auto;
         }
-
+        
         .logo-container {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             cursor: pointer;
+            flex-shrink: 0;
         }
-
         .logo-img {
-            height: 42px;
+            height: 2.625rem; /* 42px */
             width: auto;
             object-fit: contain;
         }
-
         .company-name {
             font-weight: 800;
             font-size: 1.6rem;
@@ -176,72 +184,115 @@
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            white-space: nowrap;
+        }
+        
+        /* ===== MOBILE HEADER LAYOUT FIX: Logo Left, Company Name Center, Hamburger Right ===== */
+        @media (max-width: 1024px) {
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+            }
+            
+            .logo-container {
+                flex: 0 0 auto;
+                order: 1;
+                gap: 0.5rem;
+            }
+            
+            .mobile-center-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+                white-space: nowrap;
+            }
+            
+            .mobile-center-brand .company-name {
+                font-size: 2.1rem;
+                background: linear-gradient(135deg, #0A2A44, #000);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                font-weight: 800;
+                white-space: nowrap;
+                pointer-events: auto;
+                cursor: pointer;
+            }
+            
+            .logo-container .company-name {
+                display: none;
+            }
+            
+            .hamburger {
+                order: 3;
+                flex: 0 0 auto;
+                display: block;
+                margin-left: 0;
+            }
+            
+            .logo-img {
+                height: 3.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-center-brand .company-name {
+                font-size: 1.8rem;
+            }
+            .logo-img {
+                height: 3rem;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .mobile-center-brand .company-name {
+                font-size: 1.5rem;
+            }
+            .logo-img {
+                height: 2.7rem;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .mobile-center-brand {
+                display: none !important;
+            }
+            .logo-container .company-name {
+                display: block !important;
+            }
         }
 
-        .desktop-nav {
-            display: none;
-        }
-
-        .desktop-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .desktop-nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: 0.2s;
-        }
-
-        .desktop-nav a:hover {
-            color: var(--blue-dark);
-        }
-
-        .dropdown {
-            position: relative;
-        }
-
+        .desktop-nav { display: none; }
+        .desktop-nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .desktop-nav a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
+        .desktop-nav a:hover { color: var(--blue-dark); }
+        .dropdown { position: relative; }
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
             background: white;
-            min-width: 200px;
+            min-width: 12.5rem;
             border-radius: 0.75rem;
-            box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 0.75rem 1.875rem rgba(0,0,0,0.05);
             opacity: 0;
             visibility: hidden;
-            transform: translateY(-10px);
+            transform: translateY(-0.625rem);
             transition: all 0.3s;
             border: 1px solid #DCE5F0;
             z-index: 1000;
         }
-
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .dropdown-menu li {
-            list-style: none;
-        }
-
-        .dropdown-menu li a {
-            display: block;
-            padding: 0.75rem 1.5rem;
-            color: #2C3E50;
-            border-bottom: 1px solid #DCE5F0;
-        }
-
-        .dropdown-menu li:last-child a {
-            border-bottom: none;
-        }
-
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu li { list-style: none; }
+        .dropdown-menu li a { display: block; padding: 0.75rem 1.5rem; color: #2C3E50; border-bottom: 1px solid #DCE5F0; }
+        .dropdown-menu li:last-child a { border-bottom: none; }
+        
         .hamburger {
             background: none;
             border: none;
@@ -251,10 +302,10 @@
             display: block;
             padding: 0.5rem;
         }
-
+        
         .mobile-menu {
             position: fixed;
-            top: 68px;
+            top: 4.25rem;
             left: 0;
             width: 100%;
             background: rgba(255,255,255,0.98);
@@ -263,32 +314,18 @@
             display: none;
             border-bottom: 1px solid #DCE5F0;
             z-index: 99;
-            max-height: calc(100vh - 68px);
+            max-height: calc(100vh - 4.25rem);
             overflow-y: auto;
         }
-
-        .mobile-menu.active {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-
+        .mobile-menu.active { display: block; animation: slideDown 0.3s ease; }
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-20px); }
+            from { opacity: 0; transform: translateY(-1.25rem); }
             to { opacity: 1; transform: translateY(0); }
         }
+        .mobile-menu li a { display: block; padding: 1rem; color: #1A2C3E; text-decoration: none; font-weight: 600; border-bottom: 1px solid #DCE5F0; }
 
-        .mobile-menu ul {
-            list-style: none;
-        }
-
-        .mobile-menu li a {
-            display: block;
-            padding: 1rem;
-            color: #1A2C3E;
-            text-decoration: none;
-            font-weight: 600;
-            border-bottom: 1px solid #DCE5F0;
-        }
+        @media (min-width: 1025px) { .desktop-nav { display: block; } .hamburger { display: none !important; } }
+        @media (min-width: 768px) and (max-width: 1024px) { .desktop-nav { display: none !important; } .hamburger { display: block !important; } }
 
         /* Hero Section */
         .hero-section {
@@ -298,7 +335,7 @@
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding-top: 0;
+            padding-top: 5rem;
         }
 
         .hero-bg {
@@ -326,27 +363,28 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            max-width: 1200px;
+            max-width: 75rem;
             margin: 0 auto;
             text-align: center;
             padding: 0 1.5rem;
-            margin-top: 120px;
+            margin-top: 3.75rem;
         }
 
         .hero-content h1 {
-            font-size: clamp(2rem, 7vw, 5.5rem);
+            font-size: clamp(2rem, 7vw, 5rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.2;
             color: var(--white-pure);
             margin-bottom: 1rem;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+            text-shadow: 0 0.125rem 0.9375rem rgba(0, 0, 0, 0.3);
         }
 
         .hero-content p {
             font-size: clamp(0.9rem, 4vw, 1.3rem);
             color: rgba(255, 255, 255, 0.95);
-            max-width: 700px;
-            margin: 0 auto 1.5rem;
+            max-width: 43.75rem;
+            margin: 0 auto 1.8rem;
+            text-shadow: 0 0.0625rem 0.375rem rgba(0,0,0,0.4);
         }
 
         .hero-buttons {
@@ -362,7 +400,6 @@
             border: 1px solid rgba(255, 255, 255, 0.3);
             color: white;
         }
-
         .btn-glow:hover {
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-3px);
@@ -500,7 +537,7 @@
             color: white;
         }
 
-        /* Contact Section */
+        /* Contact Section - matching crypto page style */
         .contact-section {
             background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
             padding: 5rem 2rem;
@@ -586,7 +623,7 @@
             color: var(--text-light);
         }
 
-        /* Footer */
+        /* Footer - identical to crypto page */
         footer {
             background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -672,7 +709,7 @@
         /* reveal animations */
         .reveal {
             opacity: 0;
-            transform: translateY(28px);
+            transform: translateY(1.75rem);
             transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
         }
 
@@ -681,7 +718,7 @@
             transform: translateY(0);
         }
 
-        /* ========== MOBILE OVERRIDES (EXACTLY MATCHING THE OBSERVED CODE) ========== */
+        /* ========== MOBILE OVERRIDES (EXACTLY MATCHING CRYPTO PAGE) ========== */
         @media (max-width: 767px) {
             body {
                 overflow-x: hidden;
@@ -693,45 +730,13 @@
                 padding: 3rem 0;
             }
             
-            /* HEADER - exact match to observed code */
-            .header-container {
-                padding: 0.75rem 1rem;
-                position: relative;
-            }
-            .logo-container {
-                flex: 1;
-                gap: 0.75rem;
-            }
-            .logo-img {
-                height: 42px;
-            }
-            .company-name {
-                font-size: 1.6rem;
-                text-align: left;
-                padding-left: 18px;
-                flex: 1;
-                font-weight: 800;
-                position: static;
-                transform: none;
-                white-space: normal;
-            }
-            .hamburger {
-                margin-left: auto;
-            }
-            
-            /* Hero section - full screen background */
             .hero-section {
                 height: 100vh;
                 min-height: -webkit-fill-available;
             }
-            .hero-bg {
-                background-image: linear-gradient(135deg, rgba(30, 58, 95, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%), url('https://images.pexels.com/photos/2587054/pexels-photo-2587054.jpeg?auto=compress&cs=tinysrgb&w=1600&h=900&dpr=2');
-                background-size: cover;
-                background-position: center;
-            }
             .hero-content {
                 padding: 0 1.5rem;
-                margin-top: 60px;
+                margin-top: 4rem;
             }
             .hero-content h1 {
                 font-size: clamp(2rem, 7vw, 5.5rem);
@@ -741,7 +746,6 @@
                 font-size: clamp(0.9rem, 4vw, 1.3rem);
                 margin-bottom: 1.5rem;
             }
-            /* Hero buttons - exactly like observed code: buttons reduced, NO "CHAT WITH US" button */
             .hero-buttons {
                 gap: 1rem;
                 flex-direction: column;
@@ -757,24 +761,20 @@
             .hero-buttons .btn i {
                 font-size: 0.9rem;
             }
-            /* Remove the Chat with Us button completely on mobile */
+            /* Hide Chat button on mobile/tablet */
             .hero-buttons .btn-glow {
                 display: none;
             }
             
-            /* Services header text size - match "Your Trusted Land Investment Partner" section style */
             .services-header p {
-                font-size: 1.125rem;
-                line-height: 1.5;
-                max-width: 55ch;
+                font-size: 1rem;
             }
             
-            /* Contact section - wording and button size respect hero mobile display */
             .contact-section {
                 padding: 3rem 1.5rem;
             }
             .contact-container > p {
-                font-size: clamp(0.9rem, 4vw, 1rem);
+                font-size: 1rem;
                 margin-bottom: 1.5rem;
             }
             .contact-buttons {
@@ -783,71 +783,50 @@
                 gap: 1rem;
             }
             .contact-big-btn {
-                padding: 0.64rem 1.6rem;
-                font-size: 0.76rem;
-                gap: 0.6rem;
-                width: 70%;
+                padding: 0.85rem 1.5rem;
+                font-size: 0.9rem;
+                gap: 0.75rem;
+                width: 100%;
+                max-width: 280px;
                 justify-content: center;
             }
             .contact-big-btn i {
-                font-size: 0.9rem;
+                font-size: 1rem;
             }
             .contact-note {
-                font-size: 0.7rem;
+                font-size: 0.75rem;
                 margin-top: 1.5rem;
             }
             
-            /* Mobile menu dropdown styling - matches observed code exactly */
-            .mobile-menu {
-                top: 68px;
-                padding: 1.5rem;
-            }
-            .mobile-menu li a {
-                padding: 1rem;
-                font-weight: 600;
-                font-size: 1rem;
-            }
-            
-            /* Footer responsive */
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
             .services-grid {
                 gap: 1.5rem;
             }
             .service-card {
                 padding: 1.5rem;
             }
+            .service-card h3 {
+                font-size: 1.4rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
         }
 
-        /* Tablet specific (768px - 1024px) - keep hamburger visible, consistent hero button reduction, NO chat button */
+        /* Tablet specific */
         @media (min-width: 768px) and (max-width: 1024px) {
-            .desktop-nav {
-                display: none !important;
-            }
-            .hamburger {
-                display: block !important;
-            }
             .hero-buttons .btn {
                 padding: 0.7rem 1.8rem;
                 font-size: 0.85rem;
             }
-            /* Hide chat button on tablet as well to be consistent with mobile request */
             .hero-buttons .btn-glow {
                 display: none;
             }
         }
         
-        /* Desktop nav visible on 1025px+ */
+        /* Desktop: show Chat button */
         @media (min-width: 1025px) {
-            .desktop-nav {
-                display: block;
-            }
-            .hamburger {
-                display: none !important;
-            }
-            /* On desktop, keep the Chat button visible (original design) */
             .hero-buttons .btn-glow {
                 display: inline-flex;
             }
@@ -859,6 +838,9 @@
         <div class="header-container">
             <div class="logo-container" id="logoHomeLink">
                 <img src="assets/Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
+                <div class="company-name">HECON GROUP</div>
+            </div>
+            <div class="mobile-center-brand" id="mobileCenterBrand">
                 <div class="company-name">HECON GROUP</div>
             </div>
             <nav class="desktop-nav">
@@ -897,7 +879,6 @@
             <h1>OWN THE FUTURE<br>REAL ESTATE · CRYPTO · BUSINESS · TECH</h1>
             <p>Your trusted partner for property, business registration, gadgets, and crypto exchange.</p>
             <div class="hero-buttons">
-                <!-- CHAT WITH US button removed entirely on mobile (display:none via CSS), but hidden for tablet as well, visible on desktop only -->
                 <a href="#contact-now" class="btn btn-glow"><i class="fab fa-whatsapp"></i> CHAT WITH US</a>
                 <a href="#services-core" class="btn btn-primary"><i class="fas fa-arrow-right"></i> EXPLORE SERVICES</a>
             </div>
@@ -914,7 +895,7 @@
 
             <div class="services-grid">
                 <!-- Real Estate -->
-                <div class="service-card reveal delay-1">
+                <div class="service-card reveal">
                     <div class="card-icon"><i class="fas fa-building"></i></div>
                     <h3>Real Estate</h3>
                     <p>Prime lands and housing in premium locations. Verified titles, flexible plans, and expert guidance for your perfect property.</p>
@@ -930,7 +911,7 @@
                 </div>
 
                 <!-- Business Registration -->
-                <div class="service-card reveal delay-1">
+                <div class="service-card reveal">
                     <div class="card-icon"><i class="fas fa-file-alt"></i></div>
                     <h3>Business Registration</h3>
                     <p>Seamless CAC registration from start to finish. Business name, Ltd, NGO, and compliance services for entrepreneurs.</p>
@@ -945,13 +926,12 @@
                 </div>
 
                 <!-- Gadgets & Laptops -->
-                <div class="service-card reveal delay-2">
+                <div class="service-card reveal">
                     <div class="card-icon"><i class="fas fa-laptop-code"></i></div>
                     <h3>Gadgets & Laptops</h3>
-                    <p>Quality laptops for personal and proffessional use. Powerful processors and efficient systems that handle everyday professional and business operations.</p>
+                    <p>Quality laptops for personal and professional use. Powerful processors and efficient systems that handle everyday business operations.</p>
                     <ul class="service-features-mini">
                         <li><i class="fas fa-check-circle"></i> Laptops & Ultrabooks</li>
-                   
                         <li><i class="fas fa-check-circle"></i> Accessories & warranty</li>
                     </ul>
                     <div class="card-buttons">
@@ -960,7 +940,7 @@
                 </div>
 
                 <!-- Crypto Exchange -->
-                <div class="service-card reveal delay-2">
+                <div class="service-card reveal">
                     <div class="card-icon"><i class="fab fa-bitcoin"></i></div>
                     <h3>Crypto Exchange</h3>
                     <p>Instant crypto trading/exchange. BTC, ETH, USDT to Naira with competitive rates and secure transactions.</p>
@@ -980,7 +960,7 @@
         </div>
     </section>
 
-    <!-- CONTACT SECTION with buttons sized exactly like hero mobile buttons -->
+    <!-- CONTACT SECTION -->
     <section class="contact-section" id="contact-now">
         <div class="contact-container">
             <h2>Let's Connect</h2>
@@ -1030,7 +1010,6 @@
                     <p><i class="fas fa-phone"></i> +234 8167819313</p>
                     <p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p>
                     <p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p>
-                   
                 </div>
             </div>
             <div class="footer-bottom">
@@ -1066,11 +1045,13 @@
                     }
                 });
             });
-            document.getElementById('logoHomeLink')?.addEventListener('click', ()=>{
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-                mobileMenu.classList.remove('active');
-                if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>';
-            });
+            
+            const logoLeft = document.getElementById('logoHomeLink');
+            const mobileCenterBrandDiv = document.getElementById('mobileCenterBrand');
+            const goToIndex = () => { window.location.href = 'index.html'; };
+            if(logoLeft) logoLeft.addEventListener('click', goToIndex);
+            if(mobileCenterBrandDiv) mobileCenterBrandDiv.addEventListener('click', goToIndex);
+            
             const revealElements = document.querySelectorAll('.reveal');
             const revealObserver = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
