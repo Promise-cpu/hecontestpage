@@ -303,7 +303,14 @@
         }
         .mobile-menu li a { display: block; padding: 1rem; color: #1A2C3E; text-decoration: none; font-weight: 600; border-bottom: 1px solid #DCE5F0; }
 
-        @media (min-width: 1025px) { .desktop-nav { display: block; } .hamburger { display: none !important; } }
+        @media (min-width: 1025px) { 
+            .desktop-nav { display: block; } 
+            .hamburger { display: none !important; } 
+        }
+        @media (min-width: 768px) and (max-width: 1024px) { 
+            .desktop-nav { display: none !important; } 
+            .hamburger { display: block !important; } 
+        }
 
         /* HERO SECTION */
         .hero-section {
@@ -366,28 +373,49 @@
             .hero-content { margin-top: 4rem; }
         }
 
-        /* Introduction Section */
-
-        
-
-/* Introduction Section - No padding, no background */
-.intro-full {
-    width: 100%;
-    text-align: center;
-    background: transparent;
-}
-        /*background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);*/
-        .intro-full .intro-inner {
-            max-width: 900px;
+        /* Introduction Section - With proper container and padding (exactly like land page) */
+        .intro-section {
+            width: 100%;
+            background: transparent;
+            padding: 3rem 0 2rem 0;
+        }
+        .intro-container {
+            max-width: 75rem;
             margin: 0 auto;
+            padding: 0 2rem;
+        }
+        @media (max-width: 640px) {
+            .intro-container {
+                padding: 0 1.75rem;
+            }
+            .intro-section {
+                padding: 2rem 0 1.5rem 0;
+            }
+        }
+        @media (max-width: 480px) {
+            .intro-container {
+                padding: 0 1.5rem;
+            }
+        }
+        .intro-full {
+            width: 100%;
+            text-align: center;
+            background: transparent;
+        }
+        .intro-full .intro-inner {
+            max-width: 56.25rem;
+            margin: 0 auto;
+            width: 100%;
         }
         .intro-full h2 {
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
         }
         .intro-full p {
-            margin: 0 auto 1.5rem;
+            margin: 0 auto 1.2rem;
             font-size: 1.125rem;
             color: var(--text-mid);
+            max-width: 55ch;
+            width: 100%;
         }
         .intro-full .highlight {
             background: linear-gradient(135deg, var(--blue-accent), var(--black));
@@ -396,23 +424,20 @@
             color: transparent;
             font-weight: 600;
         }
-
-        /* Property Sections */
-        .property-section {
-            padding: 5rem 0;
-            position: relative;
+        @media (max-width: 640px) {
+            .intro-full p {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
         }
-        .property-section:nth-of-type(3),
-        .property-section:nth-of-type(4),
-        .property-section:nth-of-type(5),
-        .property-section:nth-of-type(6),
-        .property-section:nth-of-type(7),
-        .property-section:nth-of-type(8),
-        .property-section:nth-of-type(9),
-        .property-section:nth-of-type(10),
-        .property-section:nth-of-type(11),
-        .property-section:nth-of-type(12) { 
+
+        /* Property Sections - EXACTLY like land page styling */
+        .property-section {
+            padding: 4rem 0;
             background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
+        }
+        .property-section:first-of-type {
+            padding-top: 4rem;
         }
         .property-section:not(:first-of-type)::before {
             content: '';
@@ -423,7 +448,6 @@
             height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         }
-
         .property-container {
             display: flex;
             gap: 4rem;
@@ -435,12 +459,11 @@
         .property-container.right {
             flex-direction: row-reverse;
         }
-
         .property-video {
             flex: 1;
             min-width: 0;
             position: sticky;
-            top: 100px;
+            top: 6.25rem;
         }
         .property-video video {
             width: 100%;
@@ -450,7 +473,7 @@
             background: var(--white-pure);
             box-shadow: var(--shadow-md);
             transition: transform 0.4s var(--ease-out-expo), box-shadow 0.3s;
-            max-height: 320px;
+            max-height: 20rem;
             object-fit: contain;
         }
         .property-video video:hover {
@@ -458,7 +481,6 @@
             box-shadow: var(--shadow-hover);
             border-color: var(--white-pure);
         }
-
         .property-details {
             flex: 1;
             min-width: 0;
@@ -467,7 +489,7 @@
             gap: 1rem;
         }
         .property-header h2 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             margin-bottom: 0.5rem;
             background: linear-gradient(135deg, #FFFFFF 0%, #CCCCCC 100%);
             -webkit-background-clip: text;
@@ -479,13 +501,13 @@
             align-items: center;
             gap: 0.5rem;
             color: rgba(255, 255, 255, 0.9);
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
         .property-location i {
             color: #FFFFFF;
         }
         .property-price {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
             color: #FFFFFF;
             margin: 0.5rem 0;
@@ -495,77 +517,36 @@
             line-height: 1.7;
             color: rgba(255, 255, 255, 0.9);
         }
-        .property-features {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-        }
-        .feature-item {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            color: rgba(255, 255, 255, 0.85);
-            font-size: 0.9rem;
-        }
-        .feature-item i {
-            color: #FFFFFF;
-            font-size: 1rem;
-            width: 24px;
+
+        /* TABLET & MOBILE: videos on top of writeups, remove sticky (exactly like land page) */
+        @media (max-width: 1024px) {
+            .property-container {
+                flex-direction: column !important;
+                gap: 2rem;
+            }
+            .property-video {
+                position: relative;
+                top: 0;
+                width: 100%;
+            }
+            .property-video video {
+                max-height: 18rem;
+            }
+            .property-header h2 {
+                font-size: 1.8rem;
+            }
+            .property-price {
+                font-size: 1.6rem;
+            }
+            .property-section {
+                padding: 2.5rem 0;
+            }
+            .property-section:first-of-type {
+                padding-top: 2.5rem;
+            }
         }
 
-        /* Animation */
-        .property-section .property-video {
-            opacity: 0;
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-        }
-        .property-section .property-details {
-            opacity: 0;
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-        }
-        .property-section:nth-of-type(3) .property-video,
-        .property-section:nth-of-type(5) .property-video,
-        .property-section:nth-of-type(7) .property-video,
-        .property-section:nth-of-type(9) .property-video,
-        .property-section:nth-of-type(11) .property-video {
-            transform: translateX(50px);
-        }
-        .property-section:nth-of-type(3) .property-details,
-        .property-section:nth-of-type(5) .property-details,
-        .property-section:nth-of-type(7) .property-details,
-        .property-section:nth-of-type(9) .property-details,
-        .property-section:nth-of-type(11) .property-details {
-            transform: translateX(-50px);
-        }
-        .property-section:nth-of-type(4) .property-video,
-        .property-section:nth-of-type(6) .property-video,
-        .property-section:nth-of-type(8) .property-video,
-        .property-section:nth-of-type(10) .property-video,
-        .property-section:nth-of-type(12) .property-video {
-            transform: translateX(-50px);
-        }
-        .property-section:nth-of-type(4) .property-details,
-        .property-section:nth-of-type(6) .property-details,
-        .property-section:nth-of-type(8) .property-details,
-        .property-section:nth-of-type(10) .property-details,
-        .property-section:nth-of-type(12) .property-details {
-            transform: translateX(50px);
-        }
-        .property-section.revealed .property-video,
-        .property-section.revealed .property-details {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        .reveal {
-            opacity: 0;
-            transform: translateY(1.75rem);
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
-        }
-        .reveal.revealed {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* CONTACT SECTION - Matching crypto page */
+        /* Contact Section - Matching land page exactly */
         .contact-section {
             padding: 5rem 2rem;
             background: var(--white-pure);
@@ -573,48 +554,33 @@
             border-top: 1px solid var(--border-light);
             border-bottom: 1px solid var(--border-light);
         }
-        .contact-container {
+        .contact-section .container {
             max-width: 800px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
         }
-        .contact-container h2 {
+        .contact-section h2 {
             background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             margin-bottom: 1rem;
         }
-        .contact-container > p {
+        .contact-section p {
             color: var(--text-mid);
             margin: 0 auto 2rem;
             font-size: 1.1rem;
+            max-width: 55ch;
+            text-align: center;
         }
         .contact-buttons {
             display: flex;
             gap: 1.5rem;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 0;
         }
-        .contact-btn-wa {
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 3rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.75rem;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: all 0.3s var(--ease-out-expo);
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-        .contact-btn-wa:hover {
-            background: linear-gradient(135deg, #128C7E, #075E54);
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-        }
-        .contact-btn-call {
+        .btn-call {
             background: linear-gradient(135deg, #2C5A8C, #0A2A44);
             color: white;
             padding: 1rem 2rem;
@@ -628,21 +594,44 @@
             transition: all 0.3s var(--ease-out-expo);
             box-shadow: 0 4px 15px rgba(44, 90, 140, 0.3);
         }
-        .contact-btn-call:hover {
+        .btn-call:hover {
             background: linear-gradient(135deg, #0A2A44, #2C5A8C);
             transform: translateY(-3px);
             box-shadow: 0 8px 25px rgba(44, 90, 140, 0.4);
         }
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #075E54);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
         @media (max-width: 767px) {
             .contact-section {
                 padding: 3rem 1.5rem;
+            }
+            .contact-section p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
             .contact-buttons {
                 flex-direction: column;
                 align-items: center;
                 gap: 1rem;
             }
-            .contact-btn-wa, .contact-btn-call {
+            .btn-call, .btn-whatsapp {
                 width: 100%;
                 max-width: 280px;
                 justify-content: center;
@@ -651,7 +640,7 @@
             }
         }
 
-        /* Footer */
+        /* Footer - identical to land page */
         footer {
             background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.2);
@@ -724,29 +713,31 @@
             }
         }
 
-        /* TABLET RESPONSIVENESS (768px - 1024px) - videos on top of write-up */
-        @media (min-width: 768px) and (max-width: 1024px) {
-            .desktop-nav { display: none !important; }
-            .hamburger { display: block !important; }
-            
-            .property-container {
-                flex-direction: column !important;
-                gap: 2rem;
-            }
-            .property-video {
-                position: relative;
-                top: 0;
-                width: 100%;
-            }
+        /* Reveal animations - EXACTLY like land page */
+        .reveal {
+            opacity: 0;
+            transform: translateY(1.75rem);
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .property-section .property-video,
+        .property-section .property-details {
+            opacity: 0;
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+        .property-section:nth-of-type(odd) .property-video { transform: translateX(3.125rem); }
+        .property-section:nth-of-type(odd) .property-details { transform: translateX(-3.125rem); }
+        .property-section:nth-of-type(even) .property-video { transform: translateX(-3.125rem); }
+        .property-section:nth-of-type(even) .property-details { transform: translateX(3.125rem); }
+        .property-section.revealed .property-video,
+        .property-section.revealed .property-details { opacity: 1; transform: translateX(0); }
+        @media (max-width: 1024px) {
             .property-section .property-video,
             .property-section .property-details {
                 transform: translateX(0) !important;
-            }
-            .property-header h2 {
-                font-size: 1.8rem;
-            }
-            .property-price {
-                font-size: 1.6rem;
             }
         }
     </style>
@@ -790,53 +781,155 @@
     </div>
 </section>
 
-<section id="about">
-    <div class="intro-full reveal">
-        <div class="intro-inner">
-            <h2>Your Trusted Real Estate Partner</h2>
-            <p>At <span class="highlight">HECON REAL ESTATE</span>, we understand that finding the perfect property is more than just a transaction. It's about finding a place to call home. With years of experience in the Nigerian property market, we've helped families and investors secure their dream properties.</p>
-            <p>From luxury modern apartments in centenary city to excotic buildings in gold anex estate enugu, our portfolio features the finest properties across cities in Nigeria. Each listing comes with an authentic video tour shot on location.</p>
-            <p><span class="highlight">Let us guide you home.</span></p>
+<section id="about" class="intro-section reveal">
+    <div class="intro-container">
+        <div class="intro-full">
+            <div class="intro-inner">
+                <h2>Your Trusted Real Estate Partner</h2>
+                <p>At <span class="highlight">HECON REAL ESTATE</span>, we understand that finding the perfect property is more than just a transaction. It's about finding a place to call home. With years of experience in the Nigerian property market, we've helped families and investors secure their dream properties.</p>
+                <p>From luxury modern apartments in centenary city to excotic buildings in gold anex estate enugu, our portfolio features the finest properties across cities in Nigeria. Each listing comes with an authentic video tour shot on location.</p>
+                <p><span class="highlight">Let us guide you home.</span></p>
+            </div>
         </div>
     </div>
 </section>
 
-<section class="property-section" id="property1"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/one.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>4 Bedroom Terrace Duplexes (4-Unit Selling)</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Independence Layout Phase 2, By Coal City Eastern Alliance Estate</div><div class="property-price">₦115,000,000 (Middle Unit) - ₦130,000,000 (Corner Unit)</div></div><div class="property-description"><p>Experience luxury living in this stunning 4-bedroom terrace duplex. Modern architecture, high-end finishes, and premium location.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property1">
+    <div class="container">
+        <div class="property-container left">
+            <div class="property-video"><video controls playsinline><source src="assets/one.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>4 Bedroom Terrace Duplexes (4-Unit Selling)</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Independence Layout Phase 2, By Coal City Eastern Alliance Estate</div><div class="property-price">₦115,000,000 (Middle Unit) - ₦130,000,000 (Corner Unit)</div></div>
+                <div class="property-description"><p>Experience luxury living in this stunning 4-bedroom terrace duplex. Modern architecture, high-end finishes, and premium location.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property2"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/two.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Exclusive 4 Bedroom Duplex + Gateman House</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Golf Annex Estate</div><div class="property-price">₦130,000,000</div></div><div class="property-description"><p>Beautifully designed 4-bedroom terrace in the heart of Lekki Phase 1. Contemporary living with spacious rooms, modern kitchen, and a lovely garden.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property2">
+    <div class="container">
+        <div class="property-container right">
+            <div class="property-video"><video controls playsinline><source src="assets/two.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>Exclusive 4 Bedroom Duplex + Gateman House</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Golf Annex Estate</div><div class="property-price">₦130,000,000</div></div>
+                <div class="property-description"><p>Beautifully designed 4-bedroom terrace in the heart of Lekki Phase 1. Contemporary living with spacious rooms, modern kitchen, and a lovely garden.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property3"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/three.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>3 Bedroom Bungalow</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Citiville Estate, Enugu</div><div class="property-price">₦105,000,000</div></div><div class="property-description"><p>A perfect blend of comfort, security, and premium location within centenary city. Spacious 3 Bedrooms, 2-3 Car Parking Spaces, Fully Fitted Wardrobes, Built-in Cooker, Microwave and Modern Kitchen Cabinet.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property3">
+    <div class="container">
+        <div class="property-container left">
+            <div class="property-video"><video controls playsinline><source src="assets/three.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>3 Bedroom Bungalow</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Citiville Estate, Enugu</div><div class="property-price">₦105,000,000</div></div>
+                <div class="property-description"><p>A perfect blend of comfort, security, and premium location within centenary city. Spacious 3 Bedrooms, 2-3 Car Parking Spaces, Fully Fitted Wardrobes, Built-in Cooker, Microwave and Modern Kitchen Cabinet.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/four.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Duplex for Sale</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Independent Layout Enugu</div><div class="property-price">₦110,000,000 (Per Unit) ₦100,000,000 (As Seen in the Video)</div></div><div class="property-description"><p>Luxury opportunity in independent layout. You can secure now at a discounted price and complete to your taste, or pay full price and get it finished and ready to move in.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property4">
+    <div class="container">
+        <div class="property-container right">
+            <div class="property-video"><video controls playsinline><source src="assets/four.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>Duplex for Sale</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Independent Layout Enugu</div><div class="property-price">₦110,000,000 (Per Unit) ₦100,000,000 (As Seen in the Video)</div></div>
+                <div class="property-description"><p>Luxury opportunity in independent layout. You can secure now at a discounted price and complete to your taste, or pay full price and get it finished and ready to move in.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property5"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/five.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>3 Bedroom Bungalow</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Centenary City</div><div class="property-price">₦80,000,000</div></div><div class="property-description"><p>Elegant 3-bedroom apartment in centenery city. Modern living with premium finishes and solar system (8KV). Spacious parking space and central location.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property5">
+    <div class="container">
+        <div class="property-container left">
+            <div class="property-video"><video controls playsinline><source src="assets/five.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>3 Bedroom Bungalow</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Centenary City</div><div class="property-price">₦80,000,000</div></div>
+                <div class="property-description"><p>Elegant 3-bedroom apartment in centenery city. Modern living with premium finishes and solar system (8KV). Spacious parking space and central location.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property6"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/six.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>4 Bedroom Duplex</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Prime Independence Layout, Enugu</div><div class="property-price">₦255,000,000 (Discount Offer)</div></div><div class="property-description"><p>This luxury duplex sits in one of the most prestigious neighborhoods - just by the government house, independent layout. It is a gated high-profile estate with 24/7 security and power.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property6">
+    <div class="container">
+        <div class="property-container right">
+            <div class="property-video"><video controls playsinline><source src="assets/six.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>4 Bedroom Duplex</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Prime Independence Layout, Enugu</div><div class="property-price">₦255,000,000 (Discount Offer)</div></div>
+                <div class="property-description"><p>This luxury duplex sits in one of the most prestigious neighborhoods - just by the government house, independent layout. It is a gated high-profile estate with 24/7 security and power.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property7"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/house1.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>5 Bedroom Duplex</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Trans Ekulu</div><div class="property-price">₦165,000,000</div></div><div class="property-description"><p>5-Bedroom Duplex + Gate House with a Rooftop Balcony. Excellent location, spacious layout, and secure compound. Perfect for family living or investment.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property7">
+    <div class="container">
+        <div class="property-container left">
+            <div class="property-video"><video controls playsinline><source src="assets/house1.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>5 Bedroom Duplex</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Trans Ekulu</div><div class="property-price">₦165,000,000</div></div>
+                <div class="property-description"><p>5-Bedroom Duplex + Gate House with a Rooftop Balcony. Excellent location, spacious layout, and secure compound. Perfect for family living or investment.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property8"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/house2.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>4 Bedroom Penthouse</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Almond Estate, Centenary City Estate</div><div class="property-price">₦160,000,000 (Slightly Negotiable)</div></div><div class="property-description"><p>4-Bedroom Penthouse. Excellent location, spacious layout, and secure compound. Perfect for family living or investment. High rental and resale value.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property8">
+    <div class="container">
+        <div class="property-container right">
+            <div class="property-video"><video controls playsinline><source src="assets/house2.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>4 Bedroom Penthouse</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Almond Estate, Centenary City Estate</div><div class="property-price">₦160,000,000 (Slightly Negotiable)</div></div>
+                <div class="property-description"><p>4-Bedroom Penthouse. Excellent location, spacious layout, and secure compound. Perfect for family living or investment. High rental and resale value.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property9"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/house3.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>4 Bedroom Detached Duplex</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Thinkers Conner, Enugu</div><div class="property-price">₦220,000,000</div></div><div class="property-description"><p>All rooms are ensuite with POP ceilings and a beautiful ambience. The property features a fully fitted kitchen equipped with a microwave, oven, washing machine, and gas cooker.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property9">
+    <div class="container">
+        <div class="property-container left">
+            <div class="property-video"><video controls playsinline><source src="assets/house3.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>4 Bedroom Detached Duplex</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Thinkers Conner, Enugu</div><div class="property-price">₦220,000,000</div></div>
+                <div class="property-description"><p>All rooms are ensuite with POP ceilings and a beautiful ambience. The property features a fully fitted kitchen equipped with a microwave, oven, washing machine, and gas cooker.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="property-section" id="property10"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/house4.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Spacious 2-Units of Luxurious 4-Bedroom Duplexes</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Citi-Ville Estate, Centenary Enugu</div><div class="property-price">₦160,000,000 (Before Completion) - ₦180,000,000 (After Completion)</div></div><div class="property-description"><p>Features include a serene gated estate with 24/7 electricity, four car parking spaces, a refrigerator, cooker and microwave, as well as a heat extractor and hood lighting.</p></div></div></div></div></section>
+<section class="property-section reveal" id="property10">
+    <div class="container">
+        <div class="property-container right">
+            <div class="property-video"><video controls playsinline><source src="assets/house4.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>Spacious 2-Units of Luxurious 4-Bedroom Duplexes</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Citi-Ville Estate, Centenary Enugu</div><div class="property-price">₦160,000,000 (Before Completion) - ₦180,000,000 (After Completion)</div></div>
+                <div class="property-description"><p>Features include a serene gated estate with 24/7 electricity, four car parking spaces, a refrigerator, cooker and microwave, as well as a heat extractor and hood lighting.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
 
-<section class="contact-section" id="contact-section">
-    <div class="contact-container">
+<section class="contact-section reveal" id="contactNow">
+    <div class="container">
         <h2>Secure Your House Today</h2>
         <p>Talk to our Housing specialists. Get verified title documents, survey plans, and exclusive off-market deals.</p>
         <div class="contact-buttons">
-            <a href="https://wa.me/2348167819313" class="contact-btn-wa"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
-            <a href="tel:+2348167819313" class="contact-btn-call"><i class="fas fa-phone-alt"></i> Call Land Desk</a>
+            <a href="https://wa.me/2348167819313" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="tel:+2348167819313" class="btn-call"><i class="fas fa-phone-alt"></i> Call Housing Desk</a>
         </div>
     </div>
 </section>
 
-<footer id="contact">
+<footer>
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand"><h3>HECON GROUP</h3><p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p></div>
-            <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#property1">Properties</a></li><li><a href="#contact-section">Contact</a></li></ul></div>
+            <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#property1">Properties</a></li><li><a href="#contactNow">Contact</a></li></ul></div>
             <div class="footer-links"><h4>Our Services</h4><ul><li><a href="housing.html">Housing</a></li><li><a href="land.html">Lands</a></li><li><a href="cac.html">Business Registration</a></li><li><a href="laptop.html">Laptops</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div>
             <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 8167819313</p><p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div>
         </div>
@@ -858,28 +951,18 @@
     if(logoLeft) logoLeft.addEventListener('click', goToIndex);
     if(mobileCenterBrandDiv) mobileCenterBrandDiv.addEventListener('click', goToIndex);
     
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); });
-    }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
-    document.querySelectorAll('.property-section').forEach(section => sectionObserver.observe(section));
-    
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); });
-    }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-    
     const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-        video.addEventListener('play', function() { videos.forEach(otherVideo => { if(otherVideo !== this && !otherVideo.paused) otherVideo.pause(); }); });
+    videos.forEach(v => {
+        v.addEventListener('play', () => {
+            videos.forEach(other => {
+                if (other !== v && !other.paused) other.pause();
+            });
+        });
     });
     
-    setTimeout(() => {
-        document.querySelectorAll('.property-section').forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if(rect.top < window.innerHeight - 100 && rect.bottom > 100) section.classList.add('revealed');
-        });
-        document.querySelectorAll('.reveal').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed'); });
-    }, 200);
+    const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal, .property-section, .intro-section').forEach(el => revealObserver.observe(el));
+    setTimeout(() => { document.querySelectorAll('.reveal, .property-section, .intro-section').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed'); }); }, 150);
 })();
 </script>
 </body>
