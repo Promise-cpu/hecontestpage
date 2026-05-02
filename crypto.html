@@ -161,6 +161,8 @@
             max-width: 87.5rem;
             margin: 0 auto;
         }
+        
+        /* Desktop logo-container stays as is */
         .logo-container {
             display: flex;
             align-items: center;
@@ -176,22 +178,99 @@
         .company-name {
             font-weight: 800;
             font-size: 1.6rem;
-            
             background: linear-gradient(135deg, #0A2A44, #000);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
             white-space: nowrap;
         }
-        /* ensure company name stays inline on all phones */
-        @media (max-width: 480px) {
-            .company-name { font-size: 1.7rem; white-space: nowrap; letter-spacing: -0.01em; }
-            .logo-img { height: 2.2rem; }
-            .logo-container { gap: 0.5rem; }
+        
+        /* ===== MOBILE HEADER LAYOUT FIX: Logo Left, Company Name Center, Hamburger Right ===== */
+        @media (max-width: 1024px) {
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+            }
+            
+            /* Logo stays left */
+            .logo-container {
+                flex: 0 0 auto;
+                order: 1;
+                gap: 0.5rem;
+            }
+            
+            /* Centered company name container — absolute or flex magic */
+            .mobile-center-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+                white-space: nowrap;
+            }
+            
+            .mobile-center-brand .company-name {
+                font-size: 1.4rem;
+                background: linear-gradient(135deg, #0A2A44, #000);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                font-weight: 800;
+                white-space: nowrap;
+                pointer-events: auto;
+                cursor: pointer;
+            }
+            
+            /* Hide the original .company-name inside logo-container on mobile */
+            .logo-container .company-name {
+                display: none;
+            }
+            
+            /* Hamburger stays right */
+            .hamburger {
+                order: 3;
+                flex: 0 0 auto;
+                display: block;
+                margin-left: 0;
+            }
+            
+            /* Adjust logo-img size for mobile */
+            .logo-img {
+                height: 2.2rem;
+            }
         }
+        
+        /* Extra small devices fine-tuning */
+        @media (max-width: 480px) {
+            .mobile-center-brand .company-name {
+                font-size: 1.2rem;
+            }
+            .logo-img {
+                height: 2rem;
+            }
+        }
+        
         @media (max-width: 380px) {
-            .company-name { font-size: 1.7rem; text-align: center; margin-left: 2.0rem;}
-            .logo-img { height: 3.0rem; }
+            .mobile-center-brand .company-name {
+                font-size: 1rem;
+            }
+            .logo-img {
+                height: 1.8rem;
+            }
+        }
+        
+        /* Desktop view: hide the extra center element, show original company name */
+        @media (min-width: 1025px) {
+            .mobile-center-brand {
+                display: none !important;
+            }
+            .logo-container .company-name {
+                display: block !important;
+            }
         }
 
         .desktop-nav { display: none; }
@@ -228,6 +307,7 @@
             display: block;
             padding: 0.5rem;
         }
+        
         .mobile-menu {
             position: fixed;
             top: 4.25rem;
@@ -356,7 +436,6 @@
         .testimonials-header p { text-align: center; margin: 0 auto; max-width: 31.25rem; }
 
         /* TESTIMONIALS SECTION - EXACT STYLE MATCHING REFERENCE CODE */
-        /* Using same background, grid, and aspect ratio as the reference (CAC page) */
         .testimonials-section {
             padding: 5rem 0;
             background: linear-gradient(180deg, #0A1A2A 0%, #000000 50%, #0A1A2A 100%);
@@ -375,7 +454,6 @@
             grid-template-columns: repeat(4, 1fr);
             gap: 2rem;
         }
-        /* Testimonial card styling exactly like reference */
         .testimonial-card {
             background: var(--white-pure);
             border-radius: 1.5rem;
@@ -386,7 +464,6 @@
             border: 2px solid rgb(226, 221, 243);
             display: flex;
             flex-direction: column;
-            /* Vertical length longer than horizontal - aspect ratio 3:4 as in reference */
             aspect-ratio: 3 / 4;
         }
         .testimonial-card:hover {
@@ -405,11 +482,9 @@
         .testimonial-img:hover {
             transform: scale(1.02);
         }
-        /* Remove any text/caption area completely to match reference */
         .testimonial-sentence {
             display: none;
         }
-        /* Image modal styling - matching reference */
         .image-modal {
             display: none;
             position: fixed;
@@ -482,113 +557,102 @@
         @media (max-width: 767px) { .why-container { flex-direction: column; } .feature-list { grid-template-columns: 1fr; } }
 
         
-         /* Contact Section - Matching Laptop Page Style */
-.contact-section {
-    padding: 5rem 2rem;
-    background: var(--white-pure);
-    text-align: center;
-    border-top: 1px solid var(--border-light);
-    border-bottom: 1px solid var(--border-light);
-}
-
-.contact-section .container {
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.contact-section h2 {
-    background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    margin-bottom: 1rem;
-}
-
-.contact-section p {
-    color: var(--text-mid);
-    margin: 0 auto 2rem;
-    font-size: 1.1rem;
-    max-width: 55ch;
-    text-align: center;
-}
-
-.contact-buttons {
-    display: flex;
-    gap: 1.5rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-top: 0;
-}
-
-.btn-call {
-    background: linear-gradient(135deg, #2C5A8C, #0A2A44);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 3rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s var(--ease-out-expo);
-    box-shadow: 0 4px 15px rgba(44, 90, 140, 0.3);
-}
-
-.btn-call:hover {
-    background: linear-gradient(135deg, #0A2A44, #2C5A8C);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(44, 90, 140, 0.4);
-}
-
-.btn-whatsapp {
-    background: linear-gradient(135deg, #25D366, #128C7E);
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 3rem;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s var(--ease-out-expo);
-    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-}
-
-.btn-whatsapp:hover {
-    background: linear-gradient(135deg, #128C7E, #075E54);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-}
-
-.btn-call i, .btn-whatsapp i {
-    font-size: 1.1rem;
-}
-
-/* Mobile responsive for contact section */
-@media (max-width: 767px) {
-    .contact-section {
-        padding: 3rem 1.5rem;
-    }
-    .contact-section p {
-        font-size: 1rem;
-        margin-bottom: 1.5rem;
-    }
-    .contact-buttons {
-        flex-direction: column;
-        align-items: center;
-        gap: 1rem;
-    }
-    .btn-call, .btn-whatsapp {
-        width: 100%;
-        max-width: 280px;
-        justify-content: center;
-        padding: 0.85rem 1.5rem;
-        font-size: 0.9rem;
-    }
-}
+        /* Contact Section - Matching Laptop Page Style */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: var(--white-pure);
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+        .contact-section .container {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .contact-section h2 {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .contact-section p {
+            color: var(--text-mid);
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            max-width: 55ch;
+            text-align: center;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0;
+        }
+        .btn-call {
+            background: linear-gradient(135deg, #2C5A8C, #0A2A44);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 4px 15px rgba(44, 90, 140, 0.3);
+        }
+        .btn-call:hover {
+            background: linear-gradient(135deg, #0A2A44, #2C5A8C);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 90, 140, 0.4);
+        }
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #075E54);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        .btn-call i, .btn-whatsapp i {
+            font-size: 1.1rem;
+        }
+        @media (max-width: 767px) {
+            .contact-section {
+                padding: 3rem 1.5rem;
+            }
+            .contact-section p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .btn-call, .btn-whatsapp {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+                padding: 0.85rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
 
         /* Footer */
         footer {
@@ -619,7 +683,6 @@
         .reveal { opacity: 0; transform: translateY(1.75rem); transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo); }
         .reveal.revealed { opacity: 1; transform: translateY(0); }
         
-        /* Tablet landscape: testimonials grid 3 columns as reference */
         @media (min-width: 768px) and (max-width: 1024px) {
             .testimonials-grid {
                 grid-template-columns: repeat(3, 1fr);
@@ -641,10 +704,18 @@
 <body>
 <header>
     <div class="header-container">
+        <!-- LOGO (left aligned) -->
         <div class="logo-container" id="logoHomeLink">
             <img src="assets/Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
             <div class="company-name">HECON GROUP</div>
         </div>
+        
+        <!-- COMPANY NAME CENTERED (for mobile only) -->
+        <div class="mobile-center-brand" id="mobileCenterBrand">
+            <div class="company-name">HECON GROUP</div>
+        </div>
+        
+        <!-- DESKTOP NAVIGATION -->
         <nav class="desktop-nav">
             <ul>
                 <li><a href="index.html">Home</a></li>
@@ -656,6 +727,8 @@
                 <li><a href="crypto.html">Crypto Exchange</a></li>
             </ul>
         </nav>
+        
+        <!-- HAMBURGER (right aligned) -->
         <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
     </div>
     <div class="mobile-menu" id="mobileMenu">
@@ -693,7 +766,6 @@
     </div>
 </div></section>
 
-<!-- Testimonials Section - EXACT styling as reference code with proper image dimensions and aspect ratio -->
 <section class="testimonials-section reveal" id="testimonials">
     <div class="container">
         <div class="testimonials-header">
@@ -710,7 +782,7 @@
 
 <footer><div class="container"><div class="footer-grid"><div class="footer-brand"><h3>HECON GROUP</h3><p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p></div><div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#exchangeCards">Exchange</a></li><li><a href="#contactNow">Contact</a></li></ul></div><div class="footer-links"><h4>Our Services</h4><ul><li><a href="housing.html">Housing</a></li><li><a href="land.html">Lands</a></li><li><a href="cac.html">Business Registration</a></li><li><a href="laptop.html">Laptops</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div><div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 8167819313</p><p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div></div><div class="footer-bottom"><div>© 2026 HECON GROUP. All rights reserved.</div></div></div></footer>
 
-<!-- Image Modal for full-size view (matching reference) -->
+<!-- Image Modal for full-size view -->
 <div id="imageModal" class="image-modal" onclick="closeModal()">
     <span class="close-modal">&times;</span>
     <img class="modal-image" id="modalImage" alt="Full size testimonial">
@@ -718,7 +790,6 @@
 
 <script>
 (function() {
-    // Testimonials data with images (same as original crypto testimonials, using proper aspect ratio)
     const testimonials = [
         { img: "assets/TESCRYPTO1.jpeg" },
         { img: "assets/TESCRYPTO2.jpeg" },
@@ -737,7 +808,6 @@
     }
     buildTestimonials();
     
-    // Modal functions (exactly like reference code)
     window.openImageModal = function(imageSrc) {
         const modal = document.getElementById('imageModal');
         const modalImage = document.getElementById('modalImage');
@@ -756,12 +826,19 @@
         }
     });
     
-    // Mobile menu toggle
     const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu');
     if(hamburger) hamburger.addEventListener('click', ()=>{ mobileMenu.classList.toggle('active'); hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; });
     document.querySelectorAll('.mobile-menu a').forEach(link => { link.addEventListener('click', ()=>{ mobileMenu.classList.remove('active'); if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }); });
+    
+    // smooth scroll + logo click
     document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const id = this.getAttribute('href'); if(id === '#' || id === '') return; const target = document.querySelector(id); if(target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); } }); });
-    document.getElementById('logoHomeLink')?.addEventListener('click', () => { window.location.href = 'index.html'; });
+    
+    const logoLeft = document.getElementById('logoHomeLink');
+    const mobileCenterBrandDiv = document.getElementById('mobileCenterBrand');
+    const goToIndex = () => { window.location.href = 'index.html'; };
+    if(logoLeft) logoLeft.addEventListener('click', goToIndex);
+    if(mobileCenterBrandDiv) mobileCenterBrandDiv.addEventListener('click', goToIndex);
+    
     const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); }, { threshold: 0.15 });
     document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
     setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed'); }); }, 150);
