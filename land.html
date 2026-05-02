@@ -377,19 +377,55 @@
             .hero-content { margin-top: 4rem; }
         }
 
-        /* Intro Section - NO EXTRA SPACING */
-        /* Introduction Section - No padding, no background */
-.intro-full {
-    width: 100%;
-    text-align: center;
-    background: transparent;
-}
-        .intro-full .intro-inner { max-width: 56.25rem; margin: 0 auto; }
-        .intro-full h2 { margin-bottom: 1.5rem; }
+        /* Intro Section - FIXED: Now has proper container, spacing, and padding for mobile */
+        .intro-section {
+            width: 100%;
+            background: transparent;
+            padding: 3rem 0 2rem 0;
+        }
+        
+        .intro-container {
+            max-width: 75rem;
+            margin: 0 auto;
+            padding: 0 2rem;  /* Increased horizontal padding on all devices for breathing room */
+        }
+        
+        /* For mobile, extra comfortable side padding */
+        @media (max-width: 640px) {
+            .intro-container {
+                padding: 0 1.75rem;  /* generous padding to prevent text touching screen edges */
+            }
+            .intro-section {
+                padding: 2rem 0 1.5rem 0;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .intro-container {
+                padding: 0 1.5rem;
+            }
+        }
+        
+        /* Override any previous conflicting styles */
+        .intro-full {
+            width: 100%;
+            text-align: center;
+            background: transparent;
+        }
+        .intro-full .intro-inner {
+            max-width: 56.25rem;
+            margin: 0 auto;
+            width: 100%;
+        }
+        .intro-full h2 {
+            margin-bottom: 1.5rem;
+        }
         .intro-full p {
             margin: 0 auto 1.2rem;
             font-size: 1.125rem;
             color: var(--text-mid);
+            max-width: 55ch;
+            width: 100%;
         }
         .intro-full .highlight {
             background: linear-gradient(135deg, var(--blue-accent), var(--black));
@@ -397,6 +433,14 @@
             background-clip: text;
             color: transparent;
             font-weight: 600;
+        }
+        
+        /* Additional mobile refinements for intro text */
+        @media (max-width: 640px) {
+            .intro-full p {
+                font-size: 1rem;
+                line-height: 1.5;
+            }
         }
 
         /* Gallery Section - NO EXTRA SPACING */
@@ -852,13 +896,16 @@
     </div>
 </section>
 
-<section id="about">
-    <div class="intro-full reveal">
-        <div class="intro-inner">
-            <h2>Your Trusted Land Investment Partner</h2>
-            <p>At <span class="highlight">HECON REAL ESTATE</span>, we specialize in premium land sales across Nigeria's fastest-growing corridors. Whether you seek residential plots, commercial acreage, or future development hubs, we provide verified land with authentic video surveys.</p>
-            <p>From beachfront lots in Eko Atlantic to expansive hectares in Lekki Free Zone, every land asset is handpicked for ROI potential. Our team handles title verification, survey, and legal due diligence.</p>
-            <p><span class="highlight">Secure your land legacy with HECON today.</span></p>
+<!-- ================== FIXED INTRO SECTION: PROPER CONTAINER AND PADDING ================== -->
+<section id="about" class="intro-section reveal">
+    <div class="intro-container">
+        <div class="intro-full">
+            <div class="intro-inner">
+                <h2>Your Trusted Land Investment Partner</h2>
+                <p>At <span class="highlight">HECON REAL ESTATE</span>, we specialize in premium land sales across Nigeria's fastest-growing corridors. Whether you seek residential plots, commercial acreage, or future development hubs, we provide verified land with authentic video surveys.</p>
+                <p>From beachfront lots in Eko Atlantic to expansive hectares in Lekki Free Zone, every land asset is handpicked for ROI potential. Our team handles title verification, survey, and legal due diligence.</p>
+                <p><span class="highlight">Secure your land legacy with HECON today.</span></p>
+            </div>
         </div>
     </div>
 </section>
@@ -1021,8 +1068,8 @@
     });
     
     const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); }, { threshold: 0.15 });
-    document.querySelectorAll('.reveal, .property-section, .intro-full').forEach(el => revealObserver.observe(el));
-    setTimeout(() => { document.querySelectorAll('.reveal, .property-section, .intro-full').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed'); }); }, 150);
+    document.querySelectorAll('.reveal, .property-section, .intro-section').forEach(el => revealObserver.observe(el));
+    setTimeout(() => { document.querySelectorAll('.reveal, .property-section, .intro-section').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed'); }); }, 150);
 })();
 </script>
 </body>
