@@ -7,7 +7,7 @@
     <title>HECON · PRIME LANDS · Nigeria's Trusted Land Marketplace</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -15,11 +15,8 @@
             padding: 0;
             box-sizing: border-box;
         }
-        /* BASE: 1rem = 16px (default browser) — scaling via rem/em for perfect responsiveness */
-        html {
-            font-size: 100%; /* 16px base, all spacing uses rem/em */
-            scroll-behavior: smooth;
-        }
+
+        /* ROOT: 1rem = 16px base, fluid scaling (identical to crypto page) */
         :root {
             --white-pure: #FFFFFF;
             --white-soft: #F8FAFE;
@@ -30,6 +27,9 @@
             --blue-dark: #0A2A44;
             --blue-accent: #2C5A8C;
             --blue-soft-accent: #3B6E9E;
+            --gold: #F7931A;
+            --gold-dark: #E67E22;
+            --green: #10B981;
             --text-dark: #1A2C3E;
             --text-mid: #2C3E50;
             --text-light: #5A6E7C;
@@ -38,20 +38,29 @@
             --shadow-md: 0 0.75rem 1.875rem rgba(0, 0, 0, 0.05);
             --shadow-hover: 0 1.25rem 2.1875rem rgba(0, 0, 0, 0.08);
             --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
-            --container-max: 87.5rem; /* 1400px */
-            --header-offset: 4.25rem; /* 68px */
+            
+            /* fluid font scaling */
+            font-size: 16px;
         }
+        
+        /* fluid typography for all screen sizes (matched crypto page) */
+        @media (max-width: 640px) {
+            :root { font-size: 15px; }
+        }
+        @media (min-width: 1400px) {
+            :root { font-size: 18px; }
+        }
+
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
             color: var(--text-mid);
             line-height: 1.5;
             overflow-x: hidden;
-            background: linear-gradient(145deg, 
-                #FFFFFF 0%, #F5F9FF 15%, #EFF3FC 30%,
-                #E8EFF8 50%, #E0E8F2 70%, #D9E2ED 85%, #D1DCE8 100%);
+            background: linear-gradient(145deg, #FFFFFF 0%, #F5F9FF 15%, #EFF3FC 30%, #E8EFF8 50%, #E0E8F2 70%, #D9E2ED 85%, #D1DCE8 100%);
             background-attachment: fixed;
             position: relative;
         }
+
         body::after {
             content: '';
             position: fixed;
@@ -60,33 +69,45 @@
             pointer-events: none;
             z-index: 0;
         }
+
         h1, h2, h3, h4 {
             font-weight: 600;
             letter-spacing: -0.02em;
             line-height: 1.2;
         }
-        h1 { color: var(--white-pure); }
+
         h2 {
-            font-size: clamp(2.2rem, 7vw, 3.8rem);
+            font-size: clamp(2rem, 7vw, 3.5rem);
             margin-bottom: 1.5rem;
             background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
+
         p {
             color: var(--text-mid);
             font-size: 1.125rem;
             max-width: 55ch;
         }
+
         .container {
-            max-width: var(--container-max);
+            max-width: 87.5rem; /* 1400px */
             margin: 0 auto;
-            padding: 0 2rem;
+            padding: 0 1.25rem;
             position: relative;
             z-index: 2;
         }
-        section { position: relative; z-index: 2; }
+
+        section {
+            position: relative;
+            z-index: 2;
+            padding: 5rem 0;
+        }
+        @media (max-width: 767px) {
+            section { padding: 3rem 0; }
+        }
+
         .btn {
             display: inline-flex;
             align-items: center;
@@ -101,6 +122,7 @@
             cursor: pointer;
             transition: all 0.3s var(--ease-out-expo);
         }
+        
         .btn-primary {
             background: linear-gradient(135deg, var(--blue-accent), var(--blue-dark));
             color: white;
@@ -121,107 +143,174 @@
             transform: translateY(-0.125rem);
             border-color: var(--white-pure);
         }
-        /* Header */
+
+        /* HEADER - EXACT MATCH WITH CRYPTO PAGE */
         header {
             position: fixed;
             top: 0;
             width: 100%;
             z-index: 100;
-            background: var(--white-pure);
-            border-bottom: 0.0625rem solid var(--border-light);
-            box-shadow: 0 0.125rem 0.75rem rgba(0, 0, 0, 0.03);
+            background: rgba(255,255,255,0.98);
+            border-bottom: 1px solid var(--border-light);
+            backdrop-filter: blur(10px);
         }
         .header-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.75rem 2rem;
-            max-width: var(--container-max);
+            padding: 0.75rem 1rem;
+            max-width: 87.5rem;
             margin: 0 auto;
         }
+        
         .logo-container {
             display: flex;
             align-items: center;
-            gap: 1rem;
+            gap: 0.75rem;
             cursor: pointer;
+            flex-shrink: 0;
         }
-        .logo-img { height: 2.625rem; width: auto; object-fit: contain; }
+        .logo-img {
+            height: 2.625rem; /* 42px */
+            width: auto;
+            object-fit: contain;
+        }
         .company-name {
-            font-weight: 700;
-            font-size: 1.4rem;
-            background: linear-gradient(135deg, var(--blue-dark), var(--black));
+            font-weight: 800;
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, #0A2A44, #000);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            white-space: nowrap;
         }
+        
+        /* ===== MOBILE HEADER LAYOUT FIX: Logo Left, Company Name Center, Hamburger Right ===== */
+        @media (max-width: 1024px) {
+            .header-container {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                position: relative;
+            }
+            
+            .logo-container {
+                flex: 0 0 auto;
+                order: 1;
+                gap: 0.5rem;
+            }
+            
+            .mobile-center-brand {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                pointer-events: none;
+                white-space: nowrap;
+            }
+            
+            .mobile-center-brand .company-name {
+                font-size: 2.1rem;
+                background: linear-gradient(135deg, #0A2A44, #000);
+                -webkit-background-clip: text;
+                background-clip: text;
+                color: transparent;
+                font-weight: 800;
+                white-space: nowrap;
+                pointer-events: auto;
+                cursor: pointer;
+            }
+            
+            .logo-container .company-name {
+                display: none;
+            }
+            
+            .hamburger {
+                order: 3;
+                flex: 0 0 auto;
+                display: block;
+                margin-left: 0;
+            }
+            
+            .logo-img {
+                height: 3.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .mobile-center-brand .company-name {
+                font-size: 1.8rem;
+            }
+            .logo-img {
+                height: 3rem;
+            }
+        }
+        
+        @media (max-width: 380px) {
+            .mobile-center-brand .company-name {
+                font-size: 1.5rem;
+            }
+            .logo-img {
+                height: 2.7rem;
+            }
+        }
+        
+        @media (min-width: 1025px) {
+            .mobile-center-brand {
+                display: none !important;
+            }
+            .logo-container .company-name {
+                display: block !important;
+            }
+        }
+
         .desktop-nav { display: none; }
-        .desktop-nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-            align-items: center;
-        }
-        .desktop-nav a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: 0.2s;
-        }
+        .desktop-nav ul { display: flex; list-style: none; gap: 2rem; align-items: center; }
+        .desktop-nav a { text-decoration: none; color: var(--text-light); font-weight: 500; font-size: 0.95rem; transition: 0.2s; }
         .desktop-nav a:hover { color: var(--blue-dark); }
         .dropdown { position: relative; }
         .dropdown-menu {
             position: absolute;
             top: 100%;
             left: 0;
-            background: var(--white-pure);
+            background: white;
             min-width: 12.5rem;
             border-radius: 0.75rem;
-            box-shadow: var(--shadow-md);
+            box-shadow: 0 0.75rem 1.875rem rgba(0,0,0,0.05);
             opacity: 0;
             visibility: hidden;
             transform: translateY(-0.625rem);
-            transition: all 0.3s var(--ease-out-expo);
-            border: 0.0625rem solid var(--border-light);
+            transition: all 0.3s;
+            border: 1px solid #DCE5F0;
             z-index: 1000;
         }
-        .dropdown:hover .dropdown-menu {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-        .dropdown-menu li {
-            list-style: none;
-        }
-        .dropdown-menu li a {
-            display: block;
-            padding: 0.75rem 1.5rem;
-            color: var(--text-mid);
-            font-size: 0.9rem;
-            border-bottom: 0.0625rem solid var(--border-light);
-        }
+        .dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateY(0); }
+        .dropdown-menu li { list-style: none; }
+        .dropdown-menu li a { display: block; padding: 0.75rem 1.5rem; color: #2C3E50; border-bottom: 1px solid #DCE5F0; }
         .dropdown-menu li:last-child a { border-bottom: none; }
-        .dropdown-menu li a:hover {
-            background: linear-gradient(90deg, rgba(10, 42, 68, 0.05), transparent);
-            color: var(--blue-dark);
-        }
+        
         .hamburger {
             background: none;
             border: none;
             font-size: 1.8rem;
-            color: var(--blue-dark);
+            color: #0A2A44;
             cursor: pointer;
+            display: block;
+            padding: 0.5rem;
         }
+        
         .mobile-menu {
             position: fixed;
             top: 4.25rem;
             left: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.98);
+            background: rgba(255,255,255,0.98);
             backdrop-filter: blur(10px);
             padding: 1.5rem;
             display: none;
-            border-bottom: 0.0625rem solid var(--border-light);
+            border-bottom: 1px solid #DCE5F0;
             z-index: 99;
             max-height: calc(100vh - 4.25rem);
             overflow-y: auto;
@@ -231,27 +320,27 @@
             from { opacity: 0; transform: translateY(-1.25rem); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .mobile-menu ul { list-style: none; }
-        .mobile-menu li a {
-            display: block;
-            padding: 1rem;
-            color: #1A2C3E;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1rem;
-            border-bottom: 0.0625rem solid #DCE5F0;
-        }
-        /* Hero */
+        .mobile-menu li a { display: block; padding: 1rem; color: #1A2C3E; text-decoration: none; font-weight: 600; border-bottom: 1px solid #DCE5F0; }
+
+        @media (min-width: 1025px) { .desktop-nav { display: block; } .hamburger { display: none !important; } }
+        @media (min-width: 768px) and (max-width: 1024px) { .desktop-nav { display: none !important; } .hamburger { display: block !important; } }
+
+        /* HERO SECTION */
         .hero-section {
             min-height: 100vh;
+            height: 100vh;
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
+            padding-top: 0;
         }
         .hero-bg {
             position: absolute;
-            inset: 0;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             background-image: linear-gradient(135deg, rgba(30, 58, 95, 0.85) 0%, rgba(0, 0, 0, 0.7) 100%), url('assets/land.png');
             background-size: cover;
             background-position: center;
@@ -259,8 +348,11 @@
         }
         .hero-overlay {
             position: absolute;
-            inset: 0;
-            background: radial-gradient(ellipse at center, transparent 0%, rgba(0, 0, 0, 0.3) 100%);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(ellipse at center, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.5) 100%);
             z-index: 1;
         }
         .hero-content {
@@ -269,37 +361,45 @@
             max-width: 75rem;
             margin: 0 auto;
             text-align: center;
-            padding: 0 2rem;
-            margin-top: 6.25rem;
+            padding: 0 1.5rem;
+            margin-top: 3.75rem;
         }
         .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5.5rem);
+            font-size: clamp(2rem, 7vw, 5rem);
             font-weight: 800;
-            line-height: 1.1;
+            line-height: 1.2;
             color: var(--white-pure);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0.125rem 0.9375rem rgba(0, 0, 0, 0.15);
+            margin-bottom: 1rem;
+            text-shadow: 0 0.125rem 0.9375rem rgba(0, 0, 0, 0.3);
         }
         .hero-content p {
-            font-size: 1.3rem;
+            font-size: clamp(0.9rem, 4vw, 1.3rem);
             color: rgba(255, 255, 255, 0.95);
             max-width: 43.75rem;
-            margin: 0 auto 2.5rem;
+            margin: 0 auto 1.8rem;
+            text-shadow: 0 0.0625rem 0.375rem rgba(0,0,0,0.4);
         }
-        /* Intro */
+        .hero-buttons { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+        @media (max-width: 767px) {
+            .hero-buttons { gap: 1rem; flex-direction: column; align-items: center; }
+            .hero-buttons .btn-primary { padding: 0.64rem 1.6rem; font-size: 0.85rem; width: 70%; justify-content: center; }
+            .hero-content { margin-top: 4rem; }
+        }
+
+        /* Intro Section */
         .intro-full {
             width: 100%;
             text-align: center;
-            padding: 5rem 2rem;
+            padding: 5rem 1.25rem;
             background: linear-gradient(135deg, var(--white-soft) 0%, #F0F0F0 50%, var(--white-soft) 100%);
-            border-top: 0.0625rem solid var(--border-light);
-            border-bottom: 0.0625rem solid var(--border-light);
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
         .intro-full .intro-inner { max-width: 56.25rem; margin: 0 auto; }
         .intro-full h2 { margin-bottom: 2rem; }
         .intro-full p {
             margin: 0 auto 1.5rem;
-            font-size: 1.2rem;
+            font-size: 1.125rem;
             color: var(--text-mid);
         }
         .intro-full .highlight {
@@ -309,7 +409,8 @@
             color: transparent;
             font-weight: 600;
         }
-        /* Gallery */
+
+        /* Gallery Section (Dark theme) */
         .gallery-section {
             padding: 5rem 0;
             background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
@@ -337,49 +438,33 @@
             box-shadow: 0 0.625rem 1.25rem rgba(0, 0, 0, 0.3);
         }
         .gallery-grid .land-card:hover {
-            transform: translateY(-0.5rem);
+            transform: translateY(-0.375rem);
             box-shadow: 0 1.125rem 1.875rem rgba(0, 0, 0, 0.5);
         }
         .gallery-grid .land-card img {
             width: 100%;
-            height: 20rem; /* 320px -> 20rem */
+            height: 20rem;
             object-fit: cover;
             display: block;
             transition: transform 0.4s ease;
         }
         .gallery-grid .land-card:hover img { transform: scale(1.03); }
-        @media (max-width: 75em) { /* 1200px */
+        @media (max-width: 1200px) {
             .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
             .gallery-grid .land-card img { height: 18.75rem; }
         }
-        @media (max-width: 48em) { /* 768px */
+        @media (max-width: 768px) {
             .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
             .gallery-grid .land-card img { height: 18.75rem; }
         }
-        @media (max-width: 36em) { /* 576px */
-            .gallery-grid { gap: 0.875rem; }
+        @media (max-width: 576px) {
             .gallery-grid .land-card img { height: 16.25rem; }
         }
-        @media (max-width: 30em) { /* 480px */
+        @media (max-width: 480px) {
             .gallery-grid .land-card img { height: 15rem; }
         }
-        @media (max-width: 25em) { /* 400px */
-            .gallery-grid { gap: 0.75rem; }
-            .gallery-grid .land-card img { height: 12.5rem; }
-        }
-        /* Image Modal */
-        .image-modal {
-            position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 2000;
-            display: flex; align-items: center; justify-content: center; cursor: pointer;
-            opacity: 0; visibility: hidden; transition: all 0.3s ease;
-        }
-        .image-modal.active { opacity: 1; visibility: visible; }
-        .image-modal img { max-width: 90vw; max-height: 90vh; object-fit: contain; border-radius: 0.75rem; box-shadow: 0 0 1.875rem rgba(0,0,0,0.5); }
-        .modal-close {
-            position: absolute; top: 1.25rem; right: 1.875rem; color: white; font-size: 2.5rem; cursor: pointer; transition: 0.2s;
-        }
-        .modal-close:hover { transform: scale(1.1); }
-        /* Property Sections */
+
+        /* Property Sections (with videos) */
         .property-section {
             padding: 5rem 0;
             background: linear-gradient(180deg, #000000 0%, #1E3A5F 50%, #000000 100%);
@@ -390,7 +475,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            height: 0.0625rem;
+            height: 1px;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
         }
         .property-container {
@@ -410,7 +495,7 @@
             width: 100%;
             height: auto;
             border-radius: 1.25rem;
-            border: 0.125rem solid rgba(255, 255, 255, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.3);
             background: var(--white-pure);
             box-shadow: var(--shadow-md);
             transition: transform 0.4s var(--ease-out-expo), box-shadow 0.3s;
@@ -469,44 +554,112 @@
             font-size: 0.95rem;
         }
         .feature-item i { color: #FFFFFF; font-size: 1rem; width: 1.5rem; }
-        /* reveal animations */
-        .property-section .property-video,
-        .property-section .property-details {
-            opacity: 0;
-            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+
+        /* Contact Section - Matching crypto page style */
+        .contact-section {
+            padding: 5rem 2rem;
+            background: var(--white-pure);
+            text-align: center;
+            border-top: 1px solid var(--border-light);
+            border-bottom: 1px solid var(--border-light);
         }
-        .property-section:nth-of-type(odd) .property-video { transform: translateX(3.125rem); }
-        .property-section:nth-of-type(odd) .property-details { transform: translateX(-3.125rem); }
-        .property-section:nth-of-type(even) .property-video { transform: translateX(-3.125rem); }
-        .property-section:nth-of-type(even) .property-details { transform: translateX(3.125rem); }
-        .property-section.revealed .property-video,
-        .property-section.revealed .property-details { opacity: 1; transform: translateX(0); }
-        .reveal { opacity: 0; transform: translateY(1.75rem); transition: opacity 1.2s var(--ease-out-expo), transform 1.2s var(--ease-out-expo); }
-        .reveal.revealed { opacity: 1; transform: translateY(0); }
-        .intro-full { opacity: 0; transform: translateY(1.75rem); transition: opacity 1.4s var(--ease-out-expo), transform 1.4s var(--ease-out-expo); }
-        .intro-full.revealed { opacity: 1; transform: translateY(0); }
-        /* contact */
-        .contact-section { background: #ffffff; padding: 3rem 1.5rem; }
-        @media (min-width: 48em) { .contact-section { padding: 5rem 2rem; } }
-        .contact-container { max-width: 50rem; margin: 0 auto; text-align: center; }
-        .contact-container h2 { background: linear-gradient(135deg, #1E3A5F, #0A2A44); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
-        .contact-container > p { color: #2C3E50; max-width: 37.5rem; margin: 0 auto 1.5rem; }
-        .contact-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; flex-direction: column; align-items: center; }
-        @media (min-width: 30em) { .contact-buttons { flex-direction: row; } }
-        .contact-btn {
-            display: inline-flex; align-items: center; gap: 0.75rem; padding: 0.8rem 1.5rem;
-            border-radius: 3rem; font-weight: 700; text-decoration: none; transition: all 0.3s;
-            width: 100%; max-width: 17.5rem; justify-content: center;
+        .contact-section .container {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        @media (min-width: 30em) { .contact-btn { padding: 1rem 2rem; font-size: 1rem; width: auto; } }
-        .contact-btn-wa { background: #25D366; color: white; box-shadow: 0 0.5rem 1.25rem rgba(37,211,102,0.3); }
-        .contact-btn-wa:hover { transform: translateY(-0.1875rem); }
-        .contact-btn-call { background: white; color: #0A2A44; box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.15); }
-        .contact-btn-call:hover { transform: translateY(-0.1875rem); }
-        /* Footer */
+        .contact-section h2 {
+            background: linear-gradient(135deg, var(--blue-dark) 0%, var(--black) 60%, var(--black-soft) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 1rem;
+        }
+        .contact-section p {
+            color: var(--text-mid);
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+            max-width: 55ch;
+            text-align: center;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 0;
+        }
+        .btn-call {
+            background: linear-gradient(135deg, #2C5A8C, #0A2A44);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 4px 15px rgba(44, 90, 140, 0.3);
+        }
+        .btn-call:hover {
+            background: linear-gradient(135deg, #0A2A44, #2C5A8C);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(44, 90, 140, 0.4);
+        }
+        .btn-whatsapp {
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s var(--ease-out-expo);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+        .btn-whatsapp:hover {
+            background: linear-gradient(135deg, #128C7E, #075E54);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+        }
+        .btn-call i, .btn-whatsapp i {
+            font-size: 1.1rem;
+        }
+        @media (max-width: 767px) {
+            .contact-section {
+                padding: 3rem 1.5rem;
+            }
+            .contact-section p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+            .btn-call, .btn-whatsapp {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+                padding: 0.85rem 1.5rem;
+                font-size: 0.9rem;
+            }
+            .property-container { flex-direction: column !important; gap: 2rem; }
+            .property-video { position: relative; top: 0; width: 100%; }
+            .property-header h2 { font-size: 1.8rem; }
+            .property-price { font-size: 1.6rem; }
+        }
+
+        /* Footer - identical to crypto page */
         footer {
             background: linear-gradient(135deg, #000000 0%, #0A1A2A 50%, #000000 100%);
-            border-top: 0.0625rem solid rgba(255, 255, 255, 0.2);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
             padding: 4rem 0 2rem;
             position: relative;
             z-index: 2;
@@ -525,46 +678,129 @@
             background-clip: text;
             color: transparent;
         }
-        .footer-brand p { color: #9BB0C4; font-size: 0.9rem; max-width: 17.5rem; }
-        .footer-links h4, .footer-contact h4 { color: #FFFFFF; font-size: 1rem; margin-bottom: 1.5rem; letter-spacing: 0.03125rem; font-weight: 600; }
-        .footer-links ul { list-style: none; }
-        .footer-links li { margin-bottom: 0.75rem; }
-        .footer-links a { color: #8DA3B8; text-decoration: none; font-size: 0.9rem; transition: 0.2s; }
-        .footer-links a:hover { color: #FFFFFF; }
-        .footer-contact p { color: #8DA3B8; font-size: 0.9rem; display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
-        .footer-contact i { color: #FFFFFF; width: 1.25rem; }
-        .footer-bottom { border-top: 0.0625rem solid rgba(255, 255, 255, 0.1); padding-top: 2rem; margin-top: 2rem; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 1rem; color: #8DA3B8; font-size: 0.85rem; text-align: center; }
-        /* tablet & mobile OVERRIDES using rem based media queries */
-        @media (max-width: 64em) { /* 1024px - tablet */
-            .header-container { padding: 0.75rem 1rem; }
-            .logo-container { flex: 1; gap: 0.75rem; }
-            .logo-img { height: 2.625rem; }
-            .company-name { font-size: 1.6rem; text-align: left; padding-left: 1.125rem; flex: 1; font-weight: 800; }
-            .hamburger { display: block !important; margin-left: auto; }
-            .desktop-nav { display: none !important; }
-            .hero-content { margin-top: 3.75rem; }
-            .hero-content h1 { font-size: clamp(2rem, 7vw, 5.5rem); margin-bottom: 1rem; }
-            .hero-content p { font-size: clamp(0.9rem, 4vw, 1.3rem); margin-bottom: 1.5rem; }
-            .intro-full { padding: 3rem 1.5rem; }
-            .property-container { flex-direction: column !important; gap: 2rem; }
-            .property-video { position: relative; top: 0; width: 100%; }
-            .property-section .property-video,
-            .property-section .property-details { transform: translateX(0) !important; }
-            .property-section { padding: 3rem 0; }
-            .property-header h2 { font-size: 1.8rem; }
-            .property-price { font-size: 1.6rem; }
-            .property-features { grid-template-columns: 1fr; }
-            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .dropdown-menu { position: static; opacity: 1; visibility: visible; transform: none; box-shadow: none; background: rgba(0,0,0,0.05); margin-top: 0.5rem; border: none; }
+        .footer-brand p {
+            color: #9BB0C4;
+            font-size: 0.9rem;
+            max-width: 280px;
         }
-        @media (min-width: 64.0625em) {
-            .desktop-nav { display: block; }
-            .hamburger { display: none !important; }
+        .footer-links h4, .footer-contact h4 {
+            color: #FFFFFF;
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
         }
-        @media (max-width: 30em) {
-            .container { padding: 0 1rem; }
-            .hero-content .btn { padding: 0.64rem 1.2rem; font-size: 0.8rem; }
+        .footer-links ul {
+            list-style: none;
         }
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+        .footer-links a {
+            color: #8DA3B8;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+        .footer-links a:hover {
+            color: #FFFFFF;
+        }
+        .footer-contact p {
+            color: #8DA3B8;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+        }
+        .footer-contact i {
+            color: #FFFFFF;
+            width: 1.25rem;
+        }
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: #8DA3B8;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 767px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+
+        /* Image Modal */
+        .image-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            cursor: pointer;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .image-modal.active {
+            display: flex;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+            border-radius: 0.625rem;
+            box-shadow: 0 0 3.125rem rgba(0, 0, 0, 0.5);
+            animation: zoomIn 0.3s ease;
+        }
+        .close-modal {
+            position: absolute;
+            top: 1.25rem;
+            right: 2.5rem;
+            color: white;
+            font-size: 3.125rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            z-index: 10000;
+        }
+        .close-modal:hover {
+            color: var(--gold);
+            transform: scale(1.1);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.8); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        /* Reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(1.75rem);
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+        .reveal.revealed {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .property-section .property-video,
+        .property-section .property-details {
+            opacity: 0;
+            transition: opacity 0.8s var(--ease-out-expo), transform 0.8s var(--ease-out-expo);
+        }
+        .property-section:nth-of-type(odd) .property-video { transform: translateX(3.125rem); }
+        .property-section:nth-of-type(odd) .property-details { transform: translateX(-3.125rem); }
+        .property-section:nth-of-type(even) .property-video { transform: translateX(-3.125rem); }
+        .property-section:nth-of-type(even) .property-details { transform: translateX(3.125rem); }
+        .property-section.revealed .property-video,
+        .property-section.revealed .property-details { opacity: 1; transform: translateX(0); }
     </style>
 </head>
 <body>
@@ -572,6 +808,9 @@
     <div class="header-container">
         <div class="logo-container" id="logoHomeLink">
             <img src="assets/Hecongroup.png" alt="HECON GROUP" class="logo-img" onerror="this.src='https://via.placeholder.com/42?text=HG'">
+            <div class="company-name">HECON GROUP</div>
+        </div>
+        <div class="mobile-center-brand" id="mobileCenterBrand">
             <div class="company-name">HECON GROUP</div>
         </div>
         <nav class="desktop-nav">
@@ -591,37 +830,190 @@
         <ul><li><a href="index.html">Home</a></li><li><a href="land.html">Lands</a></li><li><a href="housing.html">Housing</a></li><li><a href="cac.html">Business Registration</a></li><li><a href="laptop.html">Gadgets</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul>
     </div>
 </header>
-<section class="hero-section" id="home"><div class="hero-bg"></div><div class="hero-overlay"></div><div class="hero-content"><h1>OWN PRIME LANDS IN NIGERIA</h1><p>Secure high-value land investments in Awka, Enugu, Lagos & beyond | Verified titles & exclusive plots</p><div><a href="#property1" class="btn btn-primary"><i class="fas fa-search"></i> EXPLORE LAND LISTINGS</a></div></div></section>
-<section id="about"><div class="intro-full reveal" id="introFullSection"><div class="intro-inner"><h2>Your Trusted Land Investment Partner</h2><p>At <span class="highlight">HECON REAL ESTATE</span>, we specialize in premium land sales across Nigeria’s fastest-growing corridors. Whether you seek residential plots, commercial acreage, or future development hubs, we provide verified land with authentic video surveys.</p><p>From beachfront lots in Eko Atlantic to expansive hectares in Lekki Free Zone, every land asset is handpicked for ROI potential. Our team handles title verification, survey, and legal due diligence.</p><p><span class="highlight">Secure your land legacy with HECON today.</span></p></div></div></section>
-<section class="gallery-section" id="gallery"><div class="container"><div class="gallery-header"><h2>Premium Land Gallery</h2><p>Explore our exclusive land visuals</p></div><div class="gallery-grid" id="galleryGrid"></div></div></section>
-<section class="property-section" id="property1"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/seven.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Lotanna Layout Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ndiukwuenu Awka, Anambra</div><div class="property-price">₦5,000,000 (Pre-Launch) - ₦6,000,000 (Actual Price)</div></div><div class="property-description"><p>A plot size of 465SQM. Close proximity to Awka city center, UNIZIK and Aroma junction. Accessible via Enugu-Onitsha Express way. YOU ONLY NEED A ₦1,000,000 INITIAL DEPOSIT TO SECURE A PLOT.</p></div></div></div></div></section>
-<section class="property-section" id="property2"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/eight.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Akuchukwu City Layout</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Mgbakwu, Anambra </div><div class="property-price">₦3,500,000 (Pre-Launch) - ₦5,000,000 (Actual Price)</div></div><div class="property-description"><p>With a deposit of ₦500,000, you can begin your journey to owning land in a fast developing area in anambra state. Instant allocation, FREE Documentation, Registered survey plan and Deed of assignment.</p></div></div></div></div></section>
-<section class="property-section" id="property3"><div class="container"><div class="property-container left"><div class="property-video"><video controls playsinline><source src="assets/nine.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Millenium Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Adjacent to Golf Annex Estate</div><div class="property-price">₦32,000,000 - ₦78,000,000</div></div><div class="property-description"><p>Scenic hilltop plots offering breathtaking views. Fresh air, tranquility, and easy access to the city center. Perfect for luxury homes.</p></div></div></div></div></section>
-<section class="property-section" id="property4"><div class="container"><div class="property-container right"><div class="property-video"><video controls playsinline><source src="assets/fifeteen.mp4" type="video/mp4"></video></div><div class="property-details"><div class="property-header"><h2>Mega One Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki Epe Expressway, Lagos State</div><div class="property-price">₦22 Million (300SQM)</div><div class="property-price">₦35 Million (500SQM)</div><div class="property-price">₦75 Million (1000SQM)</div></div><div class="property-description"><p>Enjoy premium infrastructure, prime location, and guaranteed appreciation. Secure your plot now. Watch your money grow.</p></div></div></div></div></section>
-<section class="contact-section" id="contact-section"><div class="contact-container"><h2>Secure Your Land Today</h2><p>Talk to our land specialists. Get verified title documents, survey plans, and exclusive off-market deals.</p><div class="contact-buttons"><a href="https://wa.me/2348167819313" class="contact-btn contact-btn-wa"><i class="fab fa-whatsapp fa-lg"></i> Chat on WhatsApp</a><a href="tel:+2348167819313" class="contact-btn contact-btn-call"><i class="fas fa-phone-alt"></i> Call Land Desk</a></div></div></section>
-<footer><div class="container"><div class="footer-grid"><div class="footer-brand"><h3>HECON GROUP</h3><p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p></div><div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#property1">Land Listings</a></li><li><a href="#contact-section">Contact</a></li></ul></div><div class="footer-links"><h4>Our Services</h4><ul><li><a href="housing.html">Housing</a></li><li><a href="land.html">Lands</a></li><li><a href="cac.html">Business Registration</a></li><li><a href="laptop.html">Laptops</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div><div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 8167819313</p><p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div></div><div class="footer-bottom"><div>© 2026 HECON GROUP. All rights reserved.</div></div></div></footer>
-<div id="imageModal" class="image-modal"><img id="modalImg" alt="Full view"><span class="modal-close">&times;</span></div>
+
+<section class="hero-section" id="home">
+    <div class="hero-bg"></div><div class="hero-overlay"></div>
+    <div class="hero-content">
+        <h1>OWN PRIME LANDS IN NIGERIA</h1>
+        <p>Secure high-value land investments in Awka, Enugu, Lagos & beyond | Verified titles & exclusive plots</p>
+        <div class="hero-buttons">
+            <a href="#property1" class="btn btn-primary"><i class="fas fa-search"></i> EXPLORE LAND LISTINGS</a>
+        </div>
+    </div>
+</section>
+
+<section id="about">
+    <div class="intro-full reveal">
+        <div class="intro-inner">
+            <h2>Your Trusted Land Investment Partner</h2>
+            <p>At <span class="highlight">HECON REAL ESTATE</span>, we specialize in premium land sales across Nigeria's fastest-growing corridors. Whether you seek residential plots, commercial acreage, or future development hubs, we provide verified land with authentic video surveys.</p>
+            <p>From beachfront lots in Eko Atlantic to expansive hectares in Lekki Free Zone, every land asset is handpicked for ROI potential. Our team handles title verification, survey, and legal due diligence.</p>
+            <p><span class="highlight">Secure your land legacy with HECON today.</span></p>
+        </div>
+    </div>
+</section>
+
+<section class="gallery-section reveal" id="gallery">
+    <div class="container">
+        <div class="gallery-header">
+            <h2>Premium Land Gallery</h2>
+            <p>Explore our exclusive land visuals</p>
+        </div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+    </div>
+</section>
+
+<section class="property-section reveal" id="property1">
+    <div class="container">
+        <div class="property-container left">
+            <div class="property-video"><video controls playsinline><source src="assets/seven.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>Lotanna Layout Estate Land</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Ndiukwuenu Awka, Anambra</div><div class="property-price">₦5,000,000 (Pre-Launch) - ₦6,000,000 (Actual Price)</div></div>
+                <div class="property-description"><p>A plot size of 465SQM. Close proximity to Awka city center, UNIZIK and Aroma junction. Accessible via Enugu-Onitsha Express way. YOU ONLY NEED A ₦1,000,000 INITIAL DEPOSIT TO SECURE A PLOT.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="property-section reveal" id="property2">
+    <div class="container">
+        <div class="property-container right">
+            <div class="property-video"><video controls playsinline><source src="assets/eight.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>Akuchukwu City Layout</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Mgbakwu, Anambra</div><div class="property-price">₦3,500,000 (Pre-Launch) - ₦5,000,000 (Actual Price)</div></div>
+                <div class="property-description"><p>With a deposit of ₦500,000, you can begin your journey to owning land in a fast developing area in anambra state. Instant allocation, FREE Documentation, Registered survey plan and Deed of assignment.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="property-section reveal" id="property3">
+    <div class="container">
+        <div class="property-container left">
+            <div class="property-video"><video controls playsinline><source src="assets/nine.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>Millenium Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Adjacent to Golf Annex Estate</div><div class="property-price">₦32,000,000 - ₦78,000,000</div></div>
+                <div class="property-description"><p>Scenic hilltop plots offering breathtaking views. Fresh air, tranquility, and easy access to the city center. Perfect for luxury homes.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="property-section reveal" id="property4">
+    <div class="container">
+        <div class="property-container right">
+            <div class="property-video"><video controls playsinline><source src="assets/fifeteen.mp4" type="video/mp4"></video></div>
+            <div class="property-details">
+                <div class="property-header"><h2>Mega One Estate</h2><div class="property-location"><i class="fas fa-map-marker-alt"></i> Lekki Epe Expressway, Lagos State</div><div class="property-price">₦22 Million (300SQM)</div><div class="property-price">₦35 Million (500SQM)</div><div class="property-price">₦75 Million (1000SQM)</div></div>
+                <div class="property-description"><p>Enjoy premium infrastructure, prime location, and guaranteed appreciation. Secure your plot now. Watch your money grow.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="contact-section reveal" id="contactNow">
+    <div class="container">
+        <h2>Secure Your Land Today</h2>
+        <p>Talk to our land specialists. Get verified title documents, survey plans, and exclusive off-market deals.</p>
+        <div class="contact-buttons">
+            <a href="https://wa.me/2348167819313" class="btn-whatsapp"><i class="fab fa-whatsapp"></i> Chat on WhatsApp</a>
+            <a href="tel:+2348167819313" class="btn-call"><i class="fas fa-phone-alt"></i> Call Land Desk</a>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand"><h3>HECON GROUP</h3><p>Your trusted partner for real estate, business registration, gadgets, and crypto exchange.</p></div>
+            <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="#home">Home</a></li><li><a href="#about">About Us</a></li><li><a href="#property1">Land Listings</a></li><li><a href="#contactNow">Contact</a></li></ul></div>
+            <div class="footer-links"><h4>Our Services</h4><ul><li><a href="housing.html">Housing</a></li><li><a href="land.html">Lands</a></li><li><a href="cac.html">Business Registration</a></li><li><a href="laptop.html">Laptops</a></li><li><a href="crypto.html">Crypto Exchange</a></li></ul></div>
+            <div class="footer-contact"><h4>Contact Info</h4><p><i class="fas fa-phone"></i> +234 8167819313</p><p><i class="fas fa-envelope"></i> only1hecon@gmail.com</p><p><i class="fas fa-map-marker-alt"></i> Lagos, Nigeria</p></div>
+        </div>
+        <div class="footer-bottom"><div>© 2026 HECON GROUP. All rights reserved.</div></div>
+    </div>
+</footer>
+
+<div id="imageModal" class="image-modal" onclick="closeModal()">
+    <span class="close-modal">&times;</span>
+    <img class="modal-image" id="modalImage" alt="Full size land view">
+</div>
+
 <script>
-(function(){
-    const lands = [{ img: "assets/one.jpeg" }, { img: "assets/two.jpeg" }, { img: "assets/three.jpeg" }, { img: "assets/four.jpeg" }, { img: "assets/five.jpeg" }, { img: "assets/six.jpeg" }, { img: "assets/seven.jpeg" }, { img: "assets/eight.jpeg" }, { img: "assets/nine.jpeg" }, { img: "assets/ten.jpeg" }, { img: "assets/eleven.jpeg" }, { img: "assets/twelve.jpeg" }];
+(function() {
+    const lands = [
+        { img: "assets/one.jpeg" }, { img: "assets/two.jpeg" }, { img: "assets/three.jpeg" },
+        { img: "assets/four.jpeg" }, { img: "assets/five.jpeg" }, { img: "assets/six.jpeg" },
+        { img: "assets/seven.jpeg" }, { img: "assets/eight.jpeg" }, { img: "assets/nine.jpeg" },
+        { img: "assets/ten.jpeg" }, { img: "assets/eleven.jpeg" }, { img: "assets/twelve.jpeg" }
+    ];
     const galleryGrid = document.getElementById('galleryGrid');
-    const modal = document.getElementById('imageModal');
-    const modalImg = document.getElementById('modalImg');
-    const modalClose = document.querySelector('.modal-close');
-    function buildGallery(){ if(!galleryGrid) return; galleryGrid.innerHTML = ''; lands.forEach(land => { const card = document.createElement('div'); card.className = 'land-card'; const img = document.createElement('img'); img.src = land.img; img.alt = 'Premium Land'; img.loading = 'lazy'; img.onerror = function() { this.src = 'https://via.placeholder.com/400x500?text=Land+View'; }; card.appendChild(img); card.addEventListener('click', (e) => { e.stopPropagation(); openModal(land.img); }); galleryGrid.appendChild(card); }); }
-    function openModal(imgSrc) { modalImg.src = imgSrc; modal.classList.add('active'); document.body.style.overflow = 'hidden'; }
-    function closeModal() { modal.classList.remove('active'); document.body.style.overflow = ''; }
-    if(modal){ modal.addEventListener('click', (e) => { if(e.target === modal || e.target === modalClose) closeModal(); }); document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && modal.classList.contains('active')) closeModal(); }); }
+    
+    function buildGallery() {
+        if (!galleryGrid) return;
+        galleryGrid.innerHTML = '';
+        lands.forEach(land => {
+            const card = document.createElement('div');
+            card.className = 'land-card';
+            const img = document.createElement('img');
+            img.src = land.img;
+            img.alt = 'Premium Land';
+            img.loading = 'lazy';
+            img.onerror = function() { this.src = 'https://via.placeholder.com/400x500?text=Land+View'; };
+            card.appendChild(img);
+            card.addEventListener('click', (e) => {
+                e.stopPropagation();
+                openImageModal(land.img);
+            });
+            galleryGrid.appendChild(card);
+        });
+    }
+    
+    window.openImageModal = function(imageSrc) {
+        const modal = document.getElementById('imageModal');
+        const modalImage = document.getElementById('modalImage');
+        modal.classList.add('active');
+        modalImage.src = imageSrc;
+        document.body.style.overflow = 'hidden';
+    };
+    
+    window.closeModal = function() {
+        const modal = document.getElementById('imageModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    };
+    
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeModal();
+    });
+    
     buildGallery();
+    
     const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu');
-    if(hamburger){ hamburger.onclick = () => { mobileMenu.classList.toggle('active'); hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; }; document.querySelectorAll('.mobile-menu a').forEach(link => { link.onclick = () => { mobileMenu.classList.remove('active'); hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }; }); }
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { e.preventDefault(); const id = this.getAttribute('href'); if(id === '#') return; const target = document.querySelector(id); if(target) window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); }); });
-    document.getElementById('logoHomeLink')?.addEventListener('click', () => { window.location.href = 'index.html'; });
-    const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); }, { threshold: 0.2 });
-    document.querySelectorAll('.property-section, .intro-full').forEach(el => observer.observe(el));
+    if(hamburger) hamburger.addEventListener('click', ()=>{ mobileMenu.classList.toggle('active'); hamburger.innerHTML = mobileMenu.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>'; });
+    document.querySelectorAll('.mobile-menu a').forEach(link => { link.addEventListener('click', ()=>{ mobileMenu.classList.remove('active'); if(hamburger) hamburger.innerHTML = '<i class="fas fa-bars"></i>'; }); });
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function(e) { const id = this.getAttribute('href'); if(id === '#' || id === '') return; const target = document.querySelector(id); if(target) { e.preventDefault(); window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' }); } }); });
+    
+    const logoLeft = document.getElementById('logoHomeLink');
+    const mobileCenterBrandDiv = document.getElementById('mobileCenterBrand');
+    const goToIndex = () => { window.location.href = 'index.html'; };
+    if(logoLeft) logoLeft.addEventListener('click', goToIndex);
+    if(mobileCenterBrandDiv) mobileCenterBrandDiv.addEventListener('click', goToIndex);
+    
+    // Video pause on other videos playing
     const videos = document.querySelectorAll('video');
-    videos.forEach(v => { v.addEventListener('play', () => { videos.forEach(other => { if(other !== v && !other.paused) other.pause(); }); }); });
-    setTimeout(() => { document.querySelectorAll('.property-section, .intro-full').forEach(el => { const rect = el.getBoundingClientRect(); if(rect.top < window.innerHeight - 80) el.classList.add('revealed'); }); }, 200);
+    videos.forEach(v => {
+        v.addEventListener('play', () => {
+            videos.forEach(other => {
+                if (other !== v && !other.paused) other.pause();
+            });
+        });
+    });
+    
+    const revealObserver = new IntersectionObserver((entries) => { entries.forEach(entry => { if(entry.isIntersecting) entry.target.classList.add('revealed'); }); }, { threshold: 0.15 });
+    document.querySelectorAll('.reveal, .property-section, .intro-full').forEach(el => revealObserver.observe(el));
+    setTimeout(() => { document.querySelectorAll('.reveal, .property-section, .intro-full').forEach(el => { if(el.getBoundingClientRect().top < window.innerHeight - 80) el.classList.add('revealed'); }); }, 150);
 })();
 </script>
 </body>
